@@ -10,6 +10,7 @@ import {
   FaInstagram,
   FaCalendar,
 } from "react-icons/fa";
+
 import logo from "../../assets/logo/leavingnow-logo.webp";
 import logoWhite from "../../assets/logo/leavingnow-logowhite.webp";
 
@@ -53,16 +54,12 @@ const Navbar = () => {
 
   const socialBaseClasses = isOnHero
     ? "text-white border-white/70"
-    : "text-slate-700
-
- border-[#718093]/40";
+    : "text-slate-700 border-[#718093]/40";
 
   const currentLogo = isOnHero ? logoWhite : logo;
   const logoSizeClasses = "h-9 md:h-10";
 
-  const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700
-
-";
+  const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700";
   const callNumberColor = isOnHero ? "text-white" : "text-[#132C50]";
 
   const comboWrapperClasses = isOnHero
@@ -153,19 +150,19 @@ const Navbar = () => {
                   `}
                 >
                   <span
-                    className="
+                    className={`
                       flex h-7 w-7 items-center justify-center rounded-full
                       bg-[#0863D6] text-white shadow-md
-                    "
+                    `}
                   >
                     <FaCalendar className="text-sm" />
                   </span>
                   <span
-                    className="
+                    className={`
                       max-w-0 opacity-0 overflow-hidden whitespace-nowrap
                       group-hover:max-w-xs group-hover:opacity-100 group-hover:ml-1.5
                       transition-all duration-300 text-[11px]
-                    "
+                    `}
                   >
                     Richiedi appuntamento
                   </span>
@@ -230,14 +227,14 @@ const Navbar = () => {
             onClick={closeMenu}
           />
           <div
-            className="
+            className={`
               absolute inset-y-0 right-0 w-3/4 max-w-xs
               bg-white
               border-l border-[#E5E7EB]
               shadow-[0_0_35px_rgba(0,0,0,0.35)]
               flex flex-col py-5 px-5
               transform transition-transform duration-300 translate-x-0
-            "
+            `}
           >
             <div className="flex items-center justify-between mb-6">
               <img
@@ -336,6 +333,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
 

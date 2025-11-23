@@ -88,7 +88,6 @@ const Contatti = () => {
 
       <section className="py-12 md:py-16 bg-[#E8F1FD]">
         <div className="max-w-6xl mx-auto px-4">
-
           {/* INTRO */}
           <div className="text-center mb-10 md:mb-12">
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
@@ -99,17 +98,14 @@ const Contatti = () => {
               Siamo qui per ascoltarti
             </h1>
 
-            <p className="mt-3 text-sm md:text-base text-slate-700
-
- max-w-xl mx-auto">
-              Per preventivi, informazioni o richieste su misura puoi usare il form
-              oppure i nostri contatti diretti.
+            <p className="mt-3 text-sm md:text-base text-slate-700 max-w-xl mx-auto">
+              Per preventivi, informazioni o richieste su misura puoi usare il
+              form oppure i nostri contatti diretti.
             </p>
           </div>
 
           {/* CONTATTI + FORM */}
           <div className="grid gap-8 lg:grid-cols-2 mb-12">
-
             {/* CARD CONTATTI */}
             <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-6 md:p-7 flex flex-col justify-between">
               <div>
@@ -117,11 +113,9 @@ const Contatti = () => {
                   I nostri contatti
                 </h2>
 
-                <p className="text-sm text-slate-700
-
- mb-5 text-justify">
-                  Puoi scriverci, chiamarci o venirci a trovare in agenzia. Scegli il canale
-                  che preferisci, al resto pensiamo noi.
+                <p className="text-sm text-slate-700 mb-5 text-justify">
+                  Puoi scriverci, chiamarci o venirci a trovare in agenzia.
+                  Scegli il canale che preferisci, al resto pensiamo noi.
                 </p>
 
                 <div className="space-y-4">
@@ -134,21 +128,19 @@ const Contatti = () => {
                         {item.icon}
                       </div>
                       <div className="text-sm text-left">
-                        <p className="font-semibold text-[#132C50]">{item.label}</p>
-                        <p className="text-slate-700
-
- mt-0.5">{item.value}</p>
+                        <p className="font-semibold text-[#132C50]">
+                          {item.label}
+                        </p>
+                        <p className="text-slate-700 mt-0.5">{item.value}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <p className="mt-5 text-xs text-slate-700
-
- text-center">
-                Se preferisci, puoi anche richiedere una consulenza su appuntamento
-                per organizzare insieme i tuoi prossimi viaggi.
+              <p className="mt-5 text-xs text-slate-700 text-center">
+                Se preferisci, puoi anche richiedere una consulenza su
+                appuntamento per organizzare insieme i tuoi prossimi viaggi.
               </p>
             </div>
 
@@ -158,11 +150,9 @@ const Contatti = () => {
                 Scrivici un messaggio
               </h2>
 
-              <p className="text-sm text-slate-700
-
- mb-6 text-center md:text-left">
-                Compila il form con qualche dettaglio sul viaggio che hai in mente:
-                ti risponderemo il prima possibile.
+              <p className="text-sm text-slate-700 mb-6 text-center md:text-left">
+                Compila il form con qualche dettaglio sul viaggio che hai in
+                mente: ti risponderemo il prima possibile.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -241,12 +231,14 @@ const Contatti = () => {
 
               {status === "success" && (
                 <p className="mt-4 text-center text-emerald-600 text-sm font-medium">
-                  ✔ Messaggio inviato correttamente! Ti risponderemo al più presto.
+                  ✔ Messaggio inviato correttamente! Ti risponderemo al più
+                  presto.
                 </p>
               )}
               {status === "error" && (
                 <p className="mt-4 text-center text-red-600 text-sm font-medium">
-                  ✖ Si è verificato un problema durante l’invio. Riprova tra poco.
+                  ✖ Si è verificato un problema durante l’invio. Riprova tra
+                  poco.
                 </p>
               )}
             </div>
@@ -254,7 +246,6 @@ const Contatti = () => {
 
           {/* MAP + ORARI */}
           <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)] items-stretch">
-
             {/* MAPPA */}
             <div className="rounded-3xl overflow-hidden shadow-lg border border-[#E2E8F0] bg-white">
               <iframe
@@ -273,9 +264,7 @@ const Contatti = () => {
                   <p className="text-xs font-semibold text-[#132C50]">
                     Leaving Now – Kiru s.r.l.
                   </p>
-                  <p className="text-xs text-slate-700
-
-">
+                  <p className="text-xs text-slate-700">
                     Via Salvo D’Acquisto, 10 – 81031 Aversa (CE)
                   </p>
                 </div>
@@ -313,15 +302,11 @@ const Contatti = () => {
                       {slots.map((slot) => (
                         <span
                           key={slot}
-                          className={`
-                            ${
-                              slot === "Chiuso"
-                                ? "text-red-500 font-semibold"
-                                : "text-slate-700
-
-"
-                            }
-                          `}
+                          className={
+                            slot === "Chiuso"
+                              ? "text-red-500 font-semibold"
+                              : "text-slate-700"
+                          }
                         >
                           {slot}
                         </span>
@@ -330,10 +315,8 @@ const Contatti = () => {
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
     </>
@@ -341,6 +324,7 @@ const Contatti = () => {
 };
 
 export default Contatti;
+
 
 
 
