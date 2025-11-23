@@ -75,7 +75,7 @@ const TripTypesStrip = () => {
         group relative flex items-end rounded-3xl overflow-hidden 
         shadow-md bg-slate-900/40
         w-full
-        h-60 md:h-auto md:aspect-[3/4]
+        h-60 md:h-auto md:aspect-3/4
         transition-all duration-200 hover:-translate-y-1
       "
     >
@@ -90,7 +90,7 @@ const TripTypesStrip = () => {
         "
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
 
       <div className="relative p-4 md:p-5 w-full">
         <h3 className="text-white text-xl md:text-2xl font-bold leading-tight drop-shadow-sm">
