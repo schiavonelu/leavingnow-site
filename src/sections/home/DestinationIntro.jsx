@@ -17,7 +17,8 @@ const DestinationsIntro = () => {
         </h2>
 
         {/* Testo – navy-100 (#718093) */}
-        <p className="mt-3 text-sm md:text-base text-[#718093] max-w-2xl mx-auto">
+        <p className="mt-3 text-sm md:text-base text-slate-600
+ max-w-2xl mx-auto">
           Dall’Europa all’Oceania: lasciati ispirare dalle nostre selezioni
           e trova il viaggio perfetto per te.
         </p>

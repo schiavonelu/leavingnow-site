@@ -14,7 +14,8 @@ const ReviewsIntro = () => {
         </h2>
 
         {/* Testo – navy-100 (#718093) */}
-        <p className="mt-3 text-sm md:text-base text-[#718093] max-w-2xl mx-auto">
+        <p className="mt-3 text-sm md:text-base text-slate-600
+ max-w-2xl mx-auto">
           Qualche parola da chi è già partito con noi. Recensioni autentiche,
           per aiutarti a immaginare il tuo prossimo viaggio.
         </p>
