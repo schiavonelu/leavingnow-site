@@ -15,23 +15,7 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
         ].join(" ")}
       >
-        {/* Intestazione opzionale */}
-        {showHeading && (
-          <div className="text-center mb-6 md:mb-10">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-slate-400 mb-2">
-              La nostra agenzia
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Leaving Now, agenzia viaggi ad Aversa
-            </h2>
-            <p className="mt-3 text-sm md:text-base text-slate-700
- max-w-2xl mx-auto">
-              Un team di consulenti che progetta viaggi su misura: vacanze,
-              crociere, viaggi di nozze e tour organizzati con partenza da
-              Aversa e dintorni.
-            </p>
-          </div>
-        )}
+       
 
         {/* Card collegate a Chi Siamo / Contatti */}
         <div className="grid gap-4 md:gap-6 md:grid-cols-2">
