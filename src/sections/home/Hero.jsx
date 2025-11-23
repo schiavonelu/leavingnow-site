@@ -16,7 +16,6 @@ const Hero = () => {
     };
   }, []);
 
-  // 🟦 Funzione per lo scroll morbido
   const handleScroll = () => {
     const nextSection = document.getElementById("next-section");
     if (nextSection) {
@@ -27,11 +26,18 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
 
-      {/* SFONDO HERO */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+      {/* SFONDO HERO COME IMMAGINE LCP */}
+      <picture>
+        {/* se in futuro vuoi una versione più piccola/larga, puoi aggiungere srcSet qui */}
+        <img
+          src={heroImage}
+          alt='Coppia in viaggio al tramonto con valigia, simbolo di partenza con Leaving Now Agenzia Viaggi'
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
 
       {/* OVERLAY */}
       <div className="absolute inset-0 bg-slate-900/40" />
@@ -53,12 +59,10 @@ const Hero = () => {
           {/* BOTTONE CTA */}
           <div className="w-full flex justify-center mt-6">
             <button
-              onClick={handleScroll}   // ⬅️ SCROLL QUI
+              onClick={handleScroll}
               className={[
                 "inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 text-base font-semibold text-white shadow-2xl border border-white/40 transition-all duration-700 ease-out hover:bg-sky-500 hover:border-white",
-                showButton
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6",
+                showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
               ].join(" ")}
             >
               <FaSuitcaseRolling className="text-xl" />
@@ -73,6 +77,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
 
 
 
