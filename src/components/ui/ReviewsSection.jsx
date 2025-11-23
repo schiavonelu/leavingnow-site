@@ -41,7 +41,6 @@ const reviews = [
   },
 ];
 
-// intervalli diversi per mobile / tablet-desktop
 const AUTO_SLIDE_MS_MOBILE = 7000;
 const AUTO_SLIDE_MS_DESKTOP = 12000;
 
@@ -66,7 +65,6 @@ const ReviewsSection = () => {
 
   const pageCount = Math.max(1, Math.ceil(reviews.length / perPage));
 
-  // scegli l'intervallo in base al layout attuale
   const intervalMs =
     perPage === 1 ? AUTO_SLIDE_MS_MOBILE : AUTO_SLIDE_MS_DESKTOP;
 
@@ -95,7 +93,6 @@ const ReviewsSection = () => {
   return (
     <section className="bg-white py-10 md:py-14">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Carosello */}
         <div
           ref={ref}
           className={[
@@ -110,10 +107,8 @@ const ReviewsSection = () => {
                 key={`${review.name}-${startIndex + index}`}
                 className="relative overflow-hidden rounded-3xl bg-linear-to-br from-sky-50 via-white to-amber-50 border border-slate-200 px-5 py-6 md:px-6 md:py-7 shadow-[0_10px_35px_rgba(15,23,42,0.18)] transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.35)]"
               >
-                {/* grande quote di sfondo */}
                 <FaQuoteLeft className="pointer-events-none absolute -right-1 -bottom-2 text-6xl text-sky-100/70" />
 
-                {/* badge */}
                 <div className="mb-3">
                   <div className="inline-flex items-center gap-1 rounded-full bg-white/80 border border-emerald-100 px-2.5 py-1 text-[10px] font-semibold text-emerald-700 shadow-sm">
                     <FaCheckCircle className="text-[11px]" />
@@ -121,7 +116,6 @@ const ReviewsSection = () => {
                   </div>
                 </div>
 
-                {/* Header: avatar + nome + rating */}
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-sm shadow-md">
@@ -156,7 +150,6 @@ const ReviewsSection = () => {
                   </div>
                 </div>
 
-                {/* Testo recensione */}
                 <p className="mt-1 text-sm md:text-[15px] text-slate-700 leading-relaxed text-justify">
                   {review.text}
                 </p>
@@ -167,20 +160,27 @@ const ReviewsSection = () => {
           {/* Pallini di pagina */}
           <div className="flex flex-col items-center gap-1.5 mt-6">
             <div className="flex justify-center items-center gap-2">
-              {Array.from({ length: pageCount }).map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setCurrentPage(index)}
-                  className={[
-                    "h-2.5 w-2.5 rounded-full border transition-all duration-200",
-                    index === currentPage
-                      ? "bg-sky-500 border-sky-500 scale-125"
-                      : "border-slate-400 bg-transparent hover:border-sky-400 hover:bg-sky-100",
-                  ].join(" ")}
-                  aria-label={`Mostra gruppo recensioni ${index + 1}`}
-                />
-              ))}
+              {Array.from({ length: pageCount }).map((_, index) => {
+                const isActive = index === currentPage;
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setCurrentPage(index)}
+                    className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center group"
+                    aria-label={`Mostra gruppo recensioni ${index + 1}`}
+                  >
+                    <span
+                      className={[
+                        "h-2.5 w-2.5 rounded-full border transition-all duration-200",
+                        isActive
+                          ? "bg-sky-500 border-sky-500"
+                          : "border-slate-400 bg-transparent group-hover:border-sky-400 group-hover:bg-sky-100",
+                      ].join(" ")}
+                    />
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
