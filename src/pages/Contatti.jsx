@@ -231,13 +231,13 @@ const Contatti = () => {
 
               {status === "success" && (
                 <p className="mt-4 text-center text-emerald-600 text-sm font-medium">
-                  ✔ Messaggio inviato correttamente! Ti risponderemo al più
+                  Messaggio inviato correttamente! Ti risponderemo al più
                   presto.
                 </p>
               )}
               {status === "error" && (
                 <p className="mt-4 text-center text-red-600 text-sm font-medium">
-                  ✖ Si è verificato un problema durante l’invio. Riprova tra
+                  Si è verificato un problema durante l’invio. Riprova tra
                   poco.
                 </p>
               )}
