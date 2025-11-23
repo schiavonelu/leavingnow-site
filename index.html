@@ -19,12 +19,16 @@
   </title>
 
   <!-- 🔹 META DESCRIPTION OTTIMIZZATA -->
-  <meta name="description"
-    content="Leaving Now è l'agenzia viaggi ad Aversa per chi parte dall'area nord di Napoli e Caserta. Pacchetti vacanze, crociere e viaggi di nozze su misura con partenze da Napoli e dintorni." />
+  <meta
+    name="description"
+    content="Leaving Now è l'agenzia viaggi ad Aversa per chi parte dall'area nord di Napoli e Caserta. Pacchetti vacanze, crociere e viaggi di nozze su misura con partenze da Napoli e dintorni."
+  />
 
   <!-- 🔹 META KEYWORDS -->
-  <meta name="keywords"
-    content="agenzia viaggi Aversa, agenzia viaggi nord Napoli, viaggi Aversa, pacchetti vacanze Aversa, viaggi di nozze Aversa, crociere Aversa, agenzia viaggi Lusciano, agenzia viaggi Trentola Ducenta, agenzia viaggi Cesa, agenzia viaggi Orta di Atella, agenzia viaggi Succivo, agenzia viaggi Sant'Arpino, agenzia viaggi Frattaminore, agenzia viaggi Caivano, agenzia viaggi Melito, agenzia viaggi Frattamaggiore, agenzia viaggi Sant'Antimo, agenzia viaggi Mugnano di Napoli, agenzia viaggi Caserta, agenzia viaggi Napoli" />
+  <meta
+    name="keywords"
+    content="agenzia viaggi Aversa, agenzia viaggi nord Napoli, viaggi Aversa, pacchetti vacanze Aversa, viaggi di nozze Aversa, crociere Aversa, agenzia viaggi Lusciano, agenzia viaggi Trentola Ducenta, agenzia viaggi Cesa, agenzia viaggi Orta di Atella, agenzia viaggi Succivo, agenzia viaggi Sant'Arpino, agenzia viaggi Frattaminore, agenzia viaggi Caivano, agenzia viaggi Melito, agenzia viaggi Frattamaggiore, agenzia viaggi Sant'Antimo, agenzia viaggi Mugnano di Napoli, agenzia viaggi Caserta, agenzia viaggi Napoli"
+  />
 
   <!-- 🔹 AUTORE -->
   <meta name="author" content="Leaving Now Agenzia Viaggi" />
@@ -42,8 +46,10 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Leaving Now" />
   <meta property="og:title" content="Leaving Now - Agenzia Viaggi Aversa e Nord Napoli" />
-  <meta property="og:description"
-    content="Agenzia viaggi ad Aversa specializzata in pacchetti vacanze, crociere e viaggi di nozze su misura per chi parte dall'area nord di Napoli e Caserta." />
+  <meta
+    property="og:description"
+    content="Agenzia viaggi ad Aversa specializzata in pacchetti vacanze, crociere e viaggi di nozze su misura per chi parte dall'area nord di Napoli e Caserta."
+  />
   <meta property="og:url" content="https://leavingnow.it/" />
   <meta property="og:image" content="https://leavingnow.it/images/og-leaving-now.jpg" />
   <meta property="og:locale" content="it_IT" />
@@ -51,13 +57,21 @@
   <!-- 🔹 COLORE BARRA MOBILE -->
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- 🔹 GOOGLE FONTS OTTIMIZZATO (NON BLOCKING) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- 🔹 GOOGLE FONTS OTTIMIZZATO (preconnect + preload non blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    rel="stylesheet"
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+  </noscript>
 
   <!-- 🔹 DATI STRUTTURATI SCHEMA.ORG (JSON-LD) -->
   <script type="application/ld+json">
@@ -132,3 +146,4 @@
 </body>
 
 </html>
+
