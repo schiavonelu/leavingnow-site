@@ -23,7 +23,8 @@ const ContinentCard = ({ image, title, description, badge, period }) => {
         <h3 className="font-semibold text-slate-900 text-base md:text-lg mb-1">
           {title}
         </h3>
-        <p className="text-sm text-slate-600 leading-relaxed text-justify">
+        <p className="text-sm text-slate-700
+ leading-relaxed text-justify">
           {description}
         </p>
 

@@ -69,7 +69,8 @@ const DestinationSplit = ({
                 {subtitle}
               </p>
             )}
-            <p className="text-sm md:text-base text-slate-600 mb-6 leading-relaxed text-justify">
+            <p className="text-sm md:text-base text-slate-700
+ mb-6 leading-relaxed text-justify">
               {text}
             </p>
 

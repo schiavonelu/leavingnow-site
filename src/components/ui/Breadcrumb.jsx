@@ -53,7 +53,8 @@ const Breadcrumb = () => {
             <IoChevronForward className="text-[#94A3B8] text-xs" />
 
             {crumb.isLast ? (
-              <span className="text-slate-600
+              <span className="text-slate-700
+
  font-semibold">
                 {crumb.label}
               </span>

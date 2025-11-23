@@ -38,7 +38,8 @@ const Destinazioni = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-3">
               Scegli il continente direttamente dalla mappa
             </h2>
-            <p className="text-sm md:text-base text-slate-600
+            <p className="text-sm md:text-base text-slate-700
+
 ">
               Clicca sull’area del mondo che ti ispira di più: verrai portato
               alle idee di viaggio dedicate a quel continente, per iniziare a
@@ -179,7 +180,8 @@ const Destinazioni = () => {
               </Link>
             </div>
 
-            <p className="mt-4 text-[11px] md:text-xs text-slate-600
+            <p className="mt-4 text-[11px] md:text-xs text-slate-700
+
  text-center">
               La mappa è indicativa: clicca sull’area che ti interessa per
               scoprire le destinazioni e le idee di viaggio dedicate a quel

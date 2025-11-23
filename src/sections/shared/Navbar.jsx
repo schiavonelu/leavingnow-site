@@ -53,13 +53,15 @@ const Navbar = () => {
 
   const socialBaseClasses = isOnHero
     ? "text-white border-white/70"
-    : "text-slate-600
+    : "text-slate-700
+
  border-[#718093]/40";
 
   const currentLogo = isOnHero ? logoWhite : logo;
   const logoSizeClasses = "h-9 md:h-10";
 
-  const callLabelColor = isOnHero ? "text-white/80" : "text-slate-600
+  const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700
+
 ";
   const callNumberColor = isOnHero ? "text-white" : "text-[#132C50]";
 

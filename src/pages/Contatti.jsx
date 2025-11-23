@@ -99,7 +99,8 @@ const Contatti = () => {
               Siamo qui per ascoltarti
             </h1>
 
-            <p className="mt-3 text-sm md:text-base text-slate-600
+            <p className="mt-3 text-sm md:text-base text-slate-700
+
  max-w-xl mx-auto">
               Per preventivi, informazioni o richieste su misura puoi usare il form
               oppure i nostri contatti diretti.
@@ -116,7 +117,8 @@ const Contatti = () => {
                   I nostri contatti
                 </h2>
 
-                <p className="text-sm text-slate-600
+                <p className="text-sm text-slate-700
+
  mb-5 text-justify">
                   Puoi scriverci, chiamarci o venirci a trovare in agenzia. Scegli il canale
                   che preferisci, al resto pensiamo noi.
@@ -133,7 +135,8 @@ const Contatti = () => {
                       </div>
                       <div className="text-sm text-left">
                         <p className="font-semibold text-[#132C50]">{item.label}</p>
-                        <p className="text-slate-600
+                        <p className="text-slate-700
+
  mt-0.5">{item.value}</p>
                       </div>
                     </div>
@@ -141,7 +144,8 @@ const Contatti = () => {
                 </div>
               </div>
 
-              <p className="mt-5 text-xs text-slate-600
+              <p className="mt-5 text-xs text-slate-700
+
  text-center">
                 Se preferisci, puoi anche richiedere una consulenza su appuntamento
                 per organizzare insieme i tuoi prossimi viaggi.
@@ -154,7 +158,8 @@ const Contatti = () => {
                 Scrivici un messaggio
               </h2>
 
-              <p className="text-sm text-slate-600
+              <p className="text-sm text-slate-700
+
  mb-6 text-center md:text-left">
                 Compila il form con qualche dettaglio sul viaggio che hai in mente:
                 ti risponderemo il prima possibile.
@@ -268,7 +273,8 @@ const Contatti = () => {
                   <p className="text-xs font-semibold text-[#132C50]">
                     Leaving Now – Kiru s.r.l.
                   </p>
-                  <p className="text-xs text-slate-600
+                  <p className="text-xs text-slate-700
+
 ">
                     Via Salvo D’Acquisto, 10 – 81031 Aversa (CE)
                   </p>
@@ -311,7 +317,8 @@ const Contatti = () => {
                             ${
                               slot === "Chiuso"
                                 ? "text-red-500 font-semibold"
-                                : "text-slate-600
+                                : "text-slate-700
+
 "
                             }
                           `}

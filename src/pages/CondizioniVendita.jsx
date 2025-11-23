@@ -71,7 +71,8 @@ const CondizioniVendita = () => {
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
                 4. Definizioni
               </h2>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-slate-700
+">
                 Ai fini delle presenti Condizioni, si intende per:
               </p>
               <ul className="list-disc pl-5 space-y-2">

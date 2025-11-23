@@ -34,7 +34,8 @@ const CookieConsent = () => {
         <div className="flex gap-3">
           <button
             onClick={declineCookies}
-            className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-sm"
+            className="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-700
+ text-sm"
           >
             Rifiuta
           </button>

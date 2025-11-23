@@ -179,7 +179,8 @@ const ChiSiamo = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
               Le persone dietro ogni viaggio
             </h2>
-            <p className="mt-3 text-sm md:text-base text-slate-600 max-w-2xl mx-auto text-center">
+            <p className="mt-3 text-sm md:text-base text-slate-700
+ max-w-2xl mx-auto text-center">
               Professionisti con esperienza, passione e cura del dettaglio.
               Non solo consulenti: compagni di viaggio prima, durante e dopo la partenza.
             </p>
