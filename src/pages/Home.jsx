@@ -1,16 +1,7 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 import Hero from "../sections/home/Hero.jsx";
 import StickySection from "../components/layout/StickySection.jsx";
-
-// Lazy loading delle sezioni non above-the-fold
-const DestinationsIntro = lazy(() => import("../sections/home/DestinationIntro.jsx"));
-const DestinationsSection = lazy(() => import("../sections/home/DestinationsSection.jsx"));
-const TripTypesStrip = lazy(() => import("../components/ui/TripTypesStrip.jsx"));
-const TripTypesStripIntro = lazy(() => import("../sections/home/TripTypesStripIntro.jsx"));
-const ReviewsSection = lazy(() => import("../components/ui/ReviewsSection.jsx"));
-const ReviewsIntro = lazy(() => import("../sections/home/ReviewsIntro.jsx"));
-const AgencyIntroStrip = lazy(() => import("../sections/shared/AgencyIntroStrip.jsx"));
-const AgencyIntroHeader = lazy(() => import("../sections/home/AgencyIntroHeader.jsx"));
+import LazySection from "../components/LazySection.jsx";
 
 const Home = () => {
   useEffect(() => {
@@ -27,33 +18,71 @@ const Home = () => {
       {/* HERO: above-the-fold, caricata subito */}
       <Hero />
 
-      {/* Il resto può permettersi un fallback leggero mentre carica */}
-      <Suspense fallback={null}>
-        {/* DESTINAZIONI – HEADER STICKY */}
-        <StickySection header={<DestinationsIntro />}>
-          <DestinationsSection />
-        </StickySection>
+      {/* DESTINAZIONI – HEADER STICKY */}
+      <StickySection
+        header={
+          <LazySection
+            loader={() => import("../sections/home/DestinationIntro.jsx")}
+            fallback={null}
+          />
+        }
+      >
+        <LazySection
+          loader={() => import("../sections/home/DestinationsSection.jsx")}
+          fallback={null}
+        />
+      </StickySection>
 
-        {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY */}
-        <StickySection header={<TripTypesStripIntro />}>
-          <TripTypesStrip />
-        </StickySection>
+      {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY */}
+      <StickySection
+        header={
+          <LazySection
+            loader={() => import("../sections/home/TripTypesStripIntro.jsx")}
+            fallback={null}
+          />
+        }
+      >
+        <LazySection
+          loader={() => import("../components/ui/TripTypesStrip.jsx")}
+          fallback={null}
+        />
+      </StickySection>
 
-        {/* RECENSIONI – HEADER STICKY */}
-        <StickySection header={<ReviewsIntro />}>
-          <ReviewsSection />
-        </StickySection>
+      {/* RECENSIONI – HEADER STICKY */}
+      <StickySection
+        header={
+          <LazySection
+            loader={() => import("../sections/home/ReviewsIntro.jsx")}
+            fallback={null}
+          />
+        }
+      >
+        <LazySection
+          loader={() => import("../components/ui/ReviewsSection.jsx")}
+          fallback={null}
+        />
+      </StickySection>
 
-        {/* AGENZIA – HEADER STICKY */}
-        <StickySection header={<AgencyIntroHeader />}>
-          <AgencyIntroStrip showHeading={false} />
-        </StickySection>
-      </Suspense>
+      {/* AGENZIA – HEADER STICKY */}
+      <StickySection
+        header={
+          <LazySection
+            loader={() => import("../sections/home/AgencyIntroHeader.jsx")}
+            fallback={null}
+          />
+        }
+      >
+        <LazySection
+          loader={() => import("../sections/shared/AgencyIntroStrip.jsx")}
+          fallback={null}
+        />
+      </StickySection>
     </main>
   );
 };
 
 export default Home;
+
 
 
 
