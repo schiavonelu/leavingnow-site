@@ -18,6 +18,7 @@ const links = [
   { to: "/", label: "Home", end: true, icon: FaHome },
   { to: "/chi-siamo", label: "Chi siamo", icon: FaInfoCircle },
   { to: "/destinazioni", label: "Destinazioni", icon: FaMapMarkedAlt },
+  { to: "viaggi-di-nozze", label: "Viaggi di Nozze", icon: FaCalendar},
   { to: "/contatti", label: "Contatti", icon: FaEnvelopeOpenText },
 ];
 

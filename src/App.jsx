@@ -6,6 +6,7 @@ import Home from "./pages/Home.jsx";
 import ChiSiamo from "./pages/ChiSiamo.jsx";
 import Destinazioni from "./pages/Destinazioni.jsx";
 import Contatti from "./pages/Contatti.jsx";
+import ViaggiDiNozze from "./pages/ViaggiDiNozze.jsx"
 
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import TerminiCondizioni from "./pages/TerminiCondizioni.jsx";
@@ -41,6 +42,7 @@ function App() {
           <Route path="chi-siamo" element={<ChiSiamo />} />
           <Route path="destinazioni" element={<Destinazioni />} />
           <Route path="contatti" element={<Contatti />} />
+          <Route path="viaggi-di-nozze" element={<ViaggiDiNozze />} />
 
           {/* Sotto-pagine destinazioni */}
           <Route path="destinazioni/europa" element={<Europa />} />
