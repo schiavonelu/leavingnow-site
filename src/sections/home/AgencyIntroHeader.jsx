@@ -12,13 +12,11 @@ const AgencyIntroHeader = () => {
           Agenzia viaggi ad Aversa: Leaving Now
         </h2>
 
-        {/* Testo – navy-100 (#718093) */}
-        <p className="mt-3 text-sm md:text-base text-slate-700
-
- max-w-2xl mx-auto">
-          Un team di consulenti di viaggio che ti segue dalla scelta della
-          meta al rientro, con soluzioni su misura per coppie, famiglie,
-          gruppi e viaggi di lavoro.
+        {/* Testo – slate-700 */}
+        <p className="mt-3 text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
+          Un team di consulenti di viaggio che ti segue dalla scelta della meta
+          al rientro, con soluzioni su misura per coppie, famiglie, gruppi e
+          viaggi di lavoro.
         </p>
       </div>
     </section>
@@ -26,6 +24,7 @@ const AgencyIntroHeader = () => {
 };
 
 export default AgencyIntroHeader;
+
 
 
 

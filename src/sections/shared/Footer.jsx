@@ -32,13 +32,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 text-xs md:text-sm">
           {/* COLONNA 1 – Dati + Social */}
           <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left gap-2">
-            <p className="font-semibold text-[#F9FAFB] text-sm md:text-base">
+            <p className="font-semibold text-white text-sm md:text-base">
               Leaving Now by Kiru s.r.l.
             </p>
-            <p className="text-[#CBD5E1]">
+            <p className="text-slate-200">
               Via Salvo d&apos;Acquisto, 10 – 81031 Aversa
             </p>
-            <p className="text-[#CBD5E1]">P. IVA 04318290618</p>
+            <p className="text-slate-200">P. IVA 04318290618</p>
 
             {/* SOCIAL */}
             <div className="flex items-center gap-3 mt-3">
@@ -98,6 +98,8 @@ const Footer = () => {
                     src={method.logo}
                     alt={method.name}
                     loading="lazy"
+                    width={80}
+                    height={50}
                     className="h-6 md:h-7 w-auto object-contain"
                   />
                 </div>
@@ -109,7 +111,7 @@ const Footer = () => {
           <div className="md:w-1/3 flex flex-col md:items-end items-center gap-2 text-xs md:text-sm text-center md:text-right">
             <a
               href="/privacy-policy"
-              className="px-3 py-2 text-[#E5E7EB] hover:text-[#0863D6] transition-colors"
+              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
               target="_blank"
               rel="noreferrer"
             >
@@ -117,7 +119,7 @@ const Footer = () => {
             </a>
             <a
               href="/termini-e-condizioni"
-              className="px-3 py-2 text-[#E5E7EB] hover:text-[#0863D6] transition-colors"
+              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
               target="_blank"
               rel="noreferrer"
             >
@@ -125,7 +127,7 @@ const Footer = () => {
             </a>
             <a
               href="/condizioni-di-vendita"
-              className="px-3 py-2 text-[#E5E7EB] hover:text-[#0863D6] transition-colors"
+              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
               target="_blank"
               rel="noreferrer"
             >
@@ -137,7 +139,7 @@ const Footer = () => {
         {/* SEPARATORE + COPYRIGHT */}
         <div className="pt-4">
           <div className="border-t border-white/15" />
-          <p className="mt-3 text-xs md:text-sm text-[#CBD5E1] text-center">
+          <p className="mt-3 text-xs md:text-sm text-slate-300 text-center">
             © {year} Leaving Now by Kiru s.r.l. · Tutti i diritti riservati.
           </p>
         </div>
@@ -147,6 +149,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

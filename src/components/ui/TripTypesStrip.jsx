@@ -69,7 +69,7 @@ const TripTypesStrip = () => {
         group relative flex items-end rounded-3xl overflow-hidden 
         shadow-md bg-slate-900/40
         w-full
-        h-60 md:h-auto md:aspect-[3/4]
+        h-60 md:h-auto md:aspect-3/4
         transition-all duration-200 hover:-translate-y-1
       "
     >
