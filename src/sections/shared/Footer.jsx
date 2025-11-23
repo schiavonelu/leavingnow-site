@@ -121,7 +121,7 @@ const Footer = () => {
             </a>
             <a
               href="/termini-e-condizioni"
-              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
+              className="px-2 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
               target="_blank"
               rel="noreferrer"
             >
@@ -129,7 +129,7 @@ const Footer = () => {
             </a>
             <a
               href="/condizioni-di-vendita"
-              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
+              className="px-2 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
               target="_blank"
               rel="noreferrer"
             >
@@ -137,7 +137,7 @@ const Footer = () => {
             </a>
             <a
               href="/crediti-immagini"
-              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
+              className="px-2 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
               target="_blank"
               rel="noreferrer"
             >
@@ -150,17 +150,60 @@ const Footer = () => {
         {/* SEPARATORE + COPYRIGHT */}
         <div className="pt-4">
           <div className="border-t border-white/15" />
+          
           <p className="mt-3 text-xs md:text-sm text-slate-300 text-center">
             © {year} Leaving Now by Kiru s.r.l. · Tutti i diritti riservati.
           </p>
-        </div>
 
+          {/* CREDITI IMMAGINI */}
+          <p className="mt-2 text-[0.65rem] md:text-xs text-slate-300 text-center opacity-80">
+            Foto fornite gratuitamente da{" "}
+            <a
+              href="https://www.pexels.com"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-sky-300"
+            >
+              Pexels
+            </a>
+            . Autori principali:{" "}
+            <a
+              href="https://www.pexels.com/@tarikulraana"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-sky-300"
+            >
+              Tarikul Raana
+            </a>
+            ,{" "}
+            <a
+              href="https://www.pexels.com/@asadphoto"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-sky-300"
+            >
+              Asad Photo Maldives
+            </a>
+            ,{" "}
+            <a
+              href="https://www.pexels.com/@taryn-elliott"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-sky-300"
+            >
+              Taryn Elliott
+            </a>
+            , altri fotografi su Pexels.
+          </p>
+
+        </div>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
 
 
 
