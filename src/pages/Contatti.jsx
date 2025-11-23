@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Calendar } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+
+const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
 const Contatti = () => {
   const [status, setStatus] = useState(null);
@@ -113,12 +115,14 @@ const Contatti = () => {
                   I nostri contatti
                 </h2>
 
-                <p className="text-sm text-slate-700 mb-5 text-justify">
+                {/* Testo Introduzione */}
+                <p className="text-sm text-slate-700 text-justify mb-5">
                   Puoi scriverci, chiamarci o venirci a trovare in agenzia.
                   Scegli il canale che preferisci, al resto pensiamo noi.
                 </p>
 
-                <div className="space-y-4">
+                {/* LISTA CONTATTI */}
+                <div className="space-y-4 mb-6">
                   {contacts.map((item) => (
                     <div
                       key={item.label}
@@ -138,10 +142,30 @@ const Contatti = () => {
                 </div>
               </div>
 
-              <p className="mt-5 text-xs text-slate-700 text-center">
+              {/* TESTO CONSULENZA */}
+              <p className="text-sm text-slate-700 text-justify mb-5">
                 Se preferisci, puoi anche richiedere una consulenza su
                 appuntamento per organizzare insieme i tuoi prossimi viaggi.
               </p>
+
+              {/* BOTTONE MIGLIORATO – FULL WIDTH SU MOBILE + ANIMAZIONE */}
+              <div className="mb-2 flex justify-center">
+                <a
+                  href={RESERVIO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full bg-[#0863D6] hover:bg-[#0648a3] text-white text-sm font-semibold px-6 py-3 shadow-md hover:shadow-lg transition-all duration-200 ease-out hover:-translate-y-0.5"
+                >
+                  {/* ICONA */}
+                  <Calendar className="w-4 h-4 mr-3" />
+
+                  {/* SEPARATORE */}
+                  <span className="h-5 w-px bg-white/40 mx-3" />
+
+                  {/* TESTO */}
+                  <span>Richiedi un appuntamento</span>
+                </a>
+              </div>
             </div>
 
             {/* FORM */}
@@ -244,7 +268,7 @@ const Contatti = () => {
             </div>
           </div>
 
-          {/* MAP + ORARI */}
+          {/* MAPPA + ORARI */}
           <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)] items-stretch">
             {/* MAPPA */}
             <div className="rounded-3xl overflow-hidden shadow-lg border border-[#E2E8F0] bg-white">
@@ -324,6 +348,9 @@ const Contatti = () => {
 };
 
 export default Contatti;
+
+
+
 
 
 
