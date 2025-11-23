@@ -1,0 +1,207 @@
+import { useEffect } from "react";
+import InnerHero from "../sections/shared/InnerHero.jsx";
+
+const PrivacyPolicy = () => {
+  // 🔝 Torna sempre in top quando la pagina viene caricata
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
+  return (
+    <>
+      <InnerHero
+        title="Privacy Policy"
+        subtitle="Come gestiamo e proteggiamo i tuoi dati personali."
+        image="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg"
+      />
+
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="mb-6 text-xs uppercase tracking-[0.18em] text-slate-500">
+            Privacy Policy di www.leavingnow.it
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl shadow-sm px-6 py-8 md:px-10 md:py-10 text-sm md:text-base text-slate-700 leading-relaxed space-y-6 text-justify">
+            <div className="space-y-2">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Titolare del Trattamento dei Dati
+              </h2>
+              <p>
+                <span className="font-semibold">Kiru s.r.l.</span> – Via Atellana, 115 – 81031 Aversa (CE)
+              </p>
+              <p>
+                Indirizzo email del Titolare:{" "}
+                <a
+                  href="mailto:kiruviaggi@gmail.com"
+                  className="font-medium text-primary hover:underline"
+                >
+                  kiruviaggi@gmail.com
+                </a>
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Tipologie di Dati raccolti
+              </h2>
+              <p>
+                Fra i Dati Personali raccolti da questa Applicazione, in modo autonomo
+                o tramite terze parti, possono rientrare: Dati di utilizzo; Strumenti
+                di Tracciamento; nome; cognome; numero di telefono; Dati comunicati
+                durante l’utilizzo del servizio; risposte alle domande; contenuti
+                dell’utente; contenuti del messaggio o dell’email; immagine di profilo;
+                data del messaggio; ora in cui il messaggio è stato inviato; mittente
+                del messaggio.
+              </p>
+              <p>
+                Dettagli completi su ciascuna tipologia di Dati Personali raccolti sono
+                forniti nelle sezioni dedicate di questa privacy policy o mediante
+                specifici testi informativi visualizzati prima della raccolta dei Dati
+                stessi.
+              </p>
+              <p>
+                I Dati Personali possono essere liberamente forniti dall’Utente o, nel
+                caso di Dati di Utilizzo, raccolti automaticamente durante l’uso di
+                questa Applicazione.
+              </p>
+              <p>
+                Se non diversamente specificato, tutti i Dati richiesti da questa
+                Applicazione sono obbligatori. Se l’Utente rifiuta di comunicarli,
+                potrebbe essere impossibile per questa Applicazione fornire il
+                Servizio.
+              </p>
+              <p>
+                L’eventuale utilizzo di Cookie o altri strumenti di tracciamento ha la
+                finalità di fornire il Servizio richiesto dall’Utente, oltre alle
+                ulteriori finalità descritte nel presente documento e nella Cookie
+                Policy.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Modalità e luogo del trattamento dei Dati raccolti
+              </h2>
+
+              <div className="space-y-2">
+                <h3 className="font-semibold text-slate-900 text-left">
+                  Modalità di trattamento
+                </h3>
+                <p>
+                  Il Titolare adotta misure di sicurezza adeguate per impedire
+                  accesso, divulgazione, modifica o distruzione non autorizzate dei
+                  Dati Personali. Il trattamento viene effettuato mediante strumenti
+                  informatici e/o telematici, con modalità organizzative e logiche
+                  strettamente correlate alle finalità indicate.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="font-semibold text-slate-900 text-left">Luogo</h3>
+                <p>
+                  I Dati sono trattati presso le sedi operative del Titolare ed in ogni
+                  altro luogo in cui le parti coinvolte nel trattamento siano
+                  localizzate. I Dati Personali dell’Utente possono essere trasferiti
+                  in un paese diverso da quello in cui l’Utente si trova, nel rispetto
+                  delle norme vigenti in materia di trasferimento dei dati.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="font-semibold text-slate-900 text-left">
+                  Periodo di conservazione
+                </h3>
+                <p>
+                  Se non diversamente indicato, i Dati Personali sono trattati e
+                  conservati per il tempo richiesto dalla finalità per la quale sono
+                  stati raccolti e possono essere conservati più a lungo in caso di
+                  obblighi legali o in presenza di consenso espresso dell’Utente.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Finalità del Trattamento dei Dati raccolti
+              </h2>
+              <p>
+                I Dati dell’Utente sono raccolti per consentire al Titolare di
+                fornire il Servizio, adempiere agli obblighi di legge, rispondere a
+                richieste, tutelare i propri diritti ed interessi, individuare
+                attività fraudolente, nonché per:
+              </p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>hosting ed infrastruttura backend;</li>
+                <li>interazione con piattaforme di live chat;</li>
+                <li>visualizzazione di contenuti da piattaforme esterne;</li>
+                <li>gestione delle comunicazioni e delle richieste dell’Utente;</li>
+                <li>analisi statistiche sull’utilizzo del sito e dei servizi.</li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Diritti dell’Utente (GDPR)
+              </h2>
+              <p>
+                Gli Utenti possono esercitare diversi diritti riconosciuti dal
+                Regolamento (UE) 2016/679 (“GDPR”), tra cui:
+              </p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>revocare il consenso in qualsiasi momento;</li>
+                <li>opporsi al trattamento dei propri Dati;</li>
+                <li>ottenere l’accesso ai propri Dati;</li>
+                <li>richiedere la rettifica o l’aggiornamento dei Dati;</li>
+                <li>richiedere la limitazione del trattamento;</li>
+                <li>richiedere la cancellazione dei Dati Personali;</li>
+                <li>ottenere la portabilità dei Dati;</li>
+                <li>
+                  proporre reclamo all’autorità di controllo competente (in Italia:
+                  Garante per la protezione dei dati personali).
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Come esercitare i diritti
+              </h2>
+              <p>
+                Le richieste relative ai diritti dell’Utente possono essere
+                indirizzate al Titolare tramite i recapiti indicati in questa
+                policy. Il Titolare si impegna a rispondere nel più breve tempo
+                possibile e, in ogni caso, entro un mese dal ricevimento della
+                richiesta, salvo i casi di particolare complessità previsti dalla
+                normativa.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
+                Modifiche a questa privacy policy
+              </h2>
+              <p>
+                Il Titolare si riserva il diritto di apportare modifiche alla
+                presente privacy policy in qualunque momento, notificandole su
+                questa pagina e, se possibile, tramite altri canali di contatto.
+                Si invita pertanto l’Utente a consultare regolarmente questa pagina,
+                facendo riferimento alla data di ultima modifica indicata di seguito.
+              </p>
+              <p className="text-xs text-slate-500 text-left">
+                Ultima modifica: 27 gennaio 2025
+              </p>
+              <p className="text-xs text-slate-500 text-left">
+                iubenda ospita questo contenuto e raccoglie solo i Dati Personali
+                strettamente necessari alla sua fornitura.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default PrivacyPolicy;
+
+
