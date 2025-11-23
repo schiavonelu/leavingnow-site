@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import Hero from "../sections/home/Hero.jsx";
-import DestinationsIntro from "../sections/home/DestinationIntro.jsx";
-import DestinationsSection from "../sections/home/DestinationsSection.jsx";
-import TripTypesStrip from "../components/ui/TripTypesStrip.jsx";
-import TripTypesStripIntro from "../sections/home/TripTypesStripIntro.jsx";
-import ReviewsSection from "../components/ui/ReviewsSection.jsx";
-import ReviewsIntro from "../sections/home/ReviewsIntro.jsx";
-import AgencyIntroStrip from "../sections/shared/AgencyIntroStrip.jsx";
-import AgencyIntroHeader from "../sections/home/AgencyIntroHeader.jsx";
 import StickySection from "../components/layout/StickySection.jsx";
+
+// Lazy loading delle sezioni non above-the-fold
+const DestinationsIntro = lazy(() => import("../sections/home/DestinationIntro.jsx"));
+const DestinationsSection = lazy(() => import("../sections/home/DestinationsSection.jsx"));
+const TripTypesStrip = lazy(() => import("../components/ui/TripTypesStrip.jsx"));
+const TripTypesStripIntro = lazy(() => import("../sections/home/TripTypesStripIntro.jsx"));
+const ReviewsSection = lazy(() => import("../components/ui/ReviewsSection.jsx"));
+const ReviewsIntro = lazy(() => import("../sections/home/ReviewsIntro.jsx"));
+const AgencyIntroStrip = lazy(() => import("../sections/shared/AgencyIntroStrip.jsx"));
+const AgencyIntroHeader = lazy(() => import("../sections/home/AgencyIntroHeader.jsx"));
 
 const Home = () => {
   useEffect(() => {
@@ -22,33 +24,37 @@ const Home = () => {
         vacanze, crociere e viaggi di nozze
       </h1>
 
+      {/* HERO: above-the-fold, caricata subito */}
       <Hero />
 
-      {/* DESTINAZIONI – HEADER STICKY */}
-      <StickySection header={<DestinationsIntro />}>
-        <DestinationsSection />
-      </StickySection>
+      {/* Il resto può permettersi un fallback leggero mentre carica */}
+      <Suspense fallback={null}>
+        {/* DESTINAZIONI – HEADER STICKY */}
+        <StickySection header={<DestinationsIntro />}>
+          <DestinationsSection />
+        </StickySection>
 
-      {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY */}
-      <StickySection header={<TripTypesStripIntro />}>
-        <TripTypesStrip />
-      </StickySection>
+        {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY */}
+        <StickySection header={<TripTypesStripIntro />}>
+          <TripTypesStrip />
+        </StickySection>
 
-      {/* RECENSIONI – HEADER STICKY */}
-      <StickySection header={<ReviewsIntro />}>
-        <ReviewsSection />
-      </StickySection>
+        {/* RECENSIONI – HEADER STICKY */}
+        <StickySection header={<ReviewsIntro />}>
+          <ReviewsSection />
+        </StickySection>
 
-      {/* AGENZIA – HEADER STICKY */}
-      <StickySection header={<AgencyIntroHeader />}>
-        {/* Card chiara + scura, senza intestazione interna */}
-        <AgencyIntroStrip showHeading={false} />
-      </StickySection>
+        {/* AGENZIA – HEADER STICKY */}
+        <StickySection header={<AgencyIntroHeader />}>
+          <AgencyIntroStrip showHeading={false} />
+        </StickySection>
+      </Suspense>
     </main>
   );
 };
 
 export default Home;
+
 
 
 

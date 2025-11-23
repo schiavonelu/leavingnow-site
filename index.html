@@ -22,7 +22,7 @@
   <meta name="description"
     content="Leaving Now è l'agenzia viaggi ad Aversa per chi parte dall'area nord di Napoli e Caserta. Pacchetti vacanze, crociere e viaggi di nozze su misura con partenze da Napoli e dintorni." />
 
-  <!-- 🔹 META KEYWORDS (facoltative, ma coerenti con i nuovi comuni) -->
+  <!-- 🔹 META KEYWORDS -->
   <meta name="keywords"
     content="agenzia viaggi Aversa, agenzia viaggi nord Napoli, viaggi Aversa, pacchetti vacanze Aversa, viaggi di nozze Aversa, crociere Aversa, agenzia viaggi Lusciano, agenzia viaggi Trentola Ducenta, agenzia viaggi Cesa, agenzia viaggi Orta di Atella, agenzia viaggi Succivo, agenzia viaggi Sant'Arpino, agenzia viaggi Frattaminore, agenzia viaggi Caivano, agenzia viaggi Melito, agenzia viaggi Frattamaggiore, agenzia viaggi Sant'Antimo, agenzia viaggi Mugnano di Napoli, agenzia viaggi Caserta, agenzia viaggi Napoli" />
 
@@ -32,13 +32,13 @@
   <!-- 🔹 ISTRUZIONI AI MOTORI DI RICERCA -->
   <meta name="robots" content="index, follow" />
 
-  <!-- 🔹 FORZARE HTTPS PER LE RISORSE (se il sito è su HTTPS) -->
+  <!-- 🔹 FORZARE HTTPS PER LE RISORSE -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
   <!-- 🔹 URL CANONICO -->
   <link rel="canonical" href="https://leavingnow.it/" />
 
-  <!-- 🔹 OPEN GRAPH (Facebook / WhatsApp / ecc.) -->
+  <!-- 🔹 OPEN GRAPH -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Leaving Now" />
   <meta property="og:title" content="Leaving Now - Agenzia Viaggi Aversa e Nord Napoli" />
@@ -51,72 +51,79 @@
   <!-- 🔹 COLORE BARRA MOBILE -->
   <meta name="theme-color" content="#0f172a" />
 
+  <!-- 🔹 GOOGLE FONTS OTTIMIZZATO (NON BLOCKING) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+  />
+
   <!-- 🔹 DATI STRUTTURATI SCHEMA.ORG (JSON-LD) -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TravelAgency",
-  "@id": "https://leavingnow.it/#agency",
-  "name": "Leaving Now - Agenzia Viaggi Aversa",
-  "url": "https://leavingnow.it/",
-  "logo": "https://leavingnow.it/images/logo-leavingnow.png",
-  "image": "https://leavingnow.it/images/og-leaving-now.jpg",
-  "description": "Leaving Now è l'agenzia viaggi ad Aversa specializzata in pacchetti vacanze su misura, crociere e viaggi di nozze, punto di riferimento per chi parte dall'area nord di Napoli e Caserta.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Via Salvo D’Acquisto, 10",
-    "addressLocality": "Aversa",
-    "addressRegion": "CE",
-    "postalCode": "81031",
-    "addressCountry": "IT"
-  },
-  "telephone": "+39 081 18754553",
-  "email": "leavingnowviaggi@gmail.com",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Monday",
-      "opens": "17:00",
-      "closes": "19:30"
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "@id": "https://leavingnow.it/#agency",
+    "name": "Leaving Now - Agenzia Viaggi Aversa",
+    "url": "https://leavingnow.it/",
+    "logo": "https://leavingnow.it/images/logo-leavingnow.png",
+    "image": "https://leavingnow.it/images/og-leaving-now.jpg",
+    "description": "Leaving Now è l'agenzia viaggi ad Aversa specializzata in pacchetti vacanze su misura, crociere e viaggi di nozze, punto di riferimento per chi parte dall'area nord di Napoli e Caserta.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Salvo D’Acquisto, 10",
+      "addressLocality": "Aversa",
+      "addressRegion": "CE",
+      "postalCode": "81031",
+      "addressCountry": "IT"
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      "opens": "09:30",
-      "closes": "19:30"
-    }
-  ],
-  "areaServed": [
-    "Aversa",
-    "Lusciano",
-    "Trentola Ducenta",
-    "Cesa",
-    "Orta di Atella",
-    "Succivo",
-    "Sant'Arpino",
-    "Frattaminore",
-    "Caivano",
-    "Melito",
-    "Frattamaggiore",
-    "Sant'Antimo",
-    "Giugliano in Campania",
-    "Mugnano di Napoli",
-    "Caserta",
-    "Napoli"
-  ],
-  "sameAs": [
-    "https://www.facebook.com/leavingnowaversa",
-    "https://www.instagram.com/leavingnowaversa"
-  ]
-}
-</script>
-
+    "telephone": "+39 081 18754553",
+    "email": "leavingnowviaggi@gmail.com",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "17:00",
+        "closes": "19:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:30",
+        "closes": "19:30"
+      }
+    ],
+    "areaServed": [
+      "Aversa",
+      "Lusciano",
+      "Trentola Ducenta",
+      "Cesa",
+      "Orta di Atella",
+      "Succivo",
+      "Sant'Arpino",
+      "Frattaminore",
+      "Caivano",
+      "Melito",
+      "Frattamaggiore",
+      "Sant'Antimo",
+      "Giugliano in Campania",
+      "Mugnano di Napoli",
+      "Caserta",
+      "Napoli"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/leavingnowaversa",
+      "https://www.instagram.com/leavingnowaversa"
+    ]
+  }
+  </script>
 </head>
 
 <body>

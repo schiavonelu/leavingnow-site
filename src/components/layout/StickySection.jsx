@@ -10,13 +10,12 @@ const StickySection = ({
       {/* HEADER STICKY COMPATTO */}
       <div
         className={[
-          "sticky top-8 z-20", // 👈 offset da navbar, come hai messo tu
+          "sticky top-8 z-20", // offset di default
           "bg-slate-50/95 backdrop-blur-sm border-b border-slate-200/60",
-          stickyClassName="top-16 md:top-18",
+          stickyClassName, // 👈 qui uso il valore passato da props
         ].join(" ")}
       >
         <div className="max-w-6xl mx-auto px-4 py-1 md:py-2">
-          {/* 🔥 QUI si decide lo spessore verticale principale */}
           {header}
         </div>
       </div>
@@ -36,5 +35,6 @@ const StickySection = ({
 };
 
 export default StickySection;
+
 
 
