@@ -42,7 +42,7 @@ const TravelIdeaCard = ({ title, caption, badge, image }) => (
       className="absolute inset-0 bg-cover bg-center"
       style={{ backgroundImage: `url(${image})` }}
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/60 to-slate-900/10" />
+    <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-900/60 to-slate-900/10" />
 
     <div className="relative p-5 md:p-6 flex flex-col h-full justify-end">
       <span className="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white mb-3">

@@ -10,7 +10,7 @@ import oceaniaImg from "../../assets/destination/oceania.webp";
 const destinations = [
   {
     title: "Europa",
-    subtitle: "Storie di viaggi",
+    subtitle: "Tra cultura e bellezza",
     text: "Un viaggio nelle capitali più antiche del mondo e nelle città che hanno segnato la nostra storia. Dalle città d’arte alle coste del Mediterraneo, è il luogo perfetto per chi vuole scoprire cultura, sapori e panorami unici.",
     image: europaImg,
     imageLeft: false,
@@ -19,7 +19,7 @@ const destinations = [
   },
   {
     title: "Americhe e Caraibi",
-    subtitle: "Storie di viaggi",
+    subtitle: "Esperienze tra sogno e avventura",
     text: "USA, Canada, Messico, Cuba e le isole caraibiche: tra grandi città, strade infinite e spiagge da sogno. Dai parchi americani ai grattacieli, ogni viaggio è un film da vivere in prima persona.",
     image: americheCaraibiImg,
     imageLeft: true,
@@ -28,7 +28,7 @@ const destinations = [
   },
   {
     title: "Africa",
-    subtitle: "Storie di viaggi",
+    subtitle: "Emozioni senza confini",
     text: "Safari tra i grandi parchi, deserti dorati e isole tropicali: l’Africa è il continente delle emozioni pure, dei tramonti infuocati e dei cieli stellati che non si dimenticano.",
     image: africaImg,
     imageLeft: false,
@@ -37,7 +37,7 @@ const destinations = [
   },
   {
     title: "Asia",
-    subtitle: "Storie di viaggi",
+    subtitle: "Tra tradizione e modernità",
     text: "Templi antichi, metropoli futuristiche, spiagge nascoste e sapori incredibili: dall’Estremo Oriente al Sud-Est asiatico, ogni viaggio è un incontro tra tradizione e modernità.",
     image: asiaImg,
     imageLeft: true,
@@ -46,7 +46,7 @@ const destinations = [
   },
   {
     title: "Oceania",
-    subtitle: "Storie di viaggi",
+    subtitle: "Orizzonti lontani",
     text: "Australia, Nuova Zelanda e paradisi del Pacifico: natura incontaminata, oceani cristallini e città vivaci. Perfetta per chi sogna grandi spazi e orizzonti infiniti.",
     image: oceaniaImg,
     imageLeft: false,
