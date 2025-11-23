@@ -73,7 +73,7 @@ const TripTypesStrip = () => {
         transition-all duration-200 hover:-translate-y-1
       "
     >
-      {/* Immagine: come il tuo esempio → h-full w-full */}
+      {/* Immagine */}
       <img
         src={trip.image}
         alt={trip.title}
@@ -120,24 +120,31 @@ const TripTypesStrip = () => {
             </div>
 
             <div className="flex justify-center gap-2 mt-4">
-              {tripTypes.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setCurrentIndex(index)}
-                  aria-label={`Vai al tipo di viaggio ${index + 1}`}
-                  className={[
-                    "h-2.5 w-2.5 rounded-full border transition-all duration-200",
-                    index === currentIndex
-                      ? "bg-sky-500 border-sky-500 scale-125"
-                      : "border-slate-400 bg-transparent hover:border-sky-400 hover:bg-sky-100",
-                  ].join(" ")}
-                />
-              ))}
+              {tripTypes.map((_, index) => {
+                const isActive = index === currentIndex;
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setCurrentIndex(index)}
+                    aria-label={`Vai al tipo di viaggio ${index + 1}`}
+                    className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center group"
+                  >
+                    <span
+                      className={[
+                        "h-2.5 w-2.5 rounded-full border transition-all duration-200",
+                        isActive
+                          ? "bg-sky-500 border-sky-500"
+                          : "border-slate-400 bg-transparent group-hover:border-sky-400 group-hover:bg-sky-100",
+                      ].join(" ")}
+                    />
+                  </button>
+                );
+              })}
             </div>
           </>
         ) : (
-          // DESKTOP/TABLET: tutte le card in griglia, larghe quanto la colonna
+          // DESKTOP/TABLET: tutte le card in griglia
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {tripTypes.map((trip) => (
               <div key={trip.title} className="w-full">
@@ -152,6 +159,7 @@ const TripTypesStrip = () => {
 };
 
 export default TripTypesStrip;
+
 
 
 
