@@ -1,29 +1,35 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+// IMMAGINI LOCALI OTTIMIZZATE WEBP
+import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
+import crociereImg from "../../assets/triptypes/crociere.webp";
+import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
+import lavoroImg from "../../assets/triptypes/viaggiodilavoro.webp";
+
 const tripTypes = [
   {
     title: "Viaggi di nozze",
     subtitle: "Momenti per sempre",
-    image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg",
+    image: nozzeImg,
     query: "nozze",
   },
   {
     title: "Crociere",
     subtitle: "Grandi navi, grandi emozioni",
-    image: "https://images.pexels.com/photos/799091/pexels-photo-799091.jpeg",
+    image: crociereImg,
     query: "crociere",
   },
   {
     title: "Viaggi di gruppo",
     subtitle: "Esperienze da condividere",
-    image: "https://images.pexels.com/photos/7083922/pexels-photo-7083922.jpeg",
+    image: gruppoImg,
     query: "gruppo",
   },
   {
     title: "Viaggi di lavoro",
     subtitle: "Business trip senza stress",
-    image: "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg",
+    image: lavoroImg,
     query: "lavoro",
   },
 ];
@@ -47,7 +53,7 @@ const TripTypesStrip = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // autoplay solo in mobile
+  // autoplay solo mobile
   useEffect(() => {
     if (!isMobile || total <= 1) return;
 
@@ -61,7 +67,7 @@ const TripTypesStrip = () => {
 
   const currentTrip = tripTypes[currentIndex];
 
-  // Card riutilizzabile
+  // CARD
   const Card = ({ trip }) => (
     <Link
       to={`/contatti?tipo=${encodeURIComponent(trip.query)}`}
@@ -69,14 +75,14 @@ const TripTypesStrip = () => {
         group relative flex items-end rounded-3xl overflow-hidden 
         shadow-md bg-slate-900/40
         w-full
-        h-60 md:h-auto md:aspect-3/4
+        h-60 md:h-auto md:aspect-[3/4]
         transition-all duration-200 hover:-translate-y-1
       "
     >
-      {/* Immagine */}
       <img
         src={trip.image}
         alt={trip.title}
+        loading="lazy"
         className="
           h-full w-full object-cover 
           transform transition-transform duration-700 group-hover:scale-105
@@ -84,10 +90,8 @@ const TripTypesStrip = () => {
         "
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
 
-      {/* Testo */}
       <div className="relative p-4 md:p-5 w-full">
         <h3 className="text-white text-xl md:text-2xl font-bold leading-tight drop-shadow-sm">
           {trip.title}
@@ -110,7 +114,7 @@ const TripTypesStrip = () => {
   return (
     <section className="bg-slate-50 py-10 md:py-14">
       <div className="max-w-6xl mx-auto px-4">
-        {/* MOBILE: 1 card per volta, full width, autoplay */}
+        
         {isMobile ? (
           <>
             <div className="flex justify-center">
@@ -119,6 +123,7 @@ const TripTypesStrip = () => {
               </div>
             </div>
 
+            {/* Indicatori accessibili */}
             <div className="flex justify-center gap-2 mt-4">
               {tripTypes.map((_, index) => {
                 const isActive = index === currentIndex;
@@ -132,7 +137,7 @@ const TripTypesStrip = () => {
                   >
                     <span
                       className={[
-                        "h-2.5 w-2.5 rounded-full border transition-all duration-200",
+                        "h-3 w-3 rounded-full border transition-all duration-200",
                         isActive
                           ? "bg-sky-500 border-sky-500"
                           : "border-slate-400 bg-transparent group-hover:border-sky-400 group-hover:bg-sky-100",
@@ -144,7 +149,6 @@ const TripTypesStrip = () => {
             </div>
           </>
         ) : (
-          // DESKTOP/TABLET: tutte le card in griglia
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {tripTypes.map((trip) => (
               <div key={trip.title} className="w-full">
@@ -153,12 +157,14 @@ const TripTypesStrip = () => {
             ))}
           </div>
         )}
+
       </div>
     </section>
   );
 };
 
 export default TripTypesStrip;
+
 
 
 
