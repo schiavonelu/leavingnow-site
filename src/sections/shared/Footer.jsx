@@ -28,8 +28,10 @@ const Footer = () => {
       <div className="border-t border-white/10" />
 
       <div className="max-w-6xl mx-auto px-4 py-8 md:py-10 space-y-6">
+        
         {/* RIGA PRINCIPALE */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 text-xs md:text-sm">
+
           {/* COLONNA 1 – Dati + Social */}
           <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left gap-2">
             <p className="font-semibold text-white text-sm md:text-base">
@@ -133,7 +135,16 @@ const Footer = () => {
             >
               Condizioni di Vendita
             </a>
+            <a
+              href="/crediti-immagini"
+              className="px-3 py-2 text-[#E5E7EB] hover:text-sky-400 transition-colors"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Crediti Immagini
+            </a>
           </div>
+
         </div>
 
         {/* SEPARATORE + COPYRIGHT */}
@@ -143,12 +154,14 @@ const Footer = () => {
             © {year} Leaving Now by Kiru s.r.l. · Tutti i diritti riservati.
           </p>
         </div>
+
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
 
 
 

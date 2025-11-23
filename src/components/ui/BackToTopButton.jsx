@@ -34,7 +34,8 @@ const BackToTopButton = () => {
   if (!visible) return null;
 
   const baseClasses =
-    "fixed bottom-5 right-4 md:bottom-8 md:right-8 z-40 inline-flex items-center justify-center rounded-full shadow-lg w-10 h-10 md:w-11 md:h-11 transition";
+    // ⬇️ spostato più in alto per non sovrapporsi al widget cookie
+    "fixed bottom-14 right-2 md:bottom-20 md:right-8 z-40 inline-flex items-center justify-center rounded-full shadow-lg w-10 h-10 md:w-11 md:h-11 transition";
 
   const colorClasses = overFooter
     ? "bg-[#0863D6] text-white border border-white/60 hover:bg-[#0648A3]"
@@ -53,5 +54,6 @@ const BackToTopButton = () => {
 };
 
 export default BackToTopButton;
+
 
 

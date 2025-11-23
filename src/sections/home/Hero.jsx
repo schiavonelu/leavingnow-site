@@ -57,7 +57,7 @@ const Hero = () => {
           </div>
 
           {/* IN GIRO PER IL MONDO */}
-          <div className="bg-[#0863D6] px-6 py-3 text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.22em] text-white rounded-b-md">
+          <div className="bg-trasparent px-6 py-3 text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.22em] text-white rounded-b-md">
             IN GIRO PER IL MONDO
           </div>
         </div>

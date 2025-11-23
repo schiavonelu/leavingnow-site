@@ -57,7 +57,7 @@
   <!-- 🔹 COLORE BARRA MOBILE -->
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- 🔹 GOOGLE FONTS OTTIMIZZATO (preconnect + preload non blocking) -->
+  <!-- 🔹 GOOGLE FONTS OTTIMIZZATO -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -138,6 +138,25 @@
     ]
   }
   </script>
+
+  <!-- 🔹 GOOGLE ANALYTICS 4 + CONSENT MODE -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Di default: niente tracciamento finché l’utente non sceglie
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied'
+    });
+  </script>
+
+  <!-- 🔹 SCRIPT GA4 (SOSTITUISCI G-XXXXXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 
 <body>
@@ -146,4 +165,6 @@
 </body>
 
 </html>
+
+
 
