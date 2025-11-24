@@ -53,12 +53,12 @@ const Contatti = () => {
 
   // Orari reali
   const openingHours = [
-    { day: "Lunedì", slots: ["17:00 – 19:30"] },
-    { day: "Martedì", slots: ["09:30 – 13:00", "17:00 – 19:30"] },
-    { day: "Mercoledì", slots: ["09:30 – 13:00", "17:00 – 19:30"] },
-    { day: "Giovedì", slots: ["09:30 – 13:00", "17:00 – 19:30"] },
-    { day: "Venerdì", slots: ["09:30 – 13:00", "17:00 – 19:30"] },
-    { day: "Sabato", slots: ["09:30 – 13:00", "17:00 – 19:30"] },
+    { day: "Lunedì", slots: ["16:30 – 20:00"] },
+    { day: "Martedì", slots: ["09:30 – 13:00", "16:30 – 20:00"] },
+    { day: "Mercoledì", slots: ["09:30 – 13:00", "16:30 – 20:00"] },
+    { day: "Giovedì", slots: ["09:30 – 13:00", "16:30 – 20:00"] },
+    { day: "Venerdì", slots: ["09:30 – 13:00", "16:30 – 20:00"] },
+    { day: "Sabato", slots: ["09:30 – 13:00", "16:30 – 20:00"] },
     { day: "Domenica", slots: ["Chiuso"] },
   ];
 
