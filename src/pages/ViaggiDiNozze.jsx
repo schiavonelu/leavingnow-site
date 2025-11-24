@@ -69,7 +69,7 @@ const ViaggiDiNozze = () => {
       <InnerHero
         title="Viaggi di nozze"
         subtitle="Un viaggio unico, costruito su misura per la vostra storia."
-        image="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg"
+        image="https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg"
       />
 
       {/* INTRO */}
