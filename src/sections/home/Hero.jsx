@@ -25,13 +25,12 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-
       {/* SFONDO HERO */}
       <picture>
         <img
           src={heroImage}
           alt="Coppia in viaggio al tramonto con valigia"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
           fetchpriority="high"
           decoding="async"
@@ -42,28 +41,27 @@ const Hero = () => {
       <div className="absolute inset-0 bg-slate-900/40" />
 
       {/* CONTENUTO */}
-      <div className="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center pt-10">
-
+      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-4 pt-10">
         {/* SLOGAN posizionato a destra */}
         <div
           className={[
-            "flex flex-col items-end text-right max-w-full md:max-w-lg ml-auto drop-shadow-2xl transition-all duration-700 ease-out",
+            "ml-auto flex max-w-full flex-col items-end text-right drop-shadow-2xl transition-all duration-700 ease-out md:max-w-lg",
             showTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
           ].join(" ")}
         >
-          {/* CON NOI */}
-          <div className="bg-[#EB2480] px-5 py-2 text-sm md:text-base font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
+          {/* CON NOI – COLORE ACCESSIBILE */}
+          <div className="bg-[#D91672] px-5 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md md:text-base">
             CON NOI
           </div>
 
           {/* IN GIRO PER IL MONDO */}
-          <div className="bg-[#1F3759] px-4 py-2 text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.22em] text-white rounded-b-md">
+          <div className="bg-[#1F3759] px-4 py-2 text-2xl font-extrabold uppercase tracking-[0.22em] text-white rounded-b-md md:text-4xl lg:text-5xl">
             IN GIRO PER IL MONDO
           </div>
         </div>
 
         {/* CTA BUTTON */}
-        <div className="w-full flex justify-center mt-48">
+        <div className="mt-48 flex w-full justify-center">
           <button
             onClick={handleScroll}
             className={[
@@ -75,13 +73,13 @@ const Hero = () => {
             Prepara i bagagli!
           </button>
         </div>
-
       </div>
     </section>
   );
 };
 
 export default Hero;
+
 
 
 
