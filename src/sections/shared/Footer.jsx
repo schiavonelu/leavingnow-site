@@ -6,7 +6,6 @@ const INSTAGRAM_URL = "https://www.instagram.com/leavingnow_viaggi/";
 // LOGHI PAYMENT
 import bonificoLogo from "../../assets/payment/bonifico.webp";
 import mastercardLogo from "../../assets/payment/mastercard.webp";
-import visaLogo from "../../assets/payment/visa.webp";
 import postepayLogo from "../../assets/payment/postepay.webp";
 import scalapayLogo from "../../assets/payment/scalapay.webp";
 import paypalLogo from "../../assets/payment/paypal.webp";
@@ -16,7 +15,6 @@ import revolutLogo from "../../assets/payment/revolut.webp";
 const paymentMethods = [
   { name: "Bonifico", logo: bonificoLogo },
   { name: "Mastercard", logo: mastercardLogo },
-  { name: "Visa", logo: visaLogo },
   { name: "Postepay", logo: postepayLogo },
   { name: "Scalapay", logo: scalapayLogo },
   { name: "PayPal", logo: paypalLogo },
