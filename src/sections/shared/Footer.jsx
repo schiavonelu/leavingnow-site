@@ -9,14 +9,19 @@ import mastercardLogo from "../../assets/payment/mastercard.webp";
 import visaLogo from "../../assets/payment/visa.webp";
 import postepayLogo from "../../assets/payment/postepay.webp";
 import scalapayLogo from "../../assets/payment/scalapay.webp";
+import paypalLogo from "../../assets/payment/paypal.webp";
+import applepayLogo from "../../assets/payment/applepay.webp";
+import revolutLogo from "../../assets/payment/revolut.webp";
 
-// ORDINE DEFINITO
 const paymentMethods = [
   { name: "Bonifico", logo: bonificoLogo },
   { name: "Mastercard", logo: mastercardLogo },
   { name: "Visa", logo: visaLogo },
   { name: "Postepay", logo: postepayLogo },
   { name: "Scalapay", logo: scalapayLogo },
+  { name: "PayPal", logo: paypalLogo },
+  { name: "Apple Pay", logo: applepayLogo },
+  { name: "Revolut", logo: revolutLogo },
 ];
 
 const Footer = () => {
@@ -28,10 +33,8 @@ const Footer = () => {
       <div className="border-t border-white/10" />
 
       <div className="max-w-6xl mx-auto px-4 py-8 md:py-10 space-y-6">
-        
         {/* RIGA PRINCIPALE */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 text-xs md:text-sm">
-
           {/* COLONNA 1 – Dati + Social */}
           <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left gap-2">
             <p className="font-semibold text-white text-sm md:text-base">
@@ -84,15 +87,19 @@ const Footer = () => {
 
           {/* COLONNA 2 – PAYMENT BADGES */}
           <div className="md:w-1/3 flex flex-col items-center text-center gap-3">
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-3 w-full">
+            {/* 2 file da 4 → griglia a 4 colonne valida sia desktop che mobile */}
+            <div className="grid grid-cols-4 gap-2 w-full max-w-xs md:max-w-none">
               {paymentMethods.map((method) => (
                 <div
                   key={method.name}
                   className="
-                    flex flex-col items-center justify-center
-                    bg-white rounded-xl px-2 py-1
-                    border border-[#E2E8F0] shadow-lg
-                    hover:shadow-xl hover:scale-[1.03]
+                    flex items-center justify-center
+                    bg-white rounded-xl
+                    px-2 py-1.5
+                    min-h-[52px]
+                    border border-[#E2E8F0]
+                    shadow-md
+                    hover:shadow-lg hover:scale-[1.02]
                     transition-all
                   "
                 >
@@ -101,8 +108,8 @@ const Footer = () => {
                     alt={method.name}
                     loading="lazy"
                     width={80}
-                    height={50}
-                    className="h-6 md:h-7 w-auto object-contain"
+                    height={40}
+                    className="h-7 md:h-8 w-auto object-contain"
                   />
                 </div>
               ))}
@@ -144,58 +151,15 @@ const Footer = () => {
               Crediti Immagini
             </a>
           </div>
-
         </div>
 
         {/* SEPARATORE + COPYRIGHT */}
         <div className="pt-4">
           <div className="border-t border-white/15" />
-          
+
           <p className="mt-3 text-xs md:text-sm text-slate-300 text-center">
             © {year} Leaving Now by Kiru s.r.l. · Tutti i diritti riservati.
           </p>
-
-          {/* CREDITI IMMAGINI */}
-          <p className="mt-2 text-[0.65rem] md:text-xs text-slate-300 text-center opacity-80">
-            Foto fornite gratuitamente da{" "}
-            <a
-              href="https://www.pexels.com"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-sky-300"
-            >
-              Pexels
-            </a>
-            . Autori principali:{" "}
-            <a
-              href="https://www.pexels.com/@tarikulraana"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-sky-300"
-            >
-              Tarikul Raana
-            </a>
-            ,{" "}
-            <a
-              href="https://www.pexels.com/@asadphoto"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-sky-300"
-            >
-              Asad Photo Maldives
-            </a>
-            ,{" "}
-            <a
-              href="https://www.pexels.com/@taryn-elliott"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-sky-300"
-            >
-              Taryn Elliott
-            </a>
-            , altri fotografi su Pexels.
-          </p>
-
         </div>
       </div>
     </footer>
@@ -203,6 +167,8 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
 
 
 
