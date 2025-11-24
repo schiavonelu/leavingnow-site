@@ -29,7 +29,7 @@ const Hero = () => {
       <picture>
         <img
           src={heroImage}
-          alt="Coppia in viaggio al tramonto con valigia"
+          alt="Mare cristallino senza eguali"
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
           fetchpriority="high"
