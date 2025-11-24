@@ -7,6 +7,7 @@ import {
   MapPinned,
   CalendarRange,
   ShieldCheck,
+  Gift,
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 
@@ -42,7 +43,7 @@ const TravelIdeaCard = ({ title, caption, badge, image }) => (
       className="absolute inset-0 bg-cover bg-center"
       style={{ backgroundImage: `url(${image})` }}
     />
-    <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-900/60 to-slate-900/10" />
+    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/60 to-slate-900/10" />
 
     <div className="relative p-5 md:p-6 flex flex-col h-full justify-end">
       <span className="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white mb-3">
@@ -218,6 +219,42 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
+      {/* COLLEGAMENTO LISTA NOZZE / IDEE REGALO */}
+      <section className="py-10 md:py-12 bg-[#F8FAFC] border-y border-[#E2E8F0]">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E8F1FD] text-[#EB2480] shrink-0">
+              <Gift className="w-5 h-5" />
+            </div>
+
+            <div className="flex-1 text-left">
+              <h3 className="text-base md:text-lg font-semibold text-[#132C50] mb-1">
+                Lista nozze viaggio & idee regalo
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed text-justify mb-2">
+                Vuoi che il tuo viaggio di nozze sia anche il regalo dei tuoi
+                invitati? Possiamo creare per te una lista nozze viaggio e
+                soluzioni regalo dedicate, come Travel Box e gift card
+                personalizzate.
+              </p>
+              <p className="text-xs text-slate-500">
+                Scopri come funziona la lista nozze Leaving Now e tutte le idee
+                regalo viaggio nella pagina dedicata.
+              </p>
+            </div>
+
+            <div className="w-full md:w-auto">
+              <Link
+                to="/idee-regalo#lista-nozze"
+                className="inline-flex w-full md:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg-white hover:text-[#0863D6] transition"
+              >
+                Vai alla Lista Nozze
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* IDEE DI VIAGGIO DI NOZZE */}
       <section className="py-12 md:py-16 bg-[#0F172A]">
         <div className="max-w-6xl mx-auto px-4">
@@ -299,3 +336,4 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+

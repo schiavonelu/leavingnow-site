@@ -9,13 +9,13 @@ import ChiSiamo from "./pages/ChiSiamo.jsx";
 import Destinazioni from "./pages/Destinazioni.jsx";
 import Contatti from "./pages/Contatti.jsx";
 import ViaggiDiNozze from "./pages/ViaggiDiNozze.jsx";
+import IdeeRegalo from "./pages/IdeeRegalo.jsx";
 
 // Pagine legali
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import TerminiCondizioni from "./pages/TerminiCondizioni.jsx";
 import CondizioniVendita from "./pages/CondizioniVendita.jsx";
 import CreditiImmagini from "./pages/CreditiImmagini.jsx";
-
 
 // Sotto-pagine destinazioni
 import Europa from "./pages/Europa.jsx";
@@ -24,11 +24,31 @@ import Africa from "./pages/Africa.jsx";
 import Asia from "./pages/Asia.jsx";
 import Oceania from "./pages/Oceania.jsx";
 
+// Pagine speciali
+import ComingSoon from "./pages/ComingSoon.jsx";
+import NotFound from "./pages/NotFound.jsx";
+
 // Componenti UI
 import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
+// 🔁 Toggle modalità lancio
+// Quando è true, tutto il sito viene sostituito dalla pagina ComingSoon
+const LAUNCH_MODE = false; // METTI true PRIMA DI LANCIARE IL SITO
+
 function App() {
+  // Modalità lancio attiva: mostro solo la landing di pre-lancio
+  if (LAUNCH_MODE) {
+    return (
+      <>
+        <WhatsAppWidget />
+        <ComingSoon />
+        <CookieConsent />
+      </>
+    );
+  }
+
+  // Modalità normale: sito completo
   return (
     <>
       {/* Widget WhatsApp sempre visibile */}
@@ -43,6 +63,7 @@ function App() {
           <Route path="destinazioni" element={<Destinazioni />} />
           <Route path="contatti" element={<Contatti />} />
           <Route path="viaggi-di-nozze" element={<ViaggiDiNozze />} />
+          <Route path="idee-regalo" element={<IdeeRegalo />} />
 
           {/* Sotto-pagine destinazioni */}
           <Route path="destinazioni/europa" element={<Europa />} />
@@ -60,6 +81,9 @@ function App() {
           <Route path="condizioni-di-vendita" element={<CondizioniVendita />} />
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
         </Route>
+
+        {/* 404 catch-all */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Banner cookie globale */}
@@ -69,6 +93,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

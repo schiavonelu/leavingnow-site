@@ -9,6 +9,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaCalendar,
+  FaGift,
 } from "react-icons/fa";
 
 import logo from "../../assets/logo/leavingnow-logo.webp";
@@ -19,6 +20,7 @@ const links = [
   { to: "/chi-siamo", label: "Chi siamo", icon: FaInfoCircle },
   { to: "/destinazioni", label: "Destinazioni", icon: FaMapMarkedAlt },
   { to: "viaggi-di-nozze", label: "Viaggi di Nozze", icon: FaCalendar},
+  { to: "idee-regalo", label: "Idee Regalo", icon: FaGift},
   { to: "/contatti", label: "Contatti", icon: FaEnvelopeOpenText },
 ];
 
