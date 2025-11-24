@@ -25,7 +25,6 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-
       {/* SFONDO HERO */}
       <picture>
         <img
@@ -43,45 +42,53 @@ const Hero = () => {
 
       {/* CONTENUTO */}
       <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center pt-16">
-
         {/* SLOGAN posizionato a destra */}
         <div
           className={[
-            "flex flex-col items-end text-right max-w-full md:max-w-lg ml-auto drop-shadow-2xl transition-all duration-700 ease-out",
+            "flex flex-col items-end text-right max-w-full md:max-w-3xl ml-auto drop-shadow-2xl transition-all duration-700 ease-out",
             showTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
           ].join(" ")}
         >
-          {/* CON NOI */}
-          <div className="bg-[#EB2480] px-5 py-2 text-sm md:text-base font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
-            CON NOI
-          </div>
+          <div className="relative inline-block rounded-3xl bg-[#1F3759]/95 border border-white/20 shadow-xl px-4 py-3 md:px-10 md:py-5">
+            {/* BADGE CON NOI */}
+            <div className="absolute -top-4 right-4">
+              <div className="rounded-2xl bg-[#EB2480] px-4 py-1.5 text-[11px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg">
+                CON NOI
+              </div>
+            </div>
 
-          {/* IN GIRO PER IL MONDO */}
-          <div className="bg-[#1F3759] px-6 py-3 text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.22em] text-white rounded-b-md">
-            IN GIRO PER IL MONDO
+            {/* TESTO PRINCIPALE */}
+            <p className="text-white font-extrabold uppercase tracking-[0.18em] leading-snug">
+              <span className="block text-base md:text-2xl lg:text-3xl">
+                IN GIRO PER IL
+              </span>
+              <span className="block text-xl md:text-3xl lg:text-4xl">
+                MONDO
+              </span>
+            </p>
           </div>
         </div>
 
         {/* CTA BUTTON */}
-        <div className="w-full flex justify-center mt-48">
+        <div className="w-full flex justify-center mt-36 md:mt-40 lg:mt-44">
           <button
             onClick={handleScroll}
             className={[
-              "inline-flex items-center gap-2 rounded-full bg-primary px-20 py-4 text-base font-semibold text-white shadow-2xl border border-white/40 transition-all duration-700 ease-out hover:bg-sky-500 hover:border-white",
+              "inline-flex items-center gap-2 rounded-full bg-[#0863D6] px-12 md:px-20 py-4 text-sm md:text-base lg:text-lg font-semibold text-white shadow-2xl border border-white/40 backdrop-blur-sm transition-all duration-700 ease-out hover:bg-sky-500 hover:border-white hover:scale-[1.03]",
               showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
             ].join(" ")}
           >
-            <FaSuitcaseRolling className="text-xl" />
+            <FaSuitcaseRolling className="text-lg md:text-xl lg:text-2xl" />
             Prepara i bagagli!
           </button>
         </div>
-
       </div>
     </section>
   );
 };
 
 export default Hero;
+
 
 
 
