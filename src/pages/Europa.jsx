@@ -3,22 +3,29 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
+// 📌 Immagini locali Europa
+import heroImg from "../assets/destination/europa/hero.webp";
+import cittaImg from "../assets/destination/europa/citta.webp";
+import mareImg from "../assets/destination/europa/mare.webp";
+import tourImg from "../assets/destination/europa/tour.webp";
 
 const Europa = () => {
 
-  // 🔝 Torna sempre in top quando la Home viene caricata / ricaricata
-    useEffect(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    }, []);
+  // 🔝 Torna sempre in top quando la pagina viene aperta
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   return (
     <>
       <InnerHero
         title="Europa"
         subtitle="Città d’arte, capitali romantiche e coste del Mediterraneo."
-        image="https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg"
+        image={heroImg}  // <-- immagine locale
       />
+
       <Breadcrumb />
+
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4 space-y-10">
           <p className="text-sm md:text-base text-slate-700 leading-relaxed text-justify">
@@ -29,8 +36,9 @@ const Europa = () => {
           </p>
 
           <div className="grid gap-8 md:grid-cols-3">
+
             <ContinentCard
-              image="https://images.pexels.com/photos/532263/pexels-photo-532263.jpeg"
+              image={cittaImg}     // <-- immagine locale CITTÀ
               title="Città d’arte"
               badge="City break"
               period="Tutto l’anno, ideale primavera/autunno"
@@ -38,7 +46,7 @@ const Europa = () => {
             />
 
             <ContinentCard
-              image="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"
+              image={mareImg}      // <-- immagine locale MARE
               title="Mare Mediterraneo"
               badge="Mare & relax"
               period="Maggio – Settembre"
@@ -46,12 +54,13 @@ const Europa = () => {
             />
 
             <ContinentCard
-              image="https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg"
+              image={tourImg}      // <-- immagine locale TOUR
               title="Tour su misura"
               badge="Su misura"
               period="In base alla destinazione"
-              description="Fly &amp; drive, viaggi in treno, itinerari tra più capitali, esperienze locali e servizi personalizzati in base ai tuoi interessi e al tempo a disposizione."
+              description="Fly & drive, viaggi in treno, itinerari tra più capitali, esperienze locali e servizi personalizzati in base ai tuoi interessi e al tempo a disposizione."
             />
+
           </div>
         </div>
       </section>
@@ -60,5 +69,6 @@ const Europa = () => {
 };
 
 export default Europa;
+
 
 

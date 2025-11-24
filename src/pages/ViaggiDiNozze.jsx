@@ -11,6 +11,12 @@ import {
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 
+// 📌 Immagini locali (nomi richiesti)
+import heroImg from "../assets/viaggi-nozze/hero.webp";
+import mareImg from "../assets/viaggi-nozze/mare.webp";
+import tourImg from "../assets/viaggi-nozze/tour.webp";
+import cittaImg from "../assets/viaggi-nozze/citta.webp";
+
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
 const COLORS = {
@@ -69,7 +75,7 @@ const ViaggiDiNozze = () => {
       <InnerHero
         title="Viaggi di nozze"
         subtitle="Un viaggio unico, costruito su misura per la vostra storia."
-        image="https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg"
+        image={heroImg}
       />
 
       {/* INTRO */}
@@ -246,7 +252,7 @@ const ViaggiDiNozze = () => {
             <div className="w-full md:w-auto">
               <Link
                 to="/idee-regalo#lista-nozze"
-                className="inline-flex w-full md:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg-white hover:text-[#0863D6] transition"
+                className="inline-flex w-full md:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg:white hover:text-[#0863D6] transition"
               >
                 Vai alla Lista Nozze
               </Link>
@@ -276,19 +282,19 @@ const ViaggiDiNozze = () => {
               badge="Mare & Relax"
               title="Mare da sogno e resort esclusivi"
               caption="Maldive, Polinesia, Seychelles, Caraibi e molte altre destinazioni. Resort selezionati, overwater, spa, servizi dedicati alle coppie e combinazioni con city break o tour brevi."
-              image="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg"
+              image={mareImg}
             />
             <TravelIdeaCard
               badge="Tour & Avventura"
               title="On the road e grandi itinerari"
               caption="Stati Uniti, Giappone, Thailandia, Africa, Sud America: tour guidati o fly & drive, tra città iconiche, natura, esperienze locali e tappe studiate con cura."
-              image="https://images.pexels.com/photos/676654/pexels-photo-676654.jpeg"
+              image={tourImg}
             />
             <TravelIdeaCard
               badge="Città romantiche"
               title="Capitali, charme e design"
               caption="Parigi, New York, Dubai, grandi città europee e metropoli internazionali. Boutique hotel, rooftop, ristoranti particolari e attività pensate per due."
-              image="https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg"
+              image={cittaImg}
             />
           </div>
         </div>
@@ -314,7 +320,7 @@ const ViaggiDiNozze = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/contatti"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg:white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               Scrivici per un preventivo
             </Link>
@@ -336,4 +342,6 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+
+
 

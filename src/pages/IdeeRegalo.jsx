@@ -10,6 +10,9 @@ import {
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 
+// 📌 Immagine locale hero idee regalo
+import heroImg from "../assets/idee-regalo/hero.webp";
+
 const COLORS = {
   primary: "#0863D6",
   accent: "#EB2480",
@@ -56,7 +59,7 @@ const IdeeRegalo = () => {
       <InnerHero
         title="Idee regalo viaggio"
         subtitle="Lista nozze e Travel Box: il regalo che vale un’esperienza."
-        image="https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg"
+        image={heroImg}   // <-- ora usa l’immagine locale
       />
 
       {/* INTRO */}

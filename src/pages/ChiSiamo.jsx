@@ -11,6 +11,13 @@ import {
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import { useInView } from "../hooks/useInView";
 
+// 📌 Immagini locali per la pagina "Chi siamo"
+import heroImg from "../assets/chisiamo/hero.webp";
+import assiaImg from "../assets/chisiamo/assia.webp";
+import teamImg from "../assets/chisiamo/team.webp";
+import partnerImg from "../assets/chisiamo/partner.webp";
+
+
 // Palette (riferimento)
 const COLORS = {
   primary: "#0863D6", // Blue CTA
@@ -25,19 +32,19 @@ const team = [
     name: "Assia",
     role: "Travel Designer",
     bio: "Cuore creativo dell’agenzia, specializzata negli itinerari su misura per coppie e viaggiatori che cercano esperienze uniche.",
-    image: "https://images.pexels.com/photos/3760852/pexels-photo-3760852.jpeg",
+    image: assiaImg,
   },
   {
     name: "Team Leaving Now",
     role: "Consulenti",
     bio: "Un gruppo affiatato che lavora ogni giorno per garantire risposte rapide, proposte complete e assistenza puntuale.",
-    image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+    image: teamImg,
   },
   {
     name: "Partner nel mondo",
     role: "Corrispondenti",
     bio: "Guide locali, tour operator e strutture selezionate che ci permettono di offrirti esperienze autentiche e sicure.",
-    image: "https://images.pexels.com/photos/1181695/pexels-photo-1181695.jpeg",
+    image: partnerImg,
   },
 ];
 
@@ -82,7 +89,7 @@ const PercheAffidarti = () => (
 
         <h2
           className="text-2xl md:text-3xl font-bold mb-3 text-[#EB2480]"
-         
+
         >
           Pensiamo a tutto, tu pensa solo a rilassarti
         </h2>
@@ -156,7 +163,7 @@ const ChiSiamo = () => {
       <InnerHero
         title="Chi siamo"
         subtitle="Leaving Now – Storie di viaggi su misura."
-        image="https://images.pexels.com/photos/3860095/pexels-photo-3860095.jpeg"
+        image={heroImg}
       />
 
       {/* STORIA AGENZIA */}
@@ -171,7 +178,7 @@ const ChiSiamo = () => {
 
           <h2
             className="text-2xl md:text-3xl font-bold mb-6 text-[#EB2480]"
-            
+
           >
             Un’agenzia nata dall’ascolto, cresciuta grazie alle persone
           </h2>
@@ -317,7 +324,7 @@ const ChiSiamo = () => {
               to="/contatti"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
             >
-         
+
               Scrivici per informazioni
             </Link>
 
@@ -325,7 +332,7 @@ const ChiSiamo = () => {
               href={RESERVIO_URL}
               target="_blank"
               rel="noreferrer"
-               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               Prenota una consulenza in agenzia
             </a>

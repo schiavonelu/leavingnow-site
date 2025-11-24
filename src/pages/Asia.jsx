@@ -3,9 +3,15 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
+// 📌 Immagini locali Asia
+import heroImg from "../assets/destination/asia/hero.webp";
+import estremoImg from "../assets/destination/asia/estremo-oriente.webp";
+import sudEstImg from "../assets/destination/asia/sud-est-asiatico.webp";
+import honeymoonImg from "../assets/destination/asia/honeymoon.webp";
+
 const Asia = () => {
 
-  // 🔝 Torna sempre in top quando la Home viene caricata / ricaricata
+  // 🔝 Torna sempre in top
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -15,11 +21,14 @@ const Asia = () => {
       <InnerHero
         title="Asia"
         subtitle="Tra tradizioni millenarie e metropoli futuristiche."
-        image="https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg"
+        image={heroImg}   // <-- IMMAGINE LOCALE
       />
+
       <Breadcrumb />
+
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4 space-y-10">
+
           <p className="text-sm md:text-base text-slate-700 leading-relaxed text-justify">
             Templi, risaie, mercati, grattacieli, isole tropicali: ogni viaggio
             in Asia è un incontro tra culture, sapori, spiritualità e paesaggi
@@ -28,8 +37,9 @@ const Asia = () => {
           </p>
 
           <div className="grid gap-8 md:grid-cols-3">
+
             <ContinentCard
-              image="https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg"
+              image={estremoImg}
               title="Estremo Oriente"
               badge="Culture & città"
               period="Primavera e autunno"
@@ -37,7 +47,7 @@ const Asia = () => {
             />
 
             <ContinentCard
-              image="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg"
+              image={sudEstImg}
               title="Sud-Est asiatico"
               badge="Mare & tour"
               period="Novembre – Aprile (stagione secca)"
@@ -45,12 +55,13 @@ const Asia = () => {
             />
 
             <ContinentCard
-              image="https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg"
-              title="Grandi viaggi &amp; honeymoon"
+              image={honeymoonImg}
+              title="Grandi viaggi & honeymoon"
               badge="Honeymoon"
               period="In base al Paese, spesso inverno europeo"
               description="Itinerari multi-paese, lune di miele e viaggi esperienziali con guide locali, trasferimenti privati e servizi pensati per rendere unico ogni momento."
             />
+
           </div>
         </div>
       </section>
@@ -59,5 +70,6 @@ const Asia = () => {
 };
 
 export default Asia;
+
 
 
