@@ -81,8 +81,8 @@ const PercheAffidarti = () => (
         </p>
 
         <h2
-          className="text-2xl md:text-3xl font-bold mb-3"
-          style={{ color: COLORS.navy900 }}
+          className="text-2xl md:text-3xl font-bold mb-3 text-[#EB2480]"
+         
         >
           Pensiamo a tutto, tu pensa solo a rilassarti
         </h2>
@@ -170,8 +170,8 @@ const ChiSiamo = () => {
           </p>
 
           <h2
-            className="text-2xl md:text-3xl font-bold mb-6"
-            style={{ color: COLORS.navy900 }}
+            className="text-2xl md:text-3xl font-bold mb-6 text-[#EB2480]"
+            
           >
             Un’agenzia nata dall’ascolto, cresciuta grazie alle persone
           </h2>
@@ -235,8 +235,7 @@ const ChiSiamo = () => {
             </p>
 
             <h2
-              className="text-2xl md:text-3xl font-bold"
-              style={{ color: COLORS.navy900 }}
+              className="text-2xl md:text-3xl font-bold text-[#EB2480]"
             >
               Le persone dietro ogni viaggio
             </h2>
@@ -316,13 +315,9 @@ const ChiSiamo = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/contatti"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-lg border transition"
-              style={{
-                backgroundColor: COLORS.primary,
-                borderColor: COLORS.primary,
-                color: "#FFFFFF",
-              }}
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
             >
+         
               Scrivici per informazioni
             </Link>
 
@@ -330,8 +325,7 @@ const ChiSiamo = () => {
               href={RESERVIO_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border transition"
-              style={{ borderColor: "#64748B", color: "#E5E7EB" }}
+               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               Prenota una consulenza in agenzia
             </a>

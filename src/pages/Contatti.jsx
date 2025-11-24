@@ -96,7 +96,7 @@ const Contatti = () => {
               Tutti i nostri Contatti
             </p>
 
-            <h1 className="text-2xl md:text-3xl font-bold text-[#132C50]">
+            <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
               Siamo qui per ascoltarti
             </h1>
 
