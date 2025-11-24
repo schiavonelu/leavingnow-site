@@ -61,11 +61,11 @@ const DestinationSplit = ({
                 : `opacity-0 translate-y-4 ${textHiddenSide}`,
             ].join(" ")}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0863D6] mb-2">
+            <h2 className="text-2xl md:text-3xl font-semibold text-[#0863D6] mb-2">
               {title}
             </h2>
             {subtitle && (
-              <p className="text-sm font-semibold text-[#EB2480] mb-4">
+              <p className="text-sm font-medium text-[#EB2480] mb-4">
                 {subtitle}
               </p>
             )}

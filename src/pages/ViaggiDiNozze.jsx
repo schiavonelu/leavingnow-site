@@ -79,7 +79,7 @@ const ViaggiDiNozze = () => {
             Honeymoon by Leaving Now
           </p>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-6">
             Il vostro primo grande viaggio insieme, pensato in ogni dettaglio
           </h1>
 
@@ -114,7 +114,7 @@ const ViaggiDiNozze = () => {
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
               Perché scegliere Leaving Now
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
               Viaggi di nozze curati come se fossero i nostri
             </h2>
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
@@ -166,7 +166,7 @@ const ViaggiDiNozze = () => {
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
               Come lavoriamo
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
               Un percorso semplice, pensato per voi
             </h2>
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">

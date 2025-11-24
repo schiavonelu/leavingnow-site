@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaSuitcaseRolling } from "react-icons/fa6";
-import heroImage from "../../assets/pages/hero.webp";
+import heroImage from "../../assets/home/hero.webp";
 
 const Hero = () => {
   const [showTitle, setShowTitle] = useState(false);

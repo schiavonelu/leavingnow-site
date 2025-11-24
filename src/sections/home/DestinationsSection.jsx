@@ -1,11 +1,11 @@
 import DestinationSplit from "./DestinationSplit.jsx";
 
 // Import locali delle immagini WebP
-import europaImg from "../../assets/destination/europa.webp";
-import americheCaraibiImg from "../../assets/destination/americhe-caraibi.webp";
-import africaImg from "../../assets/destination/africa.webp";
-import asiaImg from "../../assets/destination/asia.webp";
-import oceaniaImg from "../../assets/destination/oceania.webp";
+import europaImg from "../../assets/home/europa.webp";
+import americheCaraibiImg from "../../assets/home/americhe-caraibi.webp";
+import africaImg from "../../assets/home/africa.webp";
+import asiaImg from "../../assets/home/asia.webp";
+import oceaniaImg from "../../assets/home/oceania.webp";
 
 const destinations = [
   {

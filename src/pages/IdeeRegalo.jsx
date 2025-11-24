@@ -66,7 +66,7 @@ const IdeeRegalo = () => {
             Regali che diventano ricordi
           </p>
 
-          <h1 className="text-2xl md:3xl font-bold text-[#132C50] mb-6">
+          <h1 className="text-2xl md:3xl font-bold text-[#EB2480] mb-6">
             Un regalo di viaggio resta per sempre
           </h1>
 
@@ -96,11 +96,11 @@ const IdeeRegalo = () => {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)] items-start">
             {/* Testo principale */}
             <div>
-              <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
+              <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2 text-center">
                 Lista nozze viaggio
               </p>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-4 text-center">
                 Una lista nozze che diventa il vostro viaggio
               </h2>
 
@@ -151,7 +151,7 @@ const IdeeRegalo = () => {
             {/* Schemini a destra */}
             <div className="space-y-4 md:space-y-5">
               <div className="rounded-3xl bg-white border border-[#E2E8F0] p-5 md:p-6 shadow-sm">
-                <h3 className="text-sm md:text-base font-semibold text-[#132C50] mb-3">
+                <h3 className="text-sm md:text-base font-semibold text-[#0863D6] mb-3">
                   Come funziona in pratica
                 </h3>
                 <ol className="space-y-2 text-xs md:text-sm text-slate-700 leading-relaxed">
@@ -206,7 +206,7 @@ const IdeeRegalo = () => {
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
               Travel Box & Gift Card
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
               Il regalo perfetto per chi ama viaggiare
             </h2>
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">

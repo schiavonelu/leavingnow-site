@@ -10,7 +10,7 @@ import {
 import { GiPalmTree } from "react-icons/gi";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import worldMap from "../assets/mondo.jpg";
-import destinazioniHero from "../assets/pages/destinazioni.webp";
+import destinazioniHero from "../assets/destination/hero.webp";
 
 const Destinazioni = () => {
   useEffect(() => {
@@ -35,7 +35,7 @@ const Destinazioni = () => {
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
               Esplora il mondo
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
               Scegli il continente direttamente dalla mappa
             </h2>
             <p className="text-sm md:text-base text-slate-700

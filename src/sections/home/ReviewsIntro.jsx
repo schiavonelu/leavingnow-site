@@ -9,7 +9,7 @@ const ReviewsIntro = () => {
         </p>
 
         {/* Titolo – navy-900 (#132C50) */}
-        <h2 className="text-2xl md:text-3xl font-bold text-[#132C50]">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
           Storie di viaggio vere, come le tue
         </h2>
 
