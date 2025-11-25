@@ -14,8 +14,8 @@ import {
   FaPlaneDeparture,
 } from "react-icons/fa";
 
-import logo from "../../assets/logo/leavingnow-logo.png";
-import logoWhite from "../../assets/logo/leavingnow-logowhite.png";
+import logo from "../../assets/logo/leavingnow-logo.webp";
+import logoWhite from "../../assets/logo/leavingnow-logowhite.webp";
 
 const links = [
   { to: "/", label: "Home", end: true, icon: FaHome },
