@@ -11,19 +11,13 @@ import {
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 
-// 📌 Immagini locali (nomi richiesti)
+// 📌 Immagini locali
 import heroImg from "../assets/viaggi-nozze/hero.webp";
 import mareImg from "../assets/viaggi-nozze/mare.webp";
 import tourImg from "../assets/viaggi-nozze/tour.webp";
 import cittaImg from "../assets/viaggi-nozze/citta.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
-
-const COLORS = {
-  primary: "#0863D6",
-  accent: "#EB2480",
-  navy900: "#132C50",
-};
 
 // Card “perché sceglierci”
 const ValueCard = ({ icon, title, text }) => (
@@ -252,7 +246,7 @@ const ViaggiDiNozze = () => {
             <div className="w-full md:w-auto">
               <Link
                 to="/idee-regalo#lista-nozze"
-                className="inline-flex w-full md:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg:white hover:text-[#0863D6] transition"
+                className="inline-flex w-full md:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg-white hover:text-[#0863D6] transition"
               >
                 Vai alla Lista Nozze
               </Link>
@@ -320,7 +314,7 @@ const ViaggiDiNozze = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/contatti"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg:white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               Scrivici per un preventivo
             </Link>
@@ -342,6 +336,7 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+
 
 
 

@@ -17,14 +17,14 @@ import assiaImg from "../assets/chisiamo/assia.webp";
 import teamImg from "../assets/chisiamo/team.webp";
 import partnerImg from "../assets/chisiamo/partner.webp";
 
-
-// Palette (riferimento)
 const COLORS = {
   primary: "#0863D6", // Blue CTA
-  accent: "#EB2480",  // Pink accent
+  accent: "#EB2480", // Pink accent
   navy700: "#1F3759",
   navy900: "#132C50",
 };
+
+const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
 // TEAM DATA
 const team = [
@@ -48,24 +48,21 @@ const team = [
   },
 ];
 
-const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
-
-/* CARD VALORE – stile simile a AgencyIntroStrip
-   - icona dentro box 44x44 (h-11 w-11)
-   - card fisica con bordo, padding, shadow
+/* CARD VALORE – stesso stile delle altre pagine:
+   - icona dentro box 44x44
+   - card con bordo #E2E8F0, shadow leggera
 */
 const ValueCard = ({ icon, badgeColor, title, text }) => (
-  <article className="rounded-3xl bg-white border border-slate-200 shadow-sm p-5 md:p-7 flex gap-3 md:gap-4 items-start transition-all duration-200 hover:shadow-md">
+  <article className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-5 md:p-7 flex gap-3 md:gap-4 items-start transition-all duration-200 hover:shadow-md">
     <div
       className="flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-md shrink-0"
       style={{ backgroundColor: badgeColor }}
     >
-      {/* icona grande ma non deformata */}
       <span className="text-xl">{icon}</span>
     </div>
 
     <div className="text-left">
-      <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-1">
+      <h3 className="text-base md:text-lg font-semibold text-[#132C50] mb-1">
         {title}
       </h3>
       <p className="text-xs md:text-sm text-slate-700 leading-relaxed text-justify">
@@ -77,20 +74,14 @@ const ValueCard = ({ icon, badgeColor, title, text }) => (
 
 // SEZIONE "Pensiamo a tutto, tu pensa solo a rilassarti"
 const PercheAffidarti = () => (
-  <section className="py-12 md:py-16 bg-white">
+  <section className="py-12 md:py-16 bg-[#F8FAFC]">
     <div className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-10">
-        <p
-          className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-2"
-          style={{ color: COLORS.primary }}
-        >
+        <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-2 text-[#0863D6]">
           I nostri punti di forza
         </p>
 
-        <h2
-          className="text-2xl md:text-3xl font-bold mb-3 text-[#EB2480]"
-
-        >
+        <h2 className="text-2xl md:text-3xl font-bold mb-3 text-[#EB2480]">
           Pensiamo a tutto, tu pensa solo a rilassarti
         </h2>
 
@@ -169,17 +160,11 @@ const ChiSiamo = () => {
       {/* STORIA AGENZIA */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p
-            className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-2"
-            style={{ color: COLORS.primary }}
-          >
+          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-2 text-[#0863D6]">
             La nostra storia
           </p>
 
-          <h2
-            className="text-2xl md:text-3xl font-bold mb-6 text-[#EB2480]"
-
-          >
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#EB2480]">
             Un’agenzia nata dall’ascolto, cresciuta grazie alle persone
           </h2>
 
@@ -234,16 +219,11 @@ const ChiSiamo = () => {
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10 md:mb-12">
-            <p
-              className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-2"
-              style={{ color: COLORS.primary }}
-            >
+            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-2 text-[#0863D6]">
               Il nostro team
             </p>
 
-            <h2
-              className="text-2xl md:text-3xl font-bold text-[#EB2480]"
-            >
+            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
               Le persone dietro ogni viaggio
             </h2>
 
@@ -260,7 +240,7 @@ const ChiSiamo = () => {
                 key={member.name}
                 style={{ transitionDelay: `${index * 120}ms` }}
                 className={[
-                  "rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-700 overflow-hidden flex flex-col",
+                  "rounded-3xl bg-white border border-[#E2E8F0] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-700 overflow-hidden flex flex-col",
                   teamVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6",
@@ -273,17 +253,14 @@ const ChiSiamo = () => {
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />
-                  <span
-                    className="absolute left-3 top-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm"
-                    style={{ backgroundColor: `${COLORS.primary}CC` }}
-                  >
+                  <span className="absolute left-3 top-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm bg-[#0863D6]/80">
                     {member.role}
                   </span>
                 </div>
 
                 {/* TESTO */}
                 <div className="p-6 flex-1 flex flex-col text-center">
-                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
+                  <h3 className="text-lg md:text-xl font-semibold text-[#132C50] mb-2">
                     {member.name}
                   </h3>
                   <p className="text-sm text-slate-700 leading-relaxed text-justify">
@@ -297,15 +274,9 @@ const ChiSiamo = () => {
       </section>
 
       {/* CTA FINALE */}
-      <section
-        className="py-10 md:py-14"
-        style={{ backgroundColor: COLORS.navy900 }}
-      >
+      <section className="py-10 md:py-14 bg-[#132C50]">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p
-            className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-3"
-            style={{ color: COLORS.primary }}
-          >
+          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-3 text-[#0863D6]">
             Consulenza gratuita
           </p>
 
@@ -324,7 +295,6 @@ const ChiSiamo = () => {
               to="/contatti"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
             >
-
               Scrivici per informazioni
             </Link>
 
@@ -334,6 +304,7 @@ const ChiSiamo = () => {
               rel="noreferrer"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
+              <FaCalendarCheck className="mr-2" />
               Prenota una consulenza in agenzia
             </a>
           </div>

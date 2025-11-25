@@ -1,23 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Gift,
-  HeartHandshake,
-  Users,
-  CreditCard,
-  Plane,
-  Sparkles,
-} from "lucide-react";
+import { Gift, HeartHandshake, Users, Plane } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 
 // 📌 Immagine locale hero idee regalo
 import heroImg from "../assets/idee-regalo/hero.webp";
-
-const COLORS = {
-  primary: "#0863D6",
-  accent: "#EB2480",
-  navy900: "#132C50",
-};
 
 // Card generica
 const InfoCard = ({ icon, title, text }) => (
@@ -59,7 +46,7 @@ const IdeeRegalo = () => {
       <InnerHero
         title="Idee regalo viaggio"
         subtitle="Lista nozze e Travel Box: il regalo che vale un’esperienza."
-        image={heroImg}   // <-- ora usa l’immagine locale
+        image={heroImg}
       />
 
       {/* INTRO */}
@@ -69,7 +56,7 @@ const IdeeRegalo = () => {
             Regali che diventano ricordi
           </p>
 
-          <h1 className="text-2xl md:3xl font-bold text-[#EB2480] mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-6">
             Un regalo di viaggio resta per sempre
           </h1>
 
@@ -279,3 +266,4 @@ const IdeeRegalo = () => {
 };
 
 export default IdeeRegalo;
+
