@@ -4,39 +4,45 @@ import { useInView } from "../../hooks/useInView";
 
 const reviews = [
   {
-    name: "Giulia & Marco",
-    tripType: "Viaggio di nozze · Maldive",
-    text: "Tutto organizzato alla perfezione: voli, trasferimenti e resort. Noi abbiamo solo pensato a goderci il viaggio.",
+    name: "Margherita Imperatore",
+    tripType: "Viaggio di Nozze · Giappone e Maldive",
+    text: "Assia ci ha seguiti passo dopo passo con una professionalità incredibile. Sempre disponibile, gentile e preparata. Il nostro viaggio è stato perfetto e senza alcun intoppo. Un sogno realizzato! Grazie di cuore da Marghe e Fabri ♥️",
     rating: 5,
   },
   {
-    name: "Sara B.",
-    tripType: "Weekend in Europa · Lisbona",
-    text: "Hotel centrale, consigli personalizzati su cosa vedere e dove mangiare. Sembra davvero un viaggio cucito su di me.",
+    name: "Lucio D'Isanto",
+    tripType: "Crociera · Natale",
+    text: "Organizzazione impeccabile: cabina perfetta, tavolo singolo con vista, pacchetto bevande consigliato da Assia super conveniente. Ciliegina sulla torta: escursione regalata a Valencia. Agenzia seria e precisa.",
     rating: 5,
   },
   {
-    name: "Luca R.",
-    tripType: "Viaggio di lavoro · Londra",
-    text: "Orari perfetti per le riunioni, zero intoppi con i voli e assistenza anche durante il soggiorno. Un supporto prezioso.",
-    rating: 4,
-  },
-  {
-    name: "Famiglia Esposito",
-    tripType: "Viaggio di gruppo · Tenerife",
-    text: "Gruppo numeroso ma tutto gestito alla grande: camere vicine, transfer comodi, escursioni organizzate. Esperienza da rifare.",
+    name: "Fabrizio Cristaldi",
+    tripType: "Viaggio Individuale · Parigi",
+    text: "Viaggio meraviglioso consigliato da Assia in ogni minimo dettaglio. Hotel in posizione strategica e suggerimenti utilissimi su cosa vedere. Già prenotato il prossimo viaggio con loro, perché sono il top!",
     rating: 5,
   },
   {
-    name: "Francesca C.",
-    tripType: "Crociera MSC · Mediterraneo",
-    text: "Ci siamo sentiti seguiti dall’inizio alla fine. Ogni dettaglio, dalla cabina alle escursioni, era pensato per noi.",
+    name: "Matteo Massaro",
+    tripType: "Viaggio di Nozze · Cile e Aruba",
+    text: "Agenzia di fiducia da anni. L’ultimo viaggio in Cile e Aruba è stato straordinario: Atacama, Patagonia, Caraibi… tutto perfetto e organizzato nei minimi dettagli. Servizio eccezionale ovunque siamo stati.",
     rating: 5,
   },
   {
-    name: "Alessandro P.",
-    tripType: "Tour su misura · Giappone",
-    text: "Itinerario studiato alla perfezione tra tradizione e modernità. Senza l’agenzia non avrei mai visto certi posti.",
+    name: "Anna Di Grazia",
+    tripType: "Viaggio di Gruppo · Amsterdam",
+    text: "Meta stupenda resa ancora migliore dalla loro assistenza! Ogni viaggio con loro è studiato alla perfezione, sanno sempre consigliare dove alloggiare in base alle esigenze. Professionalità e preparazione al top.",
+    rating: 5,
+  },
+  {
+    name: "Rosita Mendicino",
+    tripType: "Mare Italia",
+    text: "Assia è stata impeccabile: professionale, disponibile e attenta ad ogni dettaglio. Ha capito subito le mie esigenze e costruito un viaggio perfetto. Servizio accurato, gentilezza e massima attenzione al cliente.",
+    rating: 5,
+  },
+  {
+    name: "Michela Cannavale",
+    tripType: "Viaggio di Nozze · New York & Santo Domingo",
+    text: "Assia ha curato tutto nei dettagli: hotel perfetto a Manhattan, villaggio stupendo a Bayahibe, consigli utilissimi su trasporti e attrazioni. Ci ha assistiti anche durante un imprevisto. Ha realizzato un sogno!",
     rating: 5,
   },
 ];
@@ -68,7 +74,7 @@ const ReviewsSection = () => {
   const intervalMs =
     perPage === 1 ? AUTO_SLIDE_MS_MOBILE : AUTO_SLIDE_MS_DESKTOP;
 
-  // autoplay tra le pagine (solo se ci sono più pagine e la sezione è visibile)
+  // autoplay
   useEffect(() => {
     if (pageCount <= 1 || !isVisible) return;
 
@@ -157,7 +163,7 @@ const ReviewsSection = () => {
             ))}
           </div>
 
-          {/* Pallini di pagina */}
+          {/* PAGINATION DOTS */}
           <div className="flex flex-col items-center gap-1.5 mt-6">
             <div className="flex justify-center items-center gap-2">
               {Array.from({ length: pageCount }).map((_, index) => {
@@ -168,7 +174,6 @@ const ReviewsSection = () => {
                     type="button"
                     onClick={() => setCurrentPage(index)}
                     className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center group"
-                    aria-label={`Mostra gruppo recensioni ${index + 1}`}
                   >
                     <span
                       className={[
@@ -190,6 +195,7 @@ const ReviewsSection = () => {
 };
 
 export default ReviewsSection;
+
 
 
 
