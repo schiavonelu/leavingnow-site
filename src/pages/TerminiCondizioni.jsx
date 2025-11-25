@@ -17,8 +17,9 @@ const TerminiCondizioni = () => {
 
       <section className="py-12 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
+          {/* DATA AGGIORNAMENTO */}
           <div className="mb-6 text-xs uppercase tracking-[0.18em] text-slate-500">
-            Ultimo aggiornamento: 19 Febbraio 2025
+            Ultimo aggiornamento: 25 Novembre 2025
           </div>
 
           <div className="bg-white border border-slate-200 rounded-2xl shadow-sm px-6 py-8 md:px-10 md:py-10 text-sm md:text-base text-slate-700 leading-relaxed space-y-6 text-justify">
@@ -28,6 +29,7 @@ const TerminiCondizioni = () => {
               web, l’Utente accetta di essere vincolato dalle presenti condizioni.
             </p>
 
+            {/* INTERPRETAZIONE E DEFINIZIONI */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
                 Interpretazione e Definizioni
@@ -64,8 +66,8 @@ const TerminiCondizioni = () => {
                   </li>
                   <li>
                     <strong>Azienda</strong> (indicata come “l’Azienda”, “Noi”,
-                    “Ci” o “Nostro” in questo Accordo) si riferisce a Kiru s.r.l.,
-                    Via Atellana, 115 – 81031 Aversa (CE).
+                    “Ci” o “Nostro” in questo Accordo) si riferisce a Kiru
+                    s.r.l., Via Atellana, 115 – 81031 Aversa (CE).
                   </li>
                   <li>
                     <strong>Dispositivo</strong> indica qualsiasi dispositivo
@@ -88,15 +90,15 @@ const TerminiCondizioni = () => {
                     il Servizio.
                   </li>
                   <li>
-                    <strong>Sito Web</strong> si riferisce a LeavingNow,
+                    <strong>Sito Web</strong> si riferisce a Leaving Now,
                     accessibile da{" "}
                     <a
-                      href="https://leavingnow.it/"
+                      href="https://www.leavingnow.it/"
                       target="_blank"
                       rel="noreferrer"
                       className="text-primary hover:underline"
                     >
-                      https://leavingnow.it/
+                      https://www.leavingnow.it/
                     </a>
                     .
                   </li>
@@ -110,12 +112,13 @@ const TerminiCondizioni = () => {
               </div>
             </div>
 
+            {/* ACCETTAZIONE */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
-                Accettazione
+                Accettazione dei Termini
               </h2>
               <p>
-                Questi Termini e Condizioni regolano l’uso di questo Servizio e
+                Questi Termini e Condizioni regolano l’uso del Servizio e
                 costituiscono l’accordo tra te e l’Azienda.
               </p>
               <p>
@@ -131,12 +134,13 @@ const TerminiCondizioni = () => {
               <p>
                 Il tuo accesso e utilizzo del Servizio è anche condizionato
                 dalla tua accettazione della{" "}
-                <span className="font-semibold">Privacy Policy</span>{" "}
-                dell’Azienda, che disciplina le modalità di raccolta e
-                trattamento dei dati personali.
+                <span className="font-semibold">Privacy Policy</span> dell’Azienda,
+                che disciplina le modalità di raccolta e trattamento dei dati
+                personali.
               </p>
             </div>
 
+            {/* LINK A SITI ESTERNI */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
                 Collegamenti ad Altri Siti Web
@@ -155,23 +159,25 @@ const TerminiCondizioni = () => {
               </p>
             </div>
 
+            {/* CHIUSURA ACCESSO */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
-                Chiusura dell’Account
+                Chiusura o Limitazione dell’Accesso
               </h2>
               <p>
-                Possiamo chiudere o sospendere l’accesso al Servizio
+                Possiamo sospendere o limitare l’accesso al Servizio
                 immediatamente, senza preavviso, per qualsiasi motivo, incluso
                 in caso di violazione dei presenti Termini.
               </p>
               <p>
-                In caso di chiusura, i diritti e gli obblighi maturati dalle
-                parti fino alla data di cessazione resteranno salvi, ivi
-                inclusi, a titolo esemplificativo, gli obblighi di pagamento
-                eventualmente dovuti.
+                In caso di cessazione o limitazione dell’accesso, i diritti e
+                gli obblighi maturati dalle parti fino alla data di cessazione
+                resteranno salvi, inclusi, a titolo esemplificativo, eventuali
+                obblighi di pagamento dovuti.
               </p>
             </div>
 
+            {/* LIMITAZIONE DI RESPONSABILITÀ */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
                 Limitazione di Responsabilità
@@ -181,18 +187,22 @@ const TerminiCondizioni = () => {
                 fornitori non saranno responsabili per danni indiretti,
                 consequenziali, speciali o incidentali, inclusi, a titolo
                 esemplificativo, perdita di profitti, dati o altre perdite
-                immateriali.
+                immateriali derivanti o connesse all’uso o all’impossibilità
+                di utilizzare il Servizio.
               </p>
               <p>
-                In ogni caso, la responsabilità complessiva dell’Azienda non
-                supererà l’importo effettivamente pagato tramite il Servizio, o
-                100 USD se non vi sono stati acquisti tramite il Servizio.
+                In ogni caso, la responsabilità complessiva dell’Azienda
+                nei confronti dell’Utente non supererà l’importo
+                eventualmente corrisposto dall’Utente tramite il Servizio,
+                o, in mancanza di tali corrispettivi, la somma di{" "}
+                <strong>100,00 € (cento/00 euro)</strong>.
               </p>
             </div>
 
+            {/* LEGGE APPLICABILE */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
-                Legge Applicabile
+                Legge Applicabile e Foro Competente
               </h2>
               <p>
                 Le leggi italiane regolano questi Termini e l’uso del Servizio,
@@ -200,10 +210,11 @@ const TerminiCondizioni = () => {
                 internazionali applicabili. Eventuali controversie saranno
                 devolute alla giurisdizione esclusiva dei tribunali competenti
                 del luogo in cui ha sede l’Azienda, salvo diversa previsione
-                inderogabile di legge.
+                inderogabile di legge a tutela del consumatore.
               </p>
             </div>
 
+            {/* MODIFICHE AI TERMINI */}
             <div className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
                 Modifiche ai Termini
@@ -211,8 +222,9 @@ const TerminiCondizioni = () => {
               <p>
                 Ci riserviamo il diritto di modificare o sostituire questi
                 Termini in qualsiasi momento. In caso di modifiche rilevanti,
-                cercheremo di fornire un preavviso adeguato prima dell’entrata
-                in vigore delle nuove condizioni.
+                cercheremo di fornire un preavviso adeguato prima
+                dell’entrata in vigore delle nuove condizioni, ad esempio
+                tramite avviso sul sito.
               </p>
               <p>
                 Continuando ad accedere o utilizzare il Servizio dopo
@@ -221,11 +233,14 @@ const TerminiCondizioni = () => {
               </p>
             </div>
 
+            {/* CONTATTI */}
             <div className="pt-4 border-t border-slate-100 space-y-2">
               <h2 className="text-lg md:text-xl font-semibold text-slate-900 text-left">
                 Contattaci
               </h2>
-              <p>Se hai domande sui presenti Termini e Condizioni, puoi contattarci:</p>
+              <p>
+                Se hai domande sui presenti Termini e Condizioni, puoi contattarci:
+              </p>
               <ul className="list-disc pl-5 space-y-1">
                 <li>
                   via email:{" "}
@@ -239,12 +254,12 @@ const TerminiCondizioni = () => {
                 <li>
                   visitando il sito:{" "}
                   <a
-                    href="https://leavingnow.it/"
+                    href="https://www.leavingnow.it/"
                     target="_blank"
                     rel="noreferrer"
                     className="font-medium text-primary hover:underline"
                   >
-                    https://leavingnow.it/
+                    https://www.leavingnow.it/
                   </a>
                 </li>
               </ul>
@@ -257,4 +272,5 @@ const TerminiCondizioni = () => {
 };
 
 export default TerminiCondizioni;
+
 
