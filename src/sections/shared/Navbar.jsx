@@ -62,7 +62,7 @@ const Navbar = () => {
     : "text-slate-700 border-[#718093]/40";
 
   const currentLogo = isOnHero ? logoWhite : logo;
-  const logoSizeClasses = "h-9 md:h-10";
+  const logoSizeClasses = "h-14 md:h-16";
 
   const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700";
   const callNumberColor = isOnHero ? "text-white" : "text-[#132C50]";
@@ -80,7 +80,7 @@ const Navbar = () => {
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${headerClasses}`}
       >
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 py-1">
           {/* LOGO */}
           <Link to="/" className="flex items-center gap-3" onClick={closeMenu}>
             <img
