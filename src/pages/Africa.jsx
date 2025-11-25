@@ -51,7 +51,7 @@ const Africa = () => {
               title="Isole dell’Oceano Indiano"
               badge="Honeymoon"
               period="Aprile – Novembre (secondo l’isola)"
-              description="Mauritius, Seychelles, Zanzibar, Madagascar: resort romantici, guesthouse autentiche e combinati mare + tour per un viaggio da ricordare."
+              description="Mauritius, Maldive, Seychelles, Zanzibar, Madagascar: resort romantici, guesthouse autentiche e combinati mare + tour per un viaggio da ricordare."
             />
 
             <ContinentCard
