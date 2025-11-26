@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaSuitcaseRolling, FaPhone } from "react-icons/fa6";
-import logo from "../assets/logo/leavingnow-logo.jpeg";
+import logo from "../assets/logo/leavingnow-logo.webp";
 
 /**
  * 🔁 DATA DI LANCIO (FITTIZIA PER ORA)

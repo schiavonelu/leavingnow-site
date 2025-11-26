@@ -13,7 +13,7 @@ import {
   FaPlaneDeparture,
 } from "react-icons/fa";
 
-import logo from "../../assets/logo/leavingnow-logo.jpeg";
+import logo from "../../assets/logo/leavingnow-logo.webp";
 import logoWhite from "../../assets/logo/leavingnow-logowhite.webp";
 
 const links = [
