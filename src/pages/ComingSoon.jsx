@@ -47,24 +47,25 @@ const ComingSoon = () => {
       {/* CONTENUTO CENTRALE */}
       <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-4 text-center">
         {/* LOGO + SLOGAN */}
-        <div className="mb-4 flex flex-col items-center gap-2">
-          <div className="inline-flex items-center gap-2 px-1 py-1">
-            <img
-              src={logo}
-              alt="Leaving Now logo"
-              className="h-36 md:h-40 w-auto drop-shadow-md"
-            />
-          </div>
+        <div className="mb-4 flex flex-col items-center gap-1">
+  <div className="inline-flex items-center gap-2 px-1 py-1">
+    <img
+      src={logo}
+      alt="Leaving Now logo"
+      className="h-40 md:h-40 w-auto drop-shadow-md"
+    />
+  </div>
 
-          <div className="mt-2 flex flex-col items-end text-right drop-shadow">
-            <div className="bg-[#EB2480] px-4 py-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
-              CON NOI
-            </div>
-            <div className="bg-[#1F3759] px-4 py-2 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-[0.16em] text-white rounded-b-md whitespace-nowrap">
-              IN GIRO PER IL MONDO
-            </div>
-          </div>
-        </div>
+  <div className="flex flex-col items-end text-right drop-shadow">
+    {/* 👆 ho tolto mt-2 */}
+    <div className="bg-[#EB2480] px-4 py-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
+      CON NOI
+    </div>
+    <div className="bg-[#1F3759] px-4 py-2 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-[0.16em] text-white rounded-b-md whitespace-nowrap">
+      IN GIRO PER IL MONDO
+    </div>
+  </div>
+</div>
 
         {/* TITOLO */}
         <div className="mb-6 max-w-3xl">
