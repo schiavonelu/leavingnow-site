@@ -23,7 +23,7 @@ const Destinazioni = () => {
     <>
       <InnerHero
         title="Destinazioni"
-        subtitle="Europa, Americhe, Asia, Oceania: scegli il tuo orizzonte."
+        subtitle="Europa, Americhe, Africa, Asia, Oceania: scegli il tuo orizzonte."
         image={destinazioniHero}
       />
 

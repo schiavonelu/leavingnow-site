@@ -13,8 +13,8 @@ import {
   FaPlaneDeparture,
 } from "react-icons/fa";
 
-import logo from "../../assets/logo/leavingnow-logo.png";
-import logoWhite from "../../assets/logo/leavingnow-logowhite.png";
+import logo from "../../assets/logo/leavingnow-logo.jpeg";
+import logoWhite from "../../assets/logo/leavingnow-logowhite.webp";
 
 const links = [
   { to: "/", label: "Home", end: true, icon: FaHome },
@@ -42,10 +42,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isOnHero = !scrolled && !open;
-
   const toggleMenu = () => setOpen((prev) => !prev);
   const closeMenu = () => setOpen(false);
+
+  const isOnHero = !scrolled && !open;
 
   const headerClasses = isOnHero
     ? "bg-transparent border-b border-white/25"
@@ -61,7 +61,8 @@ const Navbar = () => {
     : "text-slate-700 border-[#718093]/40";
 
   const currentLogo = isOnHero ? logoWhite : logo;
-  const logoSizeClasses = "h-12 md:h-12";
+  // dimensioni fisse per evitare “zoom”
+  const logoSizeClasses = "h-10 w-[220px] object-contain";
 
   const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700";
   const callNumberColor = isOnHero ? "text-white" : "text-[#132C50]";
@@ -79,13 +80,14 @@ const Navbar = () => {
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${headerClasses}`}
       >
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 py-1">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 h-16">
           {/* LOGO */}
           <Link to="/" className="flex items-center gap-3" onClick={closeMenu}>
             <img
               src={currentLogo}
               alt="Leaving Now"
-              className={`${logoSizeClasses} w-auto object-contain drop-shadow-sm`}
+              className={`${logoSizeClasses} drop-shadow-sm`}
+              style={{ imageRendering: "auto" }}
             />
           </Link>
 
@@ -115,7 +117,7 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* BOTTONE CHIAMACI + APPUNTAMENTO + SOCIAL */}
+            {/* CONTATTI + SOCIAL */}
             <div className="flex items-center gap-3 lg:gap-4">
               <div className={comboWrapperClasses}>
                 <a
@@ -150,23 +152,22 @@ const Navbar = () => {
                     transition-all duration-300
                   `}
                 >
-                  <span
-                    className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0863D6] text-white shadow-md"
-                  >
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0863D6] text-white shadow-md">
                     <FaCalendar className="text-sm" />
                   </span>
                   <span
-                    className={`
+                    className="
                       max-w-0 opacity-0 overflow-hidden whitespace-nowrap
                       group-hover:max-w-xs group-hover:opacity-100 group-hover:ml-1.5
                       transition-all duration-300 text-[11px]
-                    `}
+                    "
                   >
                     Appuntamento
                   </span>
                 </a>
               </div>
 
+              {/* SOCIAL */}
               <div className="flex items-center gap-2">
                 <a
                   href={FACEBOOK_URL}
@@ -216,19 +217,18 @@ const Navbar = () => {
         </nav>
       </header>
 
-      {/* OVERLAY + DRAWER MOBILE */}
+      {/* OVERLAY + MOBILE MENU */}
       {open && (
         <div className="fixed inset-0 z-40">
           <div className="absolute inset-0 bg-black/40" onClick={closeMenu} />
           <div
-            className={`
+            className="
               absolute inset-y-0 right-0 w-3/4 max-w-xs
-              bg-white
-              border-l border-[#E5E7EB]
+              bg-white border-l border-[#E5E7EB]
               shadow-[0_0_35px_rgba(0,0,0,0.35)]
               flex flex-col py-5 px-5
               transform transition-transform duration-300 translate-x-0
-            `}
+            "
           >
             <div className="flex items-center justify-between mb-6">
               <img
@@ -242,8 +242,8 @@ const Navbar = () => {
                 aria-label="Chiudi menu"
                 className="inline-flex flex-col justify-center items-center gap-1.5 p-1 text-[#132C50]"
               >
-                <span className="block h-0.5 w-5 bg-current rounded-full transform translate-y-1 rotate-45 transition-transform duration-300" />
-                <span className="block h-0.5 w-5 bg-current rounded-full transform -translate-y-1 -rotate-45 transition-transform duration-300" />
+                <span className="block h-0.5 w-5 bg-current rounded-full transform translate-y-1 rotate-45" />
+                <span className="block h-0.5 w-5 bg-current rounded-full transform -translate-y-1 -rotate-45" />
               </button>
             </div>
 
@@ -327,6 +327,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
 
 
 

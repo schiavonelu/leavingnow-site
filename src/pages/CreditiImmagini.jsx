@@ -31,198 +31,72 @@ const CreditiImmagini = () => {
                 Pexels
               </a>
               . Anche se l&apos;attribuzione non è obbligatoria, abbiamo scelto di
-              ringraziare chi mette a disposizione i propri scatti, contribuendo a
-              trasmettere la bellezza del viaggio.
+              ringraziare chi mette a disposizione i propri scatti.
             </p>
 
             <hr className="border-slate-200" />
 
-            {/* 🔹 ESEMPIO 1 – HERO HOME */}
+            {/* 🔹 HOME PAGE – HERO (SEA BLUE) */}
             <p>
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Hero della homepage (coppia in viaggio con valigia).<br />
+              Hero della homepage – mare blu.<br />
               <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Immagine di copertina che rappresenta lo spirito del viaggio e la voglia di partire.<br />
+              Scatto che trasmette serenità, libertà e l’essenza del viaggio
+              attraverso il colore intenso dell’oceano.<br />
               <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTOGRAFO_HERO"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                NOME FOTOGRAFO HERO
-              </a>
-              .<br />
+              Asad Photo Maldives.<br />
               <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
               <a
-                href="URL_PEXELS_FOTO_HERO"
+                href="https://www.pexels.com/it-it/foto/foto-del-mare-blu-1430677/"
                 className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
                 target="_blank"
                 rel="noreferrer"
               >
-                Pexels
+                Pexels – &quot;foto del mare blu&quot;
               </a>
               .
             </p>
 
-            {/* 🔹 EUROPA */}
+            {/* 🔹 OCEANIA – HERO HOME PAGE */}
             <p>
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Sezione / pagina Europa (città europee, paesaggio urbano o scorcio iconico).<br />
+              Hero della homepage – Oceania (mare/oceano verde a forma di cuore).<br />
               <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Foto utilizzata per rappresentare le destinazioni europee, tra città d&apos;arte,
-              capitali storiche e panorami caratteristici.<br />
-              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTOGRAFO_EUROPA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                NOME FOTOGRAFO EUROPA
-              </a>
-              .<br />
+              Immagine evocativa del mare cristallino e dei grandi spazi naturali 
+              dell’Oceania.<br />
+              <span className="font-semibold text-[#132C50]">Fotografa:</span>{" "}
+              Katie Cerami.<br />
               <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
               <a
-                href="URL_PEXELS_FOTO_EUROPA"
+                href="https://www.pexels.com/it-it/foto/mare-oceano-verde-a-forma-di-cuore-11807185/"
                 className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
                 target="_blank"
                 rel="noreferrer"
               >
-                Pexels
+                Pexels – &quot;mare oceano verde a forma di cuore&quot;
               </a>
               .
             </p>
 
-            {/* 🔹 AMERICHE & CARAIBI */}
+            {/* 🔹 DESTINAZIONI – MAPPA DEL MONDO */}
             <p>
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Sezione / pagina Americhe &amp; Caraibi (spiaggia, mare o paesaggio tropicale).<br />
+              Mappa del mondo – pagina Destinazioni.<br />
               <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Scatto che richiama le atmosfere delle isole caraibiche, delle grandi città
-              americane o delle coste oceaniche.<br />
+              Illustrazione del globo utilizzata per introdurre e rappresentare 
+              l’esplorazione delle destinazioni internazionali del sito.<br />
               <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTOGRAFO_AMERICHE"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                NOME FOTOGRAFO AMERICHE
-              </a>
-              .<br />
+              Aaditya Arora.<br />
               <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
               <a
-                href="URL_PEXELS_FOTO_AMERICHE"
+                href="https://www.pexels.com/it-it/foto/illustrazione-della-mappa-del-mondo-592753/"
                 className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
                 target="_blank"
                 rel="noreferrer"
               >
-                Pexels
+                Pexels – &quot;illustrazione della mappa del mondo&quot;
               </a>
               .
-            </p>
-
-            {/* 🔹 AFRICA */}
-            <p>
-              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Sezione / pagina Africa (safari, deserto o paesaggio naturale africano).<br />
-              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Immagine che rappresenta i safari, i tramonti nel deserto o le atmosfere naturali del continente africano.<br />
-              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTOGRAFO_AFRICA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                NOME FOTOGRAFO AFRICA
-              </a>
-              .<br />
-              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTO_AFRICA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pexels
-              </a>
-              .
-            </p>
-
-            {/* 🔹 ASIA */}
-            <p>
-              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Sezione / pagina Asia (templi, città luminosa o paesaggio esotico).<br />
-              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Foto scelta per raccontare il mix tra tradizione, spiritualità e modernità
-              tipico delle destinazioni asiatiche.<br />
-              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTOGRAFO_ASIA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                NOME FOTOGRAFO ASIA
-              </a>
-              .<br />
-              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTO_ASIA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pexels
-              </a>
-              .
-            </p>
-
-            {/* 🔹 OCEANIA */}
-            <p>
-              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Sezione / pagina Oceania (oceano, scogliera o grande paesaggio naturale).<br />
-              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Immagine utilizzata per evocare i grandi spazi, il mare cristallino e la natura incontaminata di Australia, Nuova Zelanda e Pacifico.<br />
-              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTOGRAFO_OCEANIA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                NOME FOTOGRAFO OCEANIA
-              </a>
-              .<br />
-              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
-              <a
-                href="URL_PEXELS_FOTO_OCEANIA"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pexels
-              </a>
-              .
-            </p>
-
-            {/* 🔹 ALTRE IMMAGINI GENERALI */}
-            <p>
-              <span className="font-semibold text-[#132C50]">Altre immagini generali del sito:</span>{" "}
-              alcune foto utilizzate come sfondo, elementi decorativi o immagini di
-              contesto (es. sezioni informative, contatti, privacy) provengono sempre da{" "}
-              <a
-                href="https://www.pexels.com"
-                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pexels
-              </a>
-              . Per ciascuna immagine vengono rispettati i diritti e le condizioni
-              stabilite dagli autori.
             </p>
 
             <hr className="border-slate-200" />
@@ -231,9 +105,8 @@ const CreditiImmagini = () => {
             <p className="text-xs text-slate-500 leading-relaxed text-justify">
               * Le immagini sono utilizzate secondo le condizioni della licenza Pexels,
               che consente l&apos;uso gratuito anche per scopi commerciali. I diritti
-              rimangono esclusivamente dei rispettivi fotografi. Questa pagina ha lo
-              scopo di riconoscere il loro lavoro e valorizzare il contributo visivo al
-              progetto Leaving Now.
+              rimangono dei rispettivi fotografi. Questa pagina ne riconosce 
+              il contributo visivo al progetto Leaving Now.
             </p>
           </div>
         </div>
@@ -243,6 +116,7 @@ const CreditiImmagini = () => {
 };
 
 export default CreditiImmagini;
+
 
 
 

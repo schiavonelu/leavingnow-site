@@ -29,7 +29,7 @@ const ContinentCard = ({ image, title, description, badge, period }) => {
         </p>
 
         {period && (
-          <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-sky-700">
+          <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-sky-700 text-justify">
             <FaSun className="text-sky-500" />
             <span>Periodo ideale: {period}</span>
           </div>

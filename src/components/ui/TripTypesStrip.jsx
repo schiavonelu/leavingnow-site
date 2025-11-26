@@ -6,7 +6,7 @@ import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
 import crociereImg from "../../assets/triptypes/crociere.webp";
 import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
 
-// ⛔ RIMOSSA card "Viaggi di lavoro"
+
 const tripTypes = [
   {
     title: "Viaggi di nozze",
@@ -21,7 +21,7 @@ const tripTypes = [
     query: "crociere",
   },
   {
-    title: "Viaggi individuali e di gruppo",
+    title: "Viaggi individuali & di gruppo",
     subtitle: "Esperienze da soli o da condividere",
     image: gruppoImg,
     query: "gruppo",
