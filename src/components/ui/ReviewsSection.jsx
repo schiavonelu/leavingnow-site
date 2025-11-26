@@ -115,8 +115,8 @@ const reviews = [
   },
 ];
 
-const AUTO_SLIDE_MS_MOBILE = 9000;   // più tempo su mobile
-const AUTO_SLIDE_MS_DESKTOP = 15000; // più tempo su desktop
+const AUTO_SLIDE_MS_MOBILE = 12000;   // più tempo su mobile
+const AUTO_SLIDE_MS_DESKTOP = 20000; // più tempo su desktop
 const MAX_DESKTOP_PAGES = 3;
 
 const ReviewsSection = () => {

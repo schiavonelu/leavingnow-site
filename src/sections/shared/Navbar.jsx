@@ -173,7 +173,7 @@ const Navbar = () => {
                   href={FACEBOOK_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className={`inline-flex h-8 w-8 items-center justify-center rounded-full border ${socialBaseClasses} hover:text-[#1877F2] hover:border-[#1877F2] transition`}
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-full border ${socialBaseClasses} hover:text-[#1877F2] hover:border-[#1877F2] transition`}
                   aria-label="Facebook"
                 >
                   <FaFacebookF className="text-lg" />
@@ -182,7 +182,7 @@ const Navbar = () => {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className={`inline-flex h-8 w-8 items-center justify-center rounded-full border ${socialBaseClasses} hover:text-[#EB2480] hover:border-[#EB2480] transition`}
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-full border ${socialBaseClasses} hover:text-[#EB2480] hover:border-[#EB2480] transition`}
                   aria-label="Instagram"
                 >
                   <FaInstagram className="text-lg" />
