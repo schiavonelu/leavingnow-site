@@ -28,16 +28,16 @@ import Oceania from "./pages/Oceania.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
-// Componenti UI
+// UI Components
 import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
-// 🔁 Toggle modalità lancio
-// Quando è true, tutto il sito viene sostituito dalla pagina ComingSoon
-const LAUNCH_MODE = false; // METTI true PRIMA DI LANCIARE IL SITO
+// 🔁 Modalità lancio (Coming Soon globale)
+// Imposta a true 24 ore prima della pubblicazione
+const LAUNCH_MODE = true;
 
 function App() {
-  // Modalità lancio attiva: mostro solo la landing di pre-lancio
+  // 🌟 Modalità pre-lancio: mostra SOLO la pagina Coming Soon
   if (LAUNCH_MODE) {
     return (
       <>
@@ -48,13 +48,12 @@ function App() {
     );
   }
 
-  // Modalità normale: sito completo
+  // 🌟 Modalità normale: mostra il sito completo
   return (
     <>
       {/* Widget WhatsApp sempre visibile */}
       <WhatsAppWidget />
 
-      {/* Router principale */}
       <Routes>
         <Route path="/" element={<MainLayout />}>
           {/* Pagine principali */}
@@ -82,11 +81,11 @@ function App() {
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
         </Route>
 
-        {/* 404 catch-all */}
+        {/* Pagina 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* Banner cookie globale */}
+      {/* Banner Cookie */}
       <CookieConsent />
     </>
   );
