@@ -34,7 +34,7 @@ import CookieConsent from "./components/ui/CookieConsent.jsx";
 
 // 🔁 Modalità lancio (Coming Soon globale)
 // Imposta a true 24 ore prima della pubblicazione
-const LAUNCH_MODE = true;
+const LAUNCH_MODE = false;
 
 function App() {
   // 🌟 Modalità pre-lancio: mostra SOLO la pagina Coming Soon
