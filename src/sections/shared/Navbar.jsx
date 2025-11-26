@@ -62,7 +62,7 @@ const Navbar = () => {
     : "text-slate-700 border-[#718093]/40";
 
   const currentLogo = isOnHero ? logoWhite : logo;
-  const logoSizeClasses = "h-10 md:h-10";
+  const logoSizeClasses = "h-12 md:h-12";
 
   const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700";
   const callNumberColor = isOnHero ? "text-white" : "text-[#132C50]";
