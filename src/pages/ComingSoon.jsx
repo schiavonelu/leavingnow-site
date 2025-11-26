@@ -127,7 +127,7 @@ const ComingSoon = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
 
           <p className="text-xs md:text-sm text-slate-600 max-w-md text-center sm:text-right sm:mr-2">
-            Nel frattempo, siamo operativi in agenzia. Contattaci senza impegno.
+            Nel frattempo, siamo operativi in agenzia.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
