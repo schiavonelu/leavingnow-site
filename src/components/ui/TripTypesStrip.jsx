@@ -21,8 +21,8 @@ const tripTypes = [
     query: "crociere",
   },
   {
-    title: "Viaggi di gruppo",
-    subtitle: "Esperienze da condividere",
+    title: "Viaggi individuali e di gruppo",
+    subtitle: "Esperienze da soli o da condividere",
     image: gruppoImg,
     query: "gruppo",
   },
