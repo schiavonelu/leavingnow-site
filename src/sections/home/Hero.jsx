@@ -41,35 +41,50 @@ const Hero = () => {
       <div className="absolute inset-0 bg-slate-900/40" />
 
       {/* CONTENUTO */}
-      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-4 pt-10">
-        {/* SLOGAN posizionato a destra */}
+      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 pt-10">
+        {/* SLOGAN POSIZIONATO A DESTRA */}
         <div
           className={[
-            "ml-auto flex max-w-full flex-col items-end text-right drop-shadow-2xl transition-all duration-700 ease-out md:max-w-lg",
+            "ml-auto flex max-w-[95%] flex-col items-end text-right drop-shadow-2xl transition-all duration-700 ease-out md:max-w-lg",
             showTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
           ].join(" ")}
         >
-          {/* CON NOI – COLORE ACCESSIBILE */}
-          <div className="bg-[#D91672] px-5 py-2 text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md md:text-base">
+          {/* CON NOI */}
+          <div className="bg-[#D91672] px-4 sm:px-5 py-2 text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
             CON NOI
           </div>
 
           {/* IN GIRO PER IL MONDO */}
-          <div className="bg-[#1F3759] px-4 py-2 text-2xl font-extrabold uppercase tracking-[0.22em] text-white rounded-b-md md:text-4xl lg:text-5xl">
+          <div
+            className="
+              bg-[#1F3759]
+              px-2 sm:px-3 md:px-4
+              py-2
+              text-xl sm:text-2xl md:text-4xl lg:text-5xl
+              font-extrabold
+              uppercase
+              whitespace-nowrap
+              tracking-[0.08em] sm:tracking-[0.12em] md:tracking-[0.22em]
+              text-white
+              rounded-b-md
+            "
+          >
             IN GIRO PER IL MONDO
           </div>
         </div>
 
         {/* CTA BUTTON */}
-        <div className="mt-48 flex w-full justify-center">
+        <div className="mt-24 md:mt-40 lg:mt-48 flex w-full justify-center">
           <button
             onClick={handleScroll}
             className={[
-              "inline-flex items-center gap-2 rounded-full bg-primary px-20 py-4 text-base font-semibold text-white shadow-2xl border border-white/40 transition-all duration-700 ease-out hover:bg-sky-500 hover:border-white",
+              "inline-flex items-center gap-2 rounded-full bg-primary px-10 sm:px-14 md:px-20 py-3 md:py-4",
+              "text-sm md:text-base font-semibold text-white shadow-2xl border border-white/40",
+              "transition-all duration-700 ease-out hover:bg-sky-500 hover:border-white",
               showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
             ].join(" ")}
           >
-            <FaSuitcaseRolling className="text-xl" />
+            <FaSuitcaseRolling className="text-lg md:text-xl" />
             Prepara i bagagli!
           </button>
         </div>
@@ -79,6 +94,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
 
 
 
