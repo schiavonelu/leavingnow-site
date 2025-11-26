@@ -3,6 +3,10 @@ import Hero from "../sections/home/Hero.jsx";
 import StickySection from "../components/layout/StickySection.jsx";
 import LazySection from "../components/LazySection.jsx";
 
+// ✅ import diretti (no lazy) per la sezione Tipologie di viaggio
+import TripTypesStripIntro from "../sections/home/TripTypesStripIntro.jsx";
+import TripTypesStrip from "../components/ui/TripTypesStrip.jsx";
+
 const Home = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -15,7 +19,7 @@ const Home = () => {
         vacanze, crociere e viaggi di nozze
       </h1>
 
-      {/* HERO: above-the-fold, caricata subito */}
+      {/* HERO */}
       <Hero />
 
       {/* DESTINAZIONI – HEADER STICKY */}
@@ -33,19 +37,9 @@ const Home = () => {
         />
       </StickySection>
 
-      {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY */}
-      <StickySection
-        header={
-          <LazySection
-            loader={() => import("../sections/home/TripTypesStripIntro.jsx")}
-            fallback={null}
-          />
-        }
-      >
-        <LazySection
-          loader={() => import("../components/ui/TripTypesStrip.jsx")}
-          fallback={null}
-        />
+      {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY (NO LAZY QUI) */}
+      <StickySection header={<TripTypesStripIntro />}>
+        <TripTypesStrip />
       </StickySection>
 
       {/* RECENSIONI – HEADER STICKY */}
@@ -82,6 +76,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 

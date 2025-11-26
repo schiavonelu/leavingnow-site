@@ -33,6 +33,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 py-8 md:py-10 space-y-6">
         {/* RIGA PRINCIPALE */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 text-xs md:text-sm">
+
           {/* COLONNA 1 – Dati + Social */}
           <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left gap-2">
             <p className="font-semibold text-white text-sm md:text-base">
@@ -85,9 +86,10 @@ const Footer = () => {
 
           {/* COLONNA 2 – PAYMENT BADGES */}
           <div className="md:w-1/3 flex flex-col items-center text-center gap-3">
-            {/* 2 file da 4 → griglia a 4 colonne valida sia desktop che mobile */}
+            
+            {/* PRIMA RIGA: 4 loghi */}
             <div className="grid grid-cols-4 gap-2 w-full max-w-xs md:max-w-none">
-              {paymentMethods.map((method) => (
+              {paymentMethods.slice(0, 4).map((method) => (
                 <div
                   key={method.name}
                   className="
@@ -112,6 +114,36 @@ const Footer = () => {
                 </div>
               ))}
             </div>
+
+            {/* SECONDA RIGA: 3 loghi, CENTRATI */}
+            <div className="flex justify-center gap-2 mt-2">
+              {paymentMethods.slice(4).map((method) => (
+                <div
+                  key={method.name}
+                  className="
+                    flex items-center justify-center
+                    bg-white rounded-xl
+                    px-2 py-1.5
+                    min-h-[52px]
+                    border border-[#E2E8F0]
+                    shadow-md
+                    hover:shadow-lg hover:scale-[1.02]
+                    transition-all
+                    w-[72px] md:w-[85px]
+                  "
+                >
+                  <img
+                    src={method.logo}
+                    alt={method.name}
+                    loading="lazy"
+                    width={80}
+                    height={40}
+                    className="h-7 md:h-8 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+
           </div>
 
           {/* COLONNA 3 – Link legali */}
@@ -149,6 +181,7 @@ const Footer = () => {
               Crediti Immagini
             </a>
           </div>
+
         </div>
 
         {/* SEPARATORE + COPYRIGHT */}

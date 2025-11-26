@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 
 // IMMAGINI LOCALI OTTIMIZZATE WEBP
@@ -36,6 +36,52 @@ const tripTypes = [
 
 const AUTO_SLIDE_MS_MOBILE = 8000;
 
+// CARD MEMOIZZATA (evita render inutili)
+const Card = memo(function Card({ trip }) {
+  return (
+    <Link
+      to={`/contatti?tipo=${encodeURIComponent(trip.query)}`}
+      className="
+        group relative flex items-end rounded-3xl overflow-hidden 
+        shadow-md bg-slate-900/40
+        w-full
+        h-60 md:h-auto md:aspect-3/4
+        transition-transform duration-150 hover:-translate-y-1
+      "
+    >
+      <img
+        src={trip.image}
+        alt={trip.title}
+        loading="lazy"
+        className="
+          h-full w-full object-cover 
+          transform transition-transform duration-300 group-hover:scale-105
+          absolute inset-0
+        "
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+
+      <div className="relative p-4 md:p-5 w-full">
+        <h3 className="text-white text-xl md:text-2xl font-bold leading-tight drop-shadow-sm">
+          {trip.title}
+        </h3>
+
+        {/* sottotitolo: solo opacity, niente translate, più reattivo */}
+        <p
+          className="
+            mt-1 text-sm md:text-base text-slate-100/90
+            opacity-0 group-hover:opacity-100
+            transition-opacity duration-100
+          "
+        >
+          {trip.subtitle}
+        </p>
+      </div>
+    </Link>
+  );
+});
+
 const TripTypesStrip = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -67,54 +113,9 @@ const TripTypesStrip = () => {
 
   const currentTrip = tripTypes[currentIndex];
 
-  // CARD
-  const Card = ({ trip }) => (
-    <Link
-      to={`/contatti?tipo=${encodeURIComponent(trip.query)}`}
-      className="
-        group relative flex items-end rounded-3xl overflow-hidden 
-        shadow-md bg-slate-900/40
-        w-full
-        h-60 md:h-auto md:aspect-3/4
-        transition-all duration-200 hover:-translate-y-1
-      "
-    >
-      <img
-        src={trip.image}
-        alt={trip.title}
-        loading="lazy"
-        className="
-          h-full w-full object-cover 
-          transform transition-transform duration-700 group-hover:scale-105
-          absolute inset-0
-        "
-      />
-
-      <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
-
-      <div className="relative p-4 md:p-5 w-full">
-        <h3 className="text-white text-xl md:text-2xl font-bold leading-tight drop-shadow-sm">
-          {trip.title}
-        </h3>
-
-        <p
-          className="
-            mt-1 text-sm md:text-base text-slate-100/90
-            opacity-0 translate-y-1
-            group-hover:opacity-100 group-hover:translate-y-0
-            transition-all duration-150
-          "
-        >
-          {trip.subtitle}
-        </p>
-      </div>
-    </Link>
-  );
-
   return (
     <section className="bg-slate-50 py-10 md:py-14">
       <div className="max-w-6xl mx-auto px-4">
-        
         {isMobile ? (
           <>
             <div className="flex justify-center">
@@ -133,14 +134,14 @@ const TripTypesStrip = () => {
                     type="button"
                     onClick={() => setCurrentIndex(index)}
                     aria-label={`Vai al tipo di viaggio ${index + 1}`}
-                    className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center group"
+                    className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center"
                   >
                     <span
                       className={[
-                        "h-3 w-3 rounded-full border transition-all duration-200",
+                        "h-3 w-3 rounded-full border transition-colors duration-150",
                         isActive
                           ? "bg-sky-500 border-sky-500"
-                          : "border-slate-400 bg-transparent group-hover:border-sky-400 group-hover:bg-sky-100",
+                          : "border-slate-400 bg-transparent hover:border-sky-400 hover:bg-sky-100",
                       ].join(" ")}
                     />
                   </button>
@@ -157,13 +158,13 @@ const TripTypesStrip = () => {
             ))}
           </div>
         )}
-
       </div>
     </section>
   );
 };
 
 export default TripTypesStrip;
+
 
 
 
