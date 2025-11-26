@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
 import crociereImg from "../../assets/triptypes/crociere.webp";
 import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
-import lavoroImg from "../../assets/triptypes/viaggiodilavoro.webp";
 
+// ⛔ RIMOSSA card "Viaggi di lavoro"
 const tripTypes = [
   {
     title: "Viaggi di nozze",
@@ -26,17 +26,11 @@ const tripTypes = [
     image: gruppoImg,
     query: "gruppo",
   },
-  {
-    title: "Viaggi di lavoro",
-    subtitle: "Business trip senza stress",
-    image: lavoroImg,
-    query: "lavoro",
-  },
 ];
 
 const AUTO_SLIDE_MS_MOBILE = 8000;
 
-// CARD MEMOIZZATA (evita render inutili)
+// CARD MEMOIZZATA
 const Card = memo(function Card({ trip }) {
   return (
     <Link
@@ -67,7 +61,6 @@ const Card = memo(function Card({ trip }) {
           {trip.title}
         </h3>
 
-        {/* sottotitolo: solo opacity, niente translate, più reattivo */}
         <p
           className="
             mt-1 text-sm md:text-base text-slate-100/90
@@ -87,7 +80,6 @@ const TripTypesStrip = () => {
   const [isMobile, setIsMobile] = useState(false);
   const total = tripTypes.length;
 
-  // rileva mobile (<768px)
   useEffect(() => {
     const checkMobile = () => {
       if (typeof window === "undefined") return;
@@ -99,7 +91,6 @@ const TripTypesStrip = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // autoplay solo mobile
   useEffect(() => {
     if (!isMobile || total <= 1) return;
 
@@ -124,7 +115,6 @@ const TripTypesStrip = () => {
               </div>
             </div>
 
-            {/* Indicatori accessibili */}
             <div className="flex justify-center gap-2 mt-4">
               {tripTypes.map((_, index) => {
                 const isActive = index === currentIndex;
@@ -150,7 +140,8 @@ const TripTypesStrip = () => {
             </div>
           </>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          // DESKTOP → ORA 3 COLONNE
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {tripTypes.map((trip) => (
               <div key={trip.title} className="w-full">
                 <Card trip={trip} />
@@ -164,6 +155,7 @@ const TripTypesStrip = () => {
 };
 
 export default TripTypesStrip;
+
 
 
 

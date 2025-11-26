@@ -10,7 +10,6 @@ import {
   FaInstagram,
   FaCalendar,
   FaGift,
-  FaPlane,
   FaPlaneDeparture,
 } from "react-icons/fa";
 
@@ -21,8 +20,8 @@ const links = [
   { to: "/", label: "Home", end: true, icon: FaHome },
   { to: "/chi-siamo", label: "Chi siamo", icon: FaInfoCircle },
   { to: "/destinazioni", label: "Destinazioni", icon: FaMapMarkedAlt },
-  { to: "viaggi-di-nozze", label: "Viaggi di Nozze", icon: FaPlaneDeparture},
-  { to: "idee-regalo", label: "Idee Regalo", icon: FaGift},
+  { to: "viaggi-di-nozze", label: "Viaggi di Nozze", icon: FaPlaneDeparture },
+  { to: "idee-regalo", label: "Idee Regalo", icon: FaGift },
   { to: "/contatti", label: "Contatti", icon: FaEnvelopeOpenText },
 ];
 
@@ -86,7 +85,7 @@ const Navbar = () => {
             <img
               src={currentLogo}
               alt="Leaving Now"
-              className={`${logoSizeClasses} w-auto object-contain drop-shadow-sm transition-all duration-300`}
+              className={`${logoSizeClasses} w-auto object-contain drop-shadow-sm`}
             />
           </Link>
 
@@ -118,9 +117,7 @@ const Navbar = () => {
 
             {/* BOTTONE CHIAMACI + APPUNTAMENTO + SOCIAL */}
             <div className="flex items-center gap-3 lg:gap-4">
-              {/* Bottone combinato */}
               <div className={comboWrapperClasses}>
-                {/* CHIAMACI */}
                 <a
                   href={`tel:${PHONE_TEL}`}
                   className="flex items-center gap-2 pl-3 pr-3 py-1.5"
@@ -142,7 +139,6 @@ const Navbar = () => {
                   </span>
                 </a>
 
-                {/* APPUNTAMENTO */}
                 <a
                   href={RESERVIO_URL}
                   target="_blank"
@@ -155,10 +151,7 @@ const Navbar = () => {
                   `}
                 >
                   <span
-                    className={`
-                      flex h-7 w-7 items-center justify-center rounded-full
-                      bg-[#0863D6] text-white shadow-md
-                    `}
+                    className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0863D6] text-white shadow-md"
                   >
                     <FaCalendar className="text-sm" />
                   </span>
@@ -174,7 +167,6 @@ const Navbar = () => {
                 </a>
               </div>
 
-              {/* SOCIAL DESKTOP */}
               <div className="flex items-center gap-2">
                 <a
                   href={FACEBOOK_URL}
@@ -227,10 +219,7 @@ const Navbar = () => {
       {/* OVERLAY + DRAWER MOBILE */}
       {open && (
         <div className="fixed inset-0 z-40">
-          <div
-            className="absolute inset-0 bg-black/40"
-            onClick={closeMenu}
-          />
+          <div className="absolute inset-0 bg-black/40" onClick={closeMenu} />
           <div
             className={`
               absolute inset-y-0 right-0 w-3/4 max-w-xs
@@ -338,6 +327,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
 
