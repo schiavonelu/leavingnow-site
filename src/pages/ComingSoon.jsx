@@ -47,11 +47,14 @@ const ComingSoon = () => {
       {/* CONTENUTO */}
       <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-4 text-center">
 
-        {/* LOGO */}
-        <div className="mb-8 flex flex-col items-center gap-3">
-          <div className="inline-flex items-center gap-3 px-4 py-2">
-            <img src={logo} alt="Leaving Now logo" className="h-20 md:h-24 w-auto" />
-          </div>
+      <div className="mb-8 flex flex-col items-center gap-3">
+  <div className="inline-flex items-center gap-3 px-4 py-2">
+    <img
+      src={logo}
+      alt="Leaving Now logo"
+      className="h-28 md:h-32 w-auto drop-shadow-md"
+    />
+  </div>
 
           {/* SLOGAN */}
           <div className="mt-3 flex flex-col items-end text-right drop-shadow">
