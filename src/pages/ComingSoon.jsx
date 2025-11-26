@@ -72,10 +72,7 @@ const ComingSoon = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-[#132C50]">
             Stiamo preparando un nuovo modo di farti viaggiare
           </h1>
-          <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-            Una nuova esperienza online, più chiara, ispirazionale e in linea con
-            il modo in cui progettiamo i tuoi viaggi in agenzia.
-          </p>
+         
         </div>
 
         {/* COUNTDOWN */}
