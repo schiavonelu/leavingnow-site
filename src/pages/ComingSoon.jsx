@@ -37,7 +37,6 @@ const ComingSoon = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#F8FAFC] text-[#132C50]">
-      
       {/* SFONDI COLORATI */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#0863D6]/15 blur-3xl" />
@@ -47,10 +46,8 @@ const ComingSoon = () => {
 
       {/* CONTENUTO */}
       <div className="relative mx-auto flex h-full max-w-5xl flex-col px-4 py-4">
-
         {/* BLOCCO SUPERIORE */}
         <header className="flex flex-col items-center justify-start pt-2">
-          
           {/* LOGO */}
           <div className="mb-3">
             <img
@@ -60,7 +57,7 @@ const ComingSoon = () => {
             />
           </div>
 
-          {/* SLOGAN — VERSIONE DESIDERATA */}
+          {/* SLOGAN */}
           <div className="flex flex-col items-end text-right drop-shadow">
             <div className="bg-[#EB2480] px-4 py-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
               CON NOI
@@ -73,7 +70,6 @@ const ComingSoon = () => {
 
         {/* BLOCCO CENTRALE */}
         <main className="flex flex-1 flex-col items-center justify-center text-center">
-          
           {/* TITOLO */}
           <div className="mb-4 max-w-3xl">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#132C50]">
@@ -137,11 +133,10 @@ const ComingSoon = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              
               {/* SCRIVICI */}
               <a
                 href="mailto:leavingnowviaggi@gmail.com"
-                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-2.5 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-2.5 text-sm md:text-base font-semibold shadow-md border border-[#0369A1] bg-[#0369A1] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
               >
                 <FaSuitcaseRolling className="mr-2" />
                 Scrivici per un preventivo
@@ -164,6 +159,7 @@ const ComingSoon = () => {
 };
 
 export default ComingSoon;
+
 
 
 

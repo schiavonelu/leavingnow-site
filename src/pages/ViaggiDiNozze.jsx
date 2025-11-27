@@ -196,7 +196,7 @@ const ViaggiDiNozze = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <a
               href="#idee-nozze"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-sm border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-sm border border-[#0369A1] bg-[#0369A1] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               Vuoi farti ispirare?
             </a>

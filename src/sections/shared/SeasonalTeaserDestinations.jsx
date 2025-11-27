@@ -33,7 +33,7 @@ const SeasonalTeaserDestinations = () => {
           <div className="w-full md:w-auto flex flex-col gap-2">
             <Link
               to="/mete-stagionali"
-              className="inline-flex w-full justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0EA5E9] text-white border border-[#0EA5E9] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              className="inline-flex w-full justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               <ArrowRight className="w-4 h-4 mr-2" />
               Guarda le mete stagionali
@@ -54,3 +54,4 @@ const SeasonalTeaserDestinations = () => {
 };
 
 export default SeasonalTeaserDestinations;
+
