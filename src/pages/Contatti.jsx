@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Mail, Phone, MapPin, Clock, Calendar } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
 // 📌 Immagine locale hero contatti
 import heroImg from "../assets/contatti/hero.webp";
@@ -89,6 +90,8 @@ const Contatti = () => {
         subtitle="Raccontaci il viaggio che hai in mente, al resto pensiamo noi."
         image={heroImg}   // <-- ora usa l'immagine locale
       />
+
+      <Breadcrumb />
 
       <section className="py-12 md:py-16 bg-[#E8F1FD]">
         <div className="max-w-6xl mx-auto px-4">

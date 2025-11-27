@@ -12,6 +12,7 @@ import {
   Calendar,
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
 // 📌 Immagini locali
 import heroImg from "../assets/viaggi-nozze/hero.webp";
@@ -120,6 +121,7 @@ const ViaggiDiNozze = () => {
         image={heroImg}
       />
 
+      <Breadcrumb />
       {/* HONEYMOON + PERCHÉ SCEGLIERCI (UNICA SEZIONE) */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 space-y-10">
@@ -242,7 +244,10 @@ const ViaggiDiNozze = () => {
       </section>
 
       {/* IDEE DI VIAGGIO DI NOZZE */}
-      <section id="idee-nozze" className="py-12 md:py-16 bg-[#0F172A]">
+      <section
+        id="idee-nozze"
+        className="scroll-mt-28 py-12 md:py-16 bg-[#0F172A]"
+      >
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-10">
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#EB2480] mb-2">
@@ -282,7 +287,10 @@ const ViaggiDiNozze = () => {
       </section>
 
       {/* FORM DEDICATO VIAGGIO DI NOZZE – STILE CONTATTI, MOBILE FIRST */}
-      <section id="preventivo-nozze" className="py-12 md:py-16 bg-[#E8F1FD]">
+      <section
+        id="preventivo-nozze"
+        className="scroll-mt-28 py-12 md:py-16 bg-[#E8F1FD]"
+      >
         <div className="max-w-5xl mx-auto px-4">
           {/* Intro form */}
           <div className="text-center mb-8 md:mb-10">

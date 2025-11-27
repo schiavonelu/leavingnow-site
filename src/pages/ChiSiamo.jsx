@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import { useInView } from "../hooks/useInView";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
 // 📌 Immagini locali per la pagina "Chi siamo"
 import heroImg from "../assets/chisiamo/hero.webp";
@@ -156,6 +157,8 @@ const ChiSiamo = () => {
         subtitle="Leaving Now – Storie di viaggi su misura."
         image={heroImg}
       />
+
+      <Breadcrumb />
 
       {/* STORIA AGENZIA */}
       <section className="py-12 md:py-16 bg-white">

@@ -1,6 +1,6 @@
 // src/sections/home/SeasonalHighlightSection.jsx
 import { Link } from "react-router-dom";
-import { CalendarRange } from "lucide-react";
+import { Plane } from "lucide-react"; // ⬅️ cambiato CalendarRange -> Plane
 import heroImg from "../../assets/destination/hero.webp";
 
 const getSeasonContent = () => {
@@ -13,9 +13,9 @@ const getSeasonContent = () => {
       label: "Inverno",
       badge: "Mete consigliate per questo inverno",
       title:
-        "L’inverno è il momento perfetto per rallentare, ritrovare il calore e scegliere un viaggio che parli davvero di te.",
-      subtitle:
-        "Dalle città illuminate ai paesaggi silenziosi della neve, fino alle atmosfere sofisticate del Nord Europa: ti proponiamo idee che esprimono il meglio della stagione. Non pacchetti preconfezionati, ma esperienze costruite intorno ai tuoi ritmi, ai tuoi interessi e al tuo modo di viaggiare.",
+        "L’inverno è perfetto per rallentare e scegliere un viaggio che scaldi davvero.",
+      intro:
+        "Dalle città illuminate alla neve, fino al Nord Europa: alcune idee per vivere al meglio la stagione.",
       highlights: [
         "Atmosfere intime, luci soffuse, mercatini e cultura",
         "Montagna e benessere tra spa panoramiche e rifugi esclusivi",
@@ -31,10 +31,9 @@ const getSeasonContent = () => {
       id: "primavera",
       label: "Primavera",
       badge: "Mete consigliate per questa primavera",
-      title:
-        "La primavera è un invito naturale a ripartire e a riscoprire la bellezza con occhi nuovi.",
-      subtitle:
-        "È la stagione ideale per città vivaci, fioriture spettacolari, primi bagni di sole e itinerari delicati tra natura e cultura. Queste sono solo alcune idee: il viaggio vero nasce quando ci racconti chi sei e cosa immagini.",
+      title: "La primavera è il momento ideale per ripartire con leggerezza.",
+      intro:
+        "Città vive, fioriture, primi weekend al mare: qui trovi alcuni spunti per questo periodo.",
       highlights: [
         "City break con clima piacevole e tanti nuovi stimoli",
         "Parchi, fioriture e borghi immersi nella natura",
@@ -51,9 +50,9 @@ const getSeasonContent = () => {
       label: "Estate",
       badge: "Mete consigliate per questa estate",
       title:
-        "L’estate è il momento del viaggio che sogni davvero: mare, libertà, grandi itinerari e tempo per te.",
-      subtitle:
-        "Dalle isole mediterranee agli Stati Uniti on the road, fino ai mari lontani: scegliamo insieme il ritmo, lo stile e l’atmosfera che desideri. Le nostre idee sono solo il punto di partenza per costruire qualcosa di tuo.",
+        "Estate è sinonimo di mare, libertà e grandi itinerari da vivere con calma.",
+      intro:
+        "Dalle isole mediterranee ai grandi viaggi lontani: qualche idea da cui partire.",
       highlights: [
         "Isole mediterranee e panorami che abbracciano il mare",
         "Grandi itinerari tra natura, città iconiche e strade infinite",
@@ -69,9 +68,9 @@ const getSeasonContent = () => {
     label: "Autunno",
     badge: "Mete consigliate per questo autunno",
     title:
-      "L’autunno è una stagione che accoglie: colori caldi, sapori autentici e luoghi da vivere con calma.",
-    subtitle:
-      "È il periodo perfetto per scoprire destinazioni più intime, città meno affollate e paesaggi che cambiano ogni giorno. Ti proponiamo idee eleganti e rilassate, pensate per chi ama l’essenza dei luoghi.",
+      "L’autunno è fatto di colori caldi, ritmi lenti e luoghi da vivere con calma.",
+    intro:
+      "È il momento ideale per città meno affollate, foliage e viaggi di gusto e benessere.",
     highlights: [
       "Foliage, laghi e colline dai colori caldi",
       "City break in bassa stagione, eleganti e vivibili",
@@ -90,26 +89,19 @@ const SeasonalHighlightSection = () => {
         <div className="rounded-3xl border border-slate-700/70 bg-gradient-to-br from-slate-900 via-slate-900/95 to-[#0F172A] overflow-hidden shadow-lg flex flex-col md:flex-row">
           {/* Testo */}
           <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col gap-4">
-            <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#EB2480]">
+            <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#EB2480] text-center">
               {season.badge}
             </p>
 
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white text-justify">
               {season.title}
             </h2>
 
             <p className="text-sm md:text-base text-slate-200 leading-relaxed text-justify">
-              {season.subtitle}
+              {season.intro}
             </p>
 
-            <p className="text-[11px] md:text-xs text-slate-400">
-              Le idee che trovi nella pagina dedicata alle mete stagionali non
-              sono offerte a scaffale né listini online: sono spunti pensati
-              per questo periodo dell&apos;anno, da trasformare insieme nel tuo
-              viaggio su misura.
-            </p>
-
-            <ul className="mt-2 space-y-1.5 text-xs md:text-sm text-slate-200">
+            <ul className="mt-1 space-y-1.5 text-xs md:text-sm text-slate-200">
               {season.highlights.map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-[5px] h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />
@@ -123,7 +115,7 @@ const SeasonalHighlightSection = () => {
                 to={`/mete-stagionali#${season.id}`}
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
               >
-                <CalendarRange className="w-4 h-4 mr-2" />
+                <Plane className="w-4 h-4 mr-2" /> {/* ⬅️ icona aereo */}
                 {season.ctaLabel}
               </Link>
 
@@ -153,3 +145,4 @@ const SeasonalHighlightSection = () => {
 };
 
 export default SeasonalHighlightSection;
+

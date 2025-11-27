@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Gift, HeartHandshake, Users, Plane } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
 // 📌 Immagine locale hero idee regalo
 import heroImg from "../assets/idee-regalo/hero.webp";
@@ -49,6 +50,7 @@ const IdeeRegalo = () => {
         image={heroImg}
       />
 
+      <Breadcrumb />
       {/* INTRO */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">

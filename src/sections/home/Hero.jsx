@@ -29,10 +29,10 @@ const Hero = () => {
       <picture>
         <img
           src={heroImage}
-          alt="Mare cristallino senza eguali"
+          alt="Mare cristallino e orizzonte aperto, invito al viaggio"
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
         />
       </picture>

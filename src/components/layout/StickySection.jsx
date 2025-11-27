@@ -10,7 +10,7 @@ const StickySection = ({
       {/* HEADER STICKY COMPATTO */}
       <div
         className={[
-          "sticky top-10 z-20", // offset di default
+          "sticky top-8 z-20", // offset di default
           "bg-slate-50/95 backdrop-blur-sm border-b border-slate-200/60",
           stickyClassName, // 👈 qui uso il valore passato da props
         ].join(" ")}
