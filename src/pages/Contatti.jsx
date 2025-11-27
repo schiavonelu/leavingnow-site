@@ -7,6 +7,8 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import heroImg from "../assets/contatti/hero.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = "59cd3a4d-3c21-4152-8f8d-95c3c2590684";
 
 const Contatti = () => {
   const [status, setStatus] = useState(null);
@@ -30,27 +32,38 @@ const Contatti = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setStatus(null);
 
     const data = new FormData(e.target);
-    data.append("access_key", "59cd3a4d-3c21-4152-8f8d-95c3c2590684");
+    data.append("access_key", WEB3FORMS_KEY);
+    data.append(
+      "subject",
+      "Nuovo messaggio dal form Contatti - Leaving Now"
+    );
+    data.append("from_page", "Contatti (/contatti)");
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: data,
-    });
-
-    const result = await res.json();
-    setLoading(false);
-
-    if (result.success) {
-      setStatus("success");
-      setFormData({
-        nome: "",
-        email: "",
-        oggetto: "",
-        messaggio: "",
+    try {
+      const res = await fetch(WEB3FORMS_URL, {
+        method: "POST",
+        body: data,
       });
-    } else {
+
+      const result = await res.json();
+      setLoading(false);
+
+      if (result.success) {
+        setStatus("success");
+        setFormData({
+          nome: "",
+          email: "",
+          oggetto: "",
+          messaggio: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setLoading(false);
       setStatus("error");
     }
   };
@@ -88,7 +101,7 @@ const Contatti = () => {
       <InnerHero
         title="Contattaci"
         subtitle="Raccontaci il viaggio che hai in mente, al resto pensiamo noi."
-        image={heroImg}   // <-- ora usa l'immagine locale
+        image={heroImg} // <-- immagine locale
       />
 
       <Breadcrumb />
@@ -176,6 +189,60 @@ const Contatti = () => {
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* 🔹 Campi nascosti per Web3Forms (HTML email) */}
+                <input
+                  type="hidden"
+                  name="from_name"
+                  value="Leaving Now - Sito web"
+                />
+                <input type="hidden" name="email_format" value="html" />
+                <input
+                  type="hidden"
+                  name="email_template"
+                  value={`
+                    <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; background-color: #f3f4f6;">
+                      <div style="max-width: 640px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e5e7eb;">
+                        <h2 style="margin: 0 0 12px; font-size: 20px; color: #111827;">
+                          Nuovo messaggio dal sito <span style="color:#0863D6;">Leaving Now</span>
+                        </h2>
+                        <p style="margin: 0 0 16px; font-size: 14px; color: #4b5563;">
+                          Hai ricevuto una nuova richiesta tramite il form <strong>Contatti</strong> del sito.
+                        </p>
+
+                        <table style="width:100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px;">
+                          <tr>
+                            <td style="padding: 8px; font-weight: 600; color:#111827; width: 120px;">Nome</td>
+                            <td style="padding: 8px; color:#374151;">{{nome}}</td>
+                          </tr>
+                          <tr style="background-color:#f9fafb;">
+                            <td style="padding: 8px; font-weight: 600; color:#111827;">Email</td>
+                            <td style="padding: 8px; color:#374151;">{{email}}</td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 8px; font-weight: 600; color:#111827;">Oggetto</td>
+                            <td style="padding: 8px; color:#374151;">{{oggetto}}</td>
+                          </tr>
+                        </table>
+
+                        <div style="margin-top: 12px;">
+                          <p style="margin: 0 0 6px; font-weight: 600; color:#111827; font-size: 14px;">Messaggio</p>
+                          <div style="padding: 12px; border-radius: 8px; background-color:#f9fafb; border:1px solid #e5e7eb; color:#374151; font-size: 14px; white-space: pre-line;">
+                            {{messaggio}}
+                          </div>
+                        </div>
+
+                        <p style="margin-top: 16px; font-size: 12px; color:#9ca3af;">
+                          Fonte: {{from_page}}
+                        </p>
+
+                        <p style="margin-top: 6px; font-size: 11px; color:#9ca3af;">
+                          Email generata automaticamente dal sito Leaving Now - Non rispondere a questo indirizzo.
+                        </p>
+                      </div>
+                    </div>
+                  `}
+                />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium text-[#132C50] mb-1 block">
@@ -338,6 +405,7 @@ const Contatti = () => {
 };
 
 export default Contatti;
+
 
 
 

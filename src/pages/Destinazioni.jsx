@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaGlobeEurope,
   FaGlobeAmericas,
@@ -16,11 +16,24 @@ import worldMap from "../assets/mondo.jpg";
 import destinazioniHero from "../assets/destination/hero.webp";
 
 const Destinazioni = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
-
+  const location = useLocation();
   const [showCredits, setShowCredits] = useState(false);
+
+  useEffect(() => {
+    // Se arrivo con hash #map → scroll alla mappa
+    if (location.hash === "#map") {
+      const mapSection = document.getElementById("destinazioni-map");
+      if (mapSection) {
+        mapSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    } else {
+      // Comportamento standard: scroll in alto
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }, [location.pathname, location.hash]);
 
   return (
     <>
@@ -30,8 +43,11 @@ const Destinazioni = () => {
         image={destinazioniHero}
       />
 
-      {/* SFONDO SEZIONE CON PALETTE */}
-      <section className="py-12 md:py-16 bg-[#E8F1FD]">
+      {/* 🔹 SEZIONE MAPPA CON ID PER LO SCROLL */}
+      <section
+        id="destinazioni-map"
+        className="py-12 md:py-16 bg-[#E8F1FD]"
+      >
         <div className="max-w-6xl mx-auto px-4">
           {/* Intro testo */}
           <div className="text-center mb-10 md:mb-12 max-w-3xl mx-auto">
@@ -51,7 +67,6 @@ const Destinazioni = () => {
           {/* MAPPA INTERATTIVA */}
           <div className="max-w-5xl mx-auto">
             <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-[#132C50] bg-[#020617]">
-              {/* Immagine della mappa */}
               <img
                 src={worldMap}
                 alt="Mappa del mondo"
@@ -59,15 +74,12 @@ const Destinazioni = () => {
                 loading="lazy"
               />
 
-              {/* Overlay */}
               <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
-              {/* Etichetta */}
               <div className="absolute top-3 left-4 text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase text-amber-100 drop-shadow">
                 World map
               </div>
 
-              {/* Pulsante info crediti */}
               <div className="absolute top-3 right-4 z-10">
                 <button
                   type="button"
@@ -197,6 +209,7 @@ const Destinazioni = () => {
 };
 
 export default Destinazioni;
+
 
 
 

@@ -84,7 +84,7 @@ const ViaggiDiNozze = () => {
     const form = e.target;
     const data = new FormData(form);
 
-    data.append("access_key", "59cd3a4d-3c21-4152-8f8d-95c3c2590684");
+    data.append("access_key", WEB3FORMS_KEY);
     data.append(
       "subject",
       "Richiesta viaggio di nozze dal sito Leaving Now"
@@ -122,6 +122,7 @@ const ViaggiDiNozze = () => {
       />
 
       <Breadcrumb />
+
       {/* HONEYMOON + PERCHÉ SCEGLIERCI (UNICA SEZIONE) */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 space-y-10">
@@ -212,7 +213,7 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
-      {/* LISTA VIAGGIO DI NOZZE – TESTO SNELLO, MOBILE-CENTERED */}
+      {/* LISTA VIAGGIO DI NOZZE */}
       <section className="py-10 md:py-12 bg-[#F8FAFC] border-b border-[#E2E8F0]">
         <div className="max-w-5xl mx-auto px-4">
           <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-5 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6 text-center md:text-left">
@@ -286,7 +287,7 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
-      {/* FORM DEDICATO VIAGGIO DI NOZZE – STILE CONTATTI, MOBILE FIRST */}
+      {/* FORM DEDICATO VIAGGIO DI NOZZE */}
       <section
         id="preventivo-nozze"
         className="scroll-mt-28 py-12 md:py-16 bg-[#E8F1FD]"
@@ -297,7 +298,7 @@ const ViaggiDiNozze = () => {
             <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
               Richiesta preventivo viaggio di nozze
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
+            <h2 className="text-2xl md:3xl font-bold text-[#EB2480] mb-3">
               Raccontateci il vostro viaggio ideale
             </h2>
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
@@ -310,19 +311,116 @@ const ViaggiDiNozze = () => {
           {/* CARD FORM CENTRATA */}
           <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-lg p-6 md:p-8 max-w-3xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* 🔹 Campi nascosti per Web3Forms (HTML email) */}
+              <input
+                type="hidden"
+                name="from_name"
+                value="Leaving Now - Sito web"
+              />
+              <input type="hidden" name="email_format" value="html" />
+              <input
+                type="hidden"
+                name="email_template"
+                value={`
+                  <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; background-color: #f3f4f6;">
+                    <div style="max-width: 720px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e5e7eb;">
+                      <h2 style="margin: 0 0 12px; font-size: 20px; color: #111827;">
+                        Richiesta <span style="color:#EB2480;">Viaggio di nozze</span>
+                      </h2>
+                      <p style="margin: 0 0 16px; font-size: 14px; color: #4b5563;">
+                        Hai ricevuto una nuova richiesta di preventivo dal sito <strong>Leaving Now</strong>.
+                      </p>
+
+                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
+                        Coppia
+                      </h3>
+                      <table style="width:100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px;">
+                        <tr>
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827; width: 180px;">Sposo/Sposa</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{sposoA}}</td>
+                        </tr>
+                        <tr style="background-color:#f9fafb;">
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Sposa/Sposo</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{sposoB}}</td>
+                        </tr>
+                      </table>
+
+                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
+                        Contatti
+                      </h3>
+                      <table style="width:100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px;">
+                        <tr>
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827; width: 180px;">Email</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{email}}</td>
+                        </tr>
+                        <tr style="background-color:#f9fafb;">
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Telefono</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{telefono}}</td>
+                        </tr>
+                      </table>
+
+                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
+                        Viaggio di nozze
+                      </h3>
+                      <table style="width:100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px;">
+                        <tr>
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827; width: 180px;">Meta / tipologia</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{meta}}</td>
+                        </tr>
+                        <tr style="background-color:#f9fafb;">
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Altra idea</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{meta_altro}}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Periodo</td>
+                          <td style="padding: 6px 8px; color:#374151;">dal {{data_da}} al {{data_a}}</td>
+                        </tr>
+                        <tr style="background-color:#f9fafb;">
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Date flessibili</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{date_flessibili}}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Luogo di partenza</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{partenza}}</td>
+                        </tr>
+                        <tr style="background-color:#f9fafb;">
+                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Budget indicativo</td>
+                          <td style="padding: 6px 8px; color:#374151;">{{budget}}</td>
+                        </tr>
+                      </table>
+
+                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
+                        Note aggiuntive
+                      </h3>
+                      <div style="padding: 10px 12px; border-radius: 8px; background-color:#f9fafb; border:1px solid #e5e7eb; color:#374151; font-size: 14px; white-space: pre-line; min-height: 40px;">
+                        {{note}}
+                      </div>
+
+                      <p style="margin-top: 16px; font-size: 12px; color:#9ca3af;">
+                        Fonte: {{from_page}}
+                      </p>
+
+                      <p style="margin-top: 6px; font-size: 11px; color:#9ca3af;">
+                        Email generata automaticamente dal sito Leaving Now - Non rispondere a questo indirizzo.
+                      </p>
+                    </div>
+                  </div>
+                `}
+              />
+
               {/* Nomi sposi */}
               <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
                 <div>
                   <label
-                    htmlFor="sposo1"
+                    htmlFor="sposoA"
                     className="block text-sm font-medium text-[#132C50] mb-1"
                   >
-                    Nome sposa/sposo 1 *
+                    Sposo/Sposa *
                   </label>
                   <input
                     type="text"
-                    id="sposo1"
-                    name="sposo1"
+                    id="sposoA"
+                    name="sposoA"
                     required
                     className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                     placeholder="Nome"
@@ -336,15 +434,15 @@ const ViaggiDiNozze = () => {
 
                 <div>
                   <label
-                    htmlFor="sposo2"
+                    htmlFor="sposoB"
                     className="block text-sm font-medium text-[#132C50] mb-1"
                   >
-                    Nome sposa/sposo 2 *
+                    Sposa/Sposo *
                   </label>
                   <input
                     type="text"
-                    id="sposo2"
-                    name="sposo2"
+                    id="sposoB"
+                    name="sposoB"
                     required
                     className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                     placeholder="Nome"
@@ -456,7 +554,7 @@ const ViaggiDiNozze = () => {
                       htmlFor="data_da"
                       className="block text-sm font-medium text-[#132C50] mb-1"
                     >
-                      Dal *
+                      dal *
                     </label>
                     <div className="relative">
                       <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
@@ -476,7 +574,7 @@ const ViaggiDiNozze = () => {
                       htmlFor="data_a"
                       className="block text-sm font-medium text-[#132C50] mb-1"
                     >
-                      Al *
+                      al *
                     </label>
                     <div className="relative">
                       <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
@@ -650,6 +748,7 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+
 
 
 

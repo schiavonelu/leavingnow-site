@@ -9,8 +9,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
-import heroImg from "../assets/destination/hero.webp";
+import heroImg from "../assets/triptypes/viaggiodigruppo.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
@@ -60,6 +61,8 @@ const ViaggiIndividualiGruppo = () => {
         subtitle="Itinerari su misura per chi parte da solo, in coppia, in famiglia o con un gruppo organizzato."
         image={heroImg}
       />
+
+      <Breadcrumb />
 
       {/* INTRO */}
       <section className="py-12 md:py-16 bg-white">

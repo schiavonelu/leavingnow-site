@@ -11,8 +11,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
-import heroImg from "../assets/destination/hero.webp"; 
+import heroImg from "../assets/triptypes/family.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
@@ -62,6 +63,8 @@ const ViaggiFamily = () => {
         subtitle="Viaggi pensati per grandi e piccoli, con ritmi e servizi adatti alla tua famiglia."
         image={heroImg}
       />
+
+      <Breadcrumb />
 
       {/* INTRO */}
       <section className="py-12 md:py-16 bg-white">

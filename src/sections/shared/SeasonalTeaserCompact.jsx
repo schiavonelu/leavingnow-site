@@ -43,7 +43,7 @@ const SeasonalTeaserCompact = () => {
               className="inline-flex w-full justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-400 text-slate-700 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              Parla con un consulente
+              Contattaci
             </Link>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Hero from "../sections/home/Hero.jsx";
 import StickySection from "../components/layout/StickySection.jsx";
 import LazySection from "../components/LazySection.jsx";
@@ -11,9 +12,42 @@ import TripTypesStrip from "../components/ui/TripTypesStrip.jsx";
 import SeasonalHighlightSection from "../sections/home/SeasonalHighlightSection.jsx";
 
 const Home = () => {
+  const location = useLocation();
+
   useEffect(() => {
+    const HEADER_OFFSET = 80; // regola se serve (navbar + eventuale sticky)
+
+    const hash = location.hash;
+
+    if (hash) {
+      const id = hash.replace("#", "");
+
+      const scrollWithOffset = () => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        const rect = el.getBoundingClientRect();
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const targetY = rect.top + scrollTop - HEADER_OFFSET;
+
+        window.scrollTo({
+          top: targetY,
+          behavior: "auto",
+        });
+      };
+
+      // 1° tentativo subito dopo il render
+      setTimeout(scrollWithOffset, 0);
+      // 2° tentativo dopo un po' (quando lazy / immagini hanno finito di “spingere” la pagina)
+      setTimeout(scrollWithOffset, 300);
+
+      return;
+    }
+
+    // Nessun hash → normale scroll in alto
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+  }, [location.pathname, location.hash]);
 
   return (
     <main>
@@ -26,62 +60,74 @@ const Home = () => {
       <Hero />
 
       {/* DESTINAZIONI – HEADER STICKY */}
-      <StickySection
-        header={
+      <section id="destinazioni">
+        <StickySection
+          header={
+            <LazySection
+              loader={() => import("../sections/home/DestinationIntro.jsx")}
+              fallback={null}
+            />
+          }
+        >
           <LazySection
-            loader={() => import("../sections/home/DestinationIntro.jsx")}
+            loader={() => import("../sections/home/DestinationsSection.jsx")}
             fallback={null}
           />
-        }
-      >
-        <LazySection
-          loader={() => import("../sections/home/DestinationsSection.jsx")}
-          fallback={null}
-        />
-      </StickySection>
+        </StickySection>
+      </section>
 
       {/* 🔹 SEZIONE DINAMICA METE STAGIONALI (dopo i continenti) */}
-      <SeasonalHighlightSection />
+      <section id="mete-stagionali">
+        <SeasonalHighlightSection />
+      </section>
 
       {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY (NO LAZY QUI) */}
-      <StickySection header={<TripTypesStripIntro />}>
-        <TripTypesStrip />
-      </StickySection>
+      <section id="tipologie">
+        <StickySection header={<TripTypesStripIntro />}>
+          <TripTypesStrip />
+        </StickySection>
+      </section>
 
       {/* RECENSIONI – HEADER STICKY */}
-      <StickySection
-        header={
+      <section id="recensioni">
+        <StickySection
+          header={
+            <LazySection
+              loader={() => import("../sections/home/ReviewsIntro.jsx")}
+              fallback={null}
+            />
+          }
+        >
           <LazySection
-            loader={() => import("../sections/home/ReviewsIntro.jsx")}
+            loader={() => import("../components/ui/ReviewsSection.jsx")}
             fallback={null}
           />
-        }
-      >
-        <LazySection
-          loader={() => import("../components/ui/ReviewsSection.jsx")}
-          fallback={null}
-        />
-      </StickySection>
+        </StickySection>
+      </section>
 
       {/* AGENZIA – HEADER STICKY */}
-      <StickySection
-        header={
+      <section id="agenzia">
+        <StickySection
+          header={
+            <LazySection
+              loader={() => import("../sections/home/AgencyIntroHeader.jsx")}
+              fallback={null}
+            />
+          }
+        >
           <LazySection
-            loader={() => import("../sections/home/AgencyIntroHeader.jsx")}
+            loader={() => import("../sections/shared/AgencyIntroStrip.jsx")}
             fallback={null}
           />
-        }
-      >
-        <LazySection
-          loader={() => import("../sections/shared/AgencyIntroStrip.jsx")}
-          fallback={null}
-        />
-      </StickySection>
+        </StickySection>
+      </section>
     </main>
   );
 };
 
 export default Home;
+
+
 
 
 

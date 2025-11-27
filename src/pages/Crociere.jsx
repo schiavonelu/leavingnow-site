@@ -9,9 +9,10 @@ import {
   Sparkles,
 } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
 // Per ora uso l'hero generico destinazioni
-import heroImg from "../assets/destination/hero.webp";
+import heroImg from "../assets/triptypes/crociere.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
@@ -61,6 +62,8 @@ const Crociere = () => {
         subtitle="Dal Mediterraneo ai mari lontani, crociere pensate intorno a te."
         image={heroImg}
       />
+
+      <Breadcrumb />
 
       {/* INTRO */}
       <section className="py-12 md:py-16 bg-white">

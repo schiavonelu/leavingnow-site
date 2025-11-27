@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
 import crociereImg from "../../assets/triptypes/crociere.webp";
 import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
-import familyImg from "../../assets/triptypes/viaggiodigruppo.webp"; // 👈 nuova immagine
+import familyImg from "../../assets/triptypes/family.webp";
 
 const tripTypes = [
   {
@@ -35,7 +35,7 @@ const tripTypes = [
     subtitle: "Viaggi pensati per grandi e piccoli",
     image: familyImg,
     query: "family",
-    to: "/viaggi-family", // 👈 rotta pagina family
+    to: "/viaggi-family", 
   },
 ];
 
