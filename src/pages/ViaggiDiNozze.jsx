@@ -22,7 +22,6 @@ const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 const WEB3FORMS_KEY = "59cd3a4d-3c21-4152-8f8d-95c3c2590684";
 
-// Card “perché sceglierci”
 const ValueCard = ({ icon, title, text }) => (
   <article className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-5 md:p-6 flex gap-3 md:gap-4 items-start">
     <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E8F1FD] text-[#0863D6] shadow-sm shrink-0">
@@ -39,7 +38,6 @@ const ValueCard = ({ icon, title, text }) => (
   </article>
 );
 
-// Card idee di viaggio (immagine di sfondo)
 const TravelIdeaCard = ({ title, caption, badge, image }) => (
   <article className="relative overflow-hidden rounded-3xl shadow-md border border-[#E2E8F0] bg-slate-900/80">
     <div
@@ -47,7 +45,6 @@ const TravelIdeaCard = ({ title, caption, badge, image }) => (
       style={{ backgroundImage: `url(${image})` }}
     />
     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/60 to-slate-900/10" />
-
     <div className="relative p-5 md:p-6 flex flex-col h-full justify-end">
       <span className="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white mb-3">
         {badge}
@@ -65,7 +62,7 @@ const TravelIdeaCard = ({ title, caption, badge, image }) => (
 const ViaggiDiNozze = () => {
   const [meta, setMeta] = useState("");
   const [otherMeta, setOtherMeta] = useState("");
-  const [status, setStatus] = useState(null); // success | error | null
+  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const showOtherMeta = meta === "altro";
@@ -104,7 +101,7 @@ const ViaggiDiNozze = () => {
       } else {
         setStatus("error");
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
     } finally {
       setLoading(false);
@@ -119,406 +116,329 @@ const ViaggiDiNozze = () => {
         image={heroImg}
       />
 
-      {/* INTRO */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
-            Honeymoon by Leaving Now
-          </p>
-
-          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-6">
-            Il vostro primo grande viaggio insieme, pensato in ogni dettaglio
-          </h1>
-
-          <div className="space-y-4 text-sm md:text-base text-slate-700 leading-relaxed text-justify">
-            <p>
-              Il viaggio di nozze non è una semplice vacanza: è il primo
-              capitolo di una nuova storia da vivere insieme. Per questo al
-              centro ci siete voi, la vostra personalità, il vostro modo di
-              viaggiare e il ricordo che desiderate portare con voi per sempre.
-            </p>
-            <p>
-              Insieme progettiamo un itinerario su misura, valutando mete,
-              periodi, combinazioni di voli, strutture e attività, senza
-              lasciare nulla al caso. Dalle grandi classiche da sogno alle
-              rotte più particolari, ogni proposta è costruita ascoltandovi,
-              consigliandovi e affiancandovi passo dopo passo.
-            </p>
-            <p>
-              Che immaginiate un mare cristallino, un tour on the road, una
-              città romantica o una combinazione di più esperienze, il nostro
-              obiettivo è uno solo: farvi vivere un viaggio che vi somigli e
-              che resti davvero indimenticabile.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* PERCHÉ SCEGLIERCI */}
+      {/* 🔹 SEZIONE UNICA: HONEYMOON + PERCHÉ SCEGLIERCI + LISTA + FORM */}
       <section className="py-12 md:py-16 bg-[#F8FAFC]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10 md:mb-12">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
-              Perché scegliere Leaving Now
+        <div className="max-w-6xl mx-auto px-4 space-y-10">
+          {/* Intro + perché sceglierci + lista nozze (testo snello) */}
+          <div className="max-w-4xl mx-auto text-center space-y-5">
+            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6]">
+              Honeymoon by Leaving Now
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
-              Viaggi di nozze curati come se fossero i nostri
-            </h2>
-            <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
-              Dalla prima idea al rientro, vi accompagniamo in ogni fase:
-              progettazione, organizzazione, assistenza e piccoli dettagli che
-              fanno la differenza.
+
+            <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
+              Un viaggio di nozze che vi assomiglia davvero
+            </h1>
+
+            <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+              Niente pacchetti standard: partiamo dalla vostra storia, dal modo
+              in cui vi piace viaggiare e dal periodo in cui partirete. Da lì
+              costruiamo un itinerario su misura, combinando mete, tappe e
+              strutture con un unico obiettivo: farvi vivere un viaggio che sia
+              davvero vostro.
             </p>
+
+            <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+              Lavoriamo con partner selezionati, curiamo ogni dettaglio
+              operativo e restiamo al vostro fianco prima, durante e dopo il
+              viaggio, così potete concentrarvi solo su una cosa: godervi il
+              vostro primo grande “sì” lontano da casa.
+            </p>
+
+            <div className="text-xs md:text-sm text-slate-600">
+              <span className="font-semibold text-[#132C50]">
+                Lista nozze viaggio:
+              </span>{" "}
+              se desiderate, possiamo anche trasformare il vostro viaggio di
+              nozze nel regalo dei vostri invitati, con una{" "}
+              <Link
+                to="/idee-regalo#lista-nozze"
+                className="underline decoration-[#0863D6] underline-offset-2 hover:text-[#0863D6]"
+              >
+                lista nozze dedicata
+              </Link>{" "}
+              semplice da condividere.
+            </div>
           </div>
 
+          {/* Card perché sceglierci */}
           <div className="grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ValueCard
               icon={<Heart />}
-              title="Ascolto e progetto su misura"
-              text="Partiamo da voi: gusti, budget, periodo e stile di viaggio. Da qui costruiamo un itinerario unico, non un pacchetto standard."
+              title="Su misura, non a catalogo"
+              text="Ascolto, confronto e proposta personalizzata: ogni viaggio di nozze è costruito partendo da voi, non da un listino."
             />
             <ValueCard
               icon={<Plane />}
-              title="Operatività completa"
-              text="Voli, hotel, trasferimenti, escursioni, assicurazioni e documentazione: in un unico punto di riferimento, con spiegazioni chiare."
+              title="Tutto coordinato da un unico punto"
+              text="Voli, hotel, trasferimenti, assicurazioni e documenti sempre sotto controllo, con una regia unica e chiara."
             />
             <ValueCard
               icon={<Sparkles />}
-              title="Esperienze speciali per coppie"
-              text="Cene romantiche, esperienze esclusive, servizi dedicati agli sposi: vi suggeriamo ciò che può rendere il viaggio ancora più vostro."
+              title="Dettagli pensati per coppie"
+              text="Esperienze speciali, cene, sorprese e piccoli plus che rendono il viaggio ancora più vostro e memorabile."
             />
             <ValueCard
               icon={<MapPinned />}
               title="Partner selezionati nel mondo"
-              text="Collaboriamo con corrispondenti locali e strutture affidabili, per garantirvi qualità, sicurezza e assistenza anche in loco."
+              text="Corrispondenti locali e strutture di fiducia, scelti per affidabilità, cura del servizio e attenzione agli sposi."
             />
             <ValueCard
               icon={<CalendarRange />}
-              title="Timing e combinazioni ottimali"
-              text="Vi aiutiamo a scegliere il periodo giusto e le combinazioni di tappe migliori, ottimizzando giorni, spostamenti e budget."
+              title="Periodi e tappe ottimizzati"
+              text="Vi aiutiamo a incastrare al meglio date, combinazioni di voli e ritmo del viaggio, in base ai giorni reali che avete."
             />
             <ValueCard
               icon={<ShieldCheck />}
-              title="Serenità prima, durante e dopo"
-              text="Non siete mai soli: dal preventivo al rientro, siamo al vostro fianco per gestire cambi, dubbi e qualsiasi imprevisto."
+              title="Serenità dall’inizio alla fine"
+              text="Un riferimento chiaro prima, durante e dopo il viaggio, per gestire cambi, imprevisti o semplici dubbi."
             />
           </div>
-        </div>
-      </section>
 
-      {/* COLLEGAMENTO LISTA NOZZE – TESTO SNELLO */}
-      <section className="py-10 md:py-12 bg-[#F8FAFC] border-y border-[#E2E8F0]">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E8F1FD] text-[#EB2480] shrink-0">
-              <Gift className="w-5 h-5" />
-            </div>
-
-            <div className="flex-1 text-left">
-              <h3 className="text-base md:text-lg font-semibold text-[#132C50] mb-1">
-                Lista nozze viaggio
-              </h3>
-              <p className="text-sm text-slate-700 leading-relaxed text-justify mb-2">
-                Vuoi che il tuo viaggio di nozze sia anche il regalo dei tuoi
-                invitati? Possiamo creare per voi una lista nozze viaggio
-                dedicata, chiara e personalizzata da condividere con amici e
-                famiglia.
+          {/* CTA + FORM CENTRATO */}
+          <div className="space-y-6">
+            <div className="text-center space-y-3">
+              <h2 className="text-xl md:text-2xl font-bold text-[#132C50]">
+                Da dove vogliamo iniziare?
+              </h2>
+              <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
+                Compilate il form con le informazioni essenziali: useremo questi
+                dati per prepararvi una proposta su misura e ricontattarvi nel
+                modo che preferite.
               </p>
-              <p className="text-xs text-slate-500">
-                Scopri tutti i dettagli della lista nozze Leaving Now nella
-                pagina dedicata.
+              <p className="text-xs md:text-sm text-slate-500">
+                Preferite parlarne di persona?{" "}
+                <a
+                  href={RESERVIO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-[#0863D6] hover:text-[#0648a3] underline underline-offset-2"
+                >
+                  Prenotate una consulenza in agenzia
+                </a>
+                .
               </p>
             </div>
 
-            <div className="w-full md:w-auto">
-              <Link
-                to="/contatti"
-                className="inline-flex w-full md:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg_white hover:text-[#0863D6] transition"
-              >
-                Scrivici per informazioni
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* IDEE DI VIAGGIO DI NOZZE */}
-      <section className="py-12 md:py-16 bg-[#0F172A]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#EB2480] mb-2">
-              Idee e ispirazioni
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              Quale viaggio di nozze sognate?
-            </h2>
-            <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
-              Qui trovi solo alcuni spunti: ogni itinerario sarà cucito su di
-              voi, combinando mete, tempi e stile di viaggio.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            <TravelIdeaCard
-              badge="Mare & Relax"
-              title="Mare da sogno e resort esclusivi"
-              caption="Maldive, Polinesia, Seychelles, Caraibi e molte altre destinazioni. Resort selezionati, overwater, spa, servizi dedicati alle coppie e combinazioni con city break o tour brevi."
-              image={mareImg}
-            />
-            <TravelIdeaCard
-              badge="Tour & Avventura"
-              title="On the road e grandi itinerari"
-              caption="Stati Uniti, Giappone, Thailandia, Africa, Sud America: tour guidati o fly & drive, tra città iconiche, natura, esperienze locali e tappe studiate con cura."
-              image={tourImg}
-            />
-            <TravelIdeaCard
-              badge="Città romantiche"
-              title="Capitali, charme e design"
-              caption="Parigi, New York, Dubai, grandi città europee e metropoli internazionali. Boutique hotel, rooftop, ristoranti particolari e attività pensate per due."
-              image={cittaImg}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* FORM DEDICATO VIAGGIO DI NOZZE – STILE CONTATTI */}
-      <section className="py-12 md:py-16 bg-[#E8F1FD]">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
-              Richiesta preventivo viaggio di nozze
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
-              Raccontateci il vostro viaggio ideale
-            </h2>
-            <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
-              Compilate il form con le informazioni principali: useremo questi
-              dettagli per preparare una proposta su misura e ricontattarvi il
-              prima possibile.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-lg p-6 md:p-8">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Nomi sposi */}
-              <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
-                <div>
-                  <label
-                    htmlFor="sposo1"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Nome sposa/sposo 1 *
-                  </label>
-                  <input
-                    type="text"
-                    id="sposo1"
-                    name="sposo1"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Es. Martina"
-                  />
-                </div>
-
-                <div className="hidden md:flex items-center justify-center text-xl font-semibold text-slate-500">
-                  &
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="sposo2"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Nome sposa/sposo 2 *
-                  </label>
-                  <input
-                    type="text"
-                    id="sposo2"
-                    name="sposo2"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Es. Luca"
-                  />
-                </div>
-              </div>
-
-              {/* Contatti */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Es. nome@email.it"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="telefono"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Telefono (opzionale)
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Per un contatto più rapido"
-                  />
-                </div>
-              </div>
-
-              {/* Meta */}
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="meta"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Meta o tipologia di viaggio di nozze *
-                  </label>
-                  <select
-                    id="meta"
-                    name="meta"
-                    required
-                    value={meta}
-                    onChange={(e) => setMeta(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-                  >
-                    <option value="">Seleziona un’opzione</option>
-                    <option value="crociera">
-                      Crociera (Mediterraneo, fiordi, Caraibi…)
-                    </option>
-                    <option value="usa">
-                      Stati Uniti – tour on the road
-                    </option>
-                    <option value="usa-mare">
-                      Stati Uniti + mare (es. Caraibi)
-                    </option>
-                    <option value="mare-tropicale">
-                      Mare tropicale (Maldive, Polinesia, Seychelles,
-                      Caraibi…)
-                    </option>
-                    <option value="giappone-asia">Giappone / Asia</option>
-                    <option value="africa-safari-mare">
-                      Africa con safari + mare
-                    </option>
-                    <option value="europa">
-                      Europa (città, tour, on the road)
-                    </option>
-                    <option value="altro">Altro (specifica)</option>
-                  </select>
-                </div>
-
-                {showOtherMeta && (
+            {/* FORM DEDICATO – CENTRATO */}
+            <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-[#E2E8F0] shadow-lg p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Nomi sposi */}
+                <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
                   <div>
                     <label
-                      htmlFor="meta_altro"
+                      htmlFor="sposo1"
                       className="block text-sm font-medium text-[#132C50] mb-1"
                     >
-                      Altra destinazione o idea
+                      Nome sposa/sposo 1 *
                     </label>
                     <input
                       type="text"
-                      id="meta_altro"
-                      name="meta_altro"
-                      value={otherMeta}
-                      onChange={(e) => setOtherMeta(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      placeholder="Es. Australia, tour particolari..."
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Periodo + partenza */}
-              <div className="space-y-3">
-                <div className="grid gap-4 md:grid-cols-3">
-                  <div>
-                    <label
-                      htmlFor="data_da"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      Dal *
-                    </label>
-                    <div className="relative">
-                      <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                        <Calendar className="w-4 h-4 text-slate-400" />
-                      </span>
-                      <input
-                        type="date"
-                        id="data_da"
-                        name="data_da"
-                        required
-                        className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="data_a"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      Al *
-                    </label>
-                    <div className="relative">
-                      <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                        <Calendar className="w-4 h-4 text-slate-400" />
-                      </span>
-                      <input
-                        type="date"
-                        id="data_a"
-                        name="data_a"
-                        required
-                        className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="partenza"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      Luogo di partenza *
-                    </label>
-                    <input
-                      type="text"
-                      id="partenza"
-                      name="partenza"
+                      id="sposo1"
+                      name="sposo1"
                       required
                       className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      placeholder="Es. Napoli, Roma…"
+                      placeholder="Es. Martina"
+                    />
+                  </div>
+
+                  <div className="hidden md:flex items-center justify-center text-xl font-semibold text-slate-500">
+                    &
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="sposo2"
+                      className="block text-sm font-medium text-[#132C50] mb-1"
+                    >
+                      Nome sposa/sposo 2 *
+                    </label>
+                    <input
+                      type="text"
+                      id="sposo2"
+                      name="sposo2"
+                      required
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                      placeholder="Es. Luca"
                     />
                   </div>
                 </div>
 
-                {/* Date flessibili */}
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    id="date_flessibili"
-                    name="date_flessibili"
-                    className="h-4 w-4 rounded border-slate-300 text-[#0863D6] focus:ring-[#0863D6]"
-                  />
-                  <label
-                    htmlFor="date_flessibili"
-                    className="text-xs md:text-sm text-slate-600"
-                  >
-                    Le date sono flessibili
-                  </label>
+                {/* Contatti */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-[#132C50] mb-1"
+                    >
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                      placeholder="Es. nome@email.it"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="telefono"
+                      className="block text-sm font-medium text-[#132C50] mb-1"
+                    >
+                      Telefono (opzionale)
+                    </label>
+                    <input
+                      type="tel"
+                      id="telefono"
+                      name="telefono"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                      placeholder="Per un contatto più rapido"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Budget */}
-              <div className="grid gap-4 md:grid-cols-2">
+                {/* Meta */}
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="meta"
+                      className="block text-sm font-medium text-[#132C50] mb-1"
+                    >
+                      Meta o tipologia di viaggio di nozze *
+                    </label>
+                    <select
+                      id="meta"
+                      name="meta"
+                      required
+                      value={meta}
+                      onChange={(e) => setMeta(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
+                    >
+                      <option value="">Seleziona un’opzione</option>
+                      <option value="crociera">
+                        Crociera (Mediterraneo, fiordi, Caraibi…)
+                      </option>
+                      <option value="usa">
+                        Stati Uniti – tour on the road
+                      </option>
+                      <option value="usa-mare">
+                        Stati Uniti + mare (es. Caraibi)
+                      </option>
+                      <option value="mare-tropicale">
+                        Mare tropicale (Maldive, Polinesia, Seychelles,
+                        Caraibi…)
+                      </option>
+                      <option value="giappone-asia">Giappone / Asia</option>
+                      <option value="africa-safari-mare">
+                        Africa con safari + mare
+                      </option>
+                      <option value="europa">
+                        Europa (città, tour, on the road)
+                      </option>
+                      <option value="altro">Altro (specifica)</option>
+                    </select>
+                  </div>
+
+                  {showOtherMeta && (
+                    <div>
+                      <label
+                        htmlFor="meta_altro"
+                        className="block text-sm font-medium text-[#132C50] mb-1"
+                      >
+                        Altra destinazione o idea
+                      </label>
+                      <input
+                        type="text"
+                        id="meta_altro"
+                        name="meta_altro"
+                        value={otherMeta}
+                        onChange={(e) => setOtherMeta(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                        placeholder="Es. Australia, tour particolari..."
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Periodo + partenza */}
+                <div className="space-y-3">
+                  <div className="grid gap-4 md:grid-cols-3">
+                    <div>
+                      <label
+                        htmlFor="data_da"
+                        className="block text-sm font-medium text-[#132C50] mb-1"
+                      >
+                        Dal *
+                      </label>
+                      <div className="relative">
+                        <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                          <Calendar className="w-4 h-4 text-slate-400" />
+                        </span>
+                        <input
+                          type="date"
+                          id="data_da"
+                          name="data_da"
+                          required
+                          className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="data_a"
+                        className="block text-sm font-medium text-[#132C50] mb-1"
+                      >
+                        Al *
+                      </label>
+                      <div className="relative">
+                        <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                          <Calendar className="w-4 h-4 text-slate-400" />
+                        </span>
+                        <input
+                          type="date"
+                          id="data_a"
+                          name="data_a"
+                          required
+                          className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="partenza"
+                        className="block text-sm font-medium text-[#132C50] mb-1"
+                      >
+                        Luogo di partenza *
+                      </label>
+                      <input
+                        type="text"
+                        id="partenza"
+                        name="partenza"
+                        required
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                        placeholder="Es. Napoli, Roma…"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="date_flessibili"
+                      name="date_flessibili"
+                      className="h-4 w-4 rounded border-slate-300 text-[#0863D6] focus:ring-[#0863D6]"
+                    />
+                    <label
+                      htmlFor="date_flessibili"
+                      className="text-xs md:text-sm text-slate-600"
+                    >
+                      Le date sono flessibili
+                    </label>
+                  </div>
+                </div>
+
+                {/* Budget */}
                 <div>
                   <label
                     htmlFor="budget"
@@ -542,96 +462,123 @@ const ViaggiDiNozze = () => {
                     <option value="7000+">Oltre 7.000 €</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Note aggiuntive */}
-              <div>
-                <label
-                  htmlFor="note"
-                  className="block text-sm font-medium text-[#132C50] mb-1"
-                >
-                  Raccontateci qualcosa in più (opzionale)
-                </label>
-                <textarea
-                  id="note"
-                  name="note"
-                  rows={4}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                  placeholder="Es. durata ideale, tipo di strutture, esperienze che vi piacerebbe includere…"
-                />
-              </div>
-
-              {/* Consenso privacy */}
-              <div className="flex items-start gap-2">
-                <input
-                  type="checkbox"
-                  id="privacy"
-                  name="privacy"
-                  required
-                  className="mt-1 h-4 w-4 rounded border-slate-300 text-[#0863D6] focus:ring-[#0863D6]"
-                />
-                <label
-                  htmlFor="privacy"
-                  className="text-[11px] md:text-xs text-slate-600 text-justify"
-                >
-                  Dichiariamo di aver letto e compreso l&apos;{" "}
-                  <Link
-                    to="/privacy-policy"
-                    className="underline decoration-[#0863D6] decoration-2 underline-offset-2 hover:text-[#0863D6]"
+                {/* Note */}
+                <div>
+                  <label
+                    htmlFor="note"
+                    className="block text-sm font-medium text-[#132C50] mb-1"
                   >
-                    informativa privacy
-                  </Link>{" "}
-                  e acconsentiamo al trattamento dei dati personali per poter
-                  essere ricontattati in merito alla presente richiesta di
-                  preventivo.
-                </label>
-              </div>
-
-              {/* CTA + info campi */}
-              <div className="pt-2">
-                <div className="flex justify-center mb-3">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="inline-flex justify-center items-center rounded-full px-8 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition disabled:opacity-60"
-                  >
-                    {loading
-                      ? "Invio in corso..."
-                      : "Invia richiesta viaggio di nozze"}
-                  </button>
+                    Qualche dettaglio in più (opzionale)
+                  </label>
+                  <textarea
+                    id="note"
+                    name="note"
+                    rows={4}
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                    placeholder="Es. durata ideale, tipo di strutture, esperienze che vi piacerebbe includere…"
+                  />
                 </div>
-                <p className="text-[11px] md:text-xs text-slate-500 text-center">
-                  I campi contrassegnati con * sono obbligatori. Dopo l&apos;invio
-                  riceverete una conferma e vi ricontatteremo il prima possibile.
-                </p>
-              </div>
 
-              {status === "success" && (
-                <p className="mt-4 text-center text-emerald-600 text-sm font-medium">
-                  Richiesta inviata correttamente! Ti risponderemo il prima
-                  possibile per parlare del vostro viaggio di nozze.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="mt-4 text-center text-red-600 text-sm font-medium">
-                  Si è verificato un problema durante l&apos;invio. Riprova tra
-                  poco oppure contattaci direttamente dai nostri recapiti.
-                </p>
-              )}
-            </form>
+                {/* Consenso privacy */}
+                <div className="flex items-start gap-2">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    name="privacy"
+                    required
+                    className="mt-1 h-4 w-4 rounded border-slate-300 text-[#0863D6] focus:ring-[#0863D6]"
+                  />
+                  <label
+                    htmlFor="privacy"
+                    className="text-[11px] md:text-xs text-slate-600 text-justify"
+                  >
+                    Dichiariamo di aver letto e compreso l&apos;{" "}
+                    <Link
+                      to="/privacy-policy"
+                      className="underline decoration-[#0863D6] decoration-2 underline-offset-2 hover:text-[#0863D6]"
+                    >
+                      informativa privacy
+                    </Link>{" "}
+                    e acconsentiamo al trattamento dei dati personali per
+                    essere ricontattati in merito alla presente richiesta.
+                  </label>
+                </div>
 
-            <p className="mt-5 text-xs md:text-sm text-slate-600 text-center">
-              Preferite parlarne di persona?{" "}
-              <a
-                href={RESERVIO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="font-semibold text-[#0863D6] hover:text-[#0648a3] underline underline-offset-2"
-              >
-                Prenotate una consulenza in agenzia
-              </a>
-              .
+                {/* CTA + messaggi */}
+                <div className="pt-2">
+                  <div className="flex justify-center mb-3">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="inline-flex justify-center items-center rounded-full px-8 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition disabled:opacity-60"
+                    >
+                      {loading
+                        ? "Invio in corso..."
+                        : "Invia richiesta viaggio di nozze"}
+                    </button>
+                  </div>
+                  <p className="text-[11px] md:text-xs text-slate-500 text-center">
+                    Dopo l&apos;invio riceverete una conferma e vi
+                    ricontatteremo il prima possibile. Se preferite, potete
+                    scriverci anche via email o WhatsApp dai contatti del sito.
+                  </p>
+                </div>
+
+                {status === "success" && (
+                  <p className="mt-4 text-center text-emerald-600 text-sm font-medium">
+                    Richiesta inviata correttamente! Vi risponderemo il prima
+                    possibile per parlare del vostro viaggio di nozze.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="mt-4 text-center text-red-600 text-sm font-medium">
+                    Si è verificato un problema durante l&apos;invio. Riprova
+                    tra poco oppure contattaci direttamente dai nostri recapiti.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* IDEE & ISPIRAZIONI (SEZIONE SOTTO) */}
+      <section id="idee-nozze" className="py-12 md:py-16 bg-[#0F172A]">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-8 md:mb-10">
+            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#EB2480] mb-2">
+              Idee e ispirazioni
             </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+              Da dove potrebbe partire il vostro sogno?
+            </h2>
+            <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
+              Queste sono solo alcune idee: ogni itinerario viene disegnato
+              insieme a voi, adattando durata, tappe e livello di comfort al
+              vostro modo di viaggiare.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <TravelIdeaCard
+              badge="Mare & Relax"
+              title="Mare da sogno e resort esclusivi"
+              caption="Maldive, Polinesia, Seychelles, Caraibi e altre destinazioni tropicali. Resort selezionati, servizi dedicati agli sposi, combinazioni con city break o brevi tour."
+              image={mareImg}
+            />
+            <TravelIdeaCard
+              badge="Tour & Avventura"
+              title="On the road e grandi itinerari"
+              caption="Stati Uniti, Giappone, Thailandia, Africa, Sud America: tour guidati o fly & drive, tra città iconiche, natura e esperienze locali indimenticabili."
+              image={tourImg}
+            />
+            <TravelIdeaCard
+              badge="Città romantiche"
+              title="Capitali, charme e design"
+              caption="Parigi, New York, Dubai, grandi città europee e metropoli internazionali. Boutique hotel, rooftop, ristoranti speciali e attività pensate per due."
+              image={cittaImg}
+            />
           </div>
         </div>
       </section>
@@ -640,6 +587,8 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+
+
 
 
 
