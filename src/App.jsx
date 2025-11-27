@@ -9,7 +9,10 @@ import ChiSiamo from "./pages/ChiSiamo.jsx";
 import Destinazioni from "./pages/Destinazioni.jsx";
 import Contatti from "./pages/Contatti.jsx";
 import ViaggiDiNozze from "./pages/ViaggiDiNozze.jsx";
+import Crociere from "./pages/Crociere.jsx";
+import ViaggiIndividualiGruppo from "./pages/ViaggiIndividualiGruppo.jsx";
 import IdeeRegalo from "./pages/IdeeRegalo.jsx";
+import MeteStagionali from "./pages/MeteStagionali.jsx";
 
 // Pagine legali
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
@@ -62,7 +65,13 @@ function App() {
           <Route path="destinazioni" element={<Destinazioni />} />
           <Route path="contatti" element={<Contatti />} />
           <Route path="viaggi-di-nozze" element={<ViaggiDiNozze />} />
+          <Route path="crociere" element={<Crociere />} />
+          <Route
+            path="viaggi-individuali-gruppo"
+            element={<ViaggiIndividualiGruppo />}
+          />
           <Route path="idee-regalo" element={<IdeeRegalo />} />
+          <Route path="mete-stagionali" element={<MeteStagionali />} />
 
           {/* Sotto-pagine destinazioni */}
           <Route path="destinazioni/europa" element={<Europa />} />
@@ -92,6 +101,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

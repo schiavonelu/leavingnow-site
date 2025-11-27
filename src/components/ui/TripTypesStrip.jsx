@@ -1,3 +1,4 @@
+// src/components/ui/TripTypesStrip.jsx
 import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,25 +7,27 @@ import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
 import crociereImg from "../../assets/triptypes/crociere.webp";
 import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
 
-
 const tripTypes = [
   {
     title: "Viaggi di nozze",
     subtitle: "Momenti per sempre",
     image: nozzeImg,
     query: "nozze",
+    to: "/viaggi-di-nozze", 
   },
   {
     title: "Crociere",
     subtitle: "Grandi navi, grandi emozioni",
     image: crociereImg,
     query: "crociere",
+    to: "/crociere", 
   },
   {
     title: "Viaggi individuali & di gruppo",
     subtitle: "Esperienze da soli o da condividere",
     image: gruppoImg,
     query: "gruppo",
+    to: "/viaggi-individuali-gruppo", 
   },
 ];
 
@@ -34,7 +37,7 @@ const AUTO_SLIDE_MS_MOBILE = 8000;
 const Card = memo(function Card({ trip }) {
   return (
     <Link
-      to={`/contatti?tipo=${encodeURIComponent(trip.query)}`}
+      to={trip.to}
       className="
         group relative flex items-end rounded-3xl overflow-hidden 
         shadow-md bg-slate-900/40
@@ -140,7 +143,7 @@ const TripTypesStrip = () => {
             </div>
           </>
         ) : (
-          // DESKTOP → ORA 3 COLONNE
+          // DESKTOP → 3 COLONNE
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {tripTypes.map((trip) => (
               <div key={trip.title} className="w-full">
@@ -155,6 +158,7 @@ const TripTypesStrip = () => {
 };
 
 export default TripTypesStrip;
+
 
 
 

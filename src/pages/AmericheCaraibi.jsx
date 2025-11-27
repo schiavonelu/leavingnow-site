@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
+import SeasonalTeaserCompact from "../sections/shared/SeasonalTeaserCompact.jsx";
 
 // 📌 Immagini locali (sostituisci i file non appena disponibili)
 import americaImg from "../assets/destination/americhe-caraibi/hero.webp";
@@ -67,6 +68,7 @@ const AmericheCaraibi = () => {
           </div>
         </div>
       </section>
+      <SeasonalTeaserCompact />
     </>
   );
 };

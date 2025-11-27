@@ -7,6 +7,9 @@ import LazySection from "../components/LazySection.jsx";
 import TripTypesStripIntro from "../sections/home/TripTypesStripIntro.jsx";
 import TripTypesStrip from "../components/ui/TripTypesStrip.jsx";
 
+// 🔹 NUOVA SEZIONE DINAMICA METE STAGIONALI
+import SeasonalHighlightSection from "../sections/home/SeasonalHighlightSection.jsx";
+
 const Home = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -36,6 +39,9 @@ const Home = () => {
           fallback={null}
         />
       </StickySection>
+
+      {/* 🔹 SEZIONE DINAMICA METE STAGIONALI (dopo i continenti) */}
+      <SeasonalHighlightSection />
 
       {/* TIPOLOGIE DI VIAGGIO – HEADER STICKY (NO LAZY QUI) */}
       <StickySection header={<TripTypesStripIntro />}>
@@ -76,6 +82,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 

@@ -8,7 +8,10 @@ import {
   FaInfoCircle,
 } from "react-icons/fa";
 import { GiPalmTree } from "react-icons/gi";
+
 import InnerHero from "../sections/shared/InnerHero.jsx";
+import SeasonalTeaserDestinations from "../sections/shared/SeasonalTeaserDestinations.jsx";
+
 import worldMap from "../assets/mondo.jpg";
 import destinazioniHero from "../assets/destination/hero.webp";
 
@@ -38,9 +41,7 @@ const Destinazioni = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
               Scegli il continente direttamente dalla mappa
             </h2>
-            <p className="text-sm md:text-base text-slate-700
-
-">
+            <p className="text-sm md:text-base text-slate-700">
               Clicca sull’area del mondo che ti ispira di più: verrai portato
               alle idee di viaggio dedicate a quel continente, per iniziare a
               progettare il tuo prossimo itinerario su misura.
@@ -140,7 +141,7 @@ const Destinazioni = () => {
                 </div>
               </Link>
 
-              {/* AFRICA – lascio il mood caldo amber, che stacca bene */}
+              {/* AFRICA */}
               <Link
                 to="/destinazioni/africa"
                 className="group absolute left-[46%] top-[52%] w-[18%] h-[30%] flex items-center justify-center"
@@ -153,7 +154,7 @@ const Destinazioni = () => {
                 </div>
               </Link>
 
-              {/* ASIA – uso il tuo accent rosa */}
+              {/* ASIA */}
               <Link
                 to="/destinazioni/asia"
                 className="group absolute right-[11%] top-[30%] w-[26%] h-[34%] flex items-center justify-center"
@@ -166,7 +167,7 @@ const Destinazioni = () => {
                 </div>
               </Link>
 
-              {/* OCEANIA – di nuovo su blu/teal ma armonizzato */}
+              {/* OCEANIA */}
               <Link
                 to="/destinazioni/oceania"
                 className="group absolute right-[14%] top-[67%] w-[18%] h-[24%] flex items-center justify-center"
@@ -180,9 +181,7 @@ const Destinazioni = () => {
               </Link>
             </div>
 
-            <p className="mt-4 text-[11px] md:text-xs text-slate-700
-
- text-center">
+            <p className="mt-4 text-[11px] md:text-xs text-slate-700 text-center">
               La mappa è indicativa: clicca sull’area che ti interessa per
               scoprire le destinazioni e le idee di viaggio dedicate a quel
               continente.
@@ -190,6 +189,9 @@ const Destinazioni = () => {
           </div>
         </div>
       </section>
+
+      {/* 🔹 TEASER METE STAGIONALI + CONTATTI */}
+      <SeasonalTeaserDestinations />
     </>
   );
 };

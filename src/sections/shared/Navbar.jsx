@@ -62,7 +62,7 @@ const Navbar = () => {
 
   const currentLogo = isOnHero ? logoWhite : logo;
   // dimensioni fisse per evitare “zoom”
-  const logoSizeClasses = "h-12 w-[220px] object-contain";
+  const logoSizeClasses = "h-11 w-[220px] object-contain";
 
   const callLabelColor = isOnHero ? "text-white/80" : "text-slate-700";
   const callNumberColor = isOnHero ? "text-white" : "text-[#132C50]";

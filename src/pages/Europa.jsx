@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
+import SeasonalTeaserCompact from "../sections/shared/SeasonalTeaserCompact.jsx";
 
 // 📌 Immagini locali Europa
 import heroImg from "../assets/destination/europa/hero.webp";
@@ -64,6 +65,7 @@ const Europa = () => {
           </div>
         </div>
       </section>
+       <SeasonalTeaserCompact />
     </>
   );
 };
