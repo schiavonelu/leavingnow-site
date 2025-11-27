@@ -121,7 +121,7 @@ const SeasonalHighlightSection = () => {
             <div className="mt-4 flex flex-col sm:flex-row gap-3">
               <Link
                 to={`/mete-stagionali#${season.id}`}
-                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0EA5E9] text-white border border-[#0EA5E9] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
               >
                 <CalendarRange className="w-4 h-4 mr-2" />
                 {season.ctaLabel}
