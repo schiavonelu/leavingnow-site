@@ -250,7 +250,7 @@ const ViaggiFamily = () => {
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               <CalendarRange className="w-4 h-4 mr-2" />
-              Prenota una consulenza in agenzia
+              Prenota una consulenza
             </a>
           </div>
         </div>
