@@ -60,18 +60,17 @@ const IdeeRegalo = () => {
             Un regalo di viaggio resta per sempre
           </h1>
 
-          <div className="space-y-4 text-sm md:text-base text-slate-700 leading-relaxed text-justify">
+          <div className="space-y-4 text-sm md:text-base text-slate-700 leading-relaxed text-center">
             <p>
-              Un viaggio non è un oggetto: è un ricordo, un momento da vivere e
-              raccontare, un’esperienza che rimane nel tempo. Per questo abbiamo
-              creato soluzioni dedicate a chi vuole fare – o farsi – un regalo
-              speciale: liste nozze viaggio e Travel Box personalizzate.
+              Un viaggio non è un oggetto: è un ricordo che rimane. Per questo abbiamo
+              creato soluzioni dedicate a chi vuole fare, o farsi, un regalo
+              speciale, come le nostre liste nozze e le Travel Box personalizzate.
             </p>
+
             <p>
-              Che si tratti di un viaggio di nozze, di un anniversario, di un
-              compleanno importante o di un traguardo da festeggiare, possiamo
-              trasformare il contributo di amici e familiari in un itinerario
-              su misura, curato in ogni dettaglio.
+              Che sia un viaggio di nozze, un anniversario, un compleanno o un traguardo
+              da festeggiare, trasformiamo il contributo di amici e familiari in un
+              itinerario su misura, curato in ogni dettaglio.
             </p>
           </div>
         </div>
@@ -96,16 +95,7 @@ const IdeeRegalo = () => {
 
               <div className="space-y-4 text-sm md:text-base text-slate-700 leading-relaxed text-justify mb-5">
                 <p>
-                  La lista nozze viaggio è il modo più semplice e elegante per
-                  trasformare i regali in un’esperienza da vivere insieme. Gli
-                  invitati contribuiscono liberamente, voi ricevete un viaggio
-                  su misura, costruito passo dopo passo con il nostro supporto.
-                </p>
-                <p>
-                  Ci occupiamo noi della parte operativa: gestione dei
-                  versamenti, aggiornamento dell’importo raccolto, assistenza
-                  per gli invitati e rendicontazione chiara, così voi potete
-                  concentrarvi solo sulla scelta del viaggio.
+                  La lista nozze viaggio è il modo più semplice ed elegante per trasformare i regali in un’esperienza da vivere insieme: gli invitati contribuiscono liberamente e voi ricevete un viaggio su misura costruito con il nostro supporto. Ci occupiamo noi di tutto - gestione dei versamenti, aggiornamento degli importi e assistenza agli invitati - così potete concentrarvi solo sulla scelta del vostro viaggio.
                 </p>
               </div>
 
@@ -128,10 +118,10 @@ const IdeeRegalo = () => {
                   to="/contatti"
                   className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
                 >
-                  Apri la tua lista nozze
+                  Contattaci
                 </Link>
 
-                <p className="text-[11px] md:text-xs text-slate-500 text-center sm:text-left max-w-xs">
+                <p className="text-[11px] md:text-xs text-slate-500 text-center sm:text-justify max-w-xs">
                   Ti spiegheremo nel dettaglio come funziona la lista nozze
                   Leaving Now e come personalizzarla in base al tuo viaggio.
                 </p>

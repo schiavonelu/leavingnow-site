@@ -19,7 +19,6 @@ import logoWhite from "../../assets/logo/leavingnow-logowhite.webp";
 const links = [
   { to: "/", label: "Home", end: true, icon: FaHome },
   { to: "/chi-siamo", label: "Chi siamo", icon: FaInfoCircle },
-  { to: "/destinazioni", label: "Destinazioni", icon: FaMapMarkedAlt },
   { to: "viaggi-di-nozze", label: "Viaggi di Nozze", icon: FaPlaneDeparture },
   { to: "idee-regalo", label: "Idee Regalo", icon: FaGift },
   { to: "/contatti", label: "Contatti", icon: FaEnvelopeOpenText },

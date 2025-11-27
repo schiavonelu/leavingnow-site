@@ -78,6 +78,27 @@ const CreditiImmagini = () => {
               .
             </p>
 
+            {/* 🔹 OCEANIA – HERO PAGINA INTERNA */}
+            <p>
+              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+              Hero della pagina Oceania – isola con cottage e sedie a sdraio.<br />
+              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+              Scatto che rappresenta il relax tropicale tipico delle isole dell’Oceania,
+              con mare cristallino e strutture turistiche immerse nella natura.<br />
+              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+              Asad Photo Maldives.<br />
+              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+              <a
+                href="https://www.pexels.com/it-it/foto/un-isola-con-cottage-e-sedie-a-sdraio-1174732/"
+                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pexels – &quot;un'isola con cottage e sedie a sdraio&quot;
+              </a>
+              .
+            </p>
+
             {/* 🔹 DESTINAZIONI – MAPPA DEL MONDO */}
             <p>
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
@@ -116,6 +137,7 @@ const CreditiImmagini = () => {
 };
 
 export default CreditiImmagini;
+
 
 
 

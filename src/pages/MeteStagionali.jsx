@@ -7,6 +7,8 @@ import ContinentCard from "../components/ui/ContinentCard.jsx";
 // 📌 Immagine di default per hero + tutte le card (per ora)
 import heroImg from "../assets/destination/hero.webp";
 
+
+const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const SEASONS = [
   {
     id: "inverno",
@@ -238,14 +240,6 @@ const MeteStagionali = () => {
           <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-5">
             Idee, non pacchetti: ogni viaggio nasce da te
           </h1>
-          <p className="text-sm md:text-base text-slate-700 leading-relaxed text-justify">
-            Le proposte che trovi in questa pagina non sono offerte a scaffale,
-            né pacchetti preconfezionati: sono spunti da cui partire per
-            immaginare il tuo prossimo viaggio. Possiamo adattare ogni idea al
-            periodo in cui vuoi partire, al tempo che hai a disposizione e al
-            modo in cui ami viaggiare, oppure creare qualcosa di completamente
-            diverso solo per te.
-          </p>
         </div>
       </section>
 
@@ -278,12 +272,6 @@ const MeteStagionali = () => {
               </p>
             </div>
 
-            <p className="text-[11px] md:text-xs text-slate-500">
-              Le mete indicate sono solo alcune idee possibili per questa
-              stagione: ogni itinerario viene progettato su misura in base alle
-              tue esigenze e al modo in cui ami viaggiare.
-            </p>
-
             <div className="grid gap-8 md:grid-cols-3">
               {season.cards.map((card, idx) => (
                 <ContinentCard
@@ -311,14 +299,6 @@ const MeteStagionali = () => {
             Vuoi partire da una di queste idee o crearne una tutta nuova?
           </h2>
 
-          <p className="text-sm md:text-base text-slate-200 max-w-2xl mx-auto mb-6">
-            Le mete stagionali sono un punto di partenza: il viaggio vero nasce
-            quando ci racconti chi sei, quando vuoi partire e che tipo di
-            esperienza immagini. Da lì costruiamo insieme il tuo itinerario,
-            senza soluzioni standard e con un confronto diretto in agenzia o da
-            remoto.
-          </p>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="/contatti"
@@ -327,10 +307,12 @@ const MeteStagionali = () => {
               Scrivici per parlarne insieme
             </a>
             <a
-              href="/contatti"
+              href={RESERVIO_URL}
+                target="_blank"
+                rel="noreferrer"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
-              Preferisci una consulenza in agenzia?
+              Preferisci una consulenza?
             </a>
           </div>
         </div>

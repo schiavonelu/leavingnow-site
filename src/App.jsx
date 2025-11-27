@@ -11,6 +11,7 @@ import Contatti from "./pages/Contatti.jsx";
 import ViaggiDiNozze from "./pages/ViaggiDiNozze.jsx";
 import Crociere from "./pages/Crociere.jsx";
 import ViaggiIndividualiGruppo from "./pages/ViaggiIndividualiGruppo.jsx";
+import ViaggiFamily from "./pages/ViaggiFamily.jsx";
 import IdeeRegalo from "./pages/IdeeRegalo.jsx";
 import MeteStagionali from "./pages/MeteStagionali.jsx";
 
@@ -69,6 +70,10 @@ function App() {
           <Route
             path="viaggi-individuali-gruppo"
             element={<ViaggiIndividualiGruppo />}
+          />
+          <Route
+            path="viaggi-family"
+            element={<ViaggiFamily />}
           />
           <Route path="idee-regalo" element={<IdeeRegalo />} />
           <Route path="mete-stagionali" element={<MeteStagionali />} />

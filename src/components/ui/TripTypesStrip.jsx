@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
 import crociereImg from "../../assets/triptypes/crociere.webp";
 import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
+import familyImg from "../../assets/triptypes/viaggiodigruppo.webp"; // 👈 nuova immagine
 
 const tripTypes = [
   {
@@ -13,21 +14,28 @@ const tripTypes = [
     subtitle: "Momenti per sempre",
     image: nozzeImg,
     query: "nozze",
-    to: "/viaggi-di-nozze", 
+    to: "/viaggi-di-nozze",
   },
   {
     title: "Crociere",
     subtitle: "Grandi navi, grandi emozioni",
     image: crociereImg,
     query: "crociere",
-    to: "/crociere", 
+    to: "/crociere",
   },
   {
     title: "Viaggi individuali & di gruppo",
     subtitle: "Esperienze da soli o da condividere",
     image: gruppoImg,
     query: "gruppo",
-    to: "/viaggi-individuali-gruppo", 
+    to: "/viaggi-individuali-gruppo",
+  },
+  {
+    title: "Family",
+    subtitle: "Viaggi pensati per grandi e piccoli",
+    image: familyImg,
+    query: "family",
+    to: "/viaggi-family", // 👈 rotta pagina family
   },
 ];
 
@@ -143,8 +151,8 @@ const TripTypesStrip = () => {
             </div>
           </>
         ) : (
-          // DESKTOP → 3 COLONNE
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          // DESKTOP → 4 COLONNE
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {tripTypes.map((trip) => (
               <div key={trip.title} className="w-full">
                 <Card trip={trip} />
@@ -158,6 +166,7 @@ const TripTypesStrip = () => {
 };
 
 export default TripTypesStrip;
+
 
 
 

@@ -41,10 +41,10 @@ const team = [
     image: teamImg,
   },
   {
-    name: "Partner nel mondo",
-    role: "Corrispondenti",
-    bio: "Guide locali, tour operator e strutture selezionate che ci permettono di offrirti esperienze autentiche e sicure.",
-    image: partnerImg,
+    name: "I nostri viaggiatori",
+    role: "I veri protagonisti",
+    bio: "Le persone che ci scelgono danno senso al nostro lavoro: ascoltiamo i loro desideri, trasformiamo le idee in itinerari concreti e costruiamo ricordi che durano nel tempo.",
+    image: heroImg, // oppure teamImg o un'altra foto che preferisci
   },
 ];
 
@@ -305,7 +305,7 @@ const ChiSiamo = () => {
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               <FaCalendarCheck className="mr-2" />
-              Prenota una consulenza in agenzia
+              Prenota una consulenza
             </a>
           </div>
         </div>
