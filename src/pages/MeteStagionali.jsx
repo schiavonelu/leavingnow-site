@@ -18,11 +18,11 @@ const SEASONS = [
       "L’inverno è il momento ideale per rallentare e scegliere viaggi che scaldano il cuore: luci soffuse, atmosfere intime, neve, città illuminate e luoghi da vivere con calma.",
     cards: [
       {
-        title: "Mercatini di Natale in Austria e Germania",
+        title: "Mercatini di Natale in Europa:",
         badge: "Inverno / Mercatini",
         period: "Dicembre – metà Gennaio",
         description:
-          "Un viaggio tra luci, profumi e dettagli che scaldano l’anima. Vienna, Monaco, Salisburgo o Norimberga: ogni città diventa un piccolo mondo fatto di tradizioni, artigianato, musica e atmosfere che sanno di casa e di festa.",
+          "Un viaggio tra luci, profumi e dettagli che scaldano l’anima. Vienna, Praga, Salisburgo o Budapest: ogni città diventa un piccolo mondo fatto di tradizioni, artigianato, musica e atmosfere che sanno di casa e di festa.",
       },
       {
         title: "Settimana bianca sulle Alpi",
@@ -155,11 +155,11 @@ const SEASONS = [
           "Ghiacciai, montagne, baie silenziose e città nordiche eleganti. Una crociera panoramica e confortevole, ideale per chi vuole unire comodità a bordo ed escursioni pensate per valorizzare ogni scalo.",
       },
       {
-        title: "Mari lontani: Oceano Indiano e Caraibi",
+        title: "Mari lontani: Oceano Indiano",
         badge: "Lontani",
         period: "Stagionalità variabile",
         description:
-          "Acque turchesi, resort esclusivi, natura rigogliosa e tramonti spettacolari. Maldive, Seychelles, Mauritius, Caraibi e molto altro: perfetti per chi sogna relax totale, servizi curati e atmosfere tropicali.",
+          "Acque turchesi, resort esclusivi, natura rigogliosa e tramonti spettacolari. Maldive, Seychelles, Mauritius, Zanzibar e molto altro: perfetti per chi sogna relax totale, servizi curati e atmosfere tropicali.",
       },
     ],
   },
@@ -196,7 +196,7 @@ const SEASONS = [
         badge: "Cultura & storia",
         period: "Autunno",
         description:
-          "Deserti, città antiche, architetture moderne, cucina intensa e panorami unici. Giordania, Israele, Emirati e altre destinazioni: un viaggio ricco, vario e sorprendente, da calibrare con attenzione.",
+          "Deserti, città antiche, architetture moderne, cucina intensa e panorami unici. Giordania, Emirati e altre destinazioni: un viaggio ricco, vario e sorprendente, da calibrare con attenzione.",
       },
       {
         title: "Esperienze enogastronomiche in Italia",
