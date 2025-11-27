@@ -83,7 +83,7 @@ const ViaggiDiNozze = () => {
     const form = e.target;
     const data = new FormData(form);
 
-    data.append("access_key", WEB3FORMS_KEY);
+    data.append("access_key", "59cd3a4d-3c21-4152-8f8d-95c3c2590684");
     data.append(
       "subject",
       "Richiesta viaggio di nozze dal sito Leaving Now"
