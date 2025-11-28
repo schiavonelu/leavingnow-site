@@ -55,15 +55,7 @@ const SeasonalHighlightSection = () => {
               </Link>
             </div>
 
-            {/* CTA secondaria */}
-            <div className="mt-2">
-              <Link
-                to="/contatti"
-                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2 text-[11px] md:text-xs font-semibold border border-slate-600 text-slate-200 hover:border-[#EB2480] hover:text-[#EB2480] transition"
-              >
-                Sei indeciso? Parliamone insieme
-              </Link>
-            </div>
+           
           </div>
 
           {/* Immagine */}
