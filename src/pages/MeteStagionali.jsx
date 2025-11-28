@@ -18,7 +18,7 @@ const SEASONS = [
       "L’inverno è il momento ideale per rallentare e scegliere viaggi che scaldano il cuore: luci soffuse, atmosfere intime, neve, città illuminate e luoghi da vivere con calma.",
     cards: [
       {
-        title: "Mercatini di Natale in Europa:",
+        title: "Mercatini di Natale in Europa",
         badge: "Inverno / Mercatini",
         period: "Dicembre – metà Gennaio",
         description:
