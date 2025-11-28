@@ -99,7 +99,7 @@ const SeasonalHighlightSection = () => {
   return (
     <section className="py-6 md:py-8 bg-[#0F172A]">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="rounded-3xl border border-slate-700/70 bg-gradient-to-br from-slate-900 via-slate-900/95 to-[#0F172A] overflow-hidden shadow-lg flex flex-col md:flex-row md:items-stretch">
+        <div className="rounded-3xl border border-slate-700/70 bg-linear-to-br from-slate-900 via-slate-900/95 to-[#0F172A] overflow-hidden shadow-lg flex flex-col md:flex-row md:items-stretch">
           {/* Testo */}
           <div className="w-full md:w-3/5 p-5 md:p-6 flex flex-col gap-3 md:justify-center">
             <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#EB2480] text-center md:text-left">
@@ -134,7 +134,7 @@ const SeasonalHighlightSection = () => {
               <ul className="mt-2 space-y-1.5 text-xs md:text-sm text-slate-200">
                 {dynamicHighlights.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -193,7 +193,7 @@ const SeasonalHighlightSection = () => {
                 className="h-full w-full object-cover md:rounded-l-none md:rounded-r-3xl"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-slate-900/10 to-transparent md:bg-gradient-to-l pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 via-slate-900/10 to-transparent md:bg-linear-to-l pointer-events-none" />
             </div>
           </div>
         </div>

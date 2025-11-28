@@ -204,7 +204,7 @@ const ReviewsSection = () => {
             {visibleReviews.map((review, index) => (
               <article
                 key={`${review.name}-${startIndex + index}`}
-                className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-50 via-white to-amber-50 border border-slate-200 px-5 py-6 md:px-6 md:py-7 shadow-[0_10px_35px_rgba(15,23,42,0.18)] transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.35)]"
+                className="relative overflow-hidden rounded-3xl bg-linear-to-br from-sky-50 via-white to-amber-50 border border-slate-200 px-5 py-6 md:px-6 md:py-7 shadow-[0_10px_35px_rgba(15,23,42,0.18)] transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.35)]"
               >
                 <FaQuoteLeft className="pointer-events-none absolute -right-1 -bottom-2 text-6xl text-sky-100/70" />
 
