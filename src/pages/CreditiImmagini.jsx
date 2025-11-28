@@ -62,7 +62,7 @@ const CreditiImmagini = () => {
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
               Hero della homepage – Oceania (mare/oceano verde a forma di cuore).<br />
               <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Immagine evocativa del mare cristallino e dei grandi spazi naturali 
+              Immagine evocativa del mare cristallino e dei grandi spazi naturali
               dell’Oceania.<br />
               <span className="font-semibold text-[#132C50]">Fotografa:</span>{" "}
               Katie Cerami.<br />
@@ -81,10 +81,9 @@ const CreditiImmagini = () => {
             {/* 🔹 OCEANIA – HERO PAGINA INTERNA */}
             <p>
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-              Hero della pagina Oceania – isola con cottage e sedie a sdraio.<br />
+              Hero pagina Oceania – isola con cottage e sedie a sdraio.<br />
               <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Scatto che rappresenta il relax tropicale tipico delle isole dell’Oceania,
-              con mare cristallino e strutture turistiche immerse nella natura.<br />
+              Scatto che rappresenta il relax tropicale tipico delle isole dell’Oceania.<br />
               <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
               Asad Photo Maldives.<br />
               <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
@@ -99,13 +98,72 @@ const CreditiImmagini = () => {
               .
             </p>
 
+            {/* 🔹 NUOVA ZELANDA – HERO O SEZIONE INTERNA */}
+            <p>
+              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+              Scatto Nuova Zelanda – persona con felpa rossa in ambiente naturale.<br />
+              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+              Fotografia che cattura l'essenza dei paesaggi montuosi e boscosi tipici della Nuova Zelanda.<br />
+              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+              Sam Kolder.<br />
+              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+              <a
+                href="https://www.pexels.com/it-it/foto/persona-che-indossa-la-felpa-con-cappuccio-rossa-in-piedi-vicino-agli-alberi-con-la-montagna-a-distanza-395242/"
+                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pexels – &quot;persona con felpa rossa vicino agli alberi&quot;
+              </a>
+              .
+            </p>
+
+            {/* 🔹 AUSTRALIA – SYDNEY */}
+            <p>
+              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+              Sydney Opera House – Australia.<br />
+              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+              Iconico scatto della celebre Opera House, simbolo indiscusso dell’Australia.<br />
+              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+              Belle Co.<br />
+              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+              <a
+                href="https://www.pexels.com/it-it/foto/white-sydney-opera-house-2193300/"
+                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pexels – &quot;white sydney opera house&quot;
+              </a>
+              .
+            </p>
+
+            {/* 🔹 OCEANO PACIFICO – OMBRA PALMA */}
+            <p>
+              <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+              Oceano Pacifico – ombra di albero di cocco sulla spiaggia.<br />
+              <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+              Scatto che richiama l'essenza delle spiagge del Pacifico, con atmosfere tropicali e rilassanti.<br />
+              <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+              Krivec Ales.<br />
+              <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+              <a
+                href="https://www.pexels.com/it-it/foto/ombra-di-albero-di-cocco-in-riva-al-mare-2765869/"
+                className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pexels – &quot;ombra di albero di cocco in riva al mare&quot;
+              </a>
+              .
+            </p>
+
             {/* 🔹 DESTINAZIONI – MAPPA DEL MONDO */}
             <p>
               <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
               Mappa del mondo – pagina Destinazioni.<br />
               <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-              Illustrazione del globo utilizzata per introdurre e rappresentare 
-              l’esplorazione delle destinazioni internazionali del sito.<br />
+              Illustrazione del globo utilizzata per introdurre l’esplorazione internazionale del sito.<br />
               <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
               Aaditya Arora.<br />
               <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
@@ -137,6 +195,7 @@ const CreditiImmagini = () => {
 };
 
 export default CreditiImmagini;
+
 
 
 

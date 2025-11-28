@@ -12,7 +12,7 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
 // Per ora uso l'hero generico destinazioni
-import heroImg from "../assets/triptypes/crociere.webp";
+import heroImg from "../assets/triptypes/crocierehero.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 

@@ -1,60 +1,76 @@
+// src/pages/MeteMareEstero.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
-import TravelFilters from "../components/ui/TravelFilters.jsx";
+import SeaFiltersEstero from "../components/ui/SeaFiltersEstero.jsx";
 import heroImg from "../assets/destination/hero.webp";
-import { CAPITAL_CITIES } from "../data/capitali.js";
-import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
+import { MARE_ESTERO_DESTINATIONS } from "../data/mare-estero.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
-
-// Offset per lo scroll: leggermente aumentato per non far salire troppo le card
 const OFFSET_TOP = 270;
 
-const MeteCapitali = () => {
+const getTripNation = (trip) => {
+  // usa trip.country se esiste, altrimenti area
+  const raw = trip.country || trip.area || "";
+  return raw.trim();
+};
+
+const MeteMareEstero = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBuckets, setSelectedBuckets] = useState([]);
+  const [selectedNations, setSelectedNations] = useState([]); // array
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
 
-  // ref per riportare lo scroll all'inizio delle card
   const cardsSectionRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // Filtraggio per testo + bucket stagionale
-  const filteredCities = useMemo(() => {
+  // elenco nazioni / macro-zone uniche
+  const nationOptions = useMemo(() => {
+    const set = new Set();
+    MARE_ESTERO_DESTINATIONS.forEach((trip) => {
+      const n = getTripNation(trip);
+      if (n) set.add(n);
+    });
+    return Array.from(set);
+  }, []);
+
+  const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
-    return CAPITAL_CITIES.filter((city) => {
+    return MARE_ESTERO_DESTINATIONS.filter((trip) => {
       const matchSearch =
         term === "" ||
-        city.title.toLowerCase().includes(term) ||
-        city.description.toLowerCase().includes(term);
+        trip.title.toLowerCase().includes(term) ||
+        trip.description.toLowerCase().includes(term) ||
+        (trip.area && trip.area.toLowerCase().includes(term));
 
-      const bucket = getSeasonBucketLabel(city.period);
-      const matchSeason =
-        selectedBuckets.length === 0 || selectedBuckets.includes(bucket);
+      const nation = getTripNation(trip);
+      const matchNation =
+        selectedNations.length === 0 ||
+        (nation &&
+          selectedNations.some(
+            (n) => n.toLowerCase() === nation.toLowerCase()
+          ));
 
-      return matchSearch && matchSeason;
+      return matchSearch && matchNation;
     });
-  }, [searchTerm, selectedBuckets]);
+  }, [searchTerm, selectedNations]);
 
-  const totalPages = Math.ceil(filteredCities.length / ITEMS_PER_PAGE) || 1;
+  const totalPages = Math.ceil(filteredTrips.length / ITEMS_PER_PAGE) || 1;
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentItems = filteredCities.slice(
+  const currentItems = filteredTrips.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
 
   const scrollToCards = () => {
     if (!cardsSectionRef.current) return;
-
     const rect = cardsSectionRef.current.getBoundingClientRect();
     const targetY = window.scrollY + rect.top - OFFSET_TOP;
 
@@ -69,30 +85,22 @@ const MeteCapitali = () => {
     scrollToCards();
   };
 
-  // Quando cambiano filtri o ricerca → torna alla pagina 1
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, selectedBuckets]);
+  }, [searchTerm, selectedNations]);
 
-  const getSeasonSummary = () => {
-    if (selectedBuckets.length === 0) return "tutte le stagioni";
-    if (selectedBuckets.length === 1) return selectedBuckets[0].toLowerCase();
-    return `${selectedBuckets.length} stagioni`;
+  const hasResults = filteredTrips.length > 0;
+
+  const getNationSummary = () => {
+    if (selectedNations.length === 0) return "tutte le nazioni";
+    if (selectedNations.length === 1) return selectedNations[0];
+    return `${selectedNations.length} nazioni`;
   };
 
-  const hasResults = filteredCities.length > 0;
-
-  // Badge:
-  // - rosso se 0 mete
-  // - blu se tutte le stagioni (nessun filtro)
-  // - verde se ci sono filtri stagionali attivi
   const getBadgeColorClasses = () => {
-    if (!hasResults) {
-      return "border-rose-200 bg-rose-50 text-rose-700";
-    }
-    if (selectedBuckets.length === 0) {
+    if (!hasResults) return "border-rose-200 bg-rose-50 text-rose-700";
+    if (selectedNations.length === 0)
       return "border-sky-200 bg-sky-50 text-sky-700";
-    }
     return "border-emerald-200 bg-emerald-50 text-emerald-700";
   };
 
@@ -101,8 +109,8 @@ const MeteCapitali = () => {
   return (
     <>
       <InnerHero
-        title="Mete capitali europee"
-        subtitle="Grandi città, quartieri da esplorare, musei, locali e panorami iconici: una selezione di capitali su cui costruire il tuo viaggio."
+        title="Mare estero"
+        subtitle="Canarie, Grecia, Spagna, Mar Rosso e altre idee di mare fuori dall’Italia, sempre costruite su misura."
         image={heroImg}
       />
 
@@ -110,33 +118,34 @@ const MeteCapitali = () => {
 
       {/* INTRO */}
       <section className="py-8 md:py-10 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-3">
+          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6]">
             Idee di viaggio by Leaving Now
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
-            Capitali e città europee, senza pacchetti standard
+          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
+            Mare estero, tra isole e grandi coste
           </h1>
           <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-            Le capitali possono essere vissute in tanti modi: weekend veloci,
-            ponti lunghi, combinati con altre città o con il mare. Qui trovi una
-            selezione di idee filtrabili per stagione e per testo.
+            Dal mare d’inverno alle isole mediterranee estive, passando per
+            oceano e grandi coste europee. Puoi cercare per zona o filtrare in
+            base alla nazione o macro-area (es. Grecia, Canarie, Mar Rosso).
           </p>
         </div>
       </section>
 
-      {/* FILTRI + GRID + PAGINAZIONE */}
-      <section className="py-8 md:py-10 bg-[#F8FAFC]">
+      {/* FILTRI + GRID */}
+      <section className="py-8 md:py-10 bg-[#F8FAFC]" id="mare-inverno">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Colonna filtri (sinistra, sidebar) */}
-            <TravelFilters
-              title="Capitali europee"
-              selectedBuckets={selectedBuckets}
-              onBucketsChange={setSelectedBuckets}
+            {/* Filtri per nazione (sidebar) */}
+            <SeaFiltersEstero
+              title="Mare estero"
+              options={nationOptions}
+              selectedFilters={selectedNations}
+              onFiltersChange={setSelectedNations}
               onResetFilters={() => {
                 setSearchTerm("");
-                setSelectedBuckets([]);
+                setSelectedNations([]);
               }}
               isCollapsed={filtersCollapsed}
               onToggleCollapsed={() =>
@@ -144,29 +153,29 @@ const MeteCapitali = () => {
               }
             />
 
-            {/* Colonna risultati (destra) */}
+            {/* Risultati a destra */}
             <div
               className={`flex-1 space-y-6 transition-[width] duration-300 ${
                 filtersCollapsed ? "lg:pl-2" : ""
               }`}
             >
-              {/* Barra di ricerca - sticky sotto il breadcrumb su desktop */}
+              {/* Barra di ricerca sticky */}
               <div className="lg:sticky lg:top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
                     <div className="flex-1">
                       <label
-                        htmlFor="search-capitals"
+                        htmlFor="search-mare-estero"
                         className="block text-[11px] md:text-xs font-semibold uppercase tracking-[0.16em] text-[#64748B] mb-2"
                       >
-                        Cerca una capitale
+                        Cerca una meta o una zona di mare estero
                       </label>
                       <div className="relative">
                         <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                         <input
-                          id="search-capitals"
+                          id="search-mare-estero"
                           type="text"
-                          placeholder="es. Parigi, Londra, Lisbona"
+                          placeholder="Cerca una meta… es. Canarie, Grecia, Mar Rosso"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                           className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white placeholder:text-slate-400"
@@ -174,48 +183,47 @@ const MeteCapitali = () => {
                       </div>
                     </div>
 
-                    {/* Badge pill con numero mete + testo stagione */}
+                    {/* Badge mete + nazioni */}
                     <div className="flex items-center justify-between md:justify-end gap-2 text-xs md:text-sm text-slate-500">
                       <span
                         className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] md:text-xs font-semibold ${badgeColorClasses}`}
                       >
-                        {filteredCities.length}{" "}
-                        {filteredCities.length === 1 ? "meta" : "mete"}
+                        {filteredTrips.length}{" "}
+                        {filteredTrips.length === 1 ? "meta" : "mete"}
                       </span>
-
                       <span className="text-[11px] md:text-xs">
-                        in {getSeasonSummary()}.
+                        in {getNationSummary()}.
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* GRID + PAGINAZIONE */}
+              {/* GRID */}
               <div ref={cardsSectionRef}>
-                {filteredCities.length === 0 ? (
+                {filteredTrips.length === 0 ? (
                   <p className="text-sm md:text-base text-slate-600 text-center py-6">
-                    Nessuna meta in questa combinazione. Prova a modificare la
-                    ricerca o i filtri stagionali.
+                    Nessuna meta trovata con questi criteri. Prova a modificare
+                    la ricerca o le nazioni selezionate.
                   </p>
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((city, idx) => (
+                    {currentItems.map((trip, idx) => (
                       <ContinentCard
-                        key={`${city.title}-${idx}`}
+                        key={`${trip.title}-${idx}`}
                         image={heroImg}
-                        title={city.title}
-                        badge={city.badge}
-                        period={city.period}
-                        description={city.description}
+                        title={trip.title}
+                        badge={trip.badge}
+                        period={trip.period}
+                        description={trip.description}
                       />
                     ))}
                   </div>
                 )}
 
                 {/* PAGINAZIONE */}
-                {filteredCities.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-6">
+                {filteredTrips.length > 0 && totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-4">
                     <button
                       type="button"
                       onClick={() =>
@@ -250,7 +258,7 @@ const MeteCapitali = () => {
                       type="button"
                       onClick={() =>
                         currentPage < totalPages &&
-                        handlePageChange(currentPage + 1)
+                        handlePageChange(page + 1)
                       }
                       disabled={currentPage === totalPages}
                       className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
@@ -273,7 +281,7 @@ const MeteCapitali = () => {
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Vuoi partire da una capitale o combinarne più di una?
+            Vuoi partire da una di queste idee o creare il tuo mare estero su misura?
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -298,10 +306,7 @@ const MeteCapitali = () => {
   );
 };
 
-export default MeteCapitali;
-
-
-
+export default MeteMareEstero;
 
 
 

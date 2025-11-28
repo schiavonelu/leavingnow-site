@@ -437,24 +437,42 @@ const ViaggiDiNozze = () => {
                     className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
                   >
                     <option value="">Seleziona un’opzione</option>
-                    <option value="crociera">
-                      Crociera (Mediterraneo, fiordi, Caraibi…)
-                    </option>
+
+                    {/* Opzioni generali */}
+                    <option value="crociera">Crociera (Mediterraneo, fiordi, Caraibi…)</option>
                     <option value="usa">Stati Uniti – tour on the road</option>
-                    <option value="usa-mare">
-                      Stati Uniti + mare (es. Caraibi)
-                    </option>
-                    <option value="mare-tropicale">
-                      Mare tropicale (Maldive, Polinesia, Seychelles, Caraibi…)
-                    </option>
+                    <option value="usa-mare">Stati Uniti + mare (es. Caraibi)</option>
+                    <option value="mare-tropicale">Mare tropicale (Maldive, Polinesia, Seychelles, Caraibi…)</option>
                     <option value="giappone-asia">Giappone / Asia</option>
-                    <option value="africa-safari-mare">
-                      Africa con safari + mare
-                    </option>
-                    <option value="europa">
-                      Europa (città, tour, on the road)
-                    </option>
+                    <option value="africa-safari-mare">Africa con safari + mare</option>
+                    <option value="europa">Europa (città, tour, on the road)</option>
                     <option value="altro">Altro (specifica)</option>
+
+                    {/* Nuove opzioni aggiunte */}
+                    <option value="dubai-maldive">Dubai + Maldive</option>
+                    <option value="dubai-singapore-maldive">Dubai + Singapore + Maldive</option>
+                    <option value="dubai-mauritius">Dubai + Mauritius</option>
+                    <option value="dubai-zanzibar">Dubai + Zanzibar</option>
+                    <option value="dubai-koh-samui">Dubai + Koh Samui</option>
+
+                    <option value="bangkok-koh-samui">Bangkok + Koh Samui</option>
+                    <option value="tour-thailandia-nord-koh-samui">Tour Thailandia del Nord + Koh Samui</option>
+
+                    <option value="tokyo-kyoto-osaka-maldive">Tokyo + Kyoto + Osaka + Maldive</option>
+
+                    <option value="bali-singapore-maldive">Bali + Singapore + Maldive</option>
+
+                    <option value="newyork-bayahibe">New York + Bayahibe</option>
+                    <option value="newyork-bahamas">New York + Bahamas</option>
+                    <option value="newyork-messico">New York + Messico</option>
+                    <option value="newyork-crociera-caraibi">New York + Crociera dei Caraibi</option>
+                    <option value="newyork-crociera-bahamas">New York + Crociera Bahamas</option>
+
+                    <option value="sanfrancisco-hawaii">San Francisco + Hawaii</option>
+                    <option value="sanfrancisco-polinesia">San Francisco + Polinesia Francese</option>
+                    <option value="sanfrancisco-losangeles-rivieramaya">San Francisco + Los Angeles + Riviera Maya</option>
+
+                    <option value="istanbul-cappadocia-bodrum">Istanbul + Cappadocia + Bodrum</option>
                   </select>
                 </div>
 

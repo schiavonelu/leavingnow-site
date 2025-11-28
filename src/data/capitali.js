@@ -1,122 +1,194 @@
+// src/data/capitali.js
+
 export const CAPITAL_CITIES = [
+  // 🔹 Capitali "big" tutto l'anno
   {
     title: "Parigi",
     badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Una delle città più visitate al mondo: musei, quartieri caratteristici, gastronomia e romanticismo in ogni stagione. Ideale per weekend culturali e momenti speciali.",
+      "Musei di livello mondiale, bistrot, quartieri iconici come Montmartre e Marais. Perfetta tutto l’anno, con un fascino particolare tra Natale e primavera.",
   },
   {
     title: "Londra",
     badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Moderna, dinamica e piena di quartieri diversi. Arte, mercati, teatri e locali: una capitale sempre viva perfetta per ogni tipo di viaggiatore.",
+      "Quartieri diversi tra loro, mercati, teatri e parchi. Ideale per più viaggi nel tempo, dal periodo dei saldi fino al clima mite di primavera e autunno.",
   },
   {
     title: "Madrid",
-    badge: "Centro",
+    badge: "Capitale",
     period: "Autunno – Primavera",
     description:
-      "Energia, musei importanti, tapas e vita di quartiere. Una capitale accogliente e ideale per chi ama gastronomia e cultura.",
+      "Tapas, vita di quartiere, musei e piazze piene di energia. Ottima da settembre a giugno, evitando i picchi di caldo estivi.",
   },
   {
     title: "Lisbona",
     badge: "Mediterranea",
     period: "Primavera – Autunno",
     description:
-      "Salite, tram storici, miradouros e un tocco di malinconia. Una capitale solare e affacciata sull’oceano, perfetta per chi ama camminare.",
+      "Saliscendi, tram storici, vista sull’oceano e quartieri come Alfama e Bairro Alto. Ideale da marzo a novembre, anche per combinati con il Portogallo on the road.",
   },
+
+  // 🔹 Centro / Ovest Europa
   {
     title: "Vienna",
     badge: "Centro",
     period: "Tutto l’anno",
     description:
-      "Eleganza, palazzi, caffè storici e musica classica. Una città perfetta per gli amanti dell’arte e dell’atmosfera imperiale.",
+      "Palazzi imperiali, caffè storici, musica classica e mercatini invernali. Molto piacevole anche in primavera per parchi e musei.",
   },
   {
     title: "Praga",
-    badge: "Est",
+    badge: "Centro",
     period: "Tutto l’anno",
     description:
-      "Ponti fiabeschi, castelli e vicoli storici. Una città romantica e suggestiva con un fascino unico in ogni stagione.",
+      "Castello, ponte Carlo, centro storico fiabesco. Suggestiva in ogni stagione, con inverno e periodi di Natale particolarmente scenografici.",
   },
   {
     title: "Budapest",
-    badge: "Est",
+    badge: "Centro",
     period: "Autunno – Primavera",
     description:
-      "Famosa per le terme, ponti sul Danubio e quartieri creativi. Ideale per relax e vita notturna.",
+      "Terme, palazzi e ponti sul Danubio. Ideale in autunno e inverno per abbinare visite, spa e mercatini di Natale, evitando il caldo più intenso estivo.",
   },
   {
     title: "Berlino",
     badge: "Centro",
     period: "Tutto l’anno",
     description:
-      "Storia recente, arte contemporanea, club e quartieri alternativi. Perfetta per chi cerca una capitale moderna e ricca di contenuti.",
+      "Storia recente, musei, quartieri creativi e molta vita notturna. Perfetta per chi cerca contenuti e un’atmosfera urbana contemporanea.",
   },
   {
     title: "Bruxelles",
-    badge: "Capitale",
+    badge: "Centro",
     period: "Tutto l’anno",
     description:
-      "Palazzi storici, birre e cioccolato. Ottima base anche per visitare Bruges e Gand in giornata.",
+      "Grand Place, cioccolato, birre e la possibilità di raggiungere Bruges e Gand in giornata. Interessante tutto l’anno, con atmosfera speciale a Natale.",
   },
-  {
-    title: "Copenaghen",
-    badge: "Nordica",
-    period: "Primavera – Inverno",
-    description:
-      "Design, hygge, caffetterie curate e quartieri colorati. Una capitale nordica accogliente e perfetta per chi ama gli ambienti rilassati.",
-  },
-  {
-    title: "Stoccolma",
-    badge: "Nordica",
-    period: "Estate – Inverno",
-    description:
-      "Musei, isole collegate da ponti e quartieri eleganti. Una capitale luminosa e immersa nella natura.",
-  },
+
+  
+  // 🔹 Mediterranee
   {
     title: "Atene",
     badge: "Mediterranea",
     period: "Primavera – Autunno",
     description:
-      "Culla della storia antica con vista mare, taverne tipiche e ottimo clima. Perfetta anche come punto di partenza per le isole.",
+      "Acropoli, quartieri come Plaka e vista sul mare. Ottima da marzo a giugno e da settembre in poi, anche come base per abbinare qualche isola.",
   },
+  {
+    title: "Barcellona",
+    badge: "Mediterranea",
+    period: "Tutto l’anno",
+    description:
+      "Sagrada Família, Ramblas, quartieri come Born e Barceloneta. Perfetta per city break, ponti, Capodanno e combinati mare+città.",
+  },
+  {
+    title: "Siviglia",
+    badge: "Mediterranea",
+    period: "Primavera – Autunno",
+    description:
+      "Patios fioriti, flamenco, piazze scenografiche. Ottima in primavera e autunno, sconsigliata solo nei picchi più caldi dell’estate.",
+  },
+  {
+    title: "Valencia",
+    badge: "Mediterranea",
+    period: "Primavera – Autunno",
+    description:
+      "Città delle arti e delle scienze, spiagge cittadine e vita serale. Ideale per chi vuole combinare mare e city break in un’unica partenza.",
+  },
+  {
+    title: "Malta",
+    badge: "Mediterranea",
+    period: "Primavera – Autunno",
+    description:
+      "La Valletta, mare, baie e cittadine storiche. Perfetta da marzo a novembre, anche per chi cerca un clima mite fuori stagione.",
+  },
+  {
+    title: "Nizza",
+    badge: "Mediterranea",
+    period: "Primavera – Autunno",
+    description:
+      "Promenade sul mare, vicina a Monaco e alla Costa Azzurra. Ottima tutto l’anno, con picchi di interesse per Carnevale e periodo estivo.",
+  },
+  {
+    title: "Marsiglia",
+    badge: "Mediterranea",
+    period: "Primavera – Autunno",
+    description:
+      "Porto vecchio, quartieri multiculturali e calanques a poca distanza. Ideale per chi vuole unire città e natura in un’unica soluzione.",
+  },
+
+  
+  // 🔹 Est Europa (city + mercatini / Capodanno)
   {
     title: "Dublino",
     badge: "Centro",
     period: "Autunno – Primavera",
     description:
-      "Parchi, pub, musica dal vivo e coste spettacolari a poca distanza. Una capitale accogliente e calorosa.",
+      "Pub, musica dal vivo, parchi e scogliere poco fuori città. Ottima per weekend, ponti e periodi come Natale e San Patrizio.",
   },
   {
     title: "Varsavia",
     badge: "Est",
     period: "Primavera – Autunno",
     description:
-      "Architettura moderna e storica, spazi verdi e quartieri in trasformazione. Ideale per chi cerca qualcosa di meno scontato.",
+      "Città moderna con centro storico ricostruito, spazi verdi e musei. Interessante per chi ha già visto le grandi capitali più classiche.",
+  },
+  {
+    title: "Cracovia",
+    badge: "Est",
+    period: "Autunno – Primavera",
+    description:
+      "Centro storico, piazze eleganti e mercato coperto. Molto suggestiva con i mercatini di Natale e i periodi invernali.",
+  },
+  {
+    title: "Danzica",
+    badge: "Est",
+    period: "Primavera – Autunno",
+    description:
+      "Città portuale con facciate colorate e vicina alle località sul Baltico. Ideale per chi cerca qualcosa di diverso dalle capitali più note.",
+  },
+
+// 🔹 Nordiche
+  {
+    title: "Copenaghen",
+    badge: "Nordica",
+    period: "Primavera – Inverno",
+    description:
+      "Design, hygge, caffetterie curate e quartieri colorati come Nyhavn. Ideale per chi ama atmosfere nordiche accoglienti, dall’autunno all’inizio estate.",
+  },
+  {
+    title: "Stoccolma",
+    badge: "Nordica",
+    period: "Estate – Inverno",
+    description:
+      "Isolotti collegati da ponti, quartieri eleganti e natura vicinissima. Perfetta in estate per le giornate lunghe, ma molto suggestiva anche sotto la neve.",
   },
   {
     title: "Helsinki",
     badge: "Nordica",
     period: "Estate – Inverno",
     description:
-      "Saune, design nordico, mare e musei. Una capitale elegante e perfetta per combinare città e natura.",
+      "Architettura nordica, saune, mare e design. Buon punto di partenza per combinati con Lapponia o crociere nel Baltico.",
   },
   {
     title: "Oslo",
     badge: "Nordica",
     period: "Estate – Inverno",
     description:
-      "Musei sul mare, quartieri moderni e natura a portata di mano. Una capitale raccolta e vivibile.",
+      "Musei sul mare, quartieri nuovi e natura a portata di mano. Ideale per chi cerca una capitale raccolta, luminosa e vivibile.",
   },
   {
     title: "Reykjavík",
     badge: "Nordica",
     period: "Autunno – Inverno",
     description:
-      "Piccola, colorata e immersa in paesaggi incredibili. Ideale per geyser, cascate e aurora boreale.",
+      "Piccola capitale immersa in paesaggi incredibili. Base perfetta per esplorare geyser, cascate, lagune termali e, con un po’ di fortuna, l’aurora boreale.",
   },
+
+
 ];
+
 

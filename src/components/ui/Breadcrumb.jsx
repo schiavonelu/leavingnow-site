@@ -3,6 +3,28 @@ import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaMapMarkedAlt } from "react-icons/fa";
 import { IoChevronForward } from "react-icons/io5";
 
+// stessa logica commerciale usata nella pagina MeteStagionali
+const getCommercialSeasonId = (date) => {
+  const month = date.getMonth() + 1;
+  if (month === 10 || month === 11 || month === 12 || month === 1 || month === 2) {
+    return "inverno";
+  }
+  if (month >= 3 && month <= 5) {
+    return "primavera";
+  }
+  if (month >= 6 && month <= 8) {
+    return "estate";
+  }
+  return "autunno";
+};
+
+const seasonLabelMap = {
+  inverno: "Inverno",
+  primavera: "Primavera",
+  estate: "Estate",
+  autunno: "Autunno",
+};
+
 const Breadcrumb = () => {
   const location = useLocation();
   const currentPath = location.pathname;
@@ -81,9 +103,6 @@ const Breadcrumb = () => {
   });
 
   // ✨ Caso speciale: METE VIAGGI DI NOZZE
-  // Home porta già al form (homeTarget),
-  // qui mostriamo: Home > Viaggi di nozze > Mete viaggi di nozze
-  // e "Viaggi di nozze" punta direttamente al form.
   if (currentPath.startsWith("/mete-viaggi-di-nozze")) {
     crumbs = [
       {
@@ -94,6 +113,26 @@ const Breadcrumb = () => {
       {
         label: "Mete viaggi di nozze",
         path: "/mete-viaggi-di-nozze",
+        isLast: true,
+      },
+    ];
+  }
+
+  // ✨ Caso speciale: METE STAGIONALI → aggiungo la stagione commerciale
+  if (currentPath.startsWith("/mete-stagionali")) {
+    const today = new Date();
+    const seasonId = getCommercialSeasonId(today);
+    const seasonLabel = seasonLabelMap[seasonId] || "Stagione";
+
+    crumbs = [
+      {
+        label: "Mete stagionali",
+        path: "/mete-stagionali",
+        isLast: false,
+      },
+      {
+        label: seasonLabel,
+        path: `/mete-stagionali#${seasonId}`,
         isLast: true,
       },
     ];
@@ -149,6 +188,7 @@ const Breadcrumb = () => {
 };
 
 export default Breadcrumb;
+
 
 
 

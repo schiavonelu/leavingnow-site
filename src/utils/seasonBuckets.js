@@ -1,16 +1,16 @@
 // src/utils/seasonBuckets.js
 
-// Etichette standard usate nei filtri
+// Etichette standard dei "bucket" stagionali usati nei filtri
 export const SEASON_BUCKET_LABELS = {
   ALL_YEAR: "Tutto l’anno",
-  SUMMER: "Estate",
-  WINTER: "Inverno",
   SPRING: "Primavera",
+  SUMMER: "Estate",
   AUTUMN: "Autunno",
-  MIX: "Mix / Da valutare",
+  WINTER: "Inverno",
+  MIX: "Stagionalità da valutare",
 };
 
-// Comoda lista ordinata per i filtri
+// Lista ordinata per la UI dei filtri
 export const SEASON_BUCKET_LIST = [
   SEASON_BUCKET_LABELS.ALL_YEAR,
   SEASON_BUCKET_LABELS.SPRING,
@@ -20,11 +20,21 @@ export const SEASON_BUCKET_LIST = [
   SEASON_BUCKET_LABELS.MIX,
 ];
 
-// 🔎 Helper che, dato il testo del periodo, restituisce il "bucket" macro
+/**
+ * Dato il testo "period" (es. "Novembre – Aprile", "Tutto l’anno",
+ * "Stagionalità variabile", ecc.), restituisce uno dei label
+ * presenti in SEASON_BUCKET_LIST, così che i filtri funzionino.
+ */
 export const getSeasonBucketLabel = (period) => {
   if (!period) return SEASON_BUCKET_LABELS.ALL_YEAR;
 
-  const p = period.toLowerCase();
+  // NORMALIZZAZIONE COMPLETA
+  let p = period
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[–—−]/g, "-") // converte tutti i tipi di trattino in "-"
+    .replace(/\s+/g, " ")
+    .trim();
 
   const has = (str) => p.includes(str);
 
@@ -38,93 +48,58 @@ export const getSeasonBucketLabel = (period) => {
     return SEASON_BUCKET_LABELS.ALL_YEAR;
   }
 
-  // Periodi dichiarati come variabili / mix
+  // Stagionalità "strana" / mix
   if (has("variabile") || has("mix") || has("stagionalità")) {
     return SEASON_BUCKET_LABELS.MIX;
   }
 
-  // Token stagionali / mesi (italiano + abbreviazioni)
-  const winterTokens = [
-    "inverno",
-    "dicembre",
-    "dic",
-    "gennaio",
-    "gen",
-    "febbraio",
-    "feb",
-  ];
-  const summerTokens = [
-    "estate",
-    "giugno",
-    "giu",
-    "luglio",
-    "lug",
-    "agosto",
-    "ago",
-  ];
-  const springTokens = [
-    "primavera",
-    "marzo",
-    "mar",
-    "aprile",
-    "apr",
-    "maggio",
-    "mag",
-  ];
-  const autumnTokens = [
-    "autunno",
-    "settembre",
-    "set",
-    "ottobre",
-    "ott",
-    "novembre",
-    "nov",
-  ];
+  // Token mensili / stagionali
+  const winterTokens = ["inverno", "dic", "gen", "feb"];
+  const summerTokens = ["estate", "giu", "lug", "ago"];
+  const springTokens = ["primavera", "mar", "apr", "mag"];
+  const autumnTokens = ["autunno", "set", "ott", "nov"];
 
   const hasWinter = winterTokens.some((t) => p.includes(t));
   const hasSummer = summerTokens.some((t) => p.includes(t));
   const hasSpring = springTokens.some((t) => p.includes(t));
   const hasAutumn = autumnTokens.some((t) => p.includes(t));
 
-  const trueCount = [hasSpring, hasSummer, hasAutumn, hasWinter].filter(
-    Boolean
-  ).length;
+  const flags = [hasSpring, hasSummer, hasAutumn, hasWinter].filter(Boolean)
+    .length;
 
-  // Solo una stagione → bucket diretto
-  if (trueCount === 1) {
+  // Un'unica stagione prevalente
+  if (flags === 1) {
     if (hasSummer) return SEASON_BUCKET_LABELS.SUMMER;
     if (hasWinter) return SEASON_BUCKET_LABELS.WINTER;
     if (hasSpring) return SEASON_BUCKET_LABELS.SPRING;
     if (hasAutumn) return SEASON_BUCKET_LABELS.AUTUMN;
   }
 
-  // Combinazioni tipiche "mezze stagioni":
-
-  // Da maggio a ottobre → primavera/estate/autunno → lo leggiamo come Estate
+  // Alcuni casi pratici per non mandare tutto in MIX
+  // Estate + (primavera/o autunno) → consideriamo estate
   if (hasSummer && (hasSpring || hasAutumn) && !hasWinter) {
     return SEASON_BUCKET_LABELS.SUMMER;
   }
 
-  // Da dicembre ad aprile → inverno/primavera → lo leggiamo come Inverno
-  if (hasWinter && hasSpring && !hasSummer && !hasAutumn) {
+  // Inverno + primavera/autunno → consideriamo inverno
+  if (hasWinter && hasSpring && !hasSummer) {
+    return SEASON_BUCKET_LABELS.WINTER;
+  }
+  if (hasWinter && hasAutumn && !hasSummer) {
     return SEASON_BUCKET_LABELS.WINTER;
   }
 
-  // Autunno + inverno → lo leggiamo come Inverno
-  if (hasWinter && hasAutumn && !hasSummer && !hasSpring) {
-    return SEASON_BUCKET_LABELS.WINTER;
-  }
-
-  // Primavera + autunno senza estate/inverno → lo consideriamo "mezze stagioni"
+  // Primavera + autunno senza estate/inverno → veramente mix
   if (hasSpring && hasAutumn && !hasSummer && !hasWinter) {
     return SEASON_BUCKET_LABELS.MIX;
   }
 
-  // Se ci sono più stagioni mescolate → Mix
-  if (trueCount > 1) {
+  // Più stagioni miste → MIX
+  if (flags > 1) {
     return SEASON_BUCKET_LABELS.MIX;
   }
 
-  // Fallback
+  // Fallback di sicurezza
   return SEASON_BUCKET_LABELS.ALL_YEAR;
 };
+

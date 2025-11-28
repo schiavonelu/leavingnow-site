@@ -11,7 +11,7 @@ import {
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
-import heroImg from "../assets/triptypes/viaggiodigruppo.webp";
+import heroImg from "../assets/triptypes/viaggiodigruppohero.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 

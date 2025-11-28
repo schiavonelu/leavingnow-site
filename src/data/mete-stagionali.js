@@ -1,222 +1,131 @@
 // src/data/mete-stagionali.js
 
-// Qui i periodi sono già "commerciali", non solo meteo.
-// L’idea è comunicare che si inizia a pensarci / venderli prima.
-
 export const SEASONS = [
   {
     id: "inverno",
     name: "Inverno",
-    period: "Novembre – Febbraio",
+    period: "Dicembre – Marzo",
     intro:
-      "L’inverno è il momento ideale per rallentare e scegliere viaggi che scaldano il cuore: luci soffuse, atmosfere intime, neve, città illuminate e luoghi da vivere con calma. Già da novembre iniziamo a immaginare insieme mercatini, montagne e città d’arte in bassa stagione.",
+      "L’inverno è il momento giusto per vivere mercatini di Natale, città illuminate, montagne innevate e mare lontano dove ritrovare il caldo.",
     cards: [
       {
-        title: "Mercatini di Natale in Europa",
-        badge: "Inverno / Mercatini",
-        period: "Fine Novembre – inizio Gennaio",
+        title: "Mercatini di Natale tra Trentino e Austria",
+        badge: "Mercatini di Natale",
+        period: "Fine novembre – dicembre",
         description:
-          "Un viaggio tra luci, profumi e dettagli che scaldano l’anima. Vienna, Praga, Salisburgo o Budapest: ogni città diventa un piccolo mondo fatto di tradizioni, artigianato, musica e atmosfere che sanno di casa e di festa.",
+          "Bolzano, Merano, Bressanone e le città austriache come Innsbruck e Salisburgo: casette di legno, vin brulé, luci e atmosfera perfetta per partire in coppia, in famiglia o con amici.",
       },
       {
-        title: "Settimana bianca sulle Alpi",
-        badge: "Neve & relax",
-        period: "Gennaio – Marzo",
+        title: "Alsazia e Germania romantica",
+        badge: "Mercatini di Natale",
+        period: "Fine novembre – dicembre",
         description:
-          "Montagne maestose, neve fresca, rifugi in legno e spa panoramiche. Che tu voglia sciare tutto il giorno o semplicemente respirare aria buona e leggere davanti al camino, l’inverno sulle Alpi è un abbraccio caldo fatto di ritmo lento e silenzi perfetti.",
+          "Colmar, Strasburgo e i villaggi alsaziani sembrano usciti da un libro di fiabe. Ideale per chi vuole un viaggio breve ma molto scenografico, tra luci, mercatini e case a graticcio.",
       },
       {
-        title: "City break invernale a Parigi o Londra",
-        badge: "City break",
-        period: "Da Novembre a Febbraio",
-        description:
-          "Vetrine illuminate, musei, quartieri iconici e locali dove rifugiarsi dal freddo. Un viaggio ricercato, ideale per chi ama le atmosfere eleganti e un po’ cinematografiche delle grandi capitali europee durante l’inverno.",
-      },
-      {
-        title: "Nord Europa tra design e hygge",
-        badge: "Nord Europa",
-        period: "Dicembre – Marzo",
-        description:
-          "Copenaghen, Oslo, Stoccolma: città curate nei minimi dettagli, design scandinavo, caffetterie intime e una qualità della vita che si percepisce in ogni strada. Perfetto per chi cerca calma, stile e autenticità, anche nei mesi più freddi.",
-      },
-      {
-        title: "Aurora boreale in Lapponia",
-        badge: "Esperienze uniche",
-        period: "Dicembre – Marzo",
-        description:
-          "Un viaggio che resta per sempre: lodge immersi nella neve, glass igloo sotto le stelle, motoslitte, slitte trainate da husky e – se il cielo collabora – l’aurora che danza sopra la tua testa. Ideale per chi sogna un’esperienza davvero diversa dal solito.",
-      },
-      {
-        title: "Città d’arte italiane in bassa stagione",
-        badge: "Italia",
-        period: "Novembre – Marzo",
-        description:
-          "Firenze, Roma, Venezia, Torino: più autentiche, più vivibili, più tue. Musei senza code interminabili, ristoranti migliori, vie meno affollate. L’inverno è il periodo perfetto per godersi queste città con calma, come meritano.",
-      },
-      {
-        title: "Capitali europee d’inverno",
-        badge: "City break",
-        period: "Novembre – Febbraio",
-        description:
-          "Berlino, Vienna, Praga, Bruxelles: grandi capitali europee con luci, musei, mercatini e quartieri da vivere a piedi. Perfette per chi cerca un mix di cultura, cibo e atmosfera invernale.",
-      },
-      {
-        title: "Weekend benessere e terme d’inverno",
-        badge: "Relax",
-        period: "Novembre – Marzo",
-        description:
-          "Spa, rituali di benessere, acqua calda, natura e silenzio. Un inverno più morbido, fatto di weekend brevi ma rigeneranti in boutique hotel, terme e resort benessere.",
-      },
-      {
-        title: "Mare d’inverno: Sharm e Mar Rosso",
+        title: "Canarie e mare d’inverno",
         badge: "Mare d’inverno",
-        period: "Novembre – Marzo",
+        period: "Dicembre – Marzo",
         description:
-          "Quando qui fa freddo, sul Mar Rosso trovi sole, mare e temperature piacevoli. Sharm el Sheikh e altre località del Mar Rosso sono perfette per chi d’inverno sogna luce, snorkeling e relax.",
+          "Tenerife, Gran Canaria, Lanzarote o Fuerteventura: clima mite tutto l’anno, passeggiate, spiagge e piccole escursioni. Perfetto per chi vuole staccare dal freddo senza volare troppo lontano.",
       },
     ],
   },
   {
     id: "primavera",
     name: "Primavera",
-    period: "Febbraio – Maggio",
+    period: "Marzo – Maggio",
     intro:
-      "Temperature miti, giornate che si allungano e colori che tornano a farsi vedere: la primavera è la stagione perfetta per città d’arte, fioriture, primi bagni di sole e itinerari soft. Si inizia a pensarla già tra fine inverno e inizio primavera, per cogliere il momento giusto.",
+      "La primavera è la stagione delle fioriture, dei ponti e dei primi viaggi al mare. Le città europee si riempiono di vita e le temperature sono perfette per girare.",
     cards: [
       {
-        title: "Olanda e grandi parchi fioriti",
-        badge: "Fioriture",
-        period: "Marzo – Aprile",
+        title: "Amsterdam e fioritura dei tulipani",
+        badge: "Fioriture & city break",
+        period: "Metà aprile – inizio maggio",
         description:
-          "Tulipani, parchi in fiore, canali e piccoli villaggi. Una primavera delicata, fatta di colori pastello, biciclette, mercati locali e musei che raccontano secoli di arte. Ideale per chi ama viaggi leggeri ma pieni di bellezza.",
+          "Amsterdam, i canali, le case strette affacciate sull’acqua e il parco di Keukenhof. Ideale per chi vuole unire una città vivace alla magia dei campi di tulipani in fiore.",
       },
       {
-        title: "Andalusia on the road",
-        badge: "Tour su misura",
+        title: "Giappone durante l’hanami",
+        badge: "Ciliegi in fiore",
+        period: "Fine marzo – aprile",
+        description:
+          "Tokyo, Kyoto, Osaka e i parchi in fiore: l’hanami è uno dei momenti più suggestivi per visitare il Giappone. Un’idea forte anche per un viaggio di nozze culturale.",
+      },
+      {
+        title: "Pasqua tra capitali e Mediterraneo",
+        badge: "Pasqua & ponti",
+        period: "Marzo – Aprile",
+        description:
+          "City break a Barcellona, Siviglia, Valencia, Nizza o Malta, oppure primi assaggi di mare in Italia e Grecia. Perfetto per sfruttare i ponti con viaggi brevi ma intensi.",
+      },
+
+      // 🔹 Nuove mete primaverili
+
+      {
+        title: "Barcellona tra Ramblas e mare",
+        badge: "City break & mare",
         period: "Marzo – Maggio",
         description:
-          "Patios colorati, tapas, città dal fascino moresco e strade che profumano di Mediterraneo. Un itinerario caldo e accogliente tra Siviglia, Cordoba, Granada, Malaga e piccoli paesi, perfetto per chi ama guidare tra città e paesini scenografici.",
+          "Una città vivace affacciata sul Mediterraneo: Ramblas, Barrio Gótico, Sagrada Familia e il lungomare. Perfetta in primavera, quando si può già passeggiare in riva al mare senza il caldo estivo.",
       },
       {
-        title: "Capitali europee in fiore",
-        badge: "City break",
-        period: "Primavera",
-        description:
-          "Vienna, Praga, Budapest, Lisbona e molte altre: città eleganti, luminose, piacevoli da vivere a piedi. Ideali per un break di qualche giorno tra cultura, cucina locale, punti panoramici e una vita cittadina vivace ma non frenetica.",
-      },
-      {
-        title: "Islanda tra cascate e paesaggi lunari",
-        badge: "Nature & adventure",
-        period: "Aprile – Maggio",
-        description:
-          "Paesaggi che sembrano un altro pianeta: geyser, cascate, vulcani e scogliere scolpite dal vento. La primavera è uno dei periodi più belli per vivere l’Islanda con ritmi morbidi, giornate che si allungano e scenari che cambiano a ogni curva.",
-      },
-      {
-        title: "Costiera Amalfitana e Sud Italia",
-        badge: "Italia",
-        period: "Aprile – Giugno",
-        description:
-          "Strade panoramiche, terrazze vista mare, limoni, profumi, colori e sapori intensi. La Costiera e il Sud Italia sono perfetti in primavera, quando l’aria è dolce e i luoghi sono ancora vivibili prima dei grandi flussi estivi.",
-      },
-      {
-        title: "Giappone in primavera",
-        badge: "Lontani",
-        period: "Marzo – Aprile",
-        description:
-          "Templi, giardini, tradizioni, quartieri ultramoderni e – quando la stagione lo permette – la magia dei ciliegi in fiore. Un viaggio di grande equilibrio, tra spiritualità, architetture e nuove scoperte in ogni quartiere.",
-      },
-      {
-        title: "Sharm e Mar Rosso di primavera",
-        badge: "Mare & relax",
+        title: "Siviglia e la primavera andalusa",
+        badge: "Andalusia & tradizioni",
         period: "Marzo – Maggio",
         description:
-          "Clima piacevole, mare già godibile, meno caldo rispetto all’estate piena. La primavera sul Mar Rosso è perfetta per chi cerca snorkeling, relax e servizi curati senza troppa folla.",
+          "Patios fioriti, piazze luminose, l’Alcázar e la Cattedrale. La primavera è il momento migliore per vivere Siviglia, tra Semana Santa, Feria de Abril e temperature ideali per girare a piedi.",
       },
       {
-        title: "Weekend benessere e terme di primavera",
-        badge: "Relax",
-        period: "Febbraio – Maggio",
+        title: "Valencia tra Città delle Arti e mare",
+        badge: "Design & spiagge",
+        period: "Marzo – Maggio",
         description:
-          "Quando le giornate si allungano ma il clima è ancora morbido, un weekend alle terme o in un boutique hotel con spa è l’ideale per ricaricare le energie tra un impegno e l’altro.",
+          "La Città delle Arti e delle Scienze, il centro storico, il Turia trasformato in parco e le spiagge urbane. Valencia è perfetta per unire architettura moderna, vita all’aperto e cucina mediterranea.",
       },
       {
-        title: "City break di Pasqua in Europa",
-        badge: "City break",
-        period: "Marzo – Aprile",
+        title: "Malta tra storia e prime giornate di mare",
+        badge: "Storia & mare",
+        period: "Marzo – Maggio",
         description:
-          "Un ponte di pochi giorni per scoprire una capitale europea o una città d’arte: musei, quartieri creativi, mercati locali e cucina tipica. Perfetto per chi vuole sfruttare al meglio le festività.",
+          "La Valletta, Mdina, i villaggi dei pescatori e le baie rocciose. In primavera Malta offre temperature miti, meno folla e già le prime giornate da passare in riva al mare.",
+      },
+      {
+        title: "Nizza e Costa Azzurra di primavera",
+        badge: "Riviera & relax",
+        period: "Marzo – Maggio",
+        description:
+          "Lungomare elegante, vicoli della città vecchia, mercati colorati e la possibilità di esplorare la Costa Azzurra tra Cannes, Antibes e Monaco. Ideale per un weekend chic ma rilassato.",
       },
     ],
   },
   {
     id: "estate",
     name: "Estate",
-    period: "Maggio – Settembre",
+    period: "Giugno – Settembre",
     intro:
-      "Mare, isole, grandi itinerari e viaggi più lunghi: l’estate è il momento perfetto per trasformare il desiderio di partire in un’esperienza intensa, completa e su misura. Si costruisce con anticipo, già dalla tarda primavera, per trovare i posti giusti al momento giusto.",
+      "L’estate è dedicata soprattutto al mare: Italia, isole del Mediterraneo, mare estero e tante idee anche per chi viaggia in famiglia o in gruppo.",
     cards: [
       {
-        title: "Isole della Grecia",
-        badge: "Mare & relax",
+        title: "Mare Italia tra Sardegna, Sicilia e Salento",
+        badge: "Mare Italia",
         period: "Giugno – Settembre",
         description:
-          "Tramonti rossi, baie azzurre, vicoli bianchi e taverne che sanno di mare. Dalle isole più conosciute a quelle più intime, la Grecia è perfetta per chi cerca relax, autenticità e panorami che restano impressi a lungo.",
+          "Nord e sud Sardegna, Sicilia orientale e occidentale, Salento, Gargano e Calabria: spiagge scenografiche, borghi sul mare, ottimo cibo e strutture per tutte le esigenze.",
       },
       {
-        title: "Baleari e Canarie",
-        badge: "Spagna",
+        title: "Mare estero tra Grecia e Spagna",
+        badge: "Mare estero",
         period: "Giugno – Settembre",
         description:
-          "Dal mare cristallino di Formentera ai paesaggi vulcanici di Lanzarote. Due arcipelaghi diversi, accomunati da atmosfera, sapori e lifestyle mediterraneo. Adatti a coppie, famiglie o gruppi di amici.",
+          "Isole greche, Baleari, Canarie e costa spagnola: perfette per chi cerca mare bello, vita serale, voli diretti e soluzioni adatte sia alle coppie sia ai gruppi di amici.",
       },
       {
-        title: "Stati Uniti on the road",
-        badge: "Grandi itinerari",
-        period: "Estate",
+        title: "Viaggi di nozze estivi",
+        badge: "Viaggi di nozze",
+        period: "Giugno – Ottobre",
         description:
-          "Strade infinite, natura immensa, città iconiche e una sensazione continua di libertà. Dalla West Coast ai parchi dell’Ovest, fino alla East Coast: un viaggio che si costruisce curva dopo curva e che diventa un ricordo indelebile.",
-      },
-      {
-        title: "Mare Italia tra isole e coste",
-        badge: "Italia",
-        period: "Giugno – Settembre",
-        description:
-          "Sardegna, Sicilia, Puglia, Calabria e tante altre coste: spiagge, borghi, profumi e ospitalità italiana. Un viaggio semplice solo in apparenza, che diventa speciale quando viene costruito esattamente sui tuoi ritmi.",
-      },
-      {
-        title: "Fiordi e Nord Europa in crociera",
-        badge: "Crociera",
-        period: "Giugno – Agosto",
-        description:
-          "Ghiacciai, montagne, baie silenziose e città nordiche eleganti. Una crociera panoramica e confortevole, ideale per chi vuole unire comodità a bordo ed escursioni pensate per valorizzare ogni scalo.",
-      },
-      {
-        title: "Mari lontani: Oceano Indiano",
-        badge: "Lontani",
-        period: "Stagionalità variabile",
-        description:
-          "Acque turchesi, resort esclusivi, natura rigogliosa e tramonti spettacolari. Maldive, Seychelles, Mauritius, Zanzibar e molto altro: perfetti per chi sogna relax totale, servizi curati e atmosfere tropicali.",
-      },
-      {
-        title: "Isole greche più intime",
-        badge: "Mare & relax",
-        period: "Giugno – Settembre",
-        description:
-          "Al di là delle isole più famose, esistono piccole isole greche più tranquille, con porticcioli, taverne di famiglia e poche camere vista mare. Perfette per chi cerca autenticità e silenzio.",
-      },
-      {
-        title: "Nord Europa e capitali d’estate",
-        badge: "Nord Europa",
-        period: "Giugno – Agosto",
-        description:
-          "Copenaghen, Stoccolma, Oslo, Helsinki: città luminose, vivibili, circondate da natura. L’estate è il momento perfetto per viverle all’aperto tra parchi, waterfront e quartieri di design.",
-      },
-      {
-        title: "Nord America tra città e parchi",
-        badge: "Lontani",
-        period: "Giugno – Settembre",
-        description:
-          "New York, Toronto, Montréal, ma anche i grandi parchi del Nord America: un viaggio che combina skyline, natura, laghi e panorami sconfinati. Perfetto per un’estate ricca e dinamica.",
+          "Mare tropicale, grandi itinerari o combinati città+mare. L’estate è perfetta per iniziare a progettare o partire per il viaggio di nozze, anche con soluzioni su misura.",
       },
     ],
   },
@@ -225,71 +134,129 @@ export const SEASONS = [
     name: "Autunno",
     period: "Settembre – Novembre",
     intro:
-      "Colori caldi, ritmi più lenti e bassa stagione: l’autunno è perfetto per chi ama vivere i luoghi con calma, tra natura, sapori e città più autentiche. È una stagione che si presta sia a brevi fughe che a viaggi di gusto e benessere.",
+      "L’autunno è la stagione perfetta per grandi viaggi, città europee meno affollate, eventi sportivi e prime idee per Natale e Capodanno.",
     cards: [
       {
-        title: "Foliage in Italia e in Europa",
-        badge: "Natura",
-        period: "Ottobre – Novembre",
-        description:
-          "Colori caldi, boschi silenziosi, laghi, colline e aria fresca. Un viaggio ideale per chi ama osservare il paesaggio che cambia ogni giorno e cerca luoghi dove ritrovare spazio e respiro.",
-      },
-      {
-        title: "City break d’autunno",
-        badge: "City break",
+        title: "Capitali europee fuori stagione",
+        badge: "Capitali & city break",
         period: "Settembre – Novembre",
         description:
-          "Lisbona, Barcellona, Berlino, Copenaghen e molte altre: città più tranquille, più vivibili, perfette per cultura, gastronomia, quartieri creativi e vita locale autentica, senza la folla dei mesi estivi.",
+          "Parigi, Londra, Madrid, Lisbona, Amsterdam, Porto e molte altre. Temperature piacevoli, meno folla e prezzi spesso più interessanti. Ideale per weekend lunghi e fughe improvvisate.",
       },
       {
-        title: "Weekend benessere e terme",
-        badge: "Relax",
-        period: "Autunno",
+        title: "Torino ATP Finals",
+        badge: "Eventi sportivi",
+        period: "Novembre (ATP Finals)",
         description:
-          "Spa, rituali di benessere, acqua calda, natura e silenzio. Un viaggio intimo e rigenerante, ideale per staccare davvero e rientrare con energia nuova.",
+          "Torino ospita le ATP Finals: un’ottima occasione per abbinare grande tennis, musei, luci d’artista e una città ricca di locali, caffè storici e cultura.",
       },
       {
-        title: "Tour in Medio Oriente",
-        badge: "Cultura & storia",
-        period: "Autunno",
+        title: "Milano Cortina e montagna",
+        badge: "Montagna & grandi eventi",
+        period: "Autunno – inverno 2026",
         description:
-          "Deserti, città antiche, architetture moderne, cucina intensa e panorami unici. Giordania, Emirati e altre destinazioni: un viaggio ricco, vario e sorprendente, da calibrare con attenzione.",
+          "In vista dell’appuntamento olimpico 2026, l’area tra Milano e Cortina diventa sempre più interessante per chi ama montagna, sport invernali e weekend tra città e natura.",
       },
+
+      // 🔹 Nuove mete autunnali / city break
+
       {
-        title: "Esperienze enogastronomiche in Italia",
-        badge: "Food & wine",
+        title: "Porto tra azulejos e vino sul Douro",
+        badge: "City break & degustazioni",
         period: "Settembre – Novembre",
         description:
-          "Langhe, Toscana, Umbria, Sicilia: vino, prodotti locali, borghi e agriturismi. L’autunno è la stagione migliore per un viaggio dedicato ai sapori, alle tradizioni e all’ospitalità italiana.",
+          "Una città in salita fatta di vicoli, azulejos e locali affacciati sul fiume Douro. Ideale in autunno per unire visite, degustazioni di vino e atmosfera romantica.",
       },
       {
-        title: "Viaggi long haul in bassa stagione",
-        badge: "Lontani",
-        period: "Autunno",
-        description:
-          "Sud-est asiatico, Sud America, Africa australe e molte altre mete lontane: clima ideale in molte destinazioni, meno affollamento, ritmi più piacevoli. Una scelta elegante per chi vuole scoprire il mondo fuori dai periodi canonici.",
-      },
-      {
-        title: "Capitali europee d’autunno",
-        badge: "City break",
+        title: "Cracovia tra castelli e piazze",
+        badge: "Storia & suggestione",
         period: "Settembre – Novembre",
         description:
-          "Parigi, Vienna, Budapest, Bruxelles: in autunno le capitali europee si accendono di colori caldi e ritmi più lenti. Perfette per chi ama musei, bistrot e lunghe passeggiate.",
+          "La Piazza del Mercato, il Castello di Wawel, il quartiere ebraico e le escursioni nei dintorni. Cracovia è perfetta fuori stagione, con atmosfere intense e ancora prezzi accessibili.",
       },
       {
-        title: "Sharm e Mar Rosso in autunno",
-        badge: "Mare & relax",
-        period: "Ottobre – Novembre",
-        description:
-          "Quando qui l’aria si rinfresca, sul Mar Rosso l’autunno è ancora una stagione di sole pieno. Ideale per chi vuole un ultimo tuffo nel caldo, tra snorkeling, barriere coralline e relax.",
-      },
-      {
-        title: "East Coast USA in versione foliage",
-        badge: "Lontani",
+        title: "Danzica e il Baltico",
+        badge: "Città sul mare",
         period: "Settembre – Ottobre",
         description:
-          "Boston, New York, il New England e le strade immerse nei colori del foliage: un viaggio scenografico, tra città iconiche e piccoli centri immersi nella natura.",
+          "Case colorate, porto storico, vicoli medievali e il mare del Baltico a pochi passi. Danzica è ideale per un city break diverso dal solito, tra mare del nord e storia.",
+      },
+      {
+        title: "Lione tra gastronomia e luci",
+        badge: "Cibo & città",
+        period: "Ottobre – Novembre",
+        description:
+          "Capitale gastronomica di Francia, con bouchon tradizionali, quartieri storici e la celebre Festa delle Luci. Perfetta per chi ama abbinare cucina, cultura e atmosfera francese.",
+      },
+      {
+        title: "Marsiglia e il Mediterraneo d’autunno",
+        badge: "Mare & calanchi",
+        period: "Settembre – Ottobre",
+        description:
+          "Porto vecchio, quartieri vivaci e la possibilità di esplorare i Calanchi tra Marsiglia e Cassis. In autunno il clima è ancora mite e le folle estive sono ormai finite.",
+      },
+    ],
+  },
+  {
+    id: "benessere",
+    name: "Benessere & spa",
+    period: "Tutto l’anno",
+    intro:
+      "Weekend benessere, spa panoramiche e piccoli hotel con area relax: perfetti da regalarsi o da regalare in ogni momento dell’anno.",
+    cards: [
+      {
+        title: "Trentino Alto Adige tra terme e montagne",
+        badge: "Benessere & natura",
+        period: "Tutto l’anno",
+        description:
+          "Strutture con spa panoramiche, piscine vista montagna e ottima cucina locale. Ideale per chi cerca un weekend rigenerante in coppia o con amici.",
+      },
+      {
+        title: "Slovenia e Ungheria termale",
+        badge: "Spa & città d’arte",
+        period: "Tutto l’anno",
+        description:
+          "Località termali in Slovenia e le grandi terme di Budapest: perfette per abbinare benessere, visite culturali e un po’ di vita cittadina.",
+      },
+      {
+        title: "Italia tra laghi e borghi",
+        badge: "Weekend benessere",
+        period: "Tutto l’anno",
+        description:
+          "Lago di Garda, Lago di Como e piccoli borghi con hotel dotati di spa. Un’idea semplice ma molto efficace per staccare senza allontanarsi troppo.",
+      },
+    ],
+  },
+  {
+    id: "eventi-speciali",
+    name: "Eventi speciali",
+    period: "Date selezionate",
+    intro:
+      "Oltre alle stagioni classiche, alcuni viaggi ruotano attorno a eventi ben precisi: Carnevale, Capodanno, Oktoberfest e molto altro.",
+    cards: [
+      {
+        title: "Carnevale tra Venezia e Nizza",
+        badge: "Carnevale",
+        period: "Gennaio – Febbraio",
+        description:
+          "Il Carnevale di Venezia con le sue maschere e calli, oppure Nizza con la sua atmosfera più solare sul mare. Perfetti per un weekend diverso dal solito, tra sfilate, carri e feste in piazza.",
+      },
+      {
+        title: "Oktoberfest a Monaco",
+        badge: "Oktoberfest",
+        period: "Settembre – Ottobre",
+        description:
+          "Monaco di Baviera durante l’Oktoberfest: tende, musica, birrerie storiche e possibilità di abbinare anche castelli e paesini bavaresi. Ideale per gruppi di amici e appassionati di eventi.",
+      },
+      {
+        title: "Capodanno in capitale europea",
+        badge: "Capodanno",
+        period: "Fine dicembre – inizio gennaio",
+        description:
+          "Parigi (anche con Disneyland), Londra, Madrid, Lisbona, Amsterdam, Barcellona, Porto, Cracovia e molte altre. Un mix di feste, fuochi d’artificio, piazze illuminate e locali aperti fino a tardi per salutare l’anno in viaggio.",
       },
     ],
   },
 ];
+
+
