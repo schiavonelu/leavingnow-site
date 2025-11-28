@@ -14,11 +14,8 @@ import {
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
-// 📌 Immagini locali
+// 📌 Immagine hero principale
 import heroImg from "../assets/viaggi-nozze/hero.webp";
-import mareImg from "../assets/viaggi-nozze/mare.webp";
-import tourImg from "../assets/viaggi-nozze/tour.webp";
-import cittaImg from "../assets/viaggi-nozze/citta.webp";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
@@ -36,29 +33,6 @@ const ValueCard = ({ icon, title, text }) => (
       </h3>
       <p className="text-xs md:text-sm text-slate-700 leading-relaxed text-justify">
         {text}
-      </p>
-    </div>
-  </article>
-);
-
-// Card idee di viaggio (immagine di sfondo)
-const TravelIdeaCard = ({ title, caption, badge, image }) => (
-  <article className="relative overflow-hidden rounded-3xl shadow-md border border-[#E2E8F0] bg-slate-900/80">
-    <div
-      className="absolute inset-0 bg-cover bg-center"
-      style={{ backgroundImage: `url(${image})` }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/60 to-slate-900/10" />
-
-    <div className="relative p-5 md:p-6 flex flex-col h-full justify-end">
-      <span className="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white mb-3">
-        {badge}
-      </span>
-      <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
-        {title}
-      </h3>
-      <p className="text-xs md:text-sm text-slate-100 leading-relaxed text-justify">
-        {caption}
       </p>
     </div>
   </article>
@@ -197,12 +171,15 @@ const ViaggiDiNozze = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-            <a
-              href="#idee-nozze"
+            {/* 🔹 Ora porta alla pagina con le mete viaggi di nozze */}
+            <Link
+              to="/mete-viaggi-di-nozze"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-sm border border-[#0369A1] bg-[#0369A1] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               Vuoi farti ispirare?
-            </a>
+            </Link>
+
+            {/* 🔹 Questo resta ancorato al form nella stessa pagina */}
             <a
               href="#preventivo-nozze"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-400 text-slate-700 hover:border-[#EB2480] hover:text-[#EB2480] transition"
@@ -244,49 +221,6 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
-      {/* IDEE DI VIAGGIO DI NOZZE */}
-      <section
-        id="idee-nozze"
-        className="scroll-mt-28 py-12 md:py-16 bg-[#0F172A]"
-      >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#EB2480] mb-2">
-              Idee e ispirazioni
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              Quale viaggio di nozze sognate?
-            </h2>
-            <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
-              Qui trovi solo alcuni spunti: ogni itinerario verrà adattato a
-              voi, alle vostre date e al vostro stile di viaggio. Possiamo
-              partire da qui oppure creare qualcosa di completamente diverso.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            <TravelIdeaCard
-              badge="Mare & Relax"
-              title="Mare da sogno e resort esclusivi"
-              caption="Maldive, Polinesia, Seychelles, Caraibi e molte altre destinazioni. Resort selezionati, overwater, spa, servizi dedicati alle coppie e combinazioni con city break o tour brevi."
-              image={mareImg}
-            />
-            <TravelIdeaCard
-              badge="Tour & Avventura"
-              title="On the road e grandi itinerari"
-              caption="Stati Uniti, Giappone, Thailandia, Africa, Sud America: tour guidati o fly & drive, tra città iconiche, natura, esperienze locali e tappe studiate con cura."
-              image={tourImg}
-            />
-            <TravelIdeaCard
-              badge="Città romantiche"
-              title="Capitali, charme e design"
-              caption="Parigi, New York, Dubai, grandi città europee e metropoli internazionali. Boutique hotel, rooftop, ristoranti particolari e attività pensate per due."
-              image={cittaImg}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* FORM DEDICATO VIAGGIO DI NOZZE */}
       <section
         id="preventivo-nozze"
@@ -298,7 +232,7 @@ const ViaggiDiNozze = () => {
             <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
               Richiesta preventivo viaggio di nozze
             </p>
-            <h2 className="text-2xl md:3xl font-bold text-[#EB2480] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
               Raccontateci il vostro viaggio ideale
             </h2>
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
@@ -409,7 +343,7 @@ const ViaggiDiNozze = () => {
               />
 
               {/* Nomi sposi */}
-              <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+              <div className="grid gap-4 md:grid-cols-[1fr_auto1fr] md:items-center">
                 <div>
                   <label
                     htmlFor="sposoA"
@@ -748,6 +682,7 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+
 
 
 

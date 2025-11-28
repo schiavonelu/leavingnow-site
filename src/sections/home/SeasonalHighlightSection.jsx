@@ -1,6 +1,6 @@
 // src/sections/home/SeasonalHighlightSection.jsx
 import { Link } from "react-router-dom";
-import { Plane, Building2 } from "lucide-react";
+import { Plane, Building2, Waves } from "lucide-react";
 import heroImg from "../../assets/destination/hero.webp";
 
 // ⬇️ Importiamo la logica di vendita
@@ -38,6 +38,7 @@ const SeasonalHighlightSection = () => {
 
             {/* CTA principali */}
             <div className="mt-3 flex flex-col sm:flex-row flex-wrap gap-3">
+              {/* Mete stagionali – sempre */}
               <Link
                 to={`/mete-stagionali#${season.id}`}
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
@@ -46,9 +47,21 @@ const SeasonalHighlightSection = () => {
                 {season.ctaLabel}
               </Link>
 
+              {/* Mare Italia – solo quando la stagione attiva è ESTATE */}
+              {season.id === "estate" && (
+                <Link
+                  to="/mete-mare-italia"
+                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
+                >
+                  <Waves className="w-4 h-4 mr-2" />
+                  Mare Italia: isole & coste
+                </Link>
+              )}
+
+              {/* Capitali europee – sempre */}
               <Link
                 to="/mete-capitali"
-                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100  hover:border-[#EB2480] hover:text-[#EB2480] transition"
+                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
               >
                 <Building2 className="w-4 h-4 mr-2" />
                 Preferisci una capitale europea?
@@ -75,6 +88,7 @@ const SeasonalHighlightSection = () => {
 };
 
 export default SeasonalHighlightSection;
+
 
 
 

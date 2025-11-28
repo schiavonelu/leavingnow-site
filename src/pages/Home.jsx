@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "../sections/home/Hero.jsx";
@@ -8,46 +9,45 @@ import LazySection from "../components/LazySection.jsx";
 import TripTypesStripIntro from "../sections/home/TripTypesStripIntro.jsx";
 import TripTypesStrip from "../components/ui/TripTypesStrip.jsx";
 
-// 🔹 NUOVA SEZIONE DINAMICA METE STAGIONALI
+// 🔹 SEZIONE DINAMICA METE STAGIONALI
 import SeasonalHighlightSection from "../sections/home/SeasonalHighlightSection.jsx";
+
+const HEADER_OFFSET = 80; // navbar + eventuali elementi sticky
 
 const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const HEADER_OFFSET = 80; // regola se serve (navbar + eventuale sticky)
+    const { pathname, hash } = location;
 
-    const hash = location.hash;
+    const scrollWithOffset = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = rect.top + scrollTop - HEADER_OFFSET;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: "auto",
+      });
+    };
 
     if (hash) {
       const id = hash.replace("#", "");
 
-      const scrollWithOffset = () => {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const rect = el.getBoundingClientRect();
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const targetY = rect.top + scrollTop - HEADER_OFFSET;
-
-        window.scrollTo({
-          top: targetY,
-          behavior: "auto",
-        });
-      };
-
       // 1° tentativo subito dopo il render
-      setTimeout(scrollWithOffset, 0);
-      // 2° tentativo dopo un po' (quando lazy / immagini hanno finito di “spingere” la pagina)
-      setTimeout(scrollWithOffset, 300);
-
+      setTimeout(() => scrollWithOffset(id), 0);
+      // 2° tentativo dopo lazy / immagini
+      setTimeout(() => scrollWithOffset(id), 300);
       return;
     }
 
     // Nessun hash → normale scroll in alto
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [location.pathname, location.hash]);
+  }, [location]);
 
   return (
     <main>
@@ -76,7 +76,7 @@ const Home = () => {
         </StickySection>
       </section>
 
-      {/* 🔹 SEZIONE DINAMICA METE STAGIONALI (dopo i continenti) */}
+      {/* METE STAGIONALI – BANNER DINAMICO */}
       <section id="mete-stagionali">
         <SeasonalHighlightSection />
       </section>

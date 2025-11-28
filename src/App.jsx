@@ -1,3 +1,4 @@
+// src/App.jsx
 import { Routes, Route } from "react-router-dom";
 
 // Layout principale
@@ -15,6 +16,8 @@ import ViaggiFamily from "./pages/ViaggiFamily.jsx";
 import IdeeRegalo from "./pages/IdeeRegalo.jsx";
 import MeteStagionali from "./pages/MeteStagionali.jsx";
 import MeteCapitali from "./pages/MeteCapitali.jsx";
+import MeteViaggiNozze from "./pages/MeteViaggiNozze.jsx";   
+import MareItalia from "./pages/MareItalia.jsx";        
 
 // Pagine legali
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
@@ -72,13 +75,18 @@ function App() {
             path="viaggi-individuali-gruppo"
             element={<ViaggiIndividualiGruppo />}
           />
-          <Route
-            path="viaggi-family"
-            element={<ViaggiFamily />}
-          />
+          <Route path="viaggi-family" element={<ViaggiFamily />} />
           <Route path="idee-regalo" element={<IdeeRegalo />} />
           <Route path="mete-stagionali" element={<MeteStagionali />} />
           <Route path="mete-capitali" element={<MeteCapitali />} />
+          <Route
+            path="mete-viaggi-di-nozze"
+            element={<MeteViaggiNozze />}   // ⬅️ NEW
+          />
+          <Route
+            path="mete-mare-italia"
+            element={<MareItalia />}      // ⬅️ NEW
+          />
 
           {/* Sotto-pagine destinazioni */}
           <Route path="destinazioni/europa" element={<Europa />} />
@@ -93,7 +101,10 @@ function App() {
           {/* Pagine legali */}
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="termini-e-condizioni" element={<TerminiCondizioni />} />
-          <Route path="condizioni-di-vendita" element={<CondizioniVendita />} />
+          <Route
+            path="condizioni-di-vendita"
+            element={<CondizioniVendita />}
+          />
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
         </Route>
 
@@ -108,6 +119,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

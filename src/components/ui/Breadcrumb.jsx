@@ -1,10 +1,12 @@
+// src/components/ui/Breadcrumb.jsx
 import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaMapMarkedAlt } from "react-icons/fa";
 import { IoChevronForward } from "react-icons/io5";
 
 const Breadcrumb = () => {
   const location = useLocation();
-  const pathParts = location.pathname.split("/").filter(Boolean);
+  const currentPath = location.pathname;
+  const pathParts = currentPath.split("/").filter(Boolean);
 
   const labelMap = {
     destinazioni: "Destinazioni",
@@ -13,23 +15,40 @@ const Breadcrumb = () => {
     africa: "Africa",
     asia: "Asia",
     oceania: "Oceania",
+
     "mete-stagionali": "Mete stagionali",
+    "mete-capitali": "Mete capitali",
+    "mete-viaggi-di-nozze": "Mete viaggi di nozze",
+    "mete-mare-italia": "Mare Italia",
+
     crociere: "Crociere",
     "viaggi-individuali-gruppo": "Viaggi individuali & di gruppo",
     "viaggi-family": "Viaggi Family",
+    "viaggi-di-nozze": "Viaggi di nozze",
     "idee-regalo": "Idee regalo",
+
     "chi-siamo": "Chi Siamo",
     contatti: "Contatti",
+
     "privacy-policy": "Privacy Policy",
     "termini-e-condizioni": "Termini & Condizioni",
     "condizioni-di-vendita": "Condizioni di Vendita",
   };
 
-  const currentPath = location.pathname;
+  // 🔙 Target della "Home" in breadcrumb, verso la sezione giusta
   let homeTarget = "/";
 
   if (currentPath.includes("mete-stagionali")) {
     homeTarget = "/#mete-stagionali";
+  } else if (
+    currentPath.includes("mete-mare-italia") ||
+    currentPath.includes("mete-capitali")
+  ) {
+    // Mare Italia e Capitali → sezione tipologie in home
+    homeTarget = "/#tipologie";
+  } else if (currentPath.includes("mete-viaggi-di-nozze")) {
+    // Da mete viaggi di nozze → direttamente al form viaggi di nozze
+    homeTarget = "/viaggi-di-nozze#preventivo-nozze";
   } else if (
     currentPath.includes("crociere") ||
     currentPath.includes("viaggi-individuali") ||
@@ -46,7 +65,8 @@ const Breadcrumb = () => {
     homeTarget = "/#agenzia";
   }
 
-  const crumbs = pathParts.map((part, idx) => {
+  // 🧩 Crumbs standard ricavati dal path
+  let crumbs = pathParts.map((part, idx) => {
     const path = "/" + pathParts.slice(0, idx + 1).join("/");
     const isLast = idx === pathParts.length - 1;
 
@@ -59,6 +79,25 @@ const Breadcrumb = () => {
 
     return { label, path, isLast };
   });
+
+  // ✨ Caso speciale: METE VIAGGI DI NOZZE
+  // Home porta già al form (homeTarget),
+  // qui mostriamo: Home > Viaggi di nozze > Mete viaggi di nozze
+  // e "Viaggi di nozze" punta direttamente al form.
+  if (currentPath.startsWith("/mete-viaggi-di-nozze")) {
+    crumbs = [
+      {
+        label: "Viaggi di nozze",
+        path: "/viaggi-di-nozze#preventivo-nozze",
+        isLast: false,
+      },
+      {
+        label: "Mete viaggi di nozze",
+        path: "/mete-viaggi-di-nozze",
+        isLast: true,
+      },
+    ];
+  }
 
   if (crumbs.length === 0) return null;
 
@@ -110,6 +149,9 @@ const Breadcrumb = () => {
 };
 
 export default Breadcrumb;
+
+
+
 
 
 
