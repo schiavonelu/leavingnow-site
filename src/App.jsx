@@ -14,6 +14,7 @@ import ViaggiIndividualiGruppo from "./pages/ViaggiIndividualiGruppo.jsx";
 import ViaggiFamily from "./pages/ViaggiFamily.jsx";
 import IdeeRegalo from "./pages/IdeeRegalo.jsx";
 import MeteStagionali from "./pages/MeteStagionali.jsx";
+import MeteCapitali from "./pages/MeteCapitali.jsx";
 
 // Pagine legali
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
@@ -77,6 +78,7 @@ function App() {
           />
           <Route path="idee-regalo" element={<IdeeRegalo />} />
           <Route path="mete-stagionali" element={<MeteStagionali />} />
+          <Route path="mete-capitali" element={<MeteCapitali />} />
 
           {/* Sotto-pagine destinazioni */}
           <Route path="destinazioni/europa" element={<Europa />} />
