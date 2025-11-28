@@ -1,12 +1,12 @@
 // src/pages/MeteMareItalia.jsx
 import { useEffect, useState, useMemo } from "react";
-import { Search } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
+import TravelFilters from "../components/ui/TravelFilters.jsx";
 import heroImg from "../assets/destination/hero.webp";
 import { MARE_ITALIA_DESTINATIONS } from "../data/mare-italia.js";
-import TravelFilters from "../components/ui/TravelFilters.jsx";
+import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -14,16 +14,11 @@ const ITEMS_PER_PAGE = 9;
 const MeteMareItalia = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPeriods, setSelectedPeriods] = useState([]);
+  const [selectedBuckets, setSelectedBuckets] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
-
-  const periodOptions = useMemo(
-    () => Array.from(new Set(MARE_ITALIA_DESTINATIONS.map((d) => d.period))),
-    []
-  );
 
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
@@ -32,15 +27,16 @@ const MeteMareItalia = () => {
       const matchSearch =
         term === "" ||
         trip.title.toLowerCase().includes(term) ||
-        trip.description.toLowerCase().includes(term);
+        trip.description.toLowerCase().includes(term) ||
+        (trip.area && trip.area.toLowerCase().includes(term));
 
-      const matchPeriod =
-        selectedPeriods.length === 0 ||
-        selectedPeriods.includes(trip.period);
+      const bucket = getSeasonBucketLabel(trip.period);
+      const matchSeason =
+        selectedBuckets.length === 0 || selectedBuckets.includes(bucket);
 
-      return matchSearch && matchPeriod;
+      return matchSearch && matchSeason;
     });
-  }, [searchTerm, selectedPeriods]);
+  }, [searchTerm, selectedBuckets]);
 
   const totalPages = Math.ceil(filteredTrips.length / ITEMS_PER_PAGE) || 1;
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -56,13 +52,13 @@ const MeteMareItalia = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, selectedPeriods]);
+  }, [searchTerm, selectedBuckets]);
 
   return (
     <>
       <InnerHero
         title="Mare Italia"
-        subtitle="Coste, isole e borghi sul mare: ispirazioni per costruire il tuo viaggio tra Sardegna, Sicilia, Puglia, Costiera Amalfitana e molto altro."
+        subtitle="Coste, isole e borghi sul mare pensati su misura per te, senza pacchetti standard."
         image={heroImg}
       />
 
@@ -70,17 +66,17 @@ const MeteMareItalia = () => {
 
       {/* INTRO */}
       <section className="py-8 md:py-10 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-3">
+          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6]">
             Idee di viaggio by Leaving Now
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3">
-            Mare Italia, oltre il “semplice” soggiorno
+          <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
+            Mare Italia, oltre le solite mete
           </h1>
           <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-            Qui trovi spunti per costruire un viaggio al mare fatto su misura:
-            non solo hotel, ma anche tappe, escursioni, borghi, esperienze e
-            combinazioni tra più zone.
+            Una selezione di idee tra isole, coste e borghi di mare in Italia.
+            Puoi scorrere tutte le proposte, cercare per zona o filtrare in
+            base alla stagione consigliata.
           </p>
         </div>
       </section>
@@ -88,47 +84,60 @@ const MeteMareItalia = () => {
       {/* FILTRI + GRID */}
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-start gap-6 lg:gap-8">
-            {/* FILTRI SINISTRA */}
-            <aside className="md:w-64 lg:w-72 flex-shrink-0 mb-2 md:mb-0">
-              <TravelFilters
-                title="Mare Italia"
-                periodLabel="Periodo consigliato"
-                periods={periodOptions}
-                selectedPeriods={selectedPeriods}
-                onPeriodsChange={setSelectedPeriods}
-                onResetFilters={() => setSearchTerm("")}
-              />
-            </aside>
+          <div className="flex flex-col lg:flex-row gap-6">
+            {/* Filtri a sinistra */}
+            <TravelFilters
+              title="Mare Italia"
+              selectedBuckets={selectedBuckets}
+              onBucketsChange={setSelectedBuckets}
+              onResetFilters={() => {
+                setSearchTerm("");
+              }}
+            />
 
-            {/* DESTRA: RICERCA + CARD */}
-            <div className="flex-1 space-y-5">
-              <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-3 md:p-4">
-                <label
-                  htmlFor="search-mare"
-                  className="block text-xs md:text-sm font-medium text-[#132C50] mb-1"
-                >
-                  Cerca una meta di mare
-                </label>
-                <div className="relative mt-1">
-                  <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                    <Search className="w-4 h-4 text-slate-400" />
-                  </span>
-                  <input
-                    id="search-mare"
-                    type="text"
-                    placeholder="Es. Sardegna, Sicilia, Puglia…"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-                  />
+            {/* Risultati a destra */}
+            <div className="flex-1 space-y-6">
+              {/* Barra di ricerca */}
+              <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
+                <div className="flex flex-col md:flex-row md:items-end gap-4">
+                  <div className="flex-1">
+                    <label
+                      htmlFor="search-mare"
+                      className="block text-xs md:text-sm font-medium text-[#132C50] mb-1"
+                    >
+                      Cerca una località di mare
+                    </label>
+                    <input
+                      id="search-mare"
+                      type="text"
+                      placeholder="Es. Sardegna, Sicilia, Costiera Amalfitana…"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
+                    />
+                  </div>
+
+                  <div className="text-xs md:text-sm text-slate-500 md:text-right">
+                    <p className="font-medium text-[#0F172A]">
+                      {filteredTrips.length}{" "}
+                      {filteredTrips.length === 1 ? "meta trovata" : "mete trovate"}
+                    </p>
+                    <p>
+                      Filtrate per{" "}
+                      {selectedBuckets.length === 0
+                        ? "tutte le stagioni"
+                        : selectedBuckets.join(", ")}
+                      .
+                    </p>
+                  </div>
                 </div>
               </div>
 
+              {/* GRID */}
               {filteredTrips.length === 0 ? (
-                <p className="text-sm md:text-base text-slate-600 text-center">
+                <p className="text-sm md:text-base text-slate-600 text-center py-6">
                   Nessuna meta trovata con questi criteri. Prova a modificare la
-                  ricerca o i filtri.
+                  ricerca o i filtri stagionali.
                 </p>
               ) : (
                 <div className="grid gap-8 md:grid-cols-3">
@@ -145,7 +154,8 @@ const MeteMareItalia = () => {
                 </div>
               )}
 
-              {filteredTrips.length > 0 && (
+              {/* PAGINAZIONE */}
+              {filteredTrips.length > 0 && totalPages > 1 && (
                 <div className="flex items-center justify-center gap-2 mt-4">
                   <button
                     type="button"
@@ -201,7 +211,7 @@ const MeteMareItalia = () => {
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Vuoi organizzare il tuo mare Italia su misura?
+            Vuoi partire da una di queste idee o creare il tuo mare Italia su misura?
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -215,7 +225,7 @@ const MeteMareItalia = () => {
               href={RESERVIO_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+              className="inline-flex w-full sm:w-auto justify.center items.center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               Preferisci una consulenza?
             </a>

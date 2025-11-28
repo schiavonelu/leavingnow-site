@@ -1,121 +1,121 @@
 export const CAPITAL_CITIES = [
   {
     title: "Parigi",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Romantica, iconica, elegante. Parigi è perfetta per chi ama musei, bistrot, quartieri caratteristici e una certa atmosfera cinematografica in ogni stagione.",
+      "Boulevard eleganti, musei iconici, bistrot e quartieri dal carattere diverso. Parigi è perfetta per chi ama arte, cucina e atmosfere romantiche in ogni stagione, tra la Senna e i tetti panoramici della città.",
   },
   {
     title: "Londra",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Quartieri diversi tra loro, mercati, musei gratuiti, teatri e locali. Londra è una città da vivere a strati, ideale per più viaggi nel tempo.",
+      "Mercati, musei gratuiti, teatri e quartieri unici tra loro. Londra è una metropoli vibrante da vivere a strati, ideale per chi ama cultura, innovazione e una scena gastronomica eccezionale.",
   },
   {
     title: "Madrid",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Autunno – Primavera",
     description:
-      "Tavoli all’aperto, tapas, arte e vita di quartiere. Una città vivace e solare, perfetta per chi cerca energia, cultura e ottimo cibo.",
+      "Piazze luminose, tapas bar, musei di grande rilievo e una vita serale travolgente. Madrid è solare, vivace e autentica, perfetta per un city break ricco di energia e gusto.",
   },
   {
     title: "Lisbona",
-    badge: "Capitale europea",
+    badge: "Mediterranea",
     period: "Primavera – Autunno",
     description:
-      "Saliscendi, miradouros, tram storici e quartieri dal fascino un po’ malinconico. Ideale per chi ama camminare, ascoltare musica e guardare il mare.",
+      "Saliscendi, miradouros, tram storici e quartieri dal fascino nostalgico. Lisbona unisce musica, mare, ottima cucina e un’atmosfera luminosa, ideale per chi ama camminare e scoprire scorci romantici.",
   },
   {
     title: "Vienna",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Elegante, curata, perfetta sia d’inverno tra mercatini e caffè storici, sia in primavera tra parchi e palazzi. Una città ideale per chi ama l’arte e la musica.",
+      "Palazzi imperiali, caffè storici, concerti e parchi curatissimi. Vienna è una città elegante e ordinata, perfetta per chi cerca arte, musica classica e un ritmo di viaggio rilassato.",
   },
   {
     title: "Praga",
-    badge: "Capitale europea",
+    badge: "Est",
     period: "Tutto l’anno",
     description:
-      "Ponti, castelli, vicoli acciottolati e tetti rossi. Praga ha un’atmosfera fiabesca, perfetta per city break romantici o di scoperta culturale.",
+      "Castello, ponte Carlo, vicoli acciottolati e panorami fiabeschi. Praga è ideale per un city break romantico o culturale, con atmosfere suggestive in ogni stagione.",
   },
   {
     title: "Budapest",
-    badge: "Capitale europea",
+    badge: "Est",
     period: "Autunno – Primavera",
     description:
-      "Terme, ponti sul Danubio, locali e quartieri creativi. Budapest è ideale per chi vuole unire benessere, storia e vita notturna.",
+      "Terme storiche, ponti sul Danubio, palazzi illuminati e quartieri creativi. Budapest unisce benessere, storia e una vita notturna interessante, con costi spesso più accessibili.",
   },
   {
     title: "Berlino",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Storia recente, arte contemporanea, club, quartieri alternativi e spazi verdi. Una città che parla al presente, ideale per chi cerca contenuto e creatività.",
+      "Storia recente, arte contemporanea, spazi verdi e una forte anima alternativa. Berlino è perfetta per chi cerca contenuti, cultura moderna e quartieri dalla personalità distinta.",
   },
   {
     title: "Bruxelles",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Tutto l’anno",
     description:
-      "Cioccolato, birre, palazzi storici e istituzioni europee. Perfetta come base anche per escursioni in giornata verso Bruges e Gand.",
+      "Grand Place, cioccolaterie, birrerie e istituzioni europee. Bruxelles è compatta e ricca di atmosfera, perfetta anche per escursioni verso Bruges e Gand.",
   },
   {
     title: "Copenaghen",
-    badge: "Capitale nordica",
+    badge: "Nordica",
     period: "Primavera – Inverno",
     description:
-      "Design, hygge, caffetterie curate e quartieri colorati. Ideale per chi ama uno stile di vita rilassato, sostenibile e molto curato nei dettagli.",
+      "Design scandinavo, hygge, caffetterie curate e quartieri colorati. Copenaghen è ideale per chi cerca relax nordico, sostenibilità e attenzione ai dettagli.",
   },
   {
     title: "Stoccolma",
-    badge: "Capitale nordica",
+    badge: "Nordica",
     period: "Estate – Inverno",
     description:
-      "Isolotti collegati da ponti, quartieri eleganti, musei e natura a portata di mano. Una capitale luminosa, vivibile e a misura d’uomo.",
+      "Una capitale sull’acqua, con isole collegate da ponti, musei e natura a portata di mano. Stoccolma è luminosa, vivibile e perfetta per chi ama il connubio città+natura.",
   },
   {
     title: "Atene",
-    badge: "Capitale mediterranea",
+    badge: "Mediterranea",
     period: "Primavera – Autunno",
     description:
-      "Acropoli, vista sul mare, taverne e quartieri pieni di vita. Atene è perfetta sia come city break, sia come punto di partenza per le isole greche.",
+      "Acropoli, taverne, mare vicino e quartieri vivaci. Atene è perfetta per chi ama storia, cibo mediterraneo e un’atmosfera calda e autentica.",
   },
   {
     title: "Dublino",
-    badge: "Capitale europea",
+    badge: "Capitale",
     period: "Autunno – Primavera",
     description:
-      "Pub, musica dal vivo, parchi e scogliere a poca distanza. Una città accogliente, ideale per chi vuole un’atmosfera calda e rilassata.",
+      "Pub con musica dal vivo, parchi verdi e scogliere raggiungibili in breve tempo. Dublino è accogliente, informale e ideale per chi cerca un viaggio rilassato.",
   },
   {
     title: "Varsavia",
-    badge: "Capitale europea",
+    badge: "Est",
     period: "Primavera – Autunno",
     description:
-      "Una città che parla di storia recente, ma anche di moderno, spazi verdi e quartieri in trasformazione. Interessante per chi cerca qualcosa di meno scontato.",
+      "Centro storico ricostruito, quartieri moderni, memoria storica e grandi spazi verdi. Varsavia è perfetta per chi cerca una capitale diversa dalle più note.",
   },
   {
     title: "Helsinki",
-    badge: "Capitale nordica",
+    badge: "Nordica",
     period: "Estate – Inverno",
     description:
-      "Architettura nordica, saune, mare e design. Ideale per chi ama l’atmosfera scandinava e vuole combinare città e natura.",
+      "Architettura scandinava, saune, mare e design minimale. Helsinki è ideale per chi ama la cultura nordica e desidera alternare città e natura.",
   },
   {
     title: "Oslo",
-    badge: "Capitale nordica",
+    badge: "Nordica",
     period: "Estate – Inverno",
     description:
-      "Fjord, musei sul mare, quartieri nuovi e molta natura intorno. Perfetta per chi vuole una città nordica raccolta, luminosa e vivibile.",
+      "Musei sul fiordo, quartieri moderni sul waterfront e natura ovunque. Oslo è una capitale raccolta e luminosa, perfetta per chi ama paesaggi nordici.",
   },
   {
     title: "Reykjavík",
-    badge: "Capitale nordica",
+    badge: "Nordica",
     period: "Autunno – Inverno",
     description:
-      "Piccola capitale immersa in paesaggi incredibili. Ideale come base per esplorare geyser, cascate, lagune termali e – con un po’ di fortuna – l’aurora boreale.",
+      "Una capitale immersa in paesaggi spettacolari: geyser, cascate, lagune calde e, in stagione, aurora boreale. Perfetta come base per esplorare l’Islanda.",
   },
 ];

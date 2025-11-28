@@ -1,129 +1,132 @@
+// src/data/viaggi-nozze.js
 
 export const HONEYMOON_DESTINATIONS = [
   {
     title: "Maldive in overwater",
-    badge: "Viaggio di nozze / Mare",
-    period: "Da novembre ad aprile",
+    badge: "Mare",
+    period: "Novembre – Aprile",
     description:
-      "Acqua turchese, bungalow sull’acqua, ritmi lenti e servizi curatissimi. Perfetto per chi sogna relax totale, privacy e dettagli di alto livello per il proprio viaggio di nozze.",
+      "Atolli privati, lagune turchesi e bungalow sospesi sull’acqua. Le Maldive sono perfette per chi sogna un viaggio di nozze fatto di ritmi lenti, privacy, servizi curati e tramonti da guardare direttamente dal proprio overwater.",
   },
   {
     title: "Seychelles tra spiagge e natura",
-    badge: "Viaggio di nozze / Mare",
+    badge: "Mare",
     period: "Quasi tutto l’anno",
     description:
-      "Spiagge bianche, massi di granito, vegetazione rigogliosa e boutique hotel romantici. Ideale per chi cerca un mare importante, ma anche escursioni e natura.",
+      "Spiagge bianchissime, massi di granito, mare trasparente e una natura tropicale rigogliosa. Le Seychelles sono ideali per una luna di miele elegante ma informale, tra boutique hotel romantici, escursioni in bicicletta e baie appartate.",
   },
   {
     title: "Mauritius romantica",
-    badge: "Viaggio di nozze / Mare",
-    period: "Da maggio a ottobre",
+    badge: "Mare",
+    period: "Maggio – Ottobre",
     description:
-      "Resort fronte mare, tramonti, servizi di alto livello e possibilità di escursioni tra piantagioni, cascate e villaggi. Un classico viaggio di nozze equilibrato e completo.",
+      "Resort affacciati sulla barriera corallina, tramonti intensi e un’accoglienza molto curata. Mauritius è perfetta per chi desidera un viaggio di nozze equilibrato, con giornate di mare e possibilità di escursioni tra piantagioni, cascate e piccoli villaggi.",
   },
   {
     title: "Polinesia Francese da sogno",
-    badge: "Viaggio di nozze / Lontani",
-    period: "Da maggio a ottobre",
+    badge: "Lontani",
+    period: "Maggio – Ottobre",
     description:
-      "Lagune trasparenti, overwater, isolette intime e scenari da cartolina. Un viaggio di nozze iconico, perfetto per chi vuole qualcosa di realmente irripetibile.",
+      "Lagune color smeraldo, overwater, isolette intime e scenari da cartolina. La Polinesia Francese è il classico viaggio di nozze iconico, pensato per chi vuole vivere un’esperienza davvero irripetibile, tra romanticismo assoluto e natura esotica.",
   },
   {
     title: "Zanzibar e safari in Tanzania",
-    badge: "Safari + mare",
-    period: "Da giugno a ottobre",
+    badge: "Safari",
+    period: "Giugno – Ottobre",
     description:
-      "Prima l’emozione del safari tra parchi e savana, poi il mare turchese di Zanzibar. Un itinerario intenso e ricco, per chi vuole vivere due viaggi in uno.",
+      "Prima l’emozione del safari tra parchi e savana, poi il mare turchese di Zanzibar. Un combinato intenso, perfetto per chi vuole vivere un vero contatto con la natura e poi rilassarsi su spiagge di sabbia finissima, in lodge e resort curati.",
   },
   {
     title: "Bali e isole indonesiane",
-    badge: "Viaggio di nozze / Oriente",
-    period: "Da maggio a ottobre",
+    badge: "Lontani",
+    period: "Maggio – Ottobre",
     description:
-      "Templi, risaie, piccoli resort immersi nel verde e isole con mare cristallino. Ideale per chi cerca spiritualità, natura e un tocco di mare tropicale.",
+      "Templi, risaie, piccoli resort immersi nel verde e isole con mare cristallino. Bali e l’Indonesia sono ideali per una luna di miele che unisce spiritualità, paesaggi esotici e qualche giorno di mare tropicale, con strutture spesso intime e di design.",
   },
   {
     title: "Giappone e mare tropicale",
-    badge: "Combinato / Cultura + mare",
-    period: "Da marzo a giugno, settembre – novembre",
+    badge: "Combinato",
+    period: "Marzo – Giugno, Settembre – Novembre",
     description:
-      "Tokyo, Kyoto, tradizioni e templi, abbinati a qualche giorno di mare a Okinawa o in un’altra destinazione tropicale. Perfetto per coppie curiose che non vogliono ‘solo’ mare.",
+      "Tokyo, Kyoto, tradizioni, quartieri futuristici e giardini curati, abbinati a qualche giorno di mare in una destinazione tropicale. Un viaggio di nozze perfetto per coppie curiose, che non vogliono solo relax ma anche cultura e nuove esperienze.",
   },
   {
     title: "Stati Uniti on the road e isole",
-    badge: "On the road + mare",
-    period: "Da maggio a ottobre",
+    badge: "Combinato",
+    period: "Maggio – Ottobre",
     description:
-      "Un itinerario su misura tra città iconiche e parchi naturali, con finale mare (per esempio in Florida o ai Caraibi). Ideale per chi ama libertà, strada e panorami.",
+      "Strade panoramiche, parchi naturali, città iconiche e poi un finale di viaggio su un’isola dal mare cristallino. Un’on the road negli USA con estensione mare è ideale per chi ama libertà, avventura, grandi paesaggi e giornate di relax in spiaggia.",
   },
   {
     title: "Sudafrica, Cape Town e Oceano Indiano",
-    badge: "Safari + città + mare",
-    period: "Da settembre a marzo",
+    badge: "Safari",
+    period: "Settembre – Marzo",
     description:
-      "Cape Town, vigneti, safari e mare sull’Oceano Indiano. Un viaggio di nozze pieno, vario, perfetto per chi vuole contenuti, natura e paesaggi forti.",
+      "Cape Town tra montagne e oceano, vigneti, safari nei parchi e mare sull’Oceano Indiano. Un viaggio di nozze completo e ricco di contenuti, perfetto per chi ama alternare città, natura, animali e panorami spettacolari.",
   },
   {
     title: "Costiera Amalfitana romantica",
-    badge: "Viaggio di nozze / Italia",
-    period: "Da aprile a ottobre",
+    badge: "Italia",
+    period: "Aprile – Ottobre",
     description:
-      "Strade panoramiche, borghi a picco sul mare, hotel di charme e cene vista mare. Ideale per chi vuole un viaggio di nozze elegante, ma senza andare dall’altra parte del mondo.",
+      "Borghi a picco sul mare, strade panoramiche, hotel di charme e ristoranti vista mare. La Costiera Amalfitana è ideale per chi desidera un viaggio di nozze elegante, senza volare lontano, ma con un altissimo tasso di atmosfera e luoghi scenografici.",
   },
   {
     title: "Isole della Grecia per due",
-    badge: "Viaggio di nozze / Mediterraneo",
-    period: "Da maggio a ottobre",
+    badge: "Mare",
+    period: "Maggio – Ottobre",
     description:
-      "Cicladi, Ionie o isole meno conosciute: tramonti, vicoli bianchi, taverne intime e piccole strutture vista mare. Perfetto per chi cerca romanticismo mediterraneo.",
+      "Cicladi, Ionie o isole più intime: vicoli bianchi, taverne di famiglia, tramonti sul mare e piccole strutture accoglienti. Le isole greche sono perfette per una luna di miele mediterranea, romantica e dal ritmo rilassato.",
   },
   {
-    title: "Crociere di nozze tra fiordi o Mediterraneo",
-    badge: "Viaggio di nozze / Crociera",
-    period: "Da maggio a settembre",
+    title: "Crociere di nozze",
+    badge: "Combinato",
+    period: "Maggio – Settembre",
     description:
-      "Una crociera ben scelta può diventare un viaggio di nozze comodo e panoramico, tra fiordi, isole greche o Mediterraneo, con servizi dedicati alla coppia.",
+      "Fiordi, Mediterraneo o isole: una crociera ben costruita può diventare un viaggio di nozze comodo e panoramico, con molte destinazioni in pochi giorni, servizi a bordo curati e la possibilità di personalizzare escursioni e momenti per due.",
   },
   {
     title: "Australia e Polinesia",
-    badge: "Viaggio di nozze / Lontani",
+    badge: "Lontani",
     period: "Stagionalità variabile",
     description:
-      "Un itinerario importante: città, natura, animali unici e poi lagune da sogno in Polinesia. Un viaggio di nozze per chi ha tempo e vuole una grande esperienza.",
+      "Città moderne, natura selvaggia, animali unici e poi lagune perfette in Polinesia. Un viaggio di nozze importante e strutturato, ideale per chi ha tempo a disposizione e desidera vivere una grande esperienza tra avventura e relax tropicale.",
   },
   {
     title: "New York e Caraibi",
-    badge: "Città + mare",
-    period: "Da maggio a ottobre",
+    badge: "Combinato",
+    period: "Maggio – Ottobre",
     description:
-      "Qualche giorno a New York tra skyline, quartieri e rooftop, seguito da una settimana di relax in un’isola dei Caraibi. Due viaggi in uno, perfetti per una coppia dinamica.",
+      "Qualche giorno a New York tra skyline, quartieri creativi e rooftop, seguito da una settimana di mare ai Caraibi. Un doppio viaggio perfetto per una coppia dinamica, che ama le grandi città ma non rinuncia al mare da cartolina.",
   },
   {
     title: "Portogallo romantico",
-    badge: "Viaggio di nozze / Europa",
-    period: "Da aprile a ottobre",
+    badge: "Europa",
+    period: "Aprile – Ottobre",
     description:
-      "Lisbona, Porto, costa atlantica, piccoli boutique hotel e tramonti sull’oceano. Un viaggio di nozze europeo, ma ricco di atmosfera e luoghi speciali.",
+      "Lisbona, Porto, cittadine affacciate sull’Atlantico e piccoli boutique hotel di charme. Il Portogallo è ideale per un viaggio di nozze europeo ma ricco di atmosfera, colori, luce e sapori intensi.",
   },
   {
     title: "Islanda e spa panoramiche",
-    badge: "Nature & relax",
-    period: "Da maggio a settembre, inverno selezionato",
+    badge: "Lontani",
+    period: "Maggio – Settembre, inverno selezionato",
     description:
-      "Paesaggi lunari, cascate, ghiacciai e spa con piscine calde nella natura. Un viaggio di nozze diverso, per chi ama la natura più che il mare tropicale.",
+      "Geyser, cascate, ghiacciai, strade scenografiche e spa con piscine calde in mezzo alla natura. L’Islanda è perfetta per una luna di miele diversa dal solito, dedicata a chi ama i paesaggi nordici più che il mare tropicale.",
   },
   {
     title: "Sri Lanka e Maldive",
-    badge: "Cultura + mare",
-    period: "Da dicembre ad aprile",
+    badge: "Combinato",
+    period: "Dicembre – Aprile",
     description:
-      "Templi, piantagioni di tè, piccoli lodge nella natura e poi qualche giorno di mare alle Maldive. Un itinerario di nozze con ritmo e contenuti.",
+      "Templi, piantagioni di tè, piccoli lodge nella natura e poi qualche giorno di mare alle Maldive. Un viaggio di nozze con ritmo e contenuti, pensato per chi vuole sia scoperta culturale sia relax di alto livello.",
   },
   {
     title: "Bora Bora e isole Society",
-    badge: "Viaggio di nozze / Iconico",
-    period: "Da maggio a ottobre",
+    badge: "Iconico",
+    period: "Maggio – Ottobre",
     description:
-      "Un classico assoluto del viaggio di nozze: laguna turchese, overwater, resort iconici. Ideale per chi vuole vivere un sogno che si fa una volta sola.",
+      "Lagune iconiche, resort esclusivi, overwater e scenari da sogno. Bora Bora e le isole Society rappresentano uno dei viaggi di nozze più desiderati al mondo, perfetto per chi vuole vivere un’esperienza realmente unica e una volta nella vita.",
   },
 ];
+
+

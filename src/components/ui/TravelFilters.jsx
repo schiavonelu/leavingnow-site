@@ -3,310 +3,276 @@ import { useState } from "react";
 import {
   Filter,
   X,
-  CalendarRange,
+  CalendarDays,
+  Sun,
   Snowflake,
-  SunMedium,
   Flower2,
   Leaf,
+  Shuffle,
 } from "lucide-react";
+import {
+  SEASON_BUCKET_LABELS,
+  SEASON_BUCKET_LIST,
+} from "../../utils/seasonBuckets.js";
 
-// 🔹 Mappa mesi IT → abbreviazione compatta
-const MONTH_MAP = {
-  Gennaio: "gen",
-  Febbraio: "feb",
-  Marzo: "mar",
-  Aprile: "apr",
-  Maggio: "mag",
-  Giugno: "giu",
-  Luglio: "lug",
-  Agosto: "ago",
-  Settembre: "set",
-  Ottobre: "ott",
-  Novembre: "nov",
-  Dicembre: "dic",
+const SEASON_CONFIG = {
+  [SEASON_BUCKET_LABELS.ALL_YEAR]: {
+    icon: CalendarDays,
+    tone: "sky",
+    helper: "Va bene in gran parte dell’anno.",
+  },
+  [SEASON_BUCKET_LABELS.SPRING]: {
+    icon: Flower2,
+    tone: "emerald",
+    helper: "Perfetto per la primavera.",
+  },
+  [SEASON_BUCKET_LABELS.SUMMER]: {
+    icon: Sun,
+    tone: "amber",
+    helper: "Ideale per l’estate.",
+  },
+  [SEASON_BUCKET_LABELS.AUTUMN]: {
+    icon: Leaf,
+    tone: "orange",
+    helper: "Pensato per l’autunno.",
+  },
+  [SEASON_BUCKET_LABELS.WINTER]: {
+    icon: Snowflake,
+    tone: "blue",
+    helper: "Pensato per l’inverno.",
+  },
+  [SEASON_BUCKET_LABELS.MIX]: {
+    icon: Shuffle,
+    tone: "violet",
+    helper: "Stagionalità variabile / da valutare insieme.",
+  },
 };
 
-// Mostra i mesi in versione corta nel chip
-const shortenPeriodLabel = (period) => {
-  if (!period) return "";
-  let label = period;
-  Object.entries(MONTH_MAP).forEach(([full, short]) => {
-    const regex = new RegExp(full, "gi");
-    label = label.replace(regex, short);
-  });
-  return label;
+const TONE_CLASSES = {
+  sky: {
+    active: "bg-sky-50 border-sky-300 text-sky-900",
+    idle: "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100",
+    iconActive: "text-sky-500",
+    iconIdle: "text-slate-400",
+  },
+  emerald: {
+    active: "bg-emerald-50 border-emerald-300 text-emerald-900",
+    idle:
+      "bg-slate-50 border-slate-200 text-slate-700 hover:bg-emerald-50 hover:border-emerald-200",
+    iconActive: "text-emerald-500",
+    iconIdle: "text-slate-400",
+  },
+  amber: {
+    active: "bg-amber-50 border-amber-300 text-amber-900",
+    idle:
+      "bg-slate-50 border-slate-200 text-slate-700 hover:bg-amber-50 hover:border-amber-200",
+    iconActive: "text-amber-500",
+    iconIdle: "text-slate-400",
+  },
+  orange: {
+    active: "bg-orange-50 border-orange-300 text-orange-900",
+    idle:
+      "bg-slate-50 border-slate-200 text-slate-700 hover:bg-orange-50 hover:border-orange-200",
+    iconActive: "text-orange-500",
+    iconIdle: "text-slate-400",
+  },
+  blue: {
+    active: "bg-sky-50 border-sky-300 text-sky-900",
+    idle:
+      "bg-slate-50 border-slate-200 text-slate-700 hover:bg-sky-50 hover:border-sky-200",
+    iconActive: "text-sky-500",
+    iconIdle: "text-slate-400",
+  },
+  violet: {
+    active: "bg-violet-50 border-violet-300 text-violet-900",
+    idle:
+      "bg-slate-50 border-slate-200 text-slate-700 hover:bg-violet-50 hover:border-violet-200",
+    iconActive: "text-violet-500",
+    iconIdle: "text-slate-400",
+  },
 };
 
-// 🔹 Decidi icona / colore in base al testo del periodo
-const getSeasonInfo = (period) => {
-  if (!period) {
-    return { Icon: CalendarRange, iconClass: "text-slate-400" };
-  }
-
-  const p = period.toLowerCase();
-
-  const has = (substr) => p.includes(substr);
-
-  // “tutto l’anno” / “quasi tutto l’anno” → calendario
-  if (
-    has("tutto l'anno") ||
-    has("tutto l’anno") ||
-    has("quasi tutto l'anno") ||
-    has("quasi tutto l’anno") ||
-    has("all year")
-  ) {
-    return { Icon: CalendarRange, iconClass: "text-slate-500" };
-  }
-
-  const winterTokens = ["inverno", "dicembre", "dic", "gennaio", "gen", "febbraio", "feb"];
-  const summerTokens = ["estate", "giugno", "giu", "luglio", "lug", "agosto", "ago"];
-  const springTokens = ["primavera", "marzo", "mar", "aprile", "apr", "maggio", "mag"];
-  const autumnTokens = ["autunno", "settembre", "set", "ottobre", "ott", "novembre", "nov"];
-
-  const hasWinter = winterTokens.some((t) => has(t));
-  const hasSummer = summerTokens.some((t) => has(t));
-  const hasSpring = springTokens.some((t) => has(t));
-  const hasAutumn = autumnTokens.some((t) => has(t));
-
-  // Logica "furba"
-  if (hasSummer && !hasWinter) {
-    return { Icon: SunMedium, iconClass: "text-amber-400" };
-  }
-
-  if (hasWinter && !hasSummer) {
-    return { Icon: Snowflake, iconClass: "text-sky-400" };
-  }
-
-  if (hasSpring && !hasSummer && !hasWinter) {
-    return { Icon: Flower2, iconClass: "text-[#EB2480]" };
-  }
-
-  if (hasAutumn && !hasSummer && !hasWinter) {
-    return { Icon: Leaf, iconClass: "text-orange-500" };
-  }
-
-  // se siamo qui → stagionalità mista / difficile da catalogare → calendario
-  return { Icon: CalendarRange, iconClass: "text-slate-400" };
-};
-
-/**
- * props:
- * - title (string)
- * - periodLabel (string)
- * - periods: array di stringhe (solo le voci reali, senza "Tutti i periodi")
- * - selectedPeriods: array di stringhe
- * - onPeriodsChange(newArray)
- * - onResetFilters(): callback per azzerare anche la ricerca nelle pagine
- */
 const TravelFilters = ({
-  title,
-  periodLabel,
-  periods = [],
-  selectedPeriods = [],
-  onPeriodsChange,
+  title = "Filtra le mete",
+  selectedBuckets,
+  onBucketsChange,
   onResetFilters,
 }) => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [openPeriods, setOpenPeriods] = useState(true);
 
-  const hasPeriods = periods.length > 0;
-  const isAllPeriods = !selectedPeriods || selectedPeriods.length === 0;
+  const hasActiveFilters = selectedBuckets && selectedBuckets.length > 0;
 
-  const handleResetFilters = () => {
-    onPeriodsChange?.([]);
-    onResetFilters?.();
-  };
-
-  const handleTogglePeriod = (p) => {
-    if (!onPeriodsChange) return;
-    if (selectedPeriods.includes(p)) {
-      onPeriodsChange(selectedPeriods.filter((val) => val !== p));
+  const toggleBucket = (label) => {
+    if (!selectedBuckets) return;
+    if (selectedBuckets.includes(label)) {
+      onBucketsChange(selectedBuckets.filter((b) => b !== label));
     } else {
-      onPeriodsChange([...selectedPeriods, p]);
+      onBucketsChange([...selectedBuckets, label]);
     }
   };
 
-  // 🔸 Contenuto dei filtri (riusato in desktop + mobile)
-  const filtersContent = (
-    <div className="space-y-4">
-      {hasPeriods && (
-        <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
+  const handleReset = () => {
+    onBucketsChange([]);
+    if (onResetFilters) onResetFilters();
+  };
+
+  const renderFiltersBody = () => (
+    <div className="space-y-3">
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F1F5F9] text-[#EB2480]">
+            <Filter className="w-4 h-4" />
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#64748B]">
+              Filtri
+            </p>
+            <p className="text-sm font-semibold text-[#0F172A]">
+              {title}
+            </p>
+          </div>
+        </div>
+
+        {hasActiveFilters && (
           <button
             type="button"
-            className="w-full flex items-center justify-between px-4 py-3"
-            onClick={() => setOpenPeriods((prev) => !prev)}
+            onClick={handleReset}
+            className="inline-flex items-center gap-1 rounded-full border border-[#CBD5E1] px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
           >
-            <div className="flex items-center gap-2">
-              <CalendarRange className="w-4 h-4 text-[#EB2480]" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs font-semibold text-[#132C50]">
-                  {periodLabel || "Periodo consigliato"}
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Puoi selezionare più periodi
-                </span>
-              </div>
-            </div>
-            <span className="text-xs text-slate-400">
-              {openPeriods ? "–" : "+"}
-            </span>
+            <X className="w-3 h-3" />
+            <span>Rimuovi filtri</span>
           </button>
+        )}
+      </div>
 
-          {openPeriods && (
-            <div className="px-4 pb-4 space-y-2">
-              {/* Chip “Tutti i periodi” */}
+      <div className="pt-1 space-y-2">
+        <p className="text-[11px] text-slate-500">
+          Puoi selezionare una o più stagioni per vedere le mete più in linea
+          con il periodo in cui pensi di partire.
+        </p>
+
+        <div className="space-y-1.5">
+          {SEASON_BUCKET_LIST.map((label) => {
+            const config = SEASON_CONFIG[label] || {
+              icon: CalendarDays,
+              tone: "sky",
+              helper: "",
+            };
+            const Icon = config.icon;
+            const tone = TONE_CLASSES[config.tone] || TONE_CLASSES.sky;
+
+            const isActive = selectedBuckets.includes(label);
+
+            const buttonClasses = isActive
+              ? `${tone.active} shadow-sm`
+              : tone.idle;
+
+            const iconClasses = isActive
+              ? tone.iconActive
+              : tone.iconIdle;
+
+            return (
               <button
+                key={label}
                 type="button"
-                onClick={() => onPeriodsChange?.([])}
-                className={`w-full flex items-center justify-between rounded-xl border px-3 py-2.5 text-xs md:text-sm transition ${
-                  isAllPeriods
-                    ? "border-[#0863D6] bg-[#E0ECFF] text-[#0F172A]"
-                    : "border-slate-200 bg-slate-50 hover:bg-white hover:border-[#0863D6]/60"
-                }`}
+                onClick={() => toggleBucket(label)}
+                className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-xl border text-xs md:text-sm transition-colors ${buttonClasses}`}
               >
                 <div className="flex items-center gap-2">
-                  <CalendarRange className="w-4 h-4 text-slate-500" />
-                  <span>Tutti i periodi</span>
+                  <div
+                    className={`flex h-7 w-7 items-center justify-center rounded-lg bg-white/70 ${iconClasses}`}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold">{label}</p>
+                    {config.helper && (
+                      <p className="text-[10px] text-slate-500">
+                        {config.helper}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                {isAllPeriods && (
-                  <span className="text-[10px] uppercase tracking-[0.12em] text-[#0863D6] font-semibold">
+
+                {isActive && (
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#0F172A]">
                     Attivo
                   </span>
                 )}
               </button>
-
-              {/* Singoli periodi */}
-              {periods.map((p) => {
-                const { Icon, iconClass } = getSeasonInfo(p);
-                const label = shortenPeriodLabel(p);
-                const selected = selectedPeriods.includes(p);
-
-                return (
-                  <button
-                    key={p}
-                    type="button"
-                    onClick={() => handleTogglePeriod(p)}
-                    className={`w-full flex items-center justify-between rounded-xl border px-3 py-2.5 text-xs md:text-sm transition ${
-                      selected
-                        ? "border-[#0863D6] bg-[#E0ECFF] text-[#0F172A]"
-                        : "border-slate-200 bg-slate-50 hover:bg-white hover:border-[#0863D6]/60"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Icon className={`w-4 h-4 ${iconClass}`} />
-                      <span className="capitalize">{label}</span>
-                    </div>
-                    {selected && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-[#0863D6] font-semibold">
-                        Attivo
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          )}
+            );
+          })}
         </div>
-      )}
-
-      {(onPeriodsChange || onResetFilters) && (
-        <button
-          type="button"
-          onClick={handleResetFilters}
-          className="inline-flex items-center gap-1.5 text-[11px] md:text-xs font-medium text-slate-500 hover:text-[#EB2480] transition"
-        >
-          <X className="w-3 h-3" />
-          <span>Rimuovi tutti i filtri</span>
-        </button>
-      )}
+      </div>
     </div>
   );
 
   return (
     <>
-      {/* MOBILE: pulsante per aprire pannello filtri */}
-      <div className="mb-4 md:hidden">
+      {/* Mobile: pulsante per aprire i filtri */}
+      <div className="mb-4 lg:hidden">
         <button
           type="button"
           onClick={() => setShowMobileFilters(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-xs font-semibold text-[#132C50]"
+          className="inline-flex items-center gap-2 rounded-full border border-[#CBD5E1] bg-white px-4 py-2 text-sm font-semibold text-[#0F172A] shadow-sm"
         >
           <Filter className="w-4 h-4 text-[#EB2480]" />
-          <span>Filtri</span>
+          <span>Filtri di ricerca</span>
+          {hasActiveFilters && (
+            <span className="ml-1 rounded-full bg-[#EB2480] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
+              {selectedBuckets.length}
+            </span>
+          )}
         </button>
       </div>
 
-      {/* DESKTOP: sidebar a sinistra */}
-      <div className="hidden md:block">
-        {title && (
-          <div className="mb-3 flex items-center justify-between gap-2">
-            <div>
-              <p className="text-[11px] font-semibold tracking-[0.24em] uppercase text-[#0F172A] mb-1">
-                Filtri
-              </p>
-              <h3 className="text-sm font-semibold text-[#132C50]">
-                {title}
-              </h3>
-            </div>
+      {/* Desktop: card filtri fissa a sinistra */}
+      <aside className="hidden lg:block w-full lg:w-72 shrink-0">
+        <div className="rounded-2xl border border-[#E2E8F0] bg-white p-4 shadow-sm">
+          {renderFiltersBody()}
+        </div>
+      </aside>
 
-            {(onPeriodsChange || onResetFilters) && (
-              <button
-                type="button"
-                onClick={handleResetFilters}
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 px-3 py-1.5 text-[11px] font-medium text-slate-600 hover:border-[#EB2480] hover:text-[#EB2480] transition"
-              >
-                <X className="w-3 h-3" />
-                <span>Rimuovi filtri</span>
-              </button>
-            )}
-          </div>
-        )}
-
-        {filtersContent}
-      </div>
-
-      {/* MOBILE: bottom sheet filtri */}
+      {/* Mobile: modal a schermo intero */}
       {showMobileFilters && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40">
-          <div className="w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-3xl shadow-lg p-4 sm:p-5">
-            <div className="flex items-center justify-between mb-3">
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/60 px-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-4 shadow-2xl">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="text-sm font-semibold text-[#0F172A]">
+                Filtri di ricerca
+              </p>
               <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-[#EB2480]" />
-                <h2 className="text-sm font-semibold text-[#132C50]">
-                  Filtri di ricerca
-                </h2>
+                {hasActiveFilters && (
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="inline-flex items-center gap-1 rounded-full border border-[#CBD5E1] px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
+                  >
+                    <X className="w-3 h-3" />
+                    <span>Reset</span>
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setShowMobileFilters(false)}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-
-              <button
-                type="button"
-                onClick={() => setShowMobileFilters(false)}
-                className="p-1 rounded-full hover:bg-slate-100"
-              >
-                <X className="w-4 h-4 text-slate-500" />
-              </button>
             </div>
 
-            {filtersContent}
-
-            <div className="mt-4 flex gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  handleResetFilters();
-                  setShowMobileFilters(false);
-                }}
-                className="flex-1 rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-700"
-              >
-                Rimuovi filtri
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowMobileFilters(false)}
-                className="flex-1 rounded-full bg-[#0863D6] border border-[#0863D6] px-4 py-2 text-xs font-semibold text-white"
-              >
-                Applica
-              </button>
+            <div className="max-h-[70vh] overflow-y-auto pr-1">
+              {renderFiltersBody()}
             </div>
+
+            <button
+              type="button"
+              onClick={() => setShowMobileFilters(false)}
+              className="mt-3 w-full rounded-full bg-[#0863D6] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0658b8] transition"
+            >
+              Applica filtri
+            </button>
           </div>
         </div>
       )}
@@ -315,6 +281,7 @@ const TravelFilters = ({
 };
 
 export default TravelFilters;
+
 
 
 
