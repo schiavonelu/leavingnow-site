@@ -1,4 +1,3 @@
-// src/pages/MeteStagionali.jsx
 import { useEffect } from "react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
@@ -7,20 +6,24 @@ import ContinentCard from "../components/ui/ContinentCard.jsx";
 // 📌 Immagine di default per hero + tutte le card (per ora)
 import heroImg from "../assets/destination/hero.webp";
 
-
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
+
+// Qui i periodi sono già "commerciali", non solo meteo.
+// L’idea è comunicare che si inizia a pensarci / venderli prima.
 const SEASONS = [
   {
     id: "inverno",
     name: "Inverno",
-    period: "Dicembre – Febbraio",
+    // prima: "Dicembre – Febbraio"
+    period: "Novembre – Febbraio",
     intro:
-      "L’inverno è il momento ideale per rallentare e scegliere viaggi che scaldano il cuore: luci soffuse, atmosfere intime, neve, città illuminate e luoghi da vivere con calma.",
+      "L’inverno è il momento ideale per rallentare e scegliere viaggi che scaldano il cuore: luci soffuse, atmosfere intime, neve, città illuminate e luoghi da vivere con calma. Già da novembre iniziamo a immaginare insieme mercatini, montagne e città d’arte in bassa stagione.",
     cards: [
       {
         title: "Mercatini di Natale in Europa",
         badge: "Inverno / Mercatini",
-        period: "Dicembre – metà Gennaio",
+        // prima: "Dicembre – metà Gennaio"
+        period: "Fine Novembre – inizio Gennaio",
         description:
           "Un viaggio tra luci, profumi e dettagli che scaldano l’anima. Vienna, Praga, Salisburgo o Budapest: ogni città diventa un piccolo mondo fatto di tradizioni, artigianato, musica e atmosfere che sanno di casa e di festa.",
       },
@@ -34,7 +37,8 @@ const SEASONS = [
       {
         title: "City break invernale a Parigi o Londra",
         badge: "City break",
-        period: "Tutto l’inverno",
+        // prima: "Tutto l’inverno"
+        period: "Da Novembre a Febbraio",
         description:
           "Vetrine illuminate, musei, quartieri iconici e locali dove rifugiarsi dal freddo. Un viaggio ricercato, ideale per chi ama le atmosfere eleganti e un po’ cinematografiche delle grandi capitali europee durante l’inverno.",
       },
@@ -55,18 +59,20 @@ const SEASONS = [
       {
         title: "Città d’arte italiane in bassa stagione",
         badge: "Italia",
-        period: "Gennaio – Marzo",
+        // prima: "Gennaio – Marzo"
+        period: "Novembre – Marzo",
         description:
-          "Firenze, Roma, Venezia, Napoli: più autentiche, più vivibili, più tue. Musei senza code interminabili, ristoranti migliori, vie meno affollate. L’inverno è il periodo perfetto per godersi queste città con calma, come meritano.",
+          "Firenze, Roma, Venezia: più autentiche, più vivibili, più tue. Musei senza code interminabili, ristoranti migliori, vie meno affollate. L’inverno è il periodo perfetto per godersi queste città con calma, come meritano.",
       },
     ],
   },
   {
     id: "primavera",
     name: "Primavera",
-    period: "Marzo – Maggio",
+    // prima: "Marzo – Maggio"
+    period: "Febbraio – Maggio",
     intro:
-      "Temperature miti, giornate che si allungano e colori che tornano a farsi vedere: la primavera è la stagione perfetta per città d’arte, fioriture, primi bagni di sole e itinerari soft.",
+      "Temperature miti, giornate che si allungano e colori che tornano a farsi vedere: la primavera è la stagione perfetta per città d’arte, fioriture, primi bagni di sole e itinerari soft. Si inizia a pensarla già tra fine inverno e inizio primavera, per cogliere il momento giusto.",
     cards: [
       {
         title: "Olanda e grandi parchi fioriti",
@@ -115,9 +121,10 @@ const SEASONS = [
   {
     id: "estate",
     name: "Estate",
-    period: "Giugno – Agosto",
+    // prima: "Giugno – Agosto"
+    period: "Maggio – Settembre",
     intro:
-      "Mare, isole, grandi itinerari e viaggi più lunghi: l’estate è il momento perfetto per trasformare il desiderio di partire in un’esperienza intensa, completa e su misura.",
+      "Mare, isole, grandi itinerari e viaggi più lunghi: l’estate è il momento perfetto per trasformare il desiderio di partire in un’esperienza intensa, completa e su misura. Si costruisce con anticipo, già dalla tarda primavera, per trovare i posti giusti al momento giusto.",
     cards: [
       {
         title: "Isole della Grecia",
@@ -168,7 +175,7 @@ const SEASONS = [
     name: "Autunno",
     period: "Settembre – Novembre",
     intro:
-      "Colori caldi, ritmi più lenti e bassa stagione: l’autunno è perfetto per chi ama vivere i luoghi con calma, tra natura, sapori e città più autentiche.",
+      "Colori caldi, ritmi più lenti e bassa stagione: l’autunno è perfetto per chi ama vivere i luoghi con calma, tra natura, sapori e città più autentiche. È una stagione che si presta sia a brevi fughe che a viaggi di gusto e benessere.",
     cards: [
       {
         title: "Foliage in Italia e in Europa",
@@ -308,8 +315,8 @@ const MeteStagionali = () => {
             </a>
             <a
               href={RESERVIO_URL}
-                target="_blank"
-                rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
               Preferisci una consulenza?
@@ -322,4 +329,5 @@ const MeteStagionali = () => {
 };
 
 export default MeteStagionali;
+
 
