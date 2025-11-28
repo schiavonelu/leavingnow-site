@@ -1,13 +1,13 @@
 // src/pages/MeteViaggiNozze.jsx
 import { useEffect, useState, useMemo } from "react";
+import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
-import TravelFilters from "../components/ui/TravelFilters.jsx";
-
 import heroImg from "../assets/destination/hero.webp";
 import { HONEYMOON_DESTINATIONS } from "../data/viaggi-nozze.js";
+import TravelFilters from "../components/ui/TravelFilters.jsx";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -22,16 +22,12 @@ const MeteViaggiNozze = () => {
   }, []);
 
   const periodOptions = useMemo(
-    () =>
-      Array.from(
-        new Set(HONEYMOON_DESTINATIONS.map((t) => t.period))
-      ).filter(Boolean),
+    () => Array.from(new Set(HONEYMOON_DESTINATIONS.map((t) => t.period))),
     []
   );
 
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
-    const hasPeriodFilter = selectedPeriods.length > 0;
 
     return HONEYMOON_DESTINATIONS.filter((trip) => {
       const matchSearch =
@@ -39,9 +35,9 @@ const MeteViaggiNozze = () => {
         trip.title.toLowerCase().includes(term) ||
         trip.description.toLowerCase().includes(term);
 
-      const matchPeriod = !hasPeriodFilter
-        ? true
-        : selectedPeriods.includes(trip.period);
+      const matchPeriod =
+        selectedPeriods.length === 0 ||
+        selectedPeriods.includes(trip.period);
 
       return matchSearch && matchPeriod;
     });
@@ -73,7 +69,7 @@ const MeteViaggiNozze = () => {
 
       <Breadcrumb />
 
-      {/* INTRO + LINK FORM */}
+      {/* INTRO + LINK RITORNO FORM */}
       <section className="py-8 md:py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
           <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6]">
@@ -92,7 +88,7 @@ const MeteViaggiNozze = () => {
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/viaggi-di-nozze#preventivo-nozze"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg-white hover:text-[#0863D6] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0863D6] text-white border border-[#0863D6] hover:bg:white hover:text-[#0863D6] transition"
             >
               Torna al form viaggio di nozze
             </Link>
@@ -100,29 +96,50 @@ const MeteViaggiNozze = () => {
         </div>
       </section>
 
-      {/* FILTRI + GRID + PAGINAZIONE */}
+      {/* FILTRI + GRID */}
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
-        <div className="max-w-6xl mx-auto px-4 space-y-8">
-          <div className="grid md:grid-cols-[260px,minmax(0,1fr)] gap-6 md:gap-8">
-            {/* Sidebar filtri */}
-            <TravelFilters
-              title="Affina le mete di nozze"
-              searchLabel="Cerca una meta"
-              searchPlaceholder="Es. Maldive, Stati Uniti, Giappone…"
-              periodLabel="Periodo consigliato"
-              searchTerm={searchTerm}
-              onSearchChange={setSearchTerm}
-              periods={periodOptions}
-              selectedPeriods={selectedPeriods}
-              onPeriodsChange={setSelectedPeriods}
-            />
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-start gap-6 lg:gap-8">
+            {/* SINISTRA: FILTRI */}
+            <aside className="md:w-64 lg:w-72 flex-shrink-0 mb-2 md:mb-0">
+              <TravelFilters
+                title="Mete viaggio di nozze"
+                periodLabel="Periodo consigliato"
+                periods={periodOptions}
+                selectedPeriods={selectedPeriods}
+                onPeriodsChange={setSelectedPeriods}
+                onResetFilters={() => setSearchTerm("")}
+              />
+            </aside>
 
-            {/* Grid risultati */}
-            <div className="space-y-6">
+            {/* DESTRA: RICERCA + CARD */}
+            <div className="flex-1 space-y-5">
+              <div className="rounded-3xl bg:white border border-[#E2E8F0] shadow-sm p-3 md:p-4">
+                <label
+                  htmlFor="search-nozze"
+                  className="block text-xs md:text-sm font-medium text-[#132C50] mb-1"
+                >
+                  Cerca una meta di viaggio di nozze
+                </label>
+                <div className="relative mt-1">
+                  <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                    <Search className="w-4 h-4 text-slate-400" />
+                  </span>
+                  <input
+                    id="search-nozze"
+                    type="text"
+                    placeholder="Es. Maldive, Stati Uniti, Giappone…"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
+                  />
+                </div>
+              </div>
+
               {filteredTrips.length === 0 ? (
-                <p className="text-sm md:text-base text-slate-600 text-center md:text-left">
+                <p className="text-sm md:text-base text-slate-600 text-center">
                   Nessuna meta trovata con questi criteri. Prova a modificare la
-                  ricerca o il periodo.
+                  ricerca o i filtri.
                 </p>
               ) : (
                 <div className="grid gap-8 md:grid-cols-3">
@@ -139,9 +156,8 @@ const MeteViaggiNozze = () => {
                 </div>
               )}
 
-              {/* Paginazione */}
               {filteredTrips.length > 0 && (
-                <div className="flex items-center justify-center gap-2 mt-2">
+                <div className="flex items-center justify-center gap-2 mt-4">
                   <button
                     type="button"
                     onClick={() =>
@@ -222,5 +238,6 @@ const MeteViaggiNozze = () => {
 };
 
 export default MeteViaggiNozze;
+
 
 

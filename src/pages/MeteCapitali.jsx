@@ -1,12 +1,12 @@
 // src/pages/MeteCapitali.jsx
 import { useEffect, useState, useMemo } from "react";
+import { Search } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
-import TravelFilters from "../components/ui/TravelFilters.jsx";
-
 import heroImg from "../assets/destination/hero.webp";
 import { CAPITAL_CITIES } from "../data/capitali.js";
+import TravelFilters from "../components/ui/TravelFilters.jsx";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -14,23 +14,18 @@ const ITEMS_PER_PAGE = 9;
 const MeteCapitali = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPeriods, setSelectedPeriods] = useState([]); // ← array
+  const [selectedPeriods, setSelectedPeriods] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // Periodi unici presenti nei dati (senza "all")
   const periodOptions = useMemo(() => {
-    return Array.from(new Set(CAPITAL_CITIES.map((c) => c.period))).filter(
-      Boolean
-    );
+    return Array.from(new Set(CAPITAL_CITIES.map((c) => c.period)));
   }, []);
 
-  // Filtraggio (ricerca + periodi multipli)
   const filteredCities = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
-    const hasPeriodFilter = selectedPeriods.length > 0;
 
     return CAPITAL_CITIES.filter((city) => {
       const matchSearch =
@@ -38,9 +33,9 @@ const MeteCapitali = () => {
         city.title.toLowerCase().includes(term) ||
         city.description.toLowerCase().includes(term);
 
-      const matchPeriod = !hasPeriodFilter
-        ? true
-        : selectedPeriods.includes(city.period);
+      const matchPeriod =
+        selectedPeriods.length === 0 ||
+        selectedPeriods.includes(city.period);
 
       return matchSearch && matchPeriod;
     });
@@ -58,7 +53,6 @@ const MeteCapitali = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // reset pagina quando cambiano filtri
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedPeriods]);
@@ -74,7 +68,7 @@ const MeteCapitali = () => {
       <Breadcrumb />
 
       {/* INTRO */}
-      <section className="py-8 md:py-10 bg:white">
+      <section className="py-8 md:py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
             Idee di viaggio by Leaving Now
@@ -90,29 +84,52 @@ const MeteCapitali = () => {
         </div>
       </section>
 
-      {/* FILTRI + GRID + PAGINAZIONE */}
+      {/* FILTRI + GRID */}
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
-        <div className="max-w-6xl mx-auto px-4 space-y-8">
-          <div className="grid md:grid-cols-[260px,minmax(0,1fr)] gap-6 md:gap-8">
-            {/* Sidebar filtri */}
-            <TravelFilters
-              title="Affina le capitali"
-              searchLabel="Cerca una capitale"
-              searchPlaceholder="Es. Parigi, Londra, Lisbona…"
-              periodLabel="Periodo consigliato"
-              searchTerm={searchTerm}
-              onSearchChange={setSearchTerm}
-              periods={periodOptions}
-              selectedPeriods={selectedPeriods}
-              onPeriodsChange={setSelectedPeriods}
-            />
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-start gap-6 lg:gap-8">
+            {/* COLONNA SINISTRA – FILTRI */}
+            <aside className="md:w-64 lg:w-72 flex-shrink-0 mb-2 md:mb-0">
+              <TravelFilters
+                title="Mete capitali"
+                periodLabel="Periodo consigliato"
+                periods={periodOptions}
+                selectedPeriods={selectedPeriods}
+                onPeriodsChange={setSelectedPeriods}
+                onResetFilters={() => setSearchTerm("")}
+              />
+            </aside>
 
-            {/* Grid risultati */}
-            <div className="space-y-6">
+            {/* COLONNA DESTRA – RICERCA + CARDS */}
+            <div className="flex-1 space-y-5">
+              {/* Barra ricerca */}
+              <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-3 md:p-4">
+                <label
+                  htmlFor="search-capitali"
+                  className="block text-xs md:text-sm font-medium text-[#132C50] mb-1"
+                >
+                  Cerca una capitale
+                </label>
+                <div className="relative mt-1">
+                  <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                    <Search className="w-4 h-4 text-slate-400" />
+                  </span>
+                  <input
+                    id="search-capitali"
+                    type="text"
+                    placeholder="Es. Parigi, Londra, Lisbona…"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
+                  />
+                </div>
+              </div>
+
+              {/* Grid cards */}
               {filteredCities.length === 0 ? (
-                <p className="text-sm md:text-base text-slate-600 text-center md:text-left">
+                <p className="text-sm md:text-base text-slate-600 text-center">
                   Nessuna meta trovata con questi criteri. Prova a modificare la
-                  ricerca o il periodo.
+                  ricerca o i filtri.
                 </p>
               ) : (
                 <div className="grid gap-8 md:grid-cols-3">
@@ -131,7 +148,7 @@ const MeteCapitali = () => {
 
               {/* Paginazione */}
               {filteredCities.length > 0 && (
-                <div className="flex items-center justify-center gap-2 mt-2">
+                <div className="flex items-center justify-center gap-2 mt-4">
                   <button
                     type="button"
                     onClick={() =>
@@ -212,6 +229,7 @@ const MeteCapitali = () => {
 };
 
 export default MeteCapitali;
+
 
 
 

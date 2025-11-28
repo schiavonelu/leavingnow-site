@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Filter,
   X,
-  Search,
   CalendarRange,
   Snowflake,
   SunMedium,
@@ -27,6 +26,7 @@ const MONTH_MAP = {
   Dicembre: "dic",
 };
 
+// Mostra i mesi in versione corta nel chip
 const shortenPeriodLabel = (period) => {
   if (!period) return "";
   let label = period;
@@ -37,77 +37,84 @@ const shortenPeriodLabel = (period) => {
   return label;
 };
 
-// 🔹 Sceglie icona e colore in base al periodo
+// 🔹 Decidi icona / colore in base al testo del periodo
 const getSeasonInfo = (period) => {
   if (!period) {
-    return {
-      Icon: CalendarRange,
-      iconClass: "text-slate-400",
-    };
+    return { Icon: CalendarRange, iconClass: "text-slate-400" };
   }
 
   const p = period.toLowerCase();
-  const has = (name) => p.includes(name);
 
-  const isWinter =
-    has("inverno") || has("dicembre") || has("gennaio") || has("febbraio");
-  const isSpring =
-    has("primavera") || has("marzo") || has("aprile") || has("maggio");
-  const isSummer =
-    has("estate") || has("giugno") || has("luglio") || has("agosto");
-  const isAutumn =
-    has("autunno") || has("settembre") || has("ottobre") || has("novembre");
+  const has = (substr) => p.includes(substr);
 
-  if (isWinter && !isSpring && !isSummer && !isAutumn) {
-    return { Icon: Snowflake, iconClass: "text-sky-400" };
+  // “tutto l’anno” / “quasi tutto l’anno” → calendario
+  if (
+    has("tutto l'anno") ||
+    has("tutto l’anno") ||
+    has("quasi tutto l'anno") ||
+    has("quasi tutto l’anno") ||
+    has("all year")
+  ) {
+    return { Icon: CalendarRange, iconClass: "text-slate-500" };
   }
-  if (isSummer && !isSpring && !isWinter && !isAutumn) {
+
+  const winterTokens = ["inverno", "dicembre", "dic", "gennaio", "gen", "febbraio", "feb"];
+  const summerTokens = ["estate", "giugno", "giu", "luglio", "lug", "agosto", "ago"];
+  const springTokens = ["primavera", "marzo", "mar", "aprile", "apr", "maggio", "mag"];
+  const autumnTokens = ["autunno", "settembre", "set", "ottobre", "ott", "novembre", "nov"];
+
+  const hasWinter = winterTokens.some((t) => has(t));
+  const hasSummer = summerTokens.some((t) => has(t));
+  const hasSpring = springTokens.some((t) => has(t));
+  const hasAutumn = autumnTokens.some((t) => has(t));
+
+  // Logica "furba"
+  if (hasSummer && !hasWinter) {
     return { Icon: SunMedium, iconClass: "text-amber-400" };
   }
-  if (isSpring && !isSummer && !isWinter && !isAutumn) {
+
+  if (hasWinter && !hasSummer) {
+    return { Icon: Snowflake, iconClass: "text-sky-400" };
+  }
+
+  if (hasSpring && !hasSummer && !hasWinter) {
     return { Icon: Flower2, iconClass: "text-[#EB2480]" };
   }
-  if (isAutumn && !isSpring && !isSummer && !isWinter) {
+
+  if (hasAutumn && !hasSummer && !hasWinter) {
     return { Icon: Leaf, iconClass: "text-orange-500" };
   }
 
-  // periodi misti o "tutto l'anno"
-  return {
-    Icon: CalendarRange,
-    iconClass: "text-slate-400",
-  };
+  // se siamo qui → stagionalità mista / difficile da catalogare → calendario
+  return { Icon: CalendarRange, iconClass: "text-slate-400" };
 };
 
 /**
  * props:
  * - title (string)
- * - searchLabel, searchPlaceholder
- * - periodLabel
- * - searchTerm, onSearchChange(value)
- * - periods: array di stringhe (senza "all")
+ * - periodLabel (string)
+ * - periods: array di stringhe (solo le voci reali, senza "Tutti i periodi")
  * - selectedPeriods: array di stringhe
  * - onPeriodsChange(newArray)
+ * - onResetFilters(): callback per azzerare anche la ricerca nelle pagine
  */
 const TravelFilters = ({
   title,
-  searchLabel,
-  searchPlaceholder,
   periodLabel,
-  searchTerm,
-  onSearchChange,
   periods = [],
   selectedPeriods = [],
   onPeriodsChange,
+  onResetFilters,
 }) => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [openSearch, setOpenSearch] = useState(true);
   const [openPeriods, setOpenPeriods] = useState(true);
 
   const hasPeriods = periods.length > 0;
+  const isAllPeriods = !selectedPeriods || selectedPeriods.length === 0;
 
   const handleResetFilters = () => {
-    onSearchChange?.("");
     onPeriodsChange?.([]);
+    onResetFilters?.();
   };
 
   const handleTogglePeriod = (p) => {
@@ -119,55 +126,9 @@ const TravelFilters = ({
     }
   };
 
-  const isAllPeriods = !selectedPeriods || selectedPeriods.length === 0;
-
-  // 🔹 Contenuto dei filtri (riusato in desktop + mobile)
+  // 🔸 Contenuto dei filtri (riusato in desktop + mobile)
   const filtersContent = (
     <div className="space-y-4">
-      {/* RICERCA */}
-      {onSearchChange && (
-        <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
-          <button
-            type="button"
-            className="w-full flex items-center justify-between px-4 py-3"
-            onClick={() => setOpenSearch((prev) => !prev)}
-          >
-            <div className="flex items-center gap-2">
-              <Search className="w-4 h-4 text-[#0863D6]" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs font-semibold text-[#132C50]">
-                  {searchLabel || "Cerca"}
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Filtra per nome o descrizione
-                </span>
-              </div>
-            </div>
-            <span className="text-xs text-slate-400">
-              {openSearch ? "–" : "+"}
-            </span>
-          </button>
-
-          {openSearch && (
-            <div className="px-4 pb-4">
-              <div className="relative">
-                <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                  <Search className="w-4 h-4 text-slate-400" />
-                </span>
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => onSearchChange(e.target.value)}
-                  placeholder={searchPlaceholder || "Cerca..."}
-                  className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0863D6]"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* PERIODI */}
       {hasPeriods && (
         <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
           <button
@@ -193,7 +154,7 @@ const TravelFilters = ({
 
           {openPeriods && (
             <div className="px-4 pb-4 space-y-2">
-              {/* chip "Tutti i periodi" */}
+              {/* Chip “Tutti i periodi” */}
               <button
                 type="button"
                 onClick={() => onPeriodsChange?.([])}
@@ -214,6 +175,7 @@ const TravelFilters = ({
                 )}
               </button>
 
+              {/* Singoli periodi */}
               {periods.map((p) => {
                 const { Icon, iconClass } = getSeasonInfo(p);
                 const label = shortenPeriodLabel(p);
@@ -247,8 +209,7 @@ const TravelFilters = ({
         </div>
       )}
 
-      {/* RESET sotto le card */}
-      {(onSearchChange || onPeriodsChange) && (
+      {(onPeriodsChange || onResetFilters) && (
         <button
           type="button"
           onClick={handleResetFilters}
@@ -263,7 +224,7 @@ const TravelFilters = ({
 
   return (
     <>
-      {/* MOBILE: pulsante per aprire il pannello filtri */}
+      {/* MOBILE: pulsante per aprire pannello filtri */}
       <div className="mb-4 md:hidden">
         <button
           type="button"
@@ -271,7 +232,7 @@ const TravelFilters = ({
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E2E8F0] shadow-sm text-xs font-semibold text-[#132C50]"
         >
           <Filter className="w-4 h-4 text-[#EB2480]" />
-          <span>Filtri di ricerca</span>
+          <span>Filtri</span>
         </button>
       </div>
 
@@ -283,10 +244,12 @@ const TravelFilters = ({
               <p className="text-[11px] font-semibold tracking-[0.24em] uppercase text-[#0F172A] mb-1">
                 Filtri
               </p>
-              <h3 className="text-sm font-semibold text-[#132C50]">{title}</h3>
+              <h3 className="text-sm font-semibold text-[#132C50]">
+                {title}
+              </h3>
             </div>
 
-            {(onSearchChange || onPeriodsChange) && (
+            {(onPeriodsChange || onResetFilters) && (
               <button
                 type="button"
                 onClick={handleResetFilters}
@@ -352,6 +315,8 @@ const TravelFilters = ({
 };
 
 export default TravelFilters;
+
+
 
 
 
