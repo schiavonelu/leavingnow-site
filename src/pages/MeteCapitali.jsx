@@ -3,6 +3,8 @@ import { useEffect, useState, useMemo } from "react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
+import TravelFilters from "../components/ui/TravelFilters.jsx";
+
 import heroImg from "../assets/destination/hero.webp";
 import { CAPITAL_CITIES } from "../data/capitali.js";
 
@@ -12,21 +14,23 @@ const ITEMS_PER_PAGE = 9;
 const MeteCapitali = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPeriod, setSelectedPeriod] = useState("all");
+  const [selectedPeriods, setSelectedPeriods] = useState([]); // ← array
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // Opzioni periodo basate sui periodi testuali presenti nei dati
+  // Periodi unici presenti nei dati (senza "all")
   const periodOptions = useMemo(() => {
-    const unique = Array.from(new Set(CAPITAL_CITIES.map((c) => c.period)));
-    return ["all", ...unique];
+    return Array.from(new Set(CAPITAL_CITIES.map((c) => c.period))).filter(
+      Boolean
+    );
   }, []);
 
-  // Filtraggio per testo + periodo
+  // Filtraggio (ricerca + periodi multipli)
   const filteredCities = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
+    const hasPeriodFilter = selectedPeriods.length > 0;
 
     return CAPITAL_CITIES.filter((city) => {
       const matchSearch =
@@ -34,15 +38,15 @@ const MeteCapitali = () => {
         city.title.toLowerCase().includes(term) ||
         city.description.toLowerCase().includes(term);
 
-      const matchPeriod =
-        selectedPeriod === "all" || city.period === selectedPeriod;
+      const matchPeriod = !hasPeriodFilter
+        ? true
+        : selectedPeriods.includes(city.period);
 
       return matchSearch && matchPeriod;
     });
-  }, [searchTerm, selectedPeriod]);
+  }, [searchTerm, selectedPeriods]);
 
   const totalPages = Math.ceil(filteredCities.length / ITEMS_PER_PAGE) || 1;
-
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredCities.slice(
     startIndex,
@@ -54,10 +58,10 @@ const MeteCapitali = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Quando cambia filtro o ricerca, resetto a pagina 1
+  // reset pagina quando cambiano filtri
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, selectedPeriod]);
+  }, [searchTerm, selectedPeriods]);
 
   return (
     <>
@@ -89,115 +93,88 @@ const MeteCapitali = () => {
       {/* FILTRI + GRID + PAGINAZIONE */}
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
         <div className="max-w-6xl mx-auto px-4 space-y-8">
-          {/* Barra filtri */}
-          <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5 flex flex-col md:flex-row gap-4 md:items-end">
-            <div className="flex-1">
-              <label
-                htmlFor="search"
-                className="block text-xs md:text-sm font-medium text-[#132C50] mb-1"
-              >
-                Cerca una capitale
-              </label>
-              <input
-                id="search"
-                type="text"
-                placeholder="Es. Parigi, Londra, Lisbona…"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-              />
-            </div>
+          <div className="grid md:grid-cols-[260px,minmax(0,1fr)] gap-6 md:gap-8">
+            {/* Sidebar filtri */}
+            <TravelFilters
+              title="Affina le capitali"
+              searchLabel="Cerca una capitale"
+              searchPlaceholder="Es. Parigi, Londra, Lisbona…"
+              periodLabel="Periodo consigliato"
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+              periods={periodOptions}
+              selectedPeriods={selectedPeriods}
+              onPeriodsChange={setSelectedPeriods}
+            />
 
-            <div className="w-full md:w-64">
-              <label
-                htmlFor="period"
-                className="block text-xs md:text-sm font-medium text-[#132C50] mb-1"
-              >
-                Periodo consigliato
-              </label>
-              <select
-                id="period"
-                value={selectedPeriod}
-                onChange={(e) => setSelectedPeriod(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-              >
-                <option value="all">Tutti i periodi</option>
-                {periodOptions
-                  .filter((p) => p !== "all")
-                  .map((p) => (
-                    <option key={p} value={p}>
-                      {p}
-                    </option>
+            {/* Grid risultati */}
+            <div className="space-y-6">
+              {filteredCities.length === 0 ? (
+                <p className="text-sm md:text-base text-slate-600 text-center md:text-left">
+                  Nessuna meta trovata con questi criteri. Prova a modificare la
+                  ricerca o il periodo.
+                </p>
+              ) : (
+                <div className="grid gap-8 md:grid-cols-3">
+                  {currentItems.map((city, idx) => (
+                    <ContinentCard
+                      key={`${city.title}-${idx}`}
+                      image={heroImg}
+                      title={city.title}
+                      badge={city.badge}
+                      period={city.period}
+                      description={city.description}
+                    />
                   ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Grid */}
-          {filteredCities.length === 0 ? (
-            <p className="text-sm md:text-base text-slate-600 text-center">
-              Nessuna meta trovata con questi criteri. Prova a modificare la
-              ricerca o il periodo.
-            </p>
-          ) : (
-            <div className="grid gap-8 md:grid-cols-3">
-              {currentItems.map((city, idx) => (
-                <ContinentCard
-                  key={`${city.title}-${idx}`}
-                  image={heroImg}
-                  title={city.title}
-                  badge={city.badge}
-                  period={city.period}
-                  description={city.description}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Paginazione */}
-          {filteredCities.length > 0 && (
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <button
-                type="button"
-                onClick={() =>
-                  currentPage > 1 && handlePageChange(currentPage - 1)
-                }
-                disabled={currentPage === 1}
-                className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-              >
-                ← Precedente
-              </button>
-
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    type="button"
-                    onClick={() => handlePageChange(page)}
-                    className={`px-3 py-1.5 text-xs md:text-sm rounded-full border ${
-                      page === currentPage
-                        ? "bg-[#0863D6] border-[#0863D6] text-white"
-                        : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                    } transition`}
-                  >
-                    {page}
-                  </button>
-                )
+                </div>
               )}
 
-              <button
-                type="button"
-                onClick={() =>
-                  currentPage < totalPages &&
-                  handlePageChange(currentPage + 1)
-                }
-                disabled={currentPage === totalPages}
-                className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-              >
-                Successiva →
-              </button>
+              {/* Paginazione */}
+              {filteredCities.length > 0 && (
+                <div className="flex items-center justify-center gap-2 mt-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      currentPage > 1 && handlePageChange(currentPage - 1)
+                    }
+                    disabled={currentPage === 1}
+                    className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                  >
+                    ← Precedente
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <button
+                        key={page}
+                        type="button"
+                        onClick={() => handlePageChange(page)}
+                        className={`px-3 py-1.5 text-xs md:text-sm rounded-full border ${
+                          page === currentPage
+                            ? "bg-[#0863D6] border-[#0863D6] text-white"
+                            : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
+                        } transition`}
+                      >
+                        {page}
+                      </button>
+                    )
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      currentPage < totalPages &&
+                      handlePageChange(currentPage + 1)
+                    }
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                  >
+                    Successiva →
+                  </button>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </section>
 
@@ -235,4 +212,6 @@ const MeteCapitali = () => {
 };
 
 export default MeteCapitali;
+
+
 
