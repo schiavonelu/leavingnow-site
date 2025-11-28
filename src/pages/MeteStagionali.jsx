@@ -14,7 +14,6 @@ const SEASONS = [
   {
     id: "inverno",
     name: "Inverno",
-    // prima: "Dicembre – Febbraio"
     period: "Novembre – Febbraio",
     intro:
       "L’inverno è il momento ideale per rallentare e scegliere viaggi che scaldano il cuore: luci soffuse, atmosfere intime, neve, città illuminate e luoghi da vivere con calma. Già da novembre iniziamo a immaginare insieme mercatini, montagne e città d’arte in bassa stagione.",
@@ -22,7 +21,6 @@ const SEASONS = [
       {
         title: "Mercatini di Natale in Europa",
         badge: "Inverno / Mercatini",
-        // prima: "Dicembre – metà Gennaio"
         period: "Fine Novembre – inizio Gennaio",
         description:
           "Un viaggio tra luci, profumi e dettagli che scaldano l’anima. Vienna, Praga, Salisburgo o Budapest: ogni città diventa un piccolo mondo fatto di tradizioni, artigianato, musica e atmosfere che sanno di casa e di festa.",
@@ -37,7 +35,6 @@ const SEASONS = [
       {
         title: "City break invernale a Parigi o Londra",
         badge: "City break",
-        // prima: "Tutto l’inverno"
         period: "Da Novembre a Febbraio",
         description:
           "Vetrine illuminate, musei, quartieri iconici e locali dove rifugiarsi dal freddo. Un viaggio ricercato, ideale per chi ama le atmosfere eleganti e un po’ cinematografiche delle grandi capitali europee durante l’inverno.",
@@ -59,17 +56,36 @@ const SEASONS = [
       {
         title: "Città d’arte italiane in bassa stagione",
         badge: "Italia",
-        // prima: "Gennaio – Marzo"
         period: "Novembre – Marzo",
         description:
-          "Firenze, Roma, Venezia: più autentiche, più vivibili, più tue. Musei senza code interminabili, ristoranti migliori, vie meno affollate. L’inverno è il periodo perfetto per godersi queste città con calma, come meritano.",
+          "Firenze, Roma, Venezia, Torino: più autentiche, più vivibili, più tue. Musei senza code interminabili, ristoranti migliori, vie meno affollate. L’inverno è il periodo perfetto per godersi queste città con calma, come meritano.",
+      },
+      {
+        title: "Capitali europee d’inverno",
+        badge: "City break",
+        period: "Novembre – Febbraio",
+        description:
+          "Berlino, Vienna, Praga, Bruxelles: grandi capitali europee con luci, musei, mercatini e quartieri da vivere a piedi. Perfette per chi cerca un mix di cultura, cibo e atmosfera invernale.",
+      },
+      {
+        title: "Weekend benessere e terme d’inverno",
+        badge: "Relax",
+        period: "Novembre – Marzo",
+        description:
+          "Spa, rituali di benessere, acqua calda, natura e silenzio. Un inverno più morbido, fatto di weekend brevi ma rigeneranti in boutique hotel, terme e resort benessere.",
+      },
+      {
+        title: "Mare d’inverno: Sharm e Mar Rosso",
+        badge: "Mare d’inverno",
+        period: "Novembre – Marzo",
+        description:
+          "Quando qui fa freddo, sul Mar Rosso trovi sole, mare e temperature piacevoli. Sharm el Sheikh e altre località del Mar Rosso sono perfette per chi d’inverno sogna luce, snorkeling e relax.",
       },
     ],
   },
   {
     id: "primavera",
     name: "Primavera",
-    // prima: "Marzo – Maggio"
     period: "Febbraio – Maggio",
     intro:
       "Temperature miti, giornate che si allungano e colori che tornano a farsi vedere: la primavera è la stagione perfetta per città d’arte, fioriture, primi bagni di sole e itinerari soft. Si inizia a pensarla già tra fine inverno e inizio primavera, per cogliere il momento giusto.",
@@ -116,12 +132,32 @@ const SEASONS = [
         description:
           "Templi, giardini, tradizioni, quartieri ultramoderni e – quando la stagione lo permette – la magia dei ciliegi in fiore. Un viaggio di grande equilibrio, tra spiritualità, architetture e nuove scoperte in ogni quartiere.",
       },
+      {
+        title: "Sharm e Mar Rosso di primavera",
+        badge: "Mare & relax",
+        period: "Marzo – Maggio",
+        description:
+          "Clima piacevole, mare già godibile, meno caldo rispetto all’estate piena. La primavera sul Mar Rosso è perfetta per chi cerca snorkeling, relax e servizi curati senza troppa folla.",
+      },
+      {
+        title: "Weekend benessere e terme di primavera",
+        badge: "Relax",
+        period: "Febbraio – Maggio",
+        description:
+          "Quando le giornate si allungano ma il clima è ancora morbido, un weekend alle terme o in un boutique hotel con spa è l’ideale per ricaricare le energie tra un impegno e l’altro.",
+      },
+      {
+        title: "City break di Pasqua in Europa",
+        badge: "City break",
+        period: "Marzo – Aprile",
+        description:
+          "Un ponte di pochi giorni per scoprire una capitale europea o una città d’arte: musei, quartieri creativi, mercati locali e cucina tipica. Perfetto per chi vuole sfruttare al meglio le festività.",
+      },
     ],
   },
   {
     id: "estate",
     name: "Estate",
-    // prima: "Giugno – Agosto"
     period: "Maggio – Settembre",
     intro:
       "Mare, isole, grandi itinerari e viaggi più lunghi: l’estate è il momento perfetto per trasformare il desiderio di partire in un’esperienza intensa, completa e su misura. Si costruisce con anticipo, già dalla tarda primavera, per trovare i posti giusti al momento giusto.",
@@ -167,6 +203,27 @@ const SEASONS = [
         period: "Stagionalità variabile",
         description:
           "Acque turchesi, resort esclusivi, natura rigogliosa e tramonti spettacolari. Maldive, Seychelles, Mauritius, Zanzibar e molto altro: perfetti per chi sogna relax totale, servizi curati e atmosfere tropicali.",
+      },
+      {
+        title: "Isole greche più intime",
+        badge: "Mare & relax",
+        period: "Giugno – Settembre",
+        description:
+          "Al di là delle isole più famose, esistono piccole isole greche più tranquille, con porticcioli, taverne di famiglia e poche camere vista mare. Perfette per chi cerca autenticità e silenzio.",
+      },
+      {
+        title: "Nord Europa e capitali d’estate",
+        badge: "Nord Europa",
+        period: "Giugno – Agosto",
+        description:
+          "Copenaghen, Stoccolma, Oslo, Helsinki: città luminose, vivibili, circondate da natura. L’estate è il momento perfetto per viverle all’aperto tra parchi, waterfront e quartieri di design.",
+      },
+      {
+        title: "Nord America tra città e parchi",
+        badge: "Lontani",
+        period: "Giugno – Settembre",
+        description:
+          "New York, Toronto, Montréal, ma anche i grandi parchi del Nord America: un viaggio che combina skyline, natura, laghi e panorami sconfinati. Perfetto per un’estate ricca e dinamica.",
       },
     ],
   },
@@ -218,6 +275,27 @@ const SEASONS = [
         period: "Autunno",
         description:
           "Sud-est asiatico, Sud America, Africa australe e molte altre mete lontane: clima ideale in molte destinazioni, meno affollamento, ritmi più piacevoli. Una scelta elegante per chi vuole scoprire il mondo fuori dai periodi canonici.",
+      },
+      {
+        title: "Capitali europee d’autunno",
+        badge: "City break",
+        period: "Settembre – Novembre",
+        description:
+          "Parigi, Vienna, Budapest, Bruxelles: in autunno le capitali europee si accendono di colori caldi e ritmi più lenti. Perfette per chi ama musei, bistrot e lunghe passeggiate.",
+      },
+      {
+        title: "Sharm e Mar Rosso in autunno",
+        badge: "Mare & relax",
+        period: "Ottobre – Novembre",
+        description:
+          "Quando qui l’aria si rinfresca, sul Mar Rosso l’autunno è ancora una stagione di sole pieno. Ideale per chi vuole un ultimo tuffo nel caldo, tra snorkeling, barriere coralline e relax.",
+      },
+      {
+        title: "East Coast USA in versione foliage",
+        badge: "Lontani",
+        period: "Settembre – Ottobre",
+        description:
+          "Boston, New York, il New England e le strade immerse nei colori del foliage: un viaggio scenografico, tra città iconiche e piccoli centri immersi nella natura.",
       },
     ],
   },
@@ -329,5 +407,6 @@ const MeteStagionali = () => {
 };
 
 export default MeteStagionali;
+
 
 
