@@ -48,14 +48,12 @@ const SeasonalHighlightSection = () => {
 
               <Link
                 to="/mete-capitali"
-                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
+                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100  hover:border-[#EB2480] hover:text-[#EB2480] transition"
               >
                 <Building2 className="w-4 h-4 mr-2" />
                 Preferisci una capitale europea?
               </Link>
             </div>
-
-           
           </div>
 
           {/* Immagine */}
