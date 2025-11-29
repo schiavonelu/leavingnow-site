@@ -125,7 +125,7 @@ const ContinentCard = ({ image, title, description, badge, period }) => {
         {period && (
           <div className="mt-3 inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold text-sky-700 bg-slate-50 border border-slate-200 rounded-full px-3 py-1">
             <FaCalendarAlt className="w-3.5 h-3.5 text-[#0863D6]" />
-            <span>Periodo ideale: {period}</span>
+            <span>{period}</span>
           </div>
         )}
       </div>

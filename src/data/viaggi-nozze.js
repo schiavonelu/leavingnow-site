@@ -262,32 +262,6 @@ export const HONEYMOON_DESTINATIONS = [
     description:
       "Fiordi, Mediterraneo o isole greche. Una crociera ben scelta può diventare un viaggio di nozze comodo, panoramico e ricco di tappe diverse senza cambiare hotel.",
   },
-
-  // ------------------------
-  // EUROPA & ITALIA ROMANTICHE
-  // ------------------------
-
-  {
-    title: "Costiera Amalfitana romantica",
-    badge: "Italia",
-    period: "Aprile – Ottobre",
-    description:
-      "Curve panoramiche, borghi a picco sul mare e hotel di charme. Perfetta per chi vuole un viaggio di nozze elegante e scenografico restando in Italia.",
-  },
-  {
-    title: "Portogallo romantico",
-    badge: "Europa",
-    period: "Aprile – Ottobre",
-    description:
-      "Lisbona, Porto, costa atlantica e piccoli boutique hotel. Un viaggio di nozze europeo, ricco di atmosfera, paesaggi scenografici e ottima cucina.",
-  },
-  {
-    title: "Isole della Grecia per due",
-    badge: "Mare",
-    period: "Maggio – Ottobre",
-    description:
-      "Cicladi, Ionie o isole meno conosciute: vicoli bianchi, taverne intime, tramonti sul mare e piccole strutture raccolte. Un classico del romanticismo mediterraneo.",
-  },
 ];
 
 
