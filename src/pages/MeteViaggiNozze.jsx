@@ -2,19 +2,21 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
+
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import TravelFilters from "../components/ui/TravelFilters.jsx";
+
 import heroImg from "../assets/destination/hero.webp";
+
 import { HONEYMOON_DESTINATIONS } from "../data/viaggi-nozze.js";
+import { HONEYMOON_IMAGES } from "../data/viaggi-nozze-images.js";
+
 import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
-
-// stesso ragionamento che hai usato: offset per riportare le card
-// sotto breadcrumb + barre bloccate
 const OFFSET_TOP = 270;
 
 const MeteViaggiNozze = () => {
@@ -29,7 +31,6 @@ const MeteViaggiNozze = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // Filtraggio per testo + stagionalità
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
@@ -71,7 +72,6 @@ const MeteViaggiNozze = () => {
     scrollToCards();
   };
 
-  // reset pagina quando cambiano ricerca o filtri
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedBuckets]);
@@ -84,7 +84,6 @@ const MeteViaggiNozze = () => {
 
   const hasResults = filteredTrips.length > 0;
 
-  // badge: rosso se 0, blu se nessun filtro, verde se ci sono filtri
   const getBadgeColorClasses = () => {
     if (!hasResults) {
       return "border-rose-200 bg-rose-50 text-rose-700";
@@ -137,7 +136,7 @@ const MeteViaggiNozze = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Filtri a sinistra (collassabili, come per le capitali) */}
+            {/* Filtri a sinistra */}
             <TravelFilters
               title="Mete per viaggi di nozze"
               selectedBuckets={selectedBuckets}
@@ -146,7 +145,6 @@ const MeteViaggiNozze = () => {
                 setSearchTerm("");
                 setSelectedBuckets([]);
               }}
-              // usa lo stesso stato di collapse delle capitali
               isCollapsed={filtersCollapsed}
               onToggleCollapsed={() =>
                 setFiltersCollapsed((prev) => !prev)
@@ -159,7 +157,7 @@ const MeteViaggiNozze = () => {
                 filtersCollapsed ? "lg:pl-2" : ""
               }`}
             >
-              {/* Barra di ricerca sticky sotto la breadcrumb */}
+              {/* Barra di ricerca sticky */}
               <div className="lg:sticky lg:top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
@@ -209,16 +207,21 @@ const MeteViaggiNozze = () => {
                   </p>
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((trip, idx) => (
-                      <ContinentCard
-                        key={`${trip.title}-${idx}`}
-                        image={heroImg}
-                        title={trip.title}
-                        badge={trip.badge}
-                        period={trip.period}
-                        description={trip.description}
-                      />
-                    ))}
+                    {currentItems.map((trip, idx) => {
+                      const cardImage =
+                        (trip.slug && HONEYMOON_IMAGES[trip.slug]) || heroImg;
+
+                      return (
+                        <ContinentCard
+                          key={`${trip.title}-${idx}`}
+                          image={cardImage}
+                          title={trip.title}
+                          badge={trip.badge}
+                          period={trip.period}
+                          description={trip.description}
+                        />
+                      );
+                    })}
                   </div>
                 )}
 
@@ -237,23 +240,22 @@ const MeteViaggiNozze = () => {
                       ← Precedente
                     </button>
 
-                    {Array.from(
-                      { length: totalPages },
-                      (_, i) => i + 1
-                    ).map((page) => (
-                      <button
-                        key={page}
-                        type="button"
-                        onClick={() => handlePageChange(page)}
-                        className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
-                          page === currentPage
-                            ? "bg-[#0863D6] border-[#0863D6] text-white"
-                            : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          type="button"
+                          onClick={() => handlePageChange(page)}
+                          className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
+                            page === currentPage
+                              ? "bg-[#0863D6] border-[#0863D6] text-white"
+                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
+                          }`}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
 
                     <button
                       type="button"
@@ -308,6 +310,8 @@ const MeteViaggiNozze = () => {
 };
 
 export default MeteViaggiNozze;
+
+
 
 
 

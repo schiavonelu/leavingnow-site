@@ -4,9 +4,9 @@ import { Plane, Building2, Waves, Globe2 } from "lucide-react";
 import heroImg from "../../assets/destination/hero.webp";
 
 import { getActiveSeasonForNow } from "../../config/seasonalSalesConfig";
-import { CAPITAL_CITIES } from "../../data/capitali";
+import { CAPITAL_CITIES } from "../../data/mete-capitali";
 
-// Immagini per stagione (per ora tutte uguali)
+// Qui poi potrai sostituire heroImg con immagini dedicate per stagione
 const SEASON_IMAGES = {
   inverno: [heroImg],
   primavera: [heroImg],
@@ -22,7 +22,6 @@ const getRandomImageForSeason = (seasonId) => {
 
 const getSeasonalCtaLabel = () => "Scopri le mete stagionali";
 
-// Testo sintetico per ciascuna campagna attiva (breve)
 const CAMPAIGN_HIGHLIGHTS = {
   "mare-italia":
     "Mare Italia: Sardegna, Sicilia, Puglia, Calabria e grandi classici estivi.",
@@ -54,7 +53,6 @@ const CAMPAIGN_HIGHLIGHTS = {
     "Weekend benessere & spa in Italia ed Europa, tutto l’anno.",
 };
 
-// (non usato adesso, ma lo teniamo per eventuali evoluzioni future)
 const getSuggestedCapitalsForCampaigns = (campaigns, count = 2) => {
   if (!CAPITAL_CITIES || CAPITAL_CITIES.length === 0) return [];
   return CAPITAL_CITIES.slice(0, count);
@@ -76,7 +74,6 @@ const SeasonalHighlightSection = () => {
   const { seasonId, campaigns } = getActiveSeasonForNow();
   const heroImage = getRandomImageForSeason(seasonId);
 
-  // Bottoni Mare attivi solo in stagione mare (mar–set) + campagna mare attiva
   const today = new Date();
   const month = today.getMonth() + 1;
   const isMareSeason = month >= 3 && month <= 9;
@@ -87,7 +84,6 @@ const SeasonalHighlightSection = () => {
       )
     : false;
 
-  // Highlights dinamici: max 3
   const dynamicHighlights = campaigns
     .map((c) => CAMPAIGN_HIGHLIGHTS[c.id])
     .filter(Boolean)
@@ -115,7 +111,6 @@ const SeasonalHighlightSection = () => {
               puoi bloccare le soluzioni migliori e programmare con calma.
             </p>
 
-            {/* Campagne attive ora (chip sintetici) */}
             {campaigns.length > 0 && (
               <div className="mt-1 flex flex-wrap gap-1.5">
                 {campaigns.map((c) => (
@@ -129,7 +124,6 @@ const SeasonalHighlightSection = () => {
               </div>
             )}
 
-            {/* Highlights brevi */}
             {dynamicHighlights.length > 0 && (
               <ul className="mt-2 space-y-1.5 text-xs md:text-sm text-slate-200">
                 {dynamicHighlights.map((item) => (
@@ -141,9 +135,7 @@ const SeasonalHighlightSection = () => {
               </ul>
             )}
 
-            {/* CTA principali */}
             <div className="mt-3 flex flex-col sm:flex-row flex-wrap gap-3">
-              {/* Mete stagionali – sempre */}
               <Link
                 to={`/mete-stagionali#${seasonId}`}
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
@@ -152,7 +144,6 @@ const SeasonalHighlightSection = () => {
                 {mainCtaLabel}
               </Link>
 
-              {/* Capitali e città europee – sempre */}
               <Link
                 to="/mete-capitali"
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
@@ -161,7 +152,6 @@ const SeasonalHighlightSection = () => {
                 Capitali e città europee
               </Link>
 
-              {/* Mare – SOLO stagione mare + campagna mare attiva */}
               {hasMareCampaign && (
                 <>
                   <Link
@@ -184,11 +174,11 @@ const SeasonalHighlightSection = () => {
             </div>
           </div>
 
-          {/* Immagine */}
+          {/* Immagine stagionale */}
           <div className="w-full md:w-2/5">
             <div className="relative h-48 md:h-full">
               <img
-                src={heroImg}
+                src={heroImage}
                 alt="Mete stagionali e prossime partenze"
                 className="h-full w-full object-cover md:rounded-l-none md:rounded-r-3xl"
                 loading="lazy"
@@ -203,6 +193,7 @@ const SeasonalHighlightSection = () => {
 };
 
 export default SeasonalHighlightSection;
+
 
 
 

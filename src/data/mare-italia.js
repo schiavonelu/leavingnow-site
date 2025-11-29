@@ -1,7 +1,7 @@
 // src/data/mare-italia.js
 
-// Periodi consigliati gestiti come "stagioni commerciali"
-// bestSeasons usa valori tecnici:
+// Periodi consigliati gestiti come "stagioni commerciali".
+// bestSeasons usa valori tecnici (per filtri e logiche stagionali):
 // - "primavera"
 // - "estate"
 // - "autunno"
@@ -138,4 +138,5 @@ export const MARE_ITALIA_DESTINATIONS = [
       "Un tratto di costa selvaggia e incontaminata, con calette raggiungibili tramite sentieri, borghi affacciati sul mare e panorami verdi che scendono verso l’acqua. L’Argentario e la Maremma combinano mare cristallino, natura, trekking e cucina autentica toscana, perfette per un viaggio rilassante ma ricco di esperienze.",
   },
 ];
+
 

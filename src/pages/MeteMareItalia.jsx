@@ -1,12 +1,16 @@
 // src/pages/MeteMareItalia.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
+
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import SeaFiltersItaly from "../components/ui/SeaFiltersItaly.jsx";
+
 import heroImg from "../assets/destination/hero.webp";
+
 import { MARE_ITALIA_DESTINATIONS } from "../data/mare-italia.js";
+import { MARE_ITALIA_IMAGES } from "../data/mare-italia-images.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -14,7 +18,7 @@ const OFFSET_TOP = 270;
 
 // mapping semplificato: adatta ai tuoi dati
 const getItalyZoneTag = (trip) => {
-  const text = `${trip.area || ""} ${trip.title || ""}`
+  const text = `${trip.area || ""} ${trip.title || ""} ${trip.region || ""}`
     .toLowerCase()
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "");
@@ -62,14 +66,13 @@ const getItalyZoneTag = (trip) => {
     return "ISOLE";
   }
 
-  // non classificato → non viene filtrato via se ci sono selezioni
   return "UNKNOWN";
 };
 
 const MeteMareItalia = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedZones, setSelectedZones] = useState([]); // array
+  const [selectedZones, setSelectedZones] = useState([]);
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
 
   const cardsSectionRef = useRef(null);
@@ -81,12 +84,18 @@ const MeteMareItalia = () => {
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
-    return MARE_ITALIA_DESTINATIONS.filter((trip) => {
+    return (MARE_ITALIA_DESTINATIONS || []).filter((trip) => {
+      const title = trip.title || "";
+      const description = trip.description || "";
+      const area = trip.area || "";
+      const region = trip.region || "";
+
       const matchSearch =
         term === "" ||
-        trip.title.toLowerCase().includes(term) ||
-        trip.description.toLowerCase().includes(term) ||
-        (trip.area && trip.area.toLowerCase().includes(term));
+        title.toLowerCase().includes(term) ||
+        description.toLowerCase().includes(term) ||
+        area.toLowerCase().includes(term) ||
+        region.toLowerCase().includes(term);
 
       const zone = getItalyZoneTag(trip);
       const matchZone =
@@ -186,7 +195,7 @@ const MeteMareItalia = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Filtri per zona (sidebar) */}
+            {/* Filtri per zona */}
             <SeaFiltersItaly
               title="Mare Italia"
               selectedFilters={selectedZones}
@@ -256,16 +265,23 @@ const MeteMareItalia = () => {
                   </p>
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((trip, idx) => (
-                      <ContinentCard
-                        key={`${trip.title}-${idx}`}
-                        image={heroImg}
-                        title={trip.title}
-                        badge={trip.badge}
-                        period={trip.period}
-                        description={trip.description}
-                      />
-                    ))}
+                    {currentItems.map((trip, idx) => {
+                      const cardImage =
+                        (trip.id && MARE_ITALIA_IMAGES?.[trip.id]) ||
+                        heroImg;
+
+                      return (
+                        <ContinentCard
+                          key={`${trip.id}-${idx}`}
+                          image={cardImage}
+                          title={trip.title}
+                          badge={trip.badge}
+                          period={trip.period}
+                          description={trip.description}
+                          region={trip.region}
+                        />
+                      );
+                    })}
                   </div>
                 )}
 
@@ -355,6 +371,9 @@ const MeteMareItalia = () => {
 };
 
 export default MeteMareItalia;
+
+
+
 
 
 

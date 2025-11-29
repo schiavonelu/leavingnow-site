@@ -1,17 +1,21 @@
+// src/pages/MeteCapitali.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
+
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import TravelFilters from "../components/ui/TravelFilters.jsx";
+
 import heroImg from "../assets/destination/hero.webp";
-import { CAPITAL_CITIES } from "../data/capitali.js";
+
+import { CAPITAL_CITIES } from "../data/mete-capitali.js";
+import { CAPITAL_CITIES_IMAGES } from "../data/mete-capitali-images.js";
+
 import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
-
-// Offset per lo scroll: leggermente aumentato per non far salire troppo le card
 const OFFSET_TOP = 270;
 
 const MeteCapitali = () => {
@@ -20,14 +24,12 @@ const MeteCapitali = () => {
   const [selectedBuckets, setSelectedBuckets] = useState([]);
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
 
-  // ref per riportare lo scroll all'inizio delle card
   const cardsSectionRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // Filtraggio per testo + bucket stagionale
   const filteredCities = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
@@ -69,7 +71,6 @@ const MeteCapitali = () => {
     scrollToCards();
   };
 
-  // Quando cambiano filtri o ricerca → torna alla pagina 1
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedBuckets]);
@@ -82,10 +83,6 @@ const MeteCapitali = () => {
 
   const hasResults = filteredCities.length > 0;
 
-  // Badge:
-  // - rosso se 0 mete
-  // - blu se tutte le stagioni (nessun filtro)
-  // - verde se ci sono filtri stagionali attivi
   const getBadgeColorClasses = () => {
     if (!hasResults) {
       return "border-rose-200 bg-rose-50 text-rose-700";
@@ -129,7 +126,7 @@ const MeteCapitali = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Colonna filtri (sinistra, sidebar) */}
+            {/* Colonna filtri */}
             <TravelFilters
               title="Capitali europee"
               selectedBuckets={selectedBuckets}
@@ -144,13 +141,13 @@ const MeteCapitali = () => {
               }
             />
 
-            {/* Colonna risultati (destra) */}
+            {/* Colonna risultati */}
             <div
               className={`flex-1 space-y-6 transition-[width] duration-300 ${
                 filtersCollapsed ? "lg:pl-2" : ""
               }`}
             >
-              {/* Barra di ricerca - sticky sotto il breadcrumb su desktop */}
+              {/* Barra di ricerca sticky */}
               <div className="lg:sticky lg:top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
@@ -174,7 +171,7 @@ const MeteCapitali = () => {
                       </div>
                     </div>
 
-                    {/* Badge pill con numero mete + testo stagione */}
+                    {/* Badge pill */}
                     <div className="flex items-center justify-between md:justify-end gap-2 text-xs md:text-sm text-slate-500">
                       <span
                         className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] md:text-xs font-semibold ${badgeColorClasses}`}
@@ -200,16 +197,22 @@ const MeteCapitali = () => {
                   </p>
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((city, idx) => (
-                      <ContinentCard
-                        key={`${city.title}-${idx}`}
-                        image={heroImg}
-                        title={city.title}
-                        badge={city.badge}
-                        period={city.period}
-                        description={city.description}
-                      />
-                    ))}
+                    {currentItems.map((city, idx) => {
+                      const cardImage =
+                        (city.id && CAPITAL_CITIES_IMAGES?.[city.id]) ||
+                        heroImg;
+
+                      return (
+                        <ContinentCard
+                          key={`${city.title}-${idx}`}
+                          image={cardImage}
+                          title={city.title}
+                          badge={city.badge}
+                          period={city.period}
+                          description={city.description}
+                        />
+                      );
+                    })}
                   </div>
                 )}
 
@@ -299,6 +302,8 @@ const MeteCapitali = () => {
 };
 
 export default MeteCapitali;
+
+
 
 
 

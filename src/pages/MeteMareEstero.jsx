@@ -1,27 +1,30 @@
 // src/pages/MeteMareEstero.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
+
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import SeaFiltersEstero from "../components/ui/SeaFiltersEstero.jsx";
+
 import heroImg from "../assets/destination/hero.webp";
+
 import { MARE_ESTERO_DESTINATIONS } from "../data/mare-estero.js";
+import { MARE_ESTERO_IMAGES } from "../data/mare-estero-images.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
 const OFFSET_TOP = 270;
 
 const getTripNation = (trip) => {
-  // usa trip.country se esiste, altrimenti area
-  const raw = trip.country || trip.area || "";
+  const raw = trip?.country || trip?.area || trip?.region || "";
   return raw.trim();
 };
 
 const MeteMareEstero = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNations, setSelectedNations] = useState([]); // array
+  const [selectedNations, setSelectedNations] = useState([]);
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
 
   const cardsSectionRef = useRef(null);
@@ -30,25 +33,32 @@ const MeteMareEstero = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // elenco nazioni / macro-zone uniche
+  // Opzioni per il filtro (nazioni uniche)
   const nationOptions = useMemo(() => {
     const set = new Set();
-    MARE_ESTERO_DESTINATIONS.forEach((trip) => {
+    (MARE_ESTERO_DESTINATIONS || []).forEach((trip) => {
       const n = getTripNation(trip);
       if (n) set.add(n);
     });
     return Array.from(set);
   }, []);
 
+  // Filtraggio per testo + nazione
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
-    return MARE_ESTERO_DESTINATIONS.filter((trip) => {
+    return (MARE_ESTERO_DESTINATIONS || []).filter((trip) => {
+      const title = trip.title || "";
+      const description = trip.description || "";
+      const area = trip.area || "";
+      const region = trip.region || "";
+
       const matchSearch =
         term === "" ||
-        trip.title.toLowerCase().includes(term) ||
-        trip.description.toLowerCase().includes(term) ||
-        (trip.area && trip.area.toLowerCase().includes(term));
+        title.toLowerCase().includes(term) ||
+        description.toLowerCase().includes(term) ||
+        area.toLowerCase().includes(term) ||
+        region.toLowerCase().includes(term);
 
       const nation = getTripNation(trip);
       const matchNation =
@@ -85,6 +95,7 @@ const MeteMareEstero = () => {
     scrollToCards();
   };
 
+  // 🔧 qui c’era il refuso: selectedNions -> selectedNations
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedNations]);
@@ -137,7 +148,7 @@ const MeteMareEstero = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]" id="mare-inverno">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Filtri per nazione (sidebar) */}
+            {/* Filtri per nazione */}
             <SeaFiltersEstero
               title="Mare estero"
               options={nationOptions}
@@ -208,16 +219,23 @@ const MeteMareEstero = () => {
                   </p>
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((trip, idx) => (
-                      <ContinentCard
-                        key={`${trip.title}-${idx}`}
-                        image={heroImg}
-                        title={trip.title}
-                        badge={trip.badge}
-                        period={trip.period}
-                        description={trip.description}
-                      />
-                    ))}
+                    {currentItems.map((trip, idx) => {
+                      const cardImage =
+                        (trip.id && MARE_ESTERO_IMAGES?.[trip.id]) ||
+                        heroImg;
+
+                      return (
+                        <ContinentCard
+                          key={`${trip.id}-${idx}`}
+                          image={cardImage}
+                          title={trip.title}
+                          badge={trip.badge}
+                          period={trip.period}
+                          description={trip.description}
+                          region={trip.region}
+                        />
+                      );
+                    })}
                   </div>
                 )}
 
@@ -236,29 +254,28 @@ const MeteMareEstero = () => {
                       ← Precedente
                     </button>
 
-                    {Array.from(
-                      { length: totalPages },
-                      (_, i) => i + 1
-                    ).map((page) => (
-                      <button
-                        key={page}
-                        type="button"
-                        onClick={() => handlePageChange(page)}
-                        className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
-                          page === currentPage
-                            ? "bg-[#0863D6] border-[#0863D6] text-white"
-                            : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          type="button"
+                          onClick={() => handlePageChange(page)}
+                          className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
+                            page === currentPage
+                              ? "bg-[#0863D6] border-[#0863D6] text-white"
+                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
+                          }`}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
 
                     <button
                       type="button"
                       onClick={() =>
                         currentPage < totalPages &&
-                        handlePageChange(page + 1)
+                        handlePageChange(currentPage + 1)
                       }
                       disabled={currentPage === totalPages}
                       className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
@@ -281,7 +298,8 @@ const MeteMareEstero = () => {
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Vuoi partire da una di queste idee o creare il tuo mare estero su misura?
+            Vuoi partire da una di queste idee o creare il tuo mare estero su
+            misura?
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -307,6 +325,8 @@ const MeteMareEstero = () => {
 };
 
 export default MeteMareEstero;
+
+
 
 
 

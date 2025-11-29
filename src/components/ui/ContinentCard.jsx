@@ -8,7 +8,6 @@ import {
   FaCity,
   FaLandmark,
   FaSnowflake,
-  FaSun,
   FaCalendarAlt,
   FaStar,
 } from "react-icons/fa";
@@ -16,7 +15,7 @@ import { GiLion } from "react-icons/gi";
 
 // 🎨 Mappa categorie → colori + icona
 const BADGE_STYLES = {
-  // --- VIAGGI DI NOZZE ---
+  // --- VIAGGI DI NOZZE / MARE ---
   mare: {
     icon: FaUmbrellaBeach,
     classes: "bg-sky-500/95 border-sky-400 text-white",
@@ -51,6 +50,10 @@ const BADGE_STYLES = {
     icon: FaCity,
     classes: "bg-slate-900/90 border-slate-700 text-white",
   },
+  capitali: {
+    icon: FaCity,
+    classes: "bg-slate-900/90 border-slate-700 text-white",
+  },
   nordica: {
     icon: FaSnowflake,
     classes: "bg-sky-600/95 border-sky-400 text-white",
@@ -80,27 +83,40 @@ const getBadgeConfig = (badge) => {
   if (!badge) return BADGE_STYLES.default;
 
   const key = badge.toLowerCase().trim();
+  const firstWord = key.split(" ")[0]; // es: "Mare Italia" → "mare"
   const found =
     BADGE_STYLES[key] ||
-    BADGE_STYLES[key.split(" ")[0]] || // es: "Capitale Mediterranea"
+    BADGE_STYLES[firstWord] ||
     BADGE_STYLES.default;
 
   return found;
 };
 
-const ContinentCard = ({ image, title, description, badge, period }) => {
+const ContinentCard = ({
+  image,
+  title,
+  description,
+  badge,
+  period,
+  region,
+}) => {
   const { icon: Icon, classes } = getBadgeConfig(badge);
+  const hasImage = Boolean(image);
 
   return (
     <div className="group rounded-3xl overflow-hidden bg-white shadow-lg border border-slate-100 flex flex-col h-full">
       {/* IMG + BADGE */}
-      <div className="relative h-44 md:h-56 overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
+      <div className="relative h-44 md:h-56 overflow-hidden bg-slate-200">
+        {hasImage ? (
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full bg-linear-to-br from-slate-200 via-slate-300 to-slate-400" />
+        )}
 
         {badge && (
           <span
@@ -114,11 +130,17 @@ const ContinentCard = ({ image, title, description, badge, period }) => {
 
       {/* TEXT */}
       <div className="p-5 flex-1 flex flex-col">
-        <h3 className="font-semibold text-slate-900 text-base md:text-lg mb-1">
+        <h3 className="font-semibold text-slate-900 text-base md:text-lg">
           {title}
         </h3>
 
-        <p className="text-sm text-slate-700 leading-relaxed text-justify flex-1">
+        {region && (
+          <p className="text-xs font-medium text-slate-500 mb-1">
+            {region}
+          </p>
+        )}
+
+        <p className="mt-1 text-sm text-slate-700 leading-relaxed text-justify flex-1">
           {description}
         </p>
 
@@ -134,6 +156,8 @@ const ContinentCard = ({ image, title, description, badge, period }) => {
 };
 
 export default ContinentCard;
+
+
 
 
 

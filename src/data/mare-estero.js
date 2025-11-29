@@ -1,5 +1,12 @@
 // src/data/mare-estero.js
 
+// Periodi consigliati gestiti come "stagioni commerciali".
+// bestSeasons usa valori tecnici (per filtri e logiche stagionali):
+// - "inverno"
+// - "primavera"
+// - "estate"
+// - "autunno"
+
 export const MARE_ESTERO_DESTINATIONS = [
   {
     id: "mare-estero-ibiza",
@@ -57,7 +64,7 @@ export const MARE_ESTERO_DESTINATIONS = [
     region: "Spagna – Canarie",
     badge: "Clima perfetto tutto l’anno",
     period: "Tutto l’anno",
-    bestSeasons: ["primavera", "estate", "autunno"],
+    bestSeasons: ["inverno", "primavera", "estate", "autunno"],
     description:
       "Spiagge vulcaniche, paesaggi lunari, borghi coloniali e il Teide. Tenerife è ideale per un viaggio balneare in ogni stagione, grazie al clima mite e ai numerosi servizi.",
   },
@@ -67,7 +74,7 @@ export const MARE_ESTERO_DESTINATIONS = [
     region: "Spagna – Canarie",
     badge: "Dune & oceano",
     period: "Tutto l’anno",
-    bestSeasons: ["primavera", "estate", "autunno"],
+    bestSeasons: ["inverno", "primavera", "estate", "autunno"],
     description:
       "Dune di sabbia, villaggi colorati, spiagge attrezzate e natura vulcanica. Gran Canaria offre scenari diversi tra loro, perfetti per un viaggio mare attivo e vario.",
   },
@@ -171,7 +178,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "L’isola più grande della Grecia, ricca di spiagge famose come Elafonissi, Balos e Vai. Creta offre mare cristallino, borghi autentici, siti archeologici e cucina mediterranea genuina.",
   },
-
   {
     id: "mare-estero-rodi",
     title: "Rodi",
@@ -182,7 +188,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Acque limpide, borghi medievali, cittadine fortificate e baie riparate. Rodi è perfetta per chi vuole unire mare, cultura e scenari tradizionali greci.",
   },
-
   {
     id: "mare-estero-kefalonia",
     title: "Cefalonia",
@@ -193,7 +198,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Famosa per Myrtos Beach, Melissani Cave e spiagge spettacolari immerse nella natura. Perfetta per chi cerca mare incontaminato, strade panoramiche e ritmi rilassati.",
   },
-
   {
     id: "mare-estero-dubrovnik",
     title: "Dubrovnik",
@@ -204,7 +208,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Acque turchesi, mura storiche e isole vicine come Lokrum. Dubrovnik unisce mare cristallino, ristorantini sul porto e un centro storico tra i più suggestivi del Mediterraneo.",
   },
-
   {
     id: "mare-estero-hvar",
     title: "Hvar",
@@ -215,7 +218,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Baie meravigliose, acqua trasparentissima, località chic e gite in barca verso le Pakleni Islands. Hvar è l’isola perfetta per chi cerca mare, stile e divertimento.",
   },
-
   {
     id: "mare-estero-split",
     title: "Spalato & Dalmazia",
@@ -226,7 +228,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Un mix tra mare limpido, storia romana e spiagge urbane. Spalato è un’ottima base per esplorare isole vicine come Brac e Hvar.",
   },
-
   {
     id: "mare-estero-nizza",
     title: "Nizza & Costa Azzurra",
@@ -237,7 +238,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Acque blu, lungomare elegante e borghi iconici come Èze, Cannes e Saint-Tropez. La Costa Azzurra è perfetta per chi ama mare, cibo raffinato e atmosfere glamour.",
   },
-
   {
     id: "mare-estero-porto",
     title: "Porto & nord del Portogallo",
@@ -248,7 +248,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Spiagge ampie e ventose, onde perfette e cittadine azulejo. Ideale per chi ama oceano, surf, street food e paesaggi autentici.",
   },
-
   {
     id: "mare-estero-hurghada",
     title: "Hurghada",
@@ -259,7 +258,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Un paradiso per snorkeling e relax. Hurghada offre resort sul mare, acque caldissime e fondali ricchi di pesci colorati, perfetto anche in inverno.",
   },
-
   {
     id: "mare-estero-sharm",
     title: "Sharm el-Sheikh",
@@ -270,7 +268,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Mare caldo, barriera corallina accessibile, resort completi e baie riparate. Sharm è ideale per un viaggio di mare comodo e con clima perfetto anche a dicembre.",
   },
-
   {
     id: "mare-estero-mauritius",
     title: "Mauritius",
@@ -281,7 +278,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Lagune da sogno, spiagge bianche, hotel raffinati e foreste tropicali. Mauritius è perfetta per chi sogna un mare esotico con comfort e natura.",
   },
-
   {
     id: "mare-estero-seychelles",
     title: "Seychelles",
@@ -292,6 +288,6 @@ export const MARE_ESTERO_DESTINATIONS = [
     description:
       "Uno dei mari più belli al mondo: acque trasparenti, sabbia bianchissima e rocce granitiche iconiche. Ideale per viaggi di coppia, mare incontaminato e fotografie da sogno.",
   },
-
 ];
+
 

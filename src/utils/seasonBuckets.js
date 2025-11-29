@@ -1,6 +1,5 @@
 // src/utils/seasonBuckets.js
 
-// Etichette standard dei "bucket" stagionali usati nei filtri
 export const SEASON_BUCKET_LABELS = {
   ALL_YEAR: "Tutto l’anno",
   SPRING: "Primavera",
@@ -10,7 +9,6 @@ export const SEASON_BUCKET_LABELS = {
   MIX: "Stagionalità da valutare",
 };
 
-// Lista ordinata per la UI dei filtri
 export const SEASON_BUCKET_LIST = [
   SEASON_BUCKET_LABELS.ALL_YEAR,
   SEASON_BUCKET_LABELS.SPRING,
@@ -28,11 +26,10 @@ export const SEASON_BUCKET_LIST = [
 export const getSeasonBucketLabel = (period) => {
   if (!period) return SEASON_BUCKET_LABELS.ALL_YEAR;
 
-  // NORMALIZZAZIONE COMPLETA
   let p = period
     .toLowerCase()
     .normalize("NFKD")
-    .replace(/[–—−]/g, "-") // converte tutti i tipi di trattino in "-"
+    .replace(/[–—−]/g, "-")
     .replace(/\s+/g, " ")
     .trim();
 
@@ -53,7 +50,6 @@ export const getSeasonBucketLabel = (period) => {
     return SEASON_BUCKET_LABELS.MIX;
   }
 
-  // Token mensili / stagionali
   const winterTokens = ["inverno", "dic", "gen", "feb"];
   const summerTokens = ["estate", "giu", "lug", "ago"];
   const springTokens = ["primavera", "mar", "apr", "mag"];
@@ -67,7 +63,6 @@ export const getSeasonBucketLabel = (period) => {
   const flags = [hasSpring, hasSummer, hasAutumn, hasWinter].filter(Boolean)
     .length;
 
-  // Un'unica stagione prevalente
   if (flags === 1) {
     if (hasSummer) return SEASON_BUCKET_LABELS.SUMMER;
     if (hasWinter) return SEASON_BUCKET_LABELS.WINTER;
@@ -75,13 +70,12 @@ export const getSeasonBucketLabel = (period) => {
     if (hasAutumn) return SEASON_BUCKET_LABELS.AUTUMN;
   }
 
-  // Alcuni casi pratici per non mandare tutto in MIX
-  // Estate + (primavera/o autunno) → consideriamo estate
+  // Estate + (primavera / autunno) → estate
   if (hasSummer && (hasSpring || hasAutumn) && !hasWinter) {
     return SEASON_BUCKET_LABELS.SUMMER;
   }
 
-  // Inverno + primavera/autunno → consideriamo inverno
+  // Inverno + primavera/autunno → inverno
   if (hasWinter && hasSpring && !hasSummer) {
     return SEASON_BUCKET_LABELS.WINTER;
   }
@@ -89,17 +83,68 @@ export const getSeasonBucketLabel = (period) => {
     return SEASON_BUCKET_LABELS.WINTER;
   }
 
-  // Primavera + autunno senza estate/inverno → veramente mix
+  // Primavera + autunno senza estate/inverno → MIX
   if (hasSpring && hasAutumn && !hasSummer && !hasWinter) {
     return SEASON_BUCKET_LABELS.MIX;
   }
 
-  // Più stagioni miste → MIX
   if (flags > 1) {
     return SEASON_BUCKET_LABELS.MIX;
   }
 
-  // Fallback di sicurezza
   return SEASON_BUCKET_LABELS.ALL_YEAR;
 };
+
+/**
+ * 🔹 NUOVO: versione basata su bestSeasons (["primavera","estate","autunno","inverno"])
+ * Da usare per le pagine Mare Italia / Mare Estero dove hai bestSeasons.
+ */
+export const getSeasonBucketFromBestSeasons = (bestSeasons) => {
+  if (!bestSeasons || bestSeasons.length === 0) {
+    return SEASON_BUCKET_LABELS.ALL_YEAR;
+  }
+
+  const set = new Set(
+    bestSeasons.map((s) => (s || "").toString().toLowerCase().trim())
+  );
+
+  const hasSpring = set.has("primavera");
+  const hasSummer = set.has("estate");
+  const hasAutumn = set.has("autunno");
+  const hasWinter = set.has("inverno");
+
+  const flags = [hasSpring, hasSummer, hasAutumn, hasWinter].filter(Boolean)
+    .length;
+
+  if (flags === 0) return SEASON_BUCKET_LABELS.ALL_YEAR;
+
+  // Una stagione sola → quella
+  if (flags === 1) {
+    if (hasSummer) return SEASON_BUCKET_LABELS.SUMMER;
+    if (hasWinter) return SEASON_BUCKET_LABELS.WINTER;
+    if (hasSpring) return SEASON_BUCKET_LABELS.SPRING;
+    if (hasAutumn) return SEASON_BUCKET_LABELS.AUTUMN;
+  }
+
+  // Estate + (primavera/autunno) senza inverno → estate
+  if (hasSummer && (hasSpring || hasAutumn) && !hasWinter) {
+    return SEASON_BUCKET_LABELS.SUMMER;
+  }
+
+  // Inverno + primavera/autunno senza estate → inverno (es. Mar Rosso)
+  if (hasWinter && (hasSpring || hasAutumn) && !hasSummer) {
+    return SEASON_BUCKET_LABELS.WINTER;
+  }
+
+  // Primavera + autunno senza estate/inverno → MIX
+  if (hasSpring && hasAutumn && !hasSummer && !hasWinter) {
+    return SEASON_BUCKET_LABELS.MIX;
+  }
+
+  // Tante stagioni tutte insieme → MIX
+  if (flags > 1) return SEASON_BUCKET_LABELS.MIX;
+
+  return SEASON_BUCKET_LABELS.ALL_YEAR;
+};
+
 

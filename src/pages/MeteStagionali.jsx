@@ -5,16 +5,14 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import heroImg from "../assets/destination/hero.webp";
 
-// ✅ dati esterni
 import { SEASONS } from "../data/mete-stagionali";
-import { CAPITAL_CITIES } from "../data/capitali";
+import { CAPITAL_CITIES } from "../data/mete-capitali.js";
 import { SALES_CAMPAIGNS } from "../config/seasonalSalesConfig";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const PAGE_SIZE = 6;
 const MAX_CARDS_PER_SEASON = 24;
 
-// piccola util per mischiare gli array
 const shuffleArray = (arr) => {
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i -= 1) {
@@ -24,7 +22,6 @@ const shuffleArray = (arr) => {
   return copy;
 };
 
-// 🔹 funzione per capire se today è dentro un range commerciale {month, day}
 const isInRange = (today, start, end) => {
   const t = today.month * 100 + today.day;
   const s = start.month * 100 + start.day;
@@ -37,9 +34,11 @@ const isInRange = (today, start, end) => {
   return t >= s || t <= e;
 };
 
-// 🔹 stagione “commerciale” per titolo/pagina
+// stagione “commerciale” per titolo/pagina
 const getCommercialSeasonId = (date) => {
   const month = date.getMonth() + 1;
+
+  // Ott–Feb = inverno commerciale per mercatini/Capodanno/crociere
   if (month === 10 || month === 11 || month === 12 || month === 1 || month === 2) {
     return "inverno";
   }
@@ -52,7 +51,6 @@ const getCommercialSeasonId = (date) => {
   return "autunno";
 };
 
-// 🔹 mappa card → campagne
 const CARD_CAMPAIGN_MAP = {
   "Mercatini di Natale tra Trentino e Austria": ["mercatini-natale"],
   "Alsazia e Germania romantica": ["mercatini-natale"],
@@ -214,7 +212,7 @@ const getSeasonDisplayYear = (seasonId, today) => {
   }
 };
 
-// 🔹 NUOVO: scroll con offset, così il titolo esce sotto il breadcrumb
+// Scroll con offset (breadcrumb)
 const scrollToSeasonAnchor = (seasonId) => {
   if (typeof document === "undefined") return;
   const el = document.getElementById(seasonId);
@@ -224,7 +222,7 @@ const scrollToSeasonAnchor = (seasonId) => {
   }
 
   const rect = el.getBoundingClientRect();
-  const headerOffset = 110; // altezza stimata breadcrumb + margine
+  const headerOffset = 110;
   const offsetTop = window.scrollY + rect.top - headerOffset;
 
   window.scrollTo({
@@ -493,6 +491,7 @@ const MeteStagionali = () => {
 };
 
 export default MeteStagionali;
+
 
 
 
