@@ -1,4 +1,3 @@
-// src/pages/MeteCapitali.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
 
@@ -7,14 +6,11 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import TravelFilters from "../components/ui/TravelFilters.jsx";
 
-import heroImg from "../assets/destination/hero.webp";
-
 import { CAPITAL_CITIES } from "../data/mete-capitali.js";
 import { CAPITAL_CITIES_IMAGES } from "../data/mete-capitali-images.js";
 import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 import {
-  FaCity,
   FaUmbrellaBeach,
   FaGlobeEurope,
   FaRegCalendarAlt,
@@ -23,8 +19,12 @@ import {
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
 const OFFSET_TOP = 270;
+const HERO_SLUG = "hero";
 
 const MeteCapitali = () => {
+  // Hero opzionale: se metti src/assets/mete-capitali/hero.webp → slug "hero"
+  const heroImg = CAPITAL_CITIES_IMAGES[HERO_SLUG] ?? null;
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBuckets, setSelectedBuckets] = useState([]);
@@ -32,10 +32,14 @@ const MeteCapitali = () => {
 
   const cardsSectionRef = useRef(null);
 
+  // Scroll in alto al primo caricamento
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  // -----------------------
+  // FILTRI (ricerca + stagione)
+  // -----------------------
   const filteredCities = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
@@ -53,8 +57,15 @@ const MeteCapitali = () => {
     });
   }, [searchTerm, selectedBuckets]);
 
-  const totalPages = Math.ceil(filteredCities.length / ITEMS_PER_PAGE) || 1;
+  // -----------------------
+  // PAGINAZIONE
+  // -----------------------
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredCities.length / ITEMS_PER_PAGE)
+  );
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
   const currentItems = filteredCities.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
@@ -73,14 +84,19 @@ const MeteCapitali = () => {
   };
 
   const handlePageChange = (page) => {
+    if (page === currentPage) return;
     setCurrentPage(page);
     scrollToCards();
   };
 
+  // Quando cambiano filtri/ricerca, torna alla pagina 1
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedBuckets]);
 
+  // -----------------------
+  // UI helper
+  // -----------------------
   const getSeasonSummary = () => {
     if (selectedBuckets.length === 0) return "tutte le stagioni";
     if (selectedBuckets.length === 1) return selectedBuckets[0].toLowerCase();
@@ -121,9 +137,9 @@ const MeteCapitali = () => {
             Capitali e città europee, senza pacchetti standard
           </h1>
           <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-            Le città europee possono essere vissute in tanti modi: weekend veloci,
-            ponti lunghi, combinati con altre città o con il mare. Qui trovi una
-            selezione di idee filtrabili per stagione e per testo.
+            Le città europee possono essere vissute in tanti modi: weekend
+            veloci, ponti lunghi, combinati con altre città o con il mare. Qui
+            trovi una selezione di idee filtrabili per stagione e per testo.
           </p>
         </div>
       </section>
@@ -149,8 +165,9 @@ const MeteCapitali = () => {
 
             {/* Colonna risultati */}
             <div
-              className={`flex-1 space-y-6 transition-[width] duration-300 ${filtersCollapsed ? "lg:pl-2" : ""
-                }`}
+              className={`flex-1 space-y-6 transition-[width] duration-300 ${
+                filtersCollapsed ? "lg:pl-2" : ""
+              }`}
             >
               {/* Barra di ricerca sticky */}
               <div className="lg:sticky lg:top-30 z-10">
@@ -176,7 +193,7 @@ const MeteCapitali = () => {
                       </div>
                     </div>
 
-                    {/* Badge pill */}
+                    {/* Badge pill numero mete + stagione */}
                     <div className="flex items-center justify-between md:justify-end gap-2 text-xs md:text-sm text-slate-500">
                       <span
                         className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] md:text-xs font-semibold ${badgeColorClasses}`}
@@ -201,15 +218,20 @@ const MeteCapitali = () => {
                     ricerca o i filtri stagionali.
                   </p>
                 ) : (
-                  <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((city, idx) => {
-                      const cardImage =
-                        (city.id && CAPITAL_CITIES_IMAGES?.[city.id]) ||
-                        heroImg;
+                  <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+                    {currentItems.map((city) => {
+                      // Usa l'immagine solo se esiste quella specifica per lo slug
+                      const poster =
+                        city.slug && CAPITAL_CITIES_IMAGES[city.slug]
+                          ? CAPITAL_CITIES_IMAGES[city.slug]
+                          : null;
+
+                      // Fallback: nessuna immagine → placeholder del ContinentCard
+                      const cardImage = poster || null;
 
                       return (
                         <ContinentCard
-                          key={`${city.title}-${idx}`}
+                          key={city.slug}
                           image={cardImage}
                           title={city.title}
                           badge={city.badge}
@@ -236,22 +258,22 @@ const MeteCapitali = () => {
                       ← Precedente
                     </button>
 
-                    {Array.from(
-                      { length: totalPages },
-                      (_, i) => i + 1
-                    ).map((page) => (
-                      <button
-                        key={page}
-                        type="button"
-                        onClick={() => handlePageChange(page)}
-                        className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${page === currentPage
-                          ? "bg-[#0863D6] border-[#0863D6] text-white"
-                          : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          type="button"
+                          onClick={() => handlePageChange(page)}
+                          className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
+                            page === currentPage
+                              ? "bg-[#0863D6] border-[#0863D6] text-white"
+                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
                           }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
 
                     <button
                       type="button"
@@ -271,7 +293,8 @@ const MeteCapitali = () => {
           </div>
         </div>
       </section>
-      {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI (Capitali) */}
+
+      {/* BANNER FINALE */}
       <section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
           <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
@@ -283,13 +306,12 @@ const MeteCapitali = () => {
           </h2>
 
           <p className="text-sm md:text-base text-slate-200 leading-relaxed">
-            Possiamo costruire un weekend lungo, un combinato tra più città o una
-            vacanza che unisce capitali e mare. Guarda anche le altre sezioni per
-            lasciarti ispirare.
+            Possiamo costruire un weekend lungo, un combinato tra più città o
+            una vacanza che unisce capitali e mare. Guarda anche le altre
+            sezioni per lasciarti ispirare.
           </p>
 
           <div className="mt-4 space-y-6">
-
             {/* BLOCCO 1 – LASCIATI ISPIRARE */}
             <div className="space-y-3">
               <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
@@ -297,12 +319,9 @@ const MeteCapitali = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-
                 <a
                   href="/mete-stagionali"
-                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6]
-              hover:border-[#0863D6] transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
                   <FaRegCalendarAlt className="text-lg" />
                   <span>Mete stagionali</span>
@@ -310,9 +329,7 @@ const MeteCapitali = () => {
 
                 <a
                   href="/mete-mare-italia"
-                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480]
-              hover:text-[#EB2480] hover:bg-white/5 transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480] hover:text-[#EB2480] hover:bg-white/5 transition"
                 >
                   <FaUmbrellaBeach className="text-lg" />
                   <span>Mare Italia</span>
@@ -320,14 +337,11 @@ const MeteCapitali = () => {
 
                 <a
                   href="/mete-mare-estero"
-                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500
-              hover:text-emerald-500 hover:bg-white/5 transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500 hover:text-emerald-500 hover:bg-white/5 transition"
                 >
                   <FaGlobeEurope className="text-lg" />
                   <span>Mare estero</span>
                 </a>
-
               </div>
             </div>
 
@@ -343,12 +357,9 @@ const MeteCapitali = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-
                 <a
                   href="/contatti"
-                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white
-              hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
                   <FaRegCalendarAlt className="text-lg" />
                   <span>Scrivici per parlarne</span>
@@ -358,35 +369,20 @@ const MeteCapitali = () => {
                   href={RESERVIO_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480]
-              hover:text-[#EB2480] transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
                 >
                   <FaRegCalendarAlt className="text-lg" />
                   <span>Prenota una consulenza</span>
                 </a>
-
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
-
     </>
   );
 };
 
 export default MeteCapitali;
-
-
-
-
-
-
-
-
-
 
 
