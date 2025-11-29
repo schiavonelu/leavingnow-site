@@ -42,6 +42,7 @@ const Breadcrumb = () => {
     "mete-capitali": "Mete capitali",
     "mete-viaggi-di-nozze": "Mete viaggi di nozze",
     "mete-mare-italia": "Mare Italia",
+    "mete-mare-estero": "Mare estero",
 
     crociere: "Crociere",
     "viaggi-individuali-gruppo": "Viaggi individuali & di gruppo",
@@ -57,20 +58,21 @@ const Breadcrumb = () => {
     "condizioni-di-vendita": "Condizioni di Vendita",
   };
 
-  // 🔙 Target della "Home" in breadcrumb, verso la sezione giusta
+  // 🔙 Target della "Home" nel breadcrumb
   let homeTarget = "/";
 
-  if (currentPath.includes("mete-stagionali")) {
-    homeTarget = "/#mete-stagionali";
-  } else if (
-    currentPath.includes("mete-mare-italia") ||
-    currentPath.includes("mete-capitali")
-  ) {
-    // Mare Italia e Capitali → sezione tipologie in home
-    homeTarget = "/#tipologie";
-  } else if (currentPath.includes("mete-viaggi-di-nozze")) {
-    // Da mete viaggi di nozze → direttamente al form viaggi di nozze
+  // Caso speciale: mete viaggi di nozze → torna alla pagina viaggi di nozze
+  if (currentPath.startsWith("/mete-viaggi-di-nozze")) {
     homeTarget = "/viaggi-di-nozze#preventivo-nozze";
+  }
+  // Tutte le pagine "mete" collegate alla sezione mete stagionali in home
+  else if (
+    currentPath.startsWith("/mete-stagionali") ||
+    currentPath.startsWith("/mete-mare-italia") ||
+    currentPath.startsWith("/mete-mare-estero") ||
+    currentPath.startsWith("/mete-capitali")
+  ) {
+    homeTarget = "/#mete-stagionali";
   } else if (
     currentPath.includes("crociere") ||
     currentPath.includes("viaggi-individuali") ||
@@ -138,6 +140,54 @@ const Breadcrumb = () => {
     ];
   }
 
+  // ✨ Caso speciale: METE MARE ITALIA
+  if (currentPath.startsWith("/mete-mare-italia")) {
+    crumbs = [
+      {
+        label: "Mete stagionali",
+        path: "/#mete-stagionali",
+        isLast: false,
+      },
+      {
+        label: "Mare Italia",
+        path: "/mete-mare-italia",
+        isLast: true,
+      },
+    ];
+  }
+
+  // ✨ Caso speciale: METE MARE ESTERO
+  if (currentPath.startsWith("/mete-mare-estero")) {
+    crumbs = [
+      {
+        label: "Mete stagionali",
+        path: "/#mete-stagionali",
+        isLast: false,
+      },
+      {
+        label: "Mare estero",
+        path: "/mete-mare-estero",
+        isLast: true,
+      },
+    ];
+  }
+
+  // ✨ Caso speciale: METE CAPITALI
+  if (currentPath.startsWith("/mete-capitali")) {
+    crumbs = [
+      {
+        label: "Mete stagionali",
+        path: "/#mete-stagionali",
+        isLast: false,
+      },
+      {
+        label: "Mete capitali",
+        path: "/mete-capitali",
+        isLast: true,
+      },
+    ];
+  }
+
   if (crumbs.length === 0) return null;
 
   return (
@@ -188,6 +238,7 @@ const Breadcrumb = () => {
 };
 
 export default Breadcrumb;
+
 
 
 

@@ -9,6 +9,13 @@ import { SEASONS } from "../data/mete-stagionali";
 import { CAPITAL_CITIES } from "../data/mete-capitali.js";
 import { SALES_CAMPAIGNS } from "../config/seasonalSalesConfig";
 
+import {
+  FaCity,
+  FaUmbrellaBeach,
+  FaGlobeEurope,
+  FaRegCalendarAlt,
+} from "react-icons/fa";
+
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const PAGE_SIZE = 6;
 const MAX_CARDS_PER_SEASON = 24;
@@ -458,39 +465,112 @@ const MeteStagionali = () => {
         );
       })()}
 
-      <section className="py-10 md:py-14 bg-[#132C50]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-3">
-            Consulenza personalizzata
-          </p>
+ {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI (Stagionali) */}
+<section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
+  <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
+    <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
+      Ti ispiriamo, poi lo costruiamo insieme
+    </p>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Vuoi programmare il prossimo viaggio partendo da queste idee?
-          </h2>
+    <h2 className="text-2xl md:text-3xl font-bold text-white">
+      Hai trovato qualche meta stagionale che ti ispira?
+    </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="/contatti"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
-            >
-              Scrivici per parlarne insieme
-            </a>
-            <a
-              href={RESERVIO_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full sm:w-auto justifycenter items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
-            >
-              Preferisci una consulenza?
-            </a>
-          </div>
+    <p className="text-sm md:text-base text-slate-200 leading-relaxed">
+      Possiamo partire da queste mete ordinate per stagione per creare il tuo viaggio ideale.
+      Puoi anche esplorare capitali o idee mare in Italia e all’estero.
+    </p>
+
+    <div className="mt-4 space-y-6">
+      {/* BLOCCO 1 – LASCIATI ISPIRARE */}
+      <div className="space-y-3">
+        <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
+          Lasciati ispirare ancora
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+
+          <a
+            href="/mete-capitali"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+              font-semibold border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6]
+              hover:border-[#0863D6] transition"
+          >
+            <FaCity className="text-lg" />
+            <span>Capitali europee</span>
+          </a>
+
+          <a
+            href="/mete-mare-italia"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+              font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480]
+              hover:text-[#EB2480] hover:bg-white/5 transition"
+          >
+            <FaUmbrellaBeach className="text-lg" />
+            <span>Mare Italia</span>
+          </a>
+
+          <a
+            href="/mete-mare-estero"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+              font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500
+              hover:text-emerald-500 hover:bg-white/5 transition"
+          >
+            <FaGlobeEurope className="text-lg" />
+            <span>Mare estero</span>
+          </a>
+
         </div>
-      </section>
+      </div>
+
+      {/* DIVISORE */}
+      <p className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase text-slate-400">
+        oppure
+      </p>
+
+      {/* BLOCCO 2 – CONTATTI */}
+      <div className="space-y-3">
+        <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
+          Hai già deciso la meta?
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+
+          <a
+            href="/contatti"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+              font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white
+              hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+          >
+            <FaRegCalendarAlt className="text-lg" />
+            <span>Scrivici per parlarne</span>
+          </a>
+
+          <a
+            href={RESERVIO_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+              font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480]
+              hover:text-[#EB2480] transition"
+          >
+            <FaRegCalendarAlt className="text-lg" />
+            <span>Prenota una consulenza</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
     </>
   );
 };
 
 export default MeteStagionali;
+
 
 
 

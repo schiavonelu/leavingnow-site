@@ -12,13 +12,18 @@ import heroImg from "../assets/destination/hero.webp";
 import { MARE_ESTERO_DESTINATIONS } from "../data/mare-estero.js";
 import { MARE_ESTERO_IMAGES } from "../data/mare-estero-images.js";
 
+import { FaRegCalendarAlt, FaCity } from "react-icons/fa";
+
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
 const OFFSET_TOP = 270;
 
+// 🔹 Estrae solo la nazione base (es. "Spagna" da "Spagna - Costa Brava")
 const getTripNation = (trip) => {
   const raw = trip?.country || trip?.area || trip?.region || "";
-  return raw.trim();
+  if (!raw) return "";
+  const [base] = raw.split(/[-–]/); // separa su "-" o "–"
+  return base.trim();
 };
 
 const MeteMareEstero = () => {
@@ -60,12 +65,12 @@ const MeteMareEstero = () => {
         area.toLowerCase().includes(term) ||
         region.toLowerCase().includes(term);
 
-      const nation = getTripNation(trip);
+      const nationKey = getTripNation(trip);
       const matchNation =
         selectedNations.length === 0 ||
-        (nation &&
+        (nationKey &&
           selectedNations.some(
-            (n) => n.toLowerCase() === nation.toLowerCase()
+            (n) => n.toLowerCase() === nationKey.toLowerCase()
           ));
 
       return matchSearch && matchNation;
@@ -95,7 +100,6 @@ const MeteMareEstero = () => {
     scrollToCards();
   };
 
-  // 🔧 qui c’era il refuso: selectedNions -> selectedNations
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedNations]);
@@ -290,33 +294,76 @@ const MeteMareEstero = () => {
         </div>
       </section>
 
-      {/* CTA FINALE */}
-      <section className="py-10 md:py-14 bg-[#132C50]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-3">
-            Consulenza personalizzata
+           {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI */}
+      <section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
+        <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
+          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
+            Ti ispiriamo, poi lo costruiamo insieme
           </p>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Vuoi partire da una di queste idee o creare il tuo mare estero su
-            misura?
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
+            Hai trovato qualche idea di mare estero che ti ispira?
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="/contatti"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
-            >
-              Scrivici per parlarne insieme
-            </a>
-            <a
-              href={RESERVIO_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
-            >
-              Preferisci una consulenza?
-            </a>
+          <p className="text-sm md:text-base text-slate-200 leading-relaxed">
+            Puoi continuare a prendere spunti tra mete stagionali e capitali
+            europee, oppure, se hai già individuato il tuo stile di vacanza,
+            possiamo parlarne direttamente e trasformarlo in un viaggio su misura.
+          </p>
+
+          <div className="mt-4 space-y-6">
+            {/* BLOCCO 1 – LASCIATI ISPIRARE */}
+            <div className="space-y-3">
+              <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
+                Lasciati ispirare ancora
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/mete-stagionali"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                >
+                  <FaRegCalendarAlt className="text-lg" />
+                  <span>Mete stagionali</span>
+                </a>
+                <a
+                  href="/mete-capitali"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480] hover:text-[#EB2480] hover:bg-white/5 transition"
+                >
+                  <FaCity className="text-lg" />
+                  <span>Mete capitali</span>
+                </a>
+              </div>
+            </div>
+
+            {/* DIVISORE TESTUALE */}
+            <p className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase text-slate-400">
+              oppure
+            </p>
+
+            {/* BLOCCO 2 – HAI GIÀ DECISO? */}
+            <div className="space-y-3">
+              <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
+                Hai già deciso o vuoi un confronto diretto?
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/contatti"
+                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                >
+                  Scrivici per parlarne
+                </a>
+                <a
+                  href={RESERVIO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+                >
+                  Prenota una consulenza
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
