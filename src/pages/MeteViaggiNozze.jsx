@@ -16,7 +16,7 @@ import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
 const OFFSET_TOP = 270;
-const HERO_SLUG = "dubai-maldive";
+const HERO_SLUG = "hero";
 
 const MeteViaggiNozze = () => {
   // Hero: locandina Dubai–Maldive (se manca, niente immagine)

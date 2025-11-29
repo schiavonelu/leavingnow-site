@@ -16,7 +16,7 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import heroImg from "../assets/chisiamo/hero.webp";
 import assiaImg from "../assets/chisiamo/assia.webp";
 import teamImg from "../assets/chisiamo/team.webp";
-import partnerImg from "../assets/chisiamo/partner.webp";
+import partnerImg from "../assets/chisiamo/hero.webp";
 
 const COLORS = {
   primary: "#0863D6", // Blue CTA

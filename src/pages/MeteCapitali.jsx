@@ -134,7 +134,7 @@ const MeteCapitali = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Colonna filtri */}
             <TravelFilters
-              title="Capitali europee"
+              title="Città europee"
               selectedBuckets={selectedBuckets}
               onBucketsChange={setSelectedBuckets}
               onResetFilters={() => {
