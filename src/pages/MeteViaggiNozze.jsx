@@ -8,8 +8,6 @@ import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import TravelFilters from "../components/ui/TravelFilters.jsx";
 
-import heroImg from "../assets/destination/hero.webp";
-
 import { HONEYMOON_DESTINATIONS } from "../data/viaggi-nozze.js";
 import { HONEYMOON_IMAGES } from "../data/viaggi-nozze-images.js";
 
@@ -18,8 +16,12 @@ import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
 const OFFSET_TOP = 270;
+const HERO_SLUG = "dubai-maldive";
 
 const MeteViaggiNozze = () => {
+  // hero = locandina Dubai–Maldive
+  const heroImg = HONEYMOON_IMAGES[HERO_SLUG];
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBuckets, setSelectedBuckets] = useState([]);
@@ -208,8 +210,15 @@ const MeteViaggiNozze = () => {
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
                     {currentItems.map((trip, idx) => {
-                      const cardImage =
-                        (trip.slug && HONEYMOON_IMAGES[trip.slug]) || heroImg;
+                      // 1) se esiste una locandina per questo slug → usala
+                      const poster =
+                        trip.slug && HONEYMOON_IMAGES[trip.slug]
+                          ? HONEYMOON_IMAGES[trip.slug]
+                          : undefined;
+
+                      // 2) altrimenti usa l'eventuale immagine di base del viaggio (trip.image)
+                      // 3) NON usiamo più l'hero come fallback generico
+                      const cardImage = poster || trip.image;
 
                       return (
                         <ContinentCard
@@ -290,7 +299,7 @@ const MeteViaggiNozze = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/viaggi-di-nozze#preventivo-nozze"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg:white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               Vai al form viaggio di nozze
             </Link>
@@ -310,6 +319,11 @@ const MeteViaggiNozze = () => {
 };
 
 export default MeteViaggiNozze;
+
+
+
+
+
 
 
 
