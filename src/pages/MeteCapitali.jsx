@@ -104,8 +104,8 @@ const MeteCapitali = () => {
   return (
     <>
       <InnerHero
-        title="Mete capitali europee"
-        subtitle="Grandi città, quartieri da esplorare, musei, locali e panorami iconici: una selezione di capitali su cui costruire il tuo viaggio."
+        title="Mete città europee"
+        subtitle="Grandi città, quartieri da esplorare, musei, locali e panorami iconici: una selezione di capitali e grandi città su cui costruire il tuo viaggio."
         image={heroImg}
       />
 
@@ -121,7 +121,7 @@ const MeteCapitali = () => {
             Capitali e città europee, senza pacchetti standard
           </h1>
           <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-            Le capitali possono essere vissute in tanti modi: weekend veloci,
+            Le città europee possono essere vissute in tanti modi: weekend veloci,
             ponti lunghi, combinati con altre città o con il mare. Qui trovi una
             selezione di idee filtrabili per stagione e per testo.
           </p>
@@ -161,7 +161,7 @@ const MeteCapitali = () => {
                         htmlFor="search-capitals"
                         className="block text-[11px] md:text-xs font-semibold uppercase tracking-[0.16em] text-[#64748B] mb-2"
                       >
-                        Cerca una capitale
+                        Cerca una città europea
                       </label>
                       <div className="relative">
                         <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />

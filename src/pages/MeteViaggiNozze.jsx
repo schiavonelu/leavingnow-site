@@ -19,8 +19,8 @@ const OFFSET_TOP = 270;
 const HERO_SLUG = "dubai-maldive";
 
 const MeteViaggiNozze = () => {
-  // hero = locandina Dubai–Maldive
-  const heroImg = HONEYMOON_IMAGES[HERO_SLUG];
+  // Hero: locandina Dubai–Maldive (se manca, niente immagine)
+  const heroImg = HONEYMOON_IMAGES[HERO_SLUG] ?? null;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,10 +29,14 @@ const MeteViaggiNozze = () => {
 
   const cardsSectionRef = useRef(null);
 
+  // Scroll in alto al primo caricamento
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  // -----------------------
+  // FILTRI (ricerca + stagione)
+  // -----------------------
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
@@ -50,8 +54,15 @@ const MeteViaggiNozze = () => {
     });
   }, [searchTerm, selectedBuckets]);
 
-  const totalPages = Math.ceil(filteredTrips.length / ITEMS_PER_PAGE) || 1;
+  // -----------------------
+  // PAGINAZIONE
+  // -----------------------
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredTrips.length / ITEMS_PER_PAGE)
+  );
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
   const currentItems = filteredTrips.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
@@ -70,14 +81,19 @@ const MeteViaggiNozze = () => {
   };
 
   const handlePageChange = (page) => {
+    if (page === currentPage) return;
     setCurrentPage(page);
     scrollToCards();
   };
 
+  // Quando cambiano filtri/ricerca, torna alla pagina 1
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedBuckets]);
 
+  // -----------------------
+  // UI helper
+  // -----------------------
   const getSeasonSummary = () => {
     if (selectedBuckets.length === 0) return "tutte le stagioni";
     if (selectedBuckets.length === 1) return selectedBuckets[0].toLowerCase();
@@ -175,7 +191,7 @@ const MeteViaggiNozze = () => {
                         <input
                           id="search-honeymoon"
                           type="text"
-                          placeholder="Cerca una meta… es. Maldive, Stati Uniti, Giappone"
+                          placeholder="es. Maldive, Stati Uniti, Giappone"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                           className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white placeholder:text-slate-400"
@@ -208,21 +224,22 @@ const MeteViaggiNozze = () => {
                     la ricerca o i filtri stagionali.
                   </p>
                 ) : (
-                  <div className="grid gap-8 md:grid-cols-3">
-                    {currentItems.map((trip, idx) => {
-                      // 1) se esiste una locandina per questo slug → usala
+                  <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+                    {currentItems.map((trip) => {
+                      // Se esiste una locandina dedicata per questo slug → usala
                       const poster =
                         trip.slug && HONEYMOON_IMAGES[trip.slug]
                           ? HONEYMOON_IMAGES[trip.slug]
-                          : undefined;
+                          : null;
 
-                      // 2) altrimenti usa l'eventuale immagine di base del viaggio (trip.image)
-                      // 3) NON usiamo più l'hero come fallback generico
-                      const cardImage = poster || trip.image;
+                      // Altrimenti prova ad usare un'immagine generica della trip (se l’hai prevista nei dati)
+                      // Come fallback estremo puoi rimettere heroImg, ma qui lo evitiamo per non avere
+                      // la stessa immagine ovunque.
+                      const cardImage = poster || trip.image || heroImg || null;
 
                       return (
                         <ContinentCard
-                          key={`${trip.title}-${idx}`}
+                          key={trip.slug}
                           image={cardImage}
                           title={trip.title}
                           badge={trip.badge}
@@ -236,7 +253,7 @@ const MeteViaggiNozze = () => {
 
                 {/* PAGINAZIONE */}
                 {filteredTrips.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-4">
+                  <div className="flex items-center justify-center gap-2 mt-6">
                     <button
                       type="button"
                       onClick={() =>
