@@ -42,9 +42,9 @@ const team = [
     image: teamImg,
   },
   {
-    name: "I nostri viaggiatori",
+    name: "La nostra agenzia",
     role: "I veri protagonisti",
-    bio: "Le persone che ci scelgono danno senso al nostro lavoro: ascoltiamo i loro desideri, trasformiamo le idee in itinerari concreti e costruiamo ricordi che durano nel tempo.",
+    bio: "Benvenuti nella nostra agenzia: uno spazio accogliente dove i vostri sogni di viaggio prendono forma. Raccontateci le vostre idee… al resto pensiamo insieme.",
     image: heroImg, // oppure teamImg o un'altra foto che preferisci
   },
 ];
