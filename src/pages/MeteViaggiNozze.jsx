@@ -11,16 +11,21 @@ import TravelFilters from "../components/ui/TravelFilters.jsx";
 import { HONEYMOON_DESTINATIONS } from "../data/viaggi-nozze.js";
 import { HONEYMOON_IMAGES } from "../data/viaggi-nozze-images.js";
 
+// Hero locale (file: src/assets/mete-viaggi-nozze/hero.webp)
+import heroViaggiNozze from "../assets/mete-viaggi-nozze/hero.webp";
+
 import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
-const OFFSET_TOP = 270;
-const HERO_SLUG = "hero";
+const OFFSET_TOP_DESKTOP = 270;
+
+// usiamo lo stesso offset per tutti i device (come da tua richiesta)
+const getOffsetTop = () => OFFSET_TOP_DESKTOP;
 
 const MeteViaggiNozze = () => {
-  // Hero: locandina Dubai–Maldive (se manca, niente immagine)
-  const heroImg = HONEYMOON_IMAGES[HERO_SLUG] ?? null;
+  // Hero: import diretto
+  const heroImg = heroViaggiNozze || null;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,6 +33,7 @@ const MeteViaggiNozze = () => {
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
 
   const cardsSectionRef = useRef(null);
+  const didMountRef = useRef(false);
 
   // Scroll in alto al primo caricamento
   useEffect(() => {
@@ -72,7 +78,8 @@ const MeteViaggiNozze = () => {
     if (!cardsSectionRef.current) return;
 
     const rect = cardsSectionRef.current.getBoundingClientRect();
-    const targetY = window.scrollY + rect.top - OFFSET_TOP;
+    const offset = getOffsetTop();
+    const targetY = window.scrollY + rect.top - offset;
 
     window.scrollTo({
       top: targetY >= 0 ? targetY : 0,
@@ -83,10 +90,19 @@ const MeteViaggiNozze = () => {
   const handlePageChange = (page) => {
     if (page === currentPage) return;
     setCurrentPage(page);
-    scrollToCards();
+    // lo scroll viene fatto nel useEffect sotto
   };
 
-  // Quando cambiano filtri/ricerca, torna alla pagina 1
+  // quando cambia pagina → scrolla alle card (ma non al primo render)
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    scrollToCards();
+  }, [currentPage]);
+
+  // quando cambiano filtri/ricerca, torna alla pagina 1
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedBuckets]);
@@ -167,6 +183,7 @@ const MeteViaggiNozze = () => {
               onToggleCollapsed={() =>
                 setFiltersCollapsed((prev) => !prev)
               }
+              ctaVariant="honeymoon"
             />
 
             {/* Risultati a destra */}
@@ -175,8 +192,8 @@ const MeteViaggiNozze = () => {
                 filtersCollapsed ? "lg:pl-2" : ""
               }`}
             >
-              {/* Barra di ricerca sticky */}
-              <div className="lg:sticky lg:top-30 z-10">
+              {/* Barra di ricerca sticky anche su mobile */}
+              <div className="sticky top-24 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
                     <div className="flex-1">
@@ -232,9 +249,7 @@ const MeteViaggiNozze = () => {
                           ? HONEYMOON_IMAGES[trip.slug]
                           : null;
 
-                      // Altrimenti prova ad usare un'immagine generica della trip (se l’hai prevista nei dati)
-                      // Come fallback estremo puoi rimettere heroImg, ma qui lo evitiamo per non avere
-                      // la stessa immagine ovunque.
+                      // Altrimenti prova ad usare un'immagine generica della trip
                       const cardImage = poster || trip.image || heroImg || null;
 
                       return (
@@ -251,9 +266,10 @@ const MeteViaggiNozze = () => {
                   </div>
                 )}
 
-                {/* PAGINAZIONE */}
+                {/* PAGINAZIONE (icone < > uniformate) */}
                 {filteredTrips.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-6">
+                  <div className="flex items-center justify-center gap-1.5 mt-6">
+                    {/* FRECCIA SINISTRA */}
                     <button
                       type="button"
                       onClick={() =>
@@ -261,18 +277,20 @@ const MeteViaggiNozze = () => {
                         handlePageChange(currentPage - 1)
                       }
                       disabled={currentPage === 1}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      className="w-8 h-8 flex items-center justify-center text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      aria-label="Pagina precedente"
                     >
-                      ← Precedente
+                      <span aria-hidden="true">&lt;</span>
                     </button>
 
+                    {/* NUMERI PAGINE */}
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                       (page) => (
                         <button
                           key={page}
                           type="button"
                           onClick={() => handlePageChange(page)}
-                          className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
+                          className={`min-w-[2rem] px-2.5 h-8 text-xs md:text-sm rounded-full border transition ${
                             page === currentPage
                               ? "bg-[#0863D6] border-[#0863D6] text-white"
                               : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
@@ -283,6 +301,7 @@ const MeteViaggiNozze = () => {
                       )
                     )}
 
+                    {/* FRECCIA DESTRA */}
                     <button
                       type="button"
                       onClick={() =>
@@ -290,9 +309,10 @@ const MeteViaggiNozze = () => {
                         handlePageChange(currentPage + 1)
                       }
                       disabled={currentPage === totalPages}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      className="w-8 h-8 flex items-center justify-center text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      aria-label="Pagina successiva"
                     >
-                      Successiva →
+                      <span aria-hidden="true">&gt;</span>
                     </button>
                   </div>
                 )}
@@ -316,7 +336,7 @@ const MeteViaggiNozze = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/viaggi-di-nozze#preventivo-nozze"
-              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg:white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
               Vai al form viaggio di nozze
             </Link>
@@ -336,6 +356,10 @@ const MeteViaggiNozze = () => {
 };
 
 export default MeteViaggiNozze;
+
+
+
+
 
 
 

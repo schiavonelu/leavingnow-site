@@ -83,6 +83,7 @@ const MeteMareItalia = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  // FILTRI
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
@@ -109,7 +110,11 @@ const MeteMareItalia = () => {
     });
   }, [searchTerm, selectedZones]);
 
-  const totalPages = Math.ceil(filteredTrips.length / ITEMS_PER_PAGE) || 1;
+  // PAGINAZIONE
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredTrips.length / ITEMS_PER_PAGE)
+  );
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredTrips.slice(
     startIndex,
@@ -128,10 +133,12 @@ const MeteMareItalia = () => {
   };
 
   const handlePageChange = (page) => {
+    if (page === currentPage || page < 1 || page > totalPages) return;
     setCurrentPage(page);
     scrollToCards();
   };
 
+  // quando cambiano filtri/ricerca, torna a pagina 1
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedZones]);
@@ -258,7 +265,7 @@ const MeteMareItalia = () => {
                 </div>
               </div>
 
-              {/* GRID */}
+              {/* GRID + PAGINAZIONE */}
               <div ref={cardsSectionRef}>
                 {filteredTrips.length === 0 ? (
                   <p className="text-sm md:text-base text-slate-600 text-center py-6">
@@ -289,47 +296,45 @@ const MeteMareItalia = () => {
 
                 {/* PAGINAZIONE */}
                 {filteredTrips.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-4">
+                  <div className="flex items-center justify-center gap-1.5 mt-6">
+                    {/* FRECCIA SINISTRA */}
                     <button
                       type="button"
-                      onClick={() =>
-                        currentPage > 1 &&
-                        handlePageChange(currentPage - 1)
-                      }
+                      onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      className="w-8 h-8 flex items-center justify-center text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      aria-label="Pagina precedente"
                     >
-                      ← Precedente
+                      <span aria-hidden="true">&lt;</span>
                     </button>
 
-                    {Array.from(
-                      { length: totalPages },
-                      (_, i) => i + 1
-                    ).map((page) => (
-                      <button
-                        key={page}
-                        type="button"
-                        onClick={() => handlePageChange(page)}
-                        className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
-                          page === currentPage
-                            ? "bg-[#0863D6] border-[#0863D6] text-white"
-                            : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                    {/* NUMERI PAGINE */}
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          type="button"
+                          onClick={() => handlePageChange(page)}
+                          className={`min-w-[2rem] px-2.5 h-8 text-xs md:text-sm rounded-full border transition ${
+                            page === currentPage
+                              ? "bg-[#0863D6] border-[#0863D6] text-white"
+                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
+                          }`}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
 
+                    {/* FRECCIA DESTRA */}
                     <button
                       type="button"
-                      onClick={() =>
-                        currentPage < totalPages &&
-                        handlePageChange(currentPage + 1)
-                      }
+                      onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      className="w-8 h-8 flex items-center justify-center text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
+                      aria-label="Pagina successiva"
                     >
-                      Successiva →
+                      <span aria-hidden="true">&gt;</span>
                     </button>
                   </div>
                 )}
@@ -351,8 +356,8 @@ const MeteMareItalia = () => {
           </h2>
 
           <p className="text-sm md:text-base text-slate-200 leading-relaxed">
-            Possiamo partire da queste coste, isole e borghi di mare per creare 
-            la tua vacanza su misura. Se vuoi, puoi anche lasciarti ispirare 
+            Possiamo partire da queste coste, isole e borghi di mare per creare
+            la tua vacanza su misura. Se vuoi, puoi anche lasciarti ispirare
             da altre mete stagionali o da una capitale europea da abbinare al mare.
           </p>
 
@@ -412,12 +417,13 @@ const MeteMareItalia = () => {
           </div>
         </div>
       </section>
-
     </>
   );
 };
 
 export default MeteMareItalia;
+
+
 
 
 

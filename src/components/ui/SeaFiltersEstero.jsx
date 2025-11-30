@@ -1,7 +1,6 @@
 // src/components/ui/SeaFiltersEstero.jsx
 import { useState } from "react";
-import { Filter, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { FaUmbrellaBeach } from "react-icons/fa";
+import { Filter, X, ChevronLeft, ChevronRight, Mail } from "lucide-react";
 
 const SeaFiltersEstero = ({
   title = "Mare estero",
@@ -98,18 +97,17 @@ const SeaFiltersEstero = ({
         </div>
       </div>
 
-      {/* 🔹 Switch verso Mare Italia dentro i filtri */}
+      {/* 🔹 CTA preventivo mare estero */}
       <div className="pt-3 mt-4 border-t border-slate-200">
         <p className="text-[11px] text-slate-500 mb-2">
-          Se stai valutando anche il mare in Italia, puoi dare un&apos;occhiata
-          alle mete mare Italia.
+          Hai già un’idea del tipo di vacanza? Possiamo preparare un preventivo dedicato.
         </p>
         <a
-          href="/mete-mare-italia"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-sky-500 text-sky-700 bg-sky-50 hover:bg-sky-100 hover:border-sky-600 transition"
+          href="/contatti"  // TODO: crea la pagina /preventivo
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-emerald-500 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-600 transition"
         >
-          <FaUmbrellaBeach className="text-sm" />
-          <span>Vai alle mete mare Italia</span>
+          <Mail className="w-3 h-3" />
+          <span>Contattaci</span>
         </a>
       </div>
     </div>
@@ -164,13 +162,13 @@ const SeaFiltersEstero = ({
         </button>
       )}
 
-      {/* 🔹 Switch rapido verso Mare Italia anche da sidebar collassata */}
+      {/* 🔹 Short-cut preventivo in versione collassata */}
       <a
-        href="/mete-mare-italia"
-        title="Vai alle mete mare Italia"
-        className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-600 text-white shadow-sm hover:bg-sky-700"
+        href="/preventivo"  // TODO: crea la pagina /preventivo
+        title="Richiedi un preventivo"
+        className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm hover:bg-emerald-700"
       >
-        <FaUmbrellaBeach className="w-4 h-4" />
+        <Mail className="w-4 h-4" />
       </a>
     </div>
   );

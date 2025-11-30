@@ -6,6 +6,7 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import SeaFiltersEstero from "../components/ui/SeaFiltersEstero.jsx";
+import Pagination from "../components/ui/Pagination.jsx";
 
 import heroImg from "../assets/destination/hero.webp";
 
@@ -96,6 +97,7 @@ const MeteMareEstero = () => {
   };
 
   const handlePageChange = (page) => {
+    if (page === currentPage) return;
     setCurrentPage(page);
     scrollToCards();
   };
@@ -214,7 +216,7 @@ const MeteMareEstero = () => {
                 </div>
               </div>
 
-              {/* GRID */}
+              {/* GRID + PAGINAZIONE */}
               <div ref={cardsSectionRef}>
                 {filteredTrips.length === 0 ? (
                   <p className="text-sm md:text-base text-slate-600 text-center py-6">
@@ -243,50 +245,13 @@ const MeteMareEstero = () => {
                   </div>
                 )}
 
-                {/* PAGINAZIONE */}
-                {filteredTrips.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-4">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        currentPage > 1 &&
-                        handlePageChange(currentPage - 1)
-                      }
-                      disabled={currentPage === 1}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-                    >
-                      ← Precedente
-                    </button>
-
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                      (page) => (
-                        <button
-                          key={page}
-                          type="button"
-                          onClick={() => handlePageChange(page)}
-                          className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
-                            page === currentPage
-                              ? "bg-[#0863D6] border-[#0863D6] text-white"
-                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      )
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={() =>
-                        currentPage < totalPages &&
-                        handlePageChange(currentPage + 1)
-                      }
-                      disabled={currentPage === totalPages}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-                    >
-                      Successiva →
-                    </button>
-                  </div>
+                {/* PAGINAZIONE CON COMPONENTE RIUSABILE */}
+                {filteredTrips.length > 0 && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                  />
                 )}
               </div>
             </div>
@@ -294,7 +259,7 @@ const MeteMareEstero = () => {
         </div>
       </section>
 
-           {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI */}
+      {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI */}
       <section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
           <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">

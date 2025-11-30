@@ -1,4 +1,6 @@
+// src/components/ui/TravelFilters.jsx
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Filter,
   X,
@@ -10,6 +12,8 @@ import {
   Shuffle,
   ChevronLeft,
   ChevronRight,
+  ClipboardList,
+  Mail,
 } from "lucide-react";
 import {
   SEASON_BUCKET_LABELS,
@@ -100,6 +104,10 @@ const TravelFilters = ({
   onResetFilters,
   isCollapsed = false,
   onToggleCollapsed,
+  // 👇 variante per cambiare il tasto in base alla pagina
+  // "honeymoon" → viaggi di nozze
+  // "european-cities" → mete capitali
+  ctaVariant,
 }) => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
@@ -120,6 +128,73 @@ const TravelFilters = ({
     if (onResetFilters) onResetFilters();
   };
 
+  // ---------------- CTA CONFIG (Preventivo / Contatti) ----------------
+  const getCTAConfig = () => {
+    if (ctaVariant === "honeymoon") {
+      return {
+        to: "/viaggi-di-nozze#preventivo-nozze",
+        label: "Preventivo",
+        Icon: ClipboardList,
+      };
+    }
+
+    if (ctaVariant === "european-cities") {
+      return {
+        to: "/contatti",
+        label: "Contattaci",
+        Icon: Mail,
+      };
+    }
+
+    return null;
+  };
+
+  const ctaConfig = getCTAConfig();
+
+  const renderCTA = (variant = "expanded") => {
+    if (!ctaConfig) return null;
+    const { to, label, Icon } = ctaConfig;
+
+    if (variant === "collapsed") {
+      // Sidebar collassata → solo icona tonda, così NON sparisce mai
+      return (
+        <Link
+          to={to}
+          title={label}
+          className="mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#0863D6] text-white shadow-sm hover:bg-[#0658b8] transition"
+        >
+          <Icon className="w-4 h-4" />
+        </Link>
+      );
+    }
+
+    if (variant === "mobile") {
+      // Dentro al modal mobile
+      return (
+        <Link
+          to={to}
+          className="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0863D6] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0658b8] transition"
+          onClick={() => setShowMobileFilters(false)}
+        >
+          <Icon className="w-4 h-4" />
+          <span>{label}</span>
+        </Link>
+      );
+    }
+
+    // Variante desktop espansa (pulsante pieno sotto i filtri)
+    return (
+      <Link
+        to={to}
+        className="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0863D6] px-4 py-2.5 text-xs md:text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] border border-[#0863D6] transition"
+      >
+        <Icon className="w-4 h-4" />
+        <span>{label}</span>
+      </Link>
+    );
+  };
+
+  // ---------------- BODY FILTRI ----------------
   const renderFiltersBody = () => (
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-2">
@@ -205,6 +280,7 @@ const TravelFilters = ({
     </div>
   );
 
+  // ---------------- SIDEBAR COLLASSATA (DESKTOP) ----------------
   const renderCollapsedSidebar = () => (
     <div className="flex flex-col items-center gap-3 py-2">
       <button
@@ -259,6 +335,9 @@ const TravelFilters = ({
           <X className="w-4 h-4" />
         </button>
       )}
+
+      {/* 👇 CTA ICONA ANCHE DA COLLASSATO (non sparisce mai) */}
+      {renderCTA("collapsed")}
     </div>
   );
 
@@ -303,6 +382,8 @@ const TravelFilters = ({
                 </button>
               )}
               {renderFiltersBody()}
+              {/* CTA pieno sotto i filtri (desktop espanso) */}
+              {renderCTA("expanded")}
             </div>
           )}
         </div>
@@ -341,6 +422,7 @@ const TravelFilters = ({
               {renderFiltersBody()}
             </div>
 
+            {/* Pulsante applica + CTA Preventivo/Contatti sotto */}
             <button
               type="button"
               onClick={() => setShowMobileFilters(false)}
@@ -348,6 +430,8 @@ const TravelFilters = ({
             >
               Applica filtri
             </button>
+
+            {renderCTA("mobile")}
           </div>
         </div>
       )}
@@ -356,6 +440,8 @@ const TravelFilters = ({
 };
 
 export default TravelFilters;
+
+
 
 
 

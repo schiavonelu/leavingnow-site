@@ -1,3 +1,4 @@
+// src/pages/MeteCapitali.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
 
@@ -5,6 +6,7 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import TravelFilters from "../components/ui/TravelFilters.jsx";
+import Pagination from "../components/ui/Pagination.jsx";
 
 import { CAPITAL_CITIES } from "../data/mete-capitali.js";
 import { CAPITAL_CITIES_IMAGES } from "../data/mete-capitali-images.js";
@@ -36,6 +38,12 @@ const MeteCapitali = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
+
+  // 🔁 Reset filtri + ricerca (usato da TravelFilters)
+  const handleReset = () => {
+    setSearchTerm("");
+    setSelectedBuckets([]);
+  };
 
   // -----------------------
   // FILTRI (ricerca + stagione)
@@ -150,17 +158,15 @@ const MeteCapitali = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Colonna filtri */}
             <TravelFilters
-              title="Città europee"
+              title="Filtra le mete"
               selectedBuckets={selectedBuckets}
               onBucketsChange={setSelectedBuckets}
-              onResetFilters={() => {
-                setSearchTerm("");
-                setSelectedBuckets([]);
-              }}
+              onResetFilters={handleReset}
               isCollapsed={filtersCollapsed}
               onToggleCollapsed={() =>
                 setFiltersCollapsed((prev) => !prev)
               }
+              ctaVariant="european-cities"
             />
 
             {/* Colonna risultati */}
@@ -169,8 +175,8 @@ const MeteCapitali = () => {
                 filtersCollapsed ? "lg:pl-2" : ""
               }`}
             >
-              {/* Barra di ricerca sticky */}
-              <div className="lg:sticky lg:top-30 z-10">
+              {/* Barra di ricerca sticky anche su mobile */}
+              <div className="sticky top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
                     <div className="flex-1">
@@ -243,50 +249,13 @@ const MeteCapitali = () => {
                   </div>
                 )}
 
-                {/* PAGINAZIONE */}
-                {filteredCities.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-6">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        currentPage > 1 &&
-                        handlePageChange(currentPage - 1)
-                      }
-                      disabled={currentPage === 1}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-                    >
-                      ← Precedente
-                    </button>
-
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                      (page) => (
-                        <button
-                          key={page}
-                          type="button"
-                          onClick={() => handlePageChange(page)}
-                          className={`px-3 py-1.5 text-xs md:text-sm rounded-full border transition ${
-                            page === currentPage
-                              ? "bg-[#0863D6] border-[#0863D6] text-white"
-                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      )
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={() =>
-                        currentPage < totalPages &&
-                        handlePageChange(currentPage + 1)
-                      }
-                      disabled={currentPage === totalPages}
-                      className="px-3 py-1.5 text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-                    >
-                      Successiva →
-                    </button>
-                  </div>
+                {/* PAGINAZIONE RIUTILIZZABILE */}
+                {filteredCities.length > 0 && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                  />
                 )}
               </div>
             </div>
@@ -384,5 +353,6 @@ const MeteCapitali = () => {
 };
 
 export default MeteCapitali;
+
 
 
