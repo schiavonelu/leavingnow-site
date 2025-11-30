@@ -156,7 +156,7 @@ const CreditiImmagini = () => {
         Oceano Pacifico – ombra di albero di cocco sulla spiaggia.
         <br />
         <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-        Scatto che richiama l&apos;essenza delle spiagge del Pacifico, con
+        Scatto che richiamo l&apos;essenza delle spiagge del Pacifico, con
         atmosfere tropicali e rilassanti.
         <br />
         <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
@@ -705,6 +705,146 @@ const CreditiImmagini = () => {
       </div>
 
       {/* =====================================================
+          NUOVA SEZIONE – METE STAGIONALI (INVERNO & BENESSERE)
+      ====================================================== */}
+
+      <hr className="border-slate-200" />
+
+      <h2 className="text-base md:text-lg font-semibold text-[#132C50]">
+        Mete – Mete stagionali (inverno &amp; benessere)
+      </h2>
+
+      <div className="space-y-4">
+        {/* MERCATINI DI NATALE – TRENTINO & AUSTRIA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Mercatini di Natale tra Trentino e Austria – mete stagionali inverno.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Paesaggio invernale con luminarie e atmosfera natalizia, usato per
+          evocare l’esperienza dei mercatini di Natale alpini.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/34941605/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – immagine ID 34941605
+          </a>
+          .
+        </p>
+
+        {/* TRENTINO MONTAGNE & TERME */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Trentino – montagne e atmosfera termale (benessere invernale).
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Veduta di montagne sotto il cielo nuvoloso, usata per richiamare
+          paesaggi alpini e contesti di benessere in montagna.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/foto-di-montagne-sotto-il-cielo-nuvoloso-2866975/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “foto di montagne sotto il cielo nuvoloso”
+          </a>
+          .
+        </p>
+
+        {/* BENESSERE – SLOVENIA / UNGHERIA TERMALE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Slovenia e Ungheria termale – ponte sul fiume al tramonto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Veduta urbana con ponte e acqua in controluce, usata per evocare
+          l’atmosfera di città termali e capitali mitteleuropee come Budapest.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/acqua-nuvole-ponte-nebbia-20267615/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “acqua, nuvole, ponte, nebbia”
+          </a>
+          .
+        </p>
+
+        {/* BENESSERE – LAGO DI GARDA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Lago di Garda – tramonto sulla marina (Desenzano).
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Scatto del porticciolo al tramonto, usato per rappresentare weekend
+          benessere tra laghi e borghi.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/tramonto-sulla-marina-di-desenzano-del-garda-29215367/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “tramonto sulla marina di Desenzano del Garda”
+          </a>
+          .
+        </p>
+
+        {/* AMSTERDAM – TULIPANI / PRIMAVERA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Amsterdam e fioritura dei tulipani – mete stagionali primavera.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Campi di tulipani colorati con città sullo sfondo, usati per
+          rappresentare la fioritura primaverile attorno ad Amsterdam.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/33492384/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – immagine ID 33492384
+          </a>
+          .
+        </p>
+
+        {/* NOTA SU NIZZA, SIVIGLIA, VALENCIA, MALTA NELLE METE STAGIONALI */}
+        <p className="space-y-0.5 text-xs text-slate-600">
+          Le immagini di Nizza, Siviglia, Valencia e Malta utilizzate nelle
+          sezioni &quot;Mete stagionali&quot; riprendono gli stessi scatti già
+          attribuiti nella sezione &quot;Mete – Capitali europee&quot; di questa
+          pagina, per coerenza visiva tra le varie aree del sito.
+        </p>
+      </div>
+
+      {/* =====================================================
           SEZIONE METE – ITALIA MARE
       ====================================================== */}
 
@@ -1004,7 +1144,7 @@ const CreditiImmagini = () => {
           Liguria – case colorate sul mare.
           <br />
           <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-          Case colorate affacciate sul mare, in stile Cinque Terre.
+          Case di colori assortiti affacciate sul mare, in stile Cinque Terre.
           <br />
           <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
           Frans van Heerden.
@@ -1026,16 +1166,17 @@ const CreditiImmagini = () => {
 
       {/* NOTA FINALE */}
       <p className="text-xs text-slate-500 leading-relaxed text-justify">
-        * Le immagini sono utilizzate secondo le condizioni della licenza Pexels,
-        che consente l&apos;uso gratuito anche per scopi commerciali. I diritti
-        rimangono dei rispettivi fotografi. Questa pagina ne riconosce
-        il contributo visivo al progetto Leaving Now.
+        * Le immagini sono utilizzate secondo le condizioni della licenza
+        Pexels, che consente l&apos;uso gratuito anche per scopi commerciali.
+        I diritti rimangono dei rispettivi fotografi. Questa pagina ne
+        riconosce il contributo visivo al progetto Leaving Now.
       </p>
     </LegalPageLayout>
   );
 };
 
 export default CreditiImmagini;
+
 
 
 

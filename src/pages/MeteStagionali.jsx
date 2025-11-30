@@ -4,11 +4,14 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import Pagination from "../components/ui/Pagination.jsx";
-import heroImg from "../assets/destination/hero.webp";
+import heroImg from "../assets/mete-stagionali/hero.webp";
 
 import { SEASONS } from "../data/mete-stagionali";
-import { CAPITAL_CITIES } from "../data/mete-capitali.js";
 import { SALES_CAMPAIGNS } from "../config/seasonalSalesConfig";
+import {
+  getSeasonImageBySlug,
+  getRandomSeasonImageForSeason,
+} from "../data/mete-stagionali-images";
 
 import {
   FaCity,
@@ -21,15 +24,7 @@ const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const PAGE_SIZE = 6;
 const MAX_CARDS_PER_SEASON = 24;
 
-const shuffleArray = (arr) => {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-};
-
+// 🔹 stesso criterio di confronto che usi in seasonalSalesConfig
 const isInRange = (today, start, end) => {
   const t = today.month * 100 + today.day;
   const s = start.month * 100 + start.day;
@@ -57,139 +52,6 @@ const getCommercialSeasonId = (date) => {
     return "estate";
   }
   return "autunno";
-};
-
-const CARD_CAMPAIGN_MAP = {
-  "Mercatini di Natale tra Trentino e Austria": ["mercatini-natale"],
-  "Alsazia e Germania romantica": ["mercatini-natale"],
-  "Canarie e mare d’inverno": ["mare-inverno"],
-
-  "Amsterdam e fioritura dei tulipani": ["tulipani-amsterdam"],
-  "Giappone durante l’hanami": ["ciliegi-giappone"],
-  "Pasqua tra capitali e Mediterraneo": ["pasqua"],
-  "Barcellona tra Ramblas e mare": ["mare-europa-isole"],
-  "Siviglia e la primavera andalusa": ["pasqua"],
-  "Valencia tra Città delle Arti e mare": ["mare-europa-isole"],
-  "Malta tra storia e prime giornate di mare": ["mare-europa-isole"],
-  "Nizza e Costa Azzurra di primavera": ["mare-europa-isole", "carnevale"],
-
-  "Mare Italia tra Sardegna, Sicilia e Salento": ["mare-italia"],
-  "Mare estero tra Grecia e Spagna": ["mare-europa-isole"],
-  "Viaggi di nozze estivi": ["viaggi-intercontinentali"],
-
-  "Trentino Alto Adige tra terme e montagne": ["benessere-spa"],
-  "Slovenia e Ungheria termale": ["benessere-spa"],
-  "Italia tra laghi e borghi": ["benessere-spa"],
-
-  "Carnevale tra Venezia e Nizza": ["carnevale"],
-  "Oktoberfest a Monaco": ["oktoberfest"],
-  "Capodanno in capitale europea": ["capodanno"],
-};
-
-const getExtraCityCardsForSeason = (seasonId, maxExtra) => {
-  if (!CAPITAL_CITIES || CAPITAL_CITIES.length === 0 || maxExtra <= 0) {
-    return [];
-  }
-
-  const season = seasonId.toLowerCase();
-  const normalize = (s) =>
-    (s || "")
-      .toLowerCase()
-      .normalize("NFKD");
-
-  const seasonalMatches = CAPITAL_CITIES.filter((city) => {
-    const period = normalize(city.period);
-    const badge = normalize(city.badge);
-    const desc = normalize(city.description);
-
-    if (season === "inverno") {
-      return (
-        period.includes("inverno") ||
-        period.includes("dic") ||
-        period.includes("gen") ||
-        period.includes("feb") ||
-        desc.includes("natale") ||
-        badge === "nordica" ||
-        badge === "est" ||
-        badge === "centro"
-      );
-    }
-
-    if (season === "primavera") {
-      return (
-        period.includes("primavera") ||
-        period.includes("mar") ||
-        period.includes("apr") ||
-        period.includes("mag") ||
-        desc.includes("fioritura") ||
-        badge === "mediterranea" ||
-        badge === "capitale"
-      );
-    }
-
-    if (season === "estate") {
-      return (
-        period.includes("estate") ||
-        period.includes("giu") ||
-        period.includes("lug") ||
-        period.includes("ago") ||
-        desc.includes("mare") ||
-        badge === "mediterranea"
-      );
-    }
-
-    if (season === "autunno") {
-      return (
-        period.includes("autunno") ||
-        period.includes("set") ||
-        period.includes("ott") ||
-        period.includes("nov") ||
-        badge === "centro" ||
-        badge === "est"
-      );
-    }
-
-    return false;
-  });
-
-  const importantMatches = CAPITAL_CITIES.filter((city) => {
-    const period = normalize(city.period);
-    const badge = normalize(city.badge);
-    const isAllYear =
-      period.includes("tutto l'anno") || period.includes("tutto l’anno");
-    const isCapitale = badge === "capitale";
-    return isAllYear || isCapitale;
-  });
-
-  const pushUniqueByTitle = (target, source) => {
-    const existingTitles = new Set(target.map((c) => c.title));
-    source.forEach((city) => {
-      if (!existingTitles.has(city.title)) {
-        target.push(city);
-        existingTitles.add(city.title);
-      }
-    });
-  };
-
-  const pool = [];
-  pushUniqueByTitle(pool, seasonalMatches);
-  pushUniqueByTitle(pool, importantMatches);
-  pushUniqueByTitle(
-    pool,
-    CAPITAL_CITIES.filter(
-      (city) =>
-        !seasonalMatches.includes(city) && !importantMatches.includes(city)
-    )
-  );
-
-  const shuffled = shuffleArray(pool).slice(0, maxExtra);
-
-  return shuffled.map((city) => ({
-    title: city.title,
-    badge: "Capitali & città europee",
-    period: city.period,
-    description: city.description,
-  }));
 };
 
 const getHeroYearLabel = (today) => {
@@ -239,6 +101,57 @@ const scrollToSeasonAnchor = (seasonId) => {
   });
 };
 
+// helper per scegliere l'immagine della card
+const getCardImage = (card) => {
+  // 1) se la card ha uno slug → prova l'immagine dedicata
+  if (card.slug) {
+    const img = getSeasonImageBySlug(card.slug);
+    if (img) return img;
+  }
+
+  // 2) altrimenti prova a pescare random tra le immagini della stagione
+  if (card.seasonId) {
+    const img = getRandomSeasonImageForSeason(card.seasonId);
+    if (img) return img;
+  }
+
+  // 3) fallback finale: hero classico
+  return heroImg;
+};
+
+// 🔹 Mappa card → campagne (in base al titolo della card)
+const CARD_CAMPAIGN_MAP = {
+  // INVERNO
+  "Mercatini di Natale tra Trentino e Austria": ["mercatini-natale"],
+  "Alsazia e Germania romantica": ["mercatini-natale"],
+  "Canarie e mare d’inverno": ["mare-inverno"],
+
+  // PRIMAVERA
+  "Amsterdam e fioritura dei tulipani": ["tulipani-amsterdam"],
+  "Giappone durante l’hanami": ["ciliegi-giappone"],
+  "Pasqua tra capitali e Mediterraneo": ["pasqua"],
+  "Barcellona tra Ramblas e mare": ["mare-europa-isole"],
+  "Siviglia e la primavera andalusa": ["pasqua"],
+  "Valencia tra Città delle Arti e mare": ["mare-europa-isole"],
+  "Malta tra storia e prime giornate di mare": ["mare-europa-isole"],
+  "Nizza e Costa Azzurra di primavera": ["mare-europa-isole", "carnevale"],
+
+  // ESTATE
+  "Mare Italia tra Sardegna, Sicilia e Salento": ["mare-italia"],
+  "Mare estero tra Grecia e Spagna": ["mare-europa-isole"],
+  "Viaggi di nozze estivi": ["viaggi-intercontinentali"],
+
+  // BENESSERE
+  "Trentino Alto Adige tra terme e montagne": ["benessere-spa"],
+  "Slovenia e Ungheria termale": ["benessere-spa"],
+  "Italia tra laghi e borghi": ["benessere-spa"],
+
+  // EVENTI SPECIALI
+  "Carnevale tra Venezia e Nizza": ["carnevale"],
+  "Oktoberfest a Monaco": ["oktoberfest"],
+  "Capodanno in capitale europea": ["capodanno"],
+};
+
 const MeteStagionali = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -253,12 +166,14 @@ const MeteStagionali = () => {
     day: today.getDate(),
   };
 
+  // 🔹 campagne attive OGGI in base al tuo calendario vendite
   const activeCampaignIds = new Set(
     SALES_CAMPAIGNS.filter((c) => isInRange(todayMD, c.from, c.to)).map(
       (c) => c.id
     )
   );
 
+  // 🔹 tutte le card definite in SEASONS con info sulla stagione
   const seasonalCards = [];
   SEASONS.forEach((season) => {
     (season.cards || []).forEach((card) => {
@@ -269,32 +184,22 @@ const MeteStagionali = () => {
     });
   });
 
+  // 🔹 Filtro: MOSTRIAMO SOLO LE CARDS CHE HANNO ALMENO UNA CAMPAGNA ATTIVA
   const filteredSeasonalCards = seasonalCards.filter((card) => {
     const campaigns = CARD_CAMPAIGN_MAP[card.title];
-
-    if (campaigns && campaigns.length > 0) {
-      const hasActive = campaigns.some((id) => activeCampaignIds.has(id));
-      if (!hasActive) return false;
-    }
-
-    // stagione di focus sempre dentro
-    if (card.seasonId === focusSeasonId) {
-      return true;
-    }
-
-    // Eventi speciali e benessere sempre mostrati se in campagna
-    if (card.seasonId === "eventi-speciali" || card.seasonId === "benessere") {
-      return true;
-    }
-
-    if (campaigns && campaigns.some((id) => activeCampaignIds.has(id))) {
-      return true;
-    }
-
-    return false;
+    if (!campaigns || campaigns.length === 0) return false;
+    return campaigns.some((id) => activeCampaignIds.has(id));
   });
 
-  const orderedSeasonalCards = [...filteredSeasonalCards].sort((a, b) => {
+  // 🔹 se per qualche motivo non ci sono card filtrate,
+  // fallback: mostra le card della stagione di focus (senza filtro vendite)
+  const effectiveCards =
+    filteredSeasonalCards.length > 0
+      ? filteredSeasonalCards
+      : seasonalCards.filter((card) => card.seasonId === focusSeasonId);
+
+  // 🔹 Ordiniamo: prima stagione di focus, poi eventi speciali, poi benessere, poi il resto
+  const orderedSeasonalCards = [...effectiveCards].sort((a, b) => {
     const score = (card) => {
       if (card.seasonId === focusSeasonId) return 1;
       if (card.seasonId === "eventi-speciali") return 2;
@@ -335,10 +240,9 @@ const MeteStagionali = () => {
             Idee, non pacchetti: si parte sempre da quando vuoi viaggiare
           </h1>
           <p className="text-sm md:text-base text-slate-700 leading-relaxed text-justify md:text-center">
-            Qui trovi una selezione di mete stagionali che sono effettivamente
-            in vendita in questo periodo, insieme ad alcune capitali e città
-            europee che funzionano bene sulle stesse date. Da qui possiamo
-            costruire il tuo viaggio su misura.
+            Qui trovi solo le mete stagionali che hanno senso in questo periodo,
+            in base al calendario di vendita: mercatini, Capodanno, Carnevale,
+            mare, viaggi di nozze e weekend benessere.
           </p>
         </div>
       </section>
@@ -346,17 +250,14 @@ const MeteStagionali = () => {
       {focusSeason &&
         (() => {
           const season = focusSeason;
-          const baseCards = orderedSeasonalCards;
-          const maxExtra = Math.max(0, MAX_CARDS_PER_SEASON - baseCards.length);
-          const extraCities =
-            ["inverno", "primavera", "estate", "autunno"].includes(season.id)
-              ? getExtraCityCardsForSeason(season.id, maxExtra)
-              : [];
-          const allCards = [...baseCards, ...extraCities];
+
+          // ✅ QUI: usiamo TUTTE le card oggi in vendita (di tutte le stagioni/eventi),
+          // ma il titolo della sezione segue la stagione commerciale di focus
+          const baseCards = orderedSeasonalCards.slice(0, MAX_CARDS_PER_SEASON);
 
           const totalPages = Math.max(
             1,
-            Math.ceil(allCards.length / PAGE_SIZE)
+            Math.ceil(baseCards.length / PAGE_SIZE)
           );
 
           const currentPage =
@@ -365,7 +266,7 @@ const MeteStagionali = () => {
               : 1;
 
           const startIndex = (currentPage - 1) * PAGE_SIZE;
-          const visibleCards = allCards.slice(
+          const visibleCards = baseCards.slice(
             startIndex,
             startIndex + PAGE_SIZE
           );
@@ -398,8 +299,10 @@ const MeteStagionali = () => {
                     </p>
                   </div>
                   <p className="text-sm md:text-base text-slate-700 md:max-w-xl leading-relaxed text-justify">
-                    Una selezione di mete su cui ha senso muoversi adesso, in base
-                    alle date di vendita e al periodo dell&apos;anno.
+                    In questa griglia trovi solo le mete che sono veramente “in
+                    vendita” adesso, in linea con il calendario commerciale:
+                    eventi stagionali, mare, viaggi intercontinentali e
+                    benessere.
                   </p>
                 </div>
 
@@ -408,7 +311,7 @@ const MeteStagionali = () => {
                   {visibleCards.map((card, idx) => (
                     <ContinentCard
                       key={`${season.id}-${card.title}-${idx}`}
-                      image={heroImg}
+                      image={getCardImage(card)}
                       title={card.title}
                       badge={card.badge}
                       period={card.period}
@@ -446,8 +349,9 @@ const MeteStagionali = () => {
           </h2>
 
           <p className="text-sm md:text-base text-slate-200 leading-relaxed">
-            Possiamo partire da queste mete ordinate per stagione per creare il tuo viaggio ideale.
-            Puoi anche esplorare capitali o idee mare in Italia e all’estero.
+            Possiamo partire da queste mete ordinate per stagione e calendario
+            di vendita per creare il tuo viaggio ideale. Poi possiamo incrociare
+            anche capitali, mare Italia o mare estero.
           </p>
 
           <div className="mt-4 space-y-6">
@@ -533,6 +437,11 @@ const MeteStagionali = () => {
 };
 
 export default MeteStagionali;
+
+
+
+
+
 
 
 

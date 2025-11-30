@@ -1,24 +1,12 @@
+// src/sections/home/SeasonalHighlightSection.jsx
 import { Link } from "react-router-dom";
 import { Plane, Building2, Waves, Globe2 } from "lucide-react";
 import heroImg from "../../assets/destination/hero.webp";
 
 import { getActiveSeasonForNow } from "../../config/seasonalSalesConfig";
-import { CAPITAL_CITIES } from "../../data/mete-capitali";
+import { SEASONAL_IMAGES, getRandomSeasonImageForSeason } from "../../data/mete-stagionali-images";
 
-// Qui poi potrai sostituire heroImg con immagini dedicate per stagione
-const SEASON_IMAGES = {
-  inverno: [heroImg],
-  primavera: [heroImg],
-  estate: [heroImg],
-  autunno: [heroImg],
-};
-
-const getRandomImageForSeason = (seasonId) => {
-  const images = SEASON_IMAGES[seasonId] || [heroImg];
-  const index = Math.floor(Math.random() * images.length);
-  return images[index];
-};
-
+// Eventuali campagne e testi rimangono invariati
 const getSeasonalCtaLabel = () => "Scopri le mete stagionali";
 
 const CAMPAIGN_HIGHLIGHTS = {
@@ -52,11 +40,6 @@ const CAMPAIGN_HIGHLIGHTS = {
     "Weekend benessere & spa in Italia ed Europa, tutto l’anno.",
 };
 
-const getSuggestedCapitalsForCampaigns = (campaigns, count = 2) => {
-  if (!CAPITAL_CITIES || CAPITAL_CITIES.length === 0) return [];
-  return CAPITAL_CITIES.slice(0, count);
-};
-
 const buildTitleFromCampaigns = (campaigns) => {
   if (!campaigns || campaigns.length === 0) {
     return "Prossime partenze da programmare";
@@ -71,7 +54,11 @@ const buildTitleFromCampaigns = (campaigns) => {
 
 const SeasonalHighlightSection = () => {
   const { seasonId, campaigns } = getActiveSeasonForNow();
-  const heroImage = getRandomImageForSeason(seasonId);
+
+  // Immagine random tra le mete stagionali della stagione corrente,
+  // con fallback al vecchio heroImg
+  const heroImage =
+    getRandomSeasonImageForSeason(seasonId, heroImg) || heroImg;
 
   const today = new Date();
   const month = today.getMonth() + 1;
@@ -192,6 +179,7 @@ const SeasonalHighlightSection = () => {
 };
 
 export default SeasonalHighlightSection;
+
 
 
 
