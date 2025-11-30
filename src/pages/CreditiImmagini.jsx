@@ -376,11 +376,15 @@ const CreditiImmagini = () => {
 
         {/* MALTA – LA VALLETTA */}
         <p className="space-y-0.5">
-          <span className="font-semibold text-[#132C50]">Immagine:</span> Malta – skyline di La Valletta (vista aerea).
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Malta
+          – skyline di La Valletta (vista aerea).
           <br />
-          <span className="font-semibold text-[#132C50]">Descrizione:</span> Panorama della capitale maltese con vista sul mare e sul centro storico.
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Panorama della capitale maltese con vista sul mare e sul centro
+          storico.
           <br />
-          <span className="font-semibold text-[#132C50]">Fotografo:</span> Som Thapa Magar.
+          <span className="font-semibold text-[#132C50]">Fotografo:</span> Som
+          Thapa Magar.
           <br />
           <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
           <a
@@ -389,18 +393,22 @@ const CreditiImmagini = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Pexels – “Fotografia aerea della città costiera”
+            Pexels – “fotografia aerea della città costiera”
           </a>
           .
         </p>
 
         {/* SIVIGLIA – PLAZA DE ESPAÑA */}
         <p className="space-y-0.5">
-          <span className="font-semibold text-[#132C50]">Immagine:</span> Siviglia – Plaza de España, ponte e canale.
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Siviglia – Plaza de España, ponte e canale.
           <br />
-          <span className="font-semibold text-[#132C50]">Descrizione:</span> Scatto della celebre piazza spagnola, con riflessi sull’acqua e architettura moresca.
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Scatto della celebre piazza spagnola, con riflessi sull’acqua e
+          architettura moresca.
           <br />
-          <span className="font-semibold text-[#132C50]">Fotografo:</span> Amy Burry.
+          <span className="font-semibold text-[#132C50]">Fotografo:</span> Amy
+          Burry.
           <br />
           <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
           <a
@@ -409,7 +417,8 @@ const CreditiImmagini = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Pexels – “Ponte, lampioni, specchio d’acqua e edifici durante il giorno”
+            Pexels – “ponte, lampioni, specchio d’acqua e edifici durante il
+            giorno”
           </a>
           .
         </p>
@@ -693,37 +702,323 @@ const CreditiImmagini = () => {
           </a>
           .
         </p>
+      </div>
 
-        {/* MALTA – DA COMPLETARE (NESSUN LINK FORNITO) */}
+      {/* =====================================================
+          SEZIONE METE – ITALIA MARE
+      ====================================================== */}
+
+      <hr className="border-slate-200" />
+
+      <h2 className="text-base md:text-lg font-semibold text-[#132C50]">
+        Mete – Italia mare
+      </h2>
+
+      <div className="space-y-4">
+        {/* RIVIERA ROMAGNOLA */}
         <p className="space-y-0.5">
           <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-          Card città – Malta.
+          Riviera Romagnola – ombrelloni rossi e bianchi.
           <br />
           <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-          Scatto utilizzato per rappresentare la capitale maltese.
+          Lunga fila di ombrelloni sulla spiaggia, simbolo delle estati in
+          Riviera.
           <br />
-          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
-          Immagine da Pexels (dati specifici non disponibili).
+          <span className="font-semibold text-[#132C50]">Fotografa:</span>{" "}
+          Julia Khalimova.
           <br />
           <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
-          Immagine Pexels scaricata senza URL pagina – da aggiornare con
-          il link esatto se disponibile.
+          <a
+            href="https://www.pexels.com/it-it/foto/ombrelloni-rossi-e-bianchi-sulla-spiaggia-3649204/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “ombrelloni rossi e bianchi sulla spiaggia”
+          </a>
+          .
         </p>
 
-        {/* SIVIGLIA – DA COMPLETARE (NESSUN LINK FORNITO) */}
+        {/* ISOLA D’ELBA */}
         <p className="space-y-0.5">
-          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
-          Card città – Siviglia.
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Isola
+          d’Elba – costa panoramica.
           <br />
           <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-          Scatto a tema andaluso utilizzato per rappresentare la città.
+          Vista sulla costa rocciosa e sul mare turchese dell’isola.
           <br />
           <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
           Immagine da Pexels (dati specifici non disponibili).
           <br />
           <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
-          Immagine Pexels scaricata senza URL pagina – da aggiornare con
-          il link esatto se disponibile.
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-mozzafiato-sulla-costa-dell-isola-d-elba-30240235/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista mozzafiato sulla costa dell’isola d’Elba”
+          </a>
+          .
+        </p>
+
+        {/* SARDEGNA NORD */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Nord
+          Sardegna – strada panoramica sul mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Strada costiera che corre lungo il litorale, tra mare e macchia
+          mediterranea.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/strada-paesaggio-litorale-mare-13385975/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “strada, paesaggio, litorale, mare”
+          </a>
+          .
+        </p>
+
+        {/* SARDEGNA SUD */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Sardegna sud – baie e coste rocciose.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Montagne verdi che scendono verso il mare, tipiche delle calette
+          sarde.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/montagne-verdi-vicino-al-corpo-d-acqua-3601311/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “montagne verdi vicino al corpo d’acqua”
+          </a>
+          .
+        </p>
+
+        {/* SALENTO (STESSA IMMAGINE USATA) */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Salento – costa rocciosa e mare azzurro.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          La stessa immagine è utilizzata per evocare anche le scogliere del
+          Salento.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/montagne-verdi-vicino-al-corpo-d-acqua-3601311/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “montagne verdi vicino al corpo d’acqua”
+          </a>
+          .
+        </p>
+
+        {/* GARGANO */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Gargano – costa pugliese.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Mare turchese e coste rocciose, tipiche del promontorio garganico.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Gildo Cancelli.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/mare-natura-acqua-oceano-11479778/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “mare, natura, acqua, oceano”
+          </a>
+          .
+        </p>
+
+        {/* CALABRIA IONICA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Calabria ionica – Capo Rizzuto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Scogliera e mare cristallino della costa ionica calabrese.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/capo-rizzuto-calbria-11849184/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “Capo Rizzuto, Calabria”
+          </a>
+          .
+        </p>
+
+        {/* CALABRIA TIRRENICA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Calabria tirrenica – case sul mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista aerea delle case affacciate sul mare della costa tirrenica.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Walkers.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-aerea-delle-case-vicino-al-mare-11019940/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista aerea delle case vicino al mare”
+          </a>
+          .
+        </p>
+
+        {/* SICILIA ORIENTALE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Sicilia orientale – città tra mare e monti.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Fotografia aerea di una città costiera ai piedi delle montagne, tipica
+          dei panorami siciliani.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/fotografia-aerea-della-citta-accanto-alla-montagna-1616436/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “fotografia aerea della città accanto alla montagna”
+          </a>
+          .
+        </p>
+
+        {/* VENEZIA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Venezia – canali e barche.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Immagine d’acqua calma con barca, usata per richiamare l’atmosfera
+          lagunare di Venezia.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="http://pexels.com/it-it/foto/specchio-d-acqua-da-crociera-in-barca-a-motore-208667/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “specchio d’acqua da crociera in barca a motore”
+          </a>
+          .
+        </p>
+
+        {/* SICILIA OCCIDENTALE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Sicilia occidentale – vista a volo d’uccello.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Costa rocciosa e acque turchesi viste dall’alto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Daniele Putti.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-a-volo-d-uccello-foto-della-costa-durante-il-giorno-3754810/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista a volo d’uccello foto della costa durante il giorno”
+          </a>
+          .
+        </p>
+
+        {/* ARGENTARIO */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Argentario – porto di Porto Santo Stefano.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Marina con barche e case affacciate sul mare, tipica dell’Argentario
+          toscano.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Alessandro Previtali.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/mare-alba-vacanza-relax-27926557/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “mare, alba, vacanza, relax”
+          </a>
+          .
+        </p>
+
+        {/* LIGURIA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Liguria – case colorate sul mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Case colorate affacciate sul mare, in stile Cinque Terre.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Frans van Heerden.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/case-di-colori-assortiti-accanto-allo-specchio-d-acqua-632522/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “case di colori assortiti accanto allo specchio d’acqua”
+          </a>
+          .
         </p>
       </div>
 
@@ -741,6 +1036,7 @@ const CreditiImmagini = () => {
 };
 
 export default CreditiImmagini;
+
 
 
 
