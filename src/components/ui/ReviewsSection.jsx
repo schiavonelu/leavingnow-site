@@ -46,17 +46,17 @@ const reviews = [
     rating: 5,
   },
 
-  // --- NUOVE RECENSIONI ---
+  // NUOVE RECENSIONI
   {
     name: "Serena Odierna",
     tripType: "Viaggio di Gruppo · Amsterdam",
-    text: "Ho prenotato da loro per il mio viaggio ad Amsterdam, tutto perfetto, dall’hotel ai posti che hanno saputo consigliarmi, e soprattutto mi hanno consigliato il periodo più giusto per avere belle giornate. Persone di cuore e sempre disponibili, attenti alle mie esigenze e super preparati. Ci vediamo per il prossimo viaggio, un grazie speciale ad Assia che senza di lei questo viaggio non sarebbe stato lo stesso.",
+    text: "Ho prenotato da loro per il mio viaggio ad Amsterdam, tutto perfetto, dall’hotel ai posti che hanno saputo consigliarmi, e soprattutto mi hanno consigliato il periodo più giusto per avere belle giornate. Persone di cuore e sempre disponibili, attenti alle mie esigenze e super preparati.",
     rating: 5,
   },
   {
     name: "Teresa La Fata",
     tripType: "Viaggio in Europa · Grecia",
-    text: "Quest'anno per la prima volta mi sono rivolta a questa agenzia per organizzare un viaggio per le mie vacanze estive e mai scelta è stata più azzeccata. Sono stata seguita con attenzione e gentilezza ed il viaggio è stato perfetto. Ritornerò sicuramente per altri viaggi.",
+    text: "Quest'anno per la prima volta mi sono rivolta a questa agenzia per organizzare un viaggio per le mie vacanze estive e mai scelta è stata più azzeccata. Sono stata seguita con attenzione e gentilezza ed il viaggio è stato perfetto.",
     rating: 5,
   },
   {
@@ -74,48 +74,48 @@ const reviews = [
   {
     name: "Raffaella Ferone",
     tripType: "Crociera · Caraibi",
-    text: "Non potevamo scegliere di meglio per la nostra luna di miele. È stato un viaggio fantastico, tutto curato nei minimi dettagli. Grazie ai vostri consigli abbiamo visto luoghi spettacolari e fatto esperienze stupende che mai pensavamo di fare. Grazie davvero per la vostra precisione e soprattutto per la vostra disponibilità. Non vediamo l'ora di organizzare il prossimo viaggio con voi.",
+    text: "Non potevamo scegliere di meglio per la nostra luna di miele. Ogni dettaglio curato con precisione. Non vediamo l'ora di organizzare il prossimo viaggio con voi.",
     rating: 5,
   },
   {
     name: "Emia Ughetto",
     tripType: "Crociera di Famiglia · Mediterraneo",
-    text: "Ci siamo affidati a questa agenzia per la nostra prima crociera. Assia si è dimostrata fin da subito disponibile e attenta alle nostre esigenze, organizzandoci nei minimi dettagli tutte le tappe. È stata un'esperienza bellissima e piacevole soprattutto per i nostri 3 figli ❤️. Si è rivelata una persona gentilissima e piena di amore per il suo lavoro! Sicuramente ci affideremo a loro per i prossimi viaggi. Complimenti Assia.",
+    text: "Prima crociera organizzata nei minimi dettagli, perfetta per i nostri 3 figli. Assia è gentilissima e super disponibile. Ci affideremo ancora a loro!",
     rating: 5,
   },
   {
     name: "Emanuela Sommella",
     tripType: "Viaggio di Coppia · Santo Domingo",
-    text: "Una meravigliosa vacanza organizzata da Leaving Now, una riconferma! Ogni anno mi affido ad Assia e al suo team per organizzare il mio viaggio. Santo Domingo è stata la prima esperienza con quest’agenzia ed è stata ineccepibile, dai trasferimenti alle strutture perfettamente in linea con le nostre esigenze. Le esperienze trascorse (organizzate stesso in struttura) sono state impeccabili. Subito dopo io e il mio ragazzo abbiamo deciso di affidarci ancora a loro per Sharm el Sheikh, Sardegna e tanti altri viaggi. Cortesia, professionalità e attenzione al cliente. Non vedo l’ora di poter organizzare anche quest’anno il prossimo viaggio!",
+    text: "Una meravigliosa vacanza organizzata da Leaving Now. Ogni anno riconfermo la fiducia in Assia e nel suo team. Professionalità e attenzione.",
     rating: 5,
   },
   {
     name: "Vincenza Marlisa De Lucia",
     tripType: "Viaggio di Nozze · Tour Thailandia + Maldive",
-    text: "La nostra prima esperienza con loro è stata il nostro viaggio di nozze. In poco tempo hanno realizzato un viaggio ad hoc per noi. Volevamo un’esperienza unica e loro hanno realizzato il nostro sogno: tour organizzato della Thailandia e tappa da sogno alle Maldive. Assia è stata disponibile sin da subito, attenta alle nostre esigenze e ai nostri desideri. L’ho consigliata ad amici e parenti che, per viaggi più o meno lunghi, si sono rivolti a lei e sono rimasti altrettanto contenti. Continuate così! Consigliatissima! ❤️",
+    text: "Hanno organizzato il nostro viaggio di nozze perfetto: tour della Thailandia + Maldive. Assia attentissima e super disponibile. Consigliatissima!",
     rating: 5,
   },
   {
     name: "Giuseppe Sangiovanni",
     tripType: "Viaggio di Nozze · Fly & Drive USA",
-    text: "Abbiamo scelto Leaving Now per organizzare il nostro viaggio di nozze. Tutto perfetto, sin dal primo momento sono stati attenti ad ascoltare tutte le nostre richieste e a cercare le varie soluzioni per soddisfare i nostri desideri. Sono riusciti a realizzare un pacchetto ad hoc con un rapporto qualità/prezzo imbattibile. I loro servizi tour operator, inoltre, fanno in modo da non avere alcuna preoccupazione durante tutta la durata del viaggio. Scelta più che consigliata, non vediamo l'ora di riorganizzare un altro viaggio con loro.",
+    text: "Pacchetto creato ad hoc, organizzazione impeccabile, prezzi competitivi. Non vediamo l’ora di ripartire con loro!",
     rating: 5,
   },
   {
     name: "Felisia Conte",
     tripType: "Viaggio di Nozze · Tour USA + Crociera Caraibi",
-    text: "Il team della Leaving Now di Aversa, con la splendida Assia come timoniere, è davvero eccezionale. Assia organizza i viaggi dei suoi clienti come se fossero i suoi e quando si viaggia con lei è una sensazione che si sente costantemente addosso. A partire dai consigli sulle mete, la migliore ricerca di voli e sistemazioni (orari, comfort e soprattutto prezzo). Affidarmi completamente, per una maniaca del controllo come me, non è mai facile. Con Assia chiudo gli occhi e lascio fare a lei. Ogni volta è una riconferma ed ogni volta, in viaggio, anche in pieno ferragosto, non sei mai solo per qualsiasi evenienza. Grazie Leaving Now, grazie Assia.",
+    text: "Assia è eccezionale, cura i viaggi come se fossero suoi. Sempre presente anche durante il viaggio. Una garanzia.",
     rating: 5,
   },
   {
     name: "Nicola Ossuto",
     tripType: "Viaggi di Coppia · USA + Bahamas",
-    text: "Hanno organizzato per me e la mia ragazza il viaggio dei nostri sogni in America (New York - Orlando - Bahamas). Hanno curato ogni minimo dettaglio e, cosa non trascurabile per una persona super ansiosa come me che viaggiava per la prima volta fuori Europa, sono stati sempre presenti per ogni dubbio o informazione durante l’intero soggiorno (anzi, molte volte anticipavano le risposte a domande che ancora dovevo formulare 😂).",
+    text: "Viaggio dei sogni. Hanno curato tutto nei dettagli e mi hanno seguito in ogni momento, perfetti per chi è ansioso come me!",
     rating: 5,
   },
 ];
 
-const AUTO_SLIDE_MS_MOBILE = 15000;   
+const AUTO_SLIDE_MS_MOBILE = 15000;
 const AUTO_SLIDE_MS_DESKTOP = 25000;
 const MAX_DESKTOP_PAGES = 3;
 
@@ -125,20 +125,18 @@ const ReviewsSection = () => {
   const [perPage, setPerPage] = useState(1);
   const [carouselReviews, setCarouselReviews] = useState([]);
 
-  // shuffle iniziale per non avere sempre lo stesso ordine
   useEffect(() => {
     const shuffled = [...reviews].sort(() => Math.random() - 0.5);
     setCarouselReviews(shuffled);
   }, []);
 
-  // responsive: 1 mobile, 2 tablet, 3 desktop
   useEffect(() => {
     const updatePerPage = () => {
       const w = window.innerWidth;
       if (w >= 1024) setPerPage(3);
       else if (w >= 768) setPerPage(2);
       else setPerPage(1);
-      setCurrentPage(0); // reset pagina al cambio layout
+      setCurrentPage(0);
     };
 
     updatePerPage();
@@ -146,13 +144,18 @@ const ReviewsSection = () => {
     return () => window.removeEventListener("resize", updatePerPage);
   }, []);
 
-  // limitiamo a max 3 pagine da 3 su desktop
+  // ★★★ LIMITAZIONE MOBILE: massimo 6 recensioni se perPage === 1
   const getEffectiveReviews = () => {
     if (perPage === 3) {
-      const maxVisible = MAX_DESKTOP_PAGES * perPage; // 3 pagine * 3 card
+      const maxVisible = MAX_DESKTOP_PAGES * perPage;
       return carouselReviews.slice(0, maxVisible);
     }
-    return carouselReviews;
+
+    if (perPage === 1) {
+      return carouselReviews.slice(0, 6); // SOLO 6 RECENSIONI SU MOBILE
+    }
+
+    return carouselReviews; // tablet → tutte
   };
 
   const effectiveReviews = getEffectiveReviews();
@@ -162,7 +165,6 @@ const ReviewsSection = () => {
   const intervalMs =
     perPage === 1 ? AUTO_SLIDE_MS_MOBILE : AUTO_SLIDE_MS_DESKTOP;
 
-  // autoplay
   useEffect(() => {
     if (pageCount <= 1 || !isVisible) return;
 
@@ -288,6 +290,7 @@ const ReviewsSection = () => {
 };
 
 export default ReviewsSection;
+
 
 
 

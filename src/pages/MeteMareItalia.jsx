@@ -242,7 +242,7 @@ const MeteMareItalia = () => {
                         <input
                           id="search-mare"
                           type="text"
-                          placeholder="Cerca una località… es. Sardegna, Salento, Costiera Amalfitana"
+                          placeholder="Cerca una località"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                           className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white placeholder:text-slate-400"

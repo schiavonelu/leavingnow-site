@@ -1,4 +1,3 @@
-// src/sections/home/SeasonalHighlightSection.jsx
 import { Link } from "react-router-dom";
 import { Plane, Building2, Waves, Globe2 } from "lucide-react";
 import heroImg from "../../assets/destination/hero.webp";
@@ -102,11 +101,11 @@ const SeasonalHighlightSection = () => {
               Prossime partenze da programmare
             </p>
 
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white text-justify">
               {title}
             </h2>
 
-            <p className="text-sm md:text-base text-slate-200 leading-relaxed">
+            <p className="text-sm md:text-base text-slate-200 leading-relaxed text-justify">
               Ti mostriamo i tipi di viaggio su cui ha senso muoversi ora, così
               puoi bloccare le soluzioni migliori e programmare con calma.
             </p>
@@ -116,7 +115,7 @@ const SeasonalHighlightSection = () => {
                 {campaigns.map((c) => (
                   <span
                     key={c.id}
-                    className="inline-flex items-center rounded-full bg-slate-800/70 border border-slate-600 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-100"
+                    className="inline-flex items-center rounded-full bg-slate-800/70 border border-slate-600 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-100 text-justify"
                   >
                     {c.label}
                   </span>
@@ -125,7 +124,7 @@ const SeasonalHighlightSection = () => {
             )}
 
             {dynamicHighlights.length > 0 && (
-              <ul className="mt-2 space-y-1.5 text-xs md:text-sm text-slate-200">
+              <ul className="mt-2 space-y-1.5 text-xs md:text-sm text-slate-200 text-justify">
                 {dynamicHighlights.map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />

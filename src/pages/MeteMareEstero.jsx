@@ -192,7 +192,7 @@ const MeteMareEstero = () => {
                         <input
                           id="search-mare-estero"
                           type="text"
-                          placeholder="Cerca una meta… es. Canarie, Grecia, Mar Rosso"
+                          placeholder="Cerca una meta ..."
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                           className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white placeholder:text-slate-400"

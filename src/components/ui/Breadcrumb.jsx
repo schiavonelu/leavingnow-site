@@ -39,7 +39,7 @@ const Breadcrumb = () => {
     oceania: "Oceania",
 
     "mete-stagionali": "Mete stagionali",
-    "mete-capitali": "Mete capitali",
+    "mete-capitali": "Città europee", // 🔴 aggiornato
     "mete-viaggi-di-nozze": "Mete viaggi di nozze",
     "mete-mare-italia": "Mare Italia",
     "mete-mare-estero": "Mare estero",
@@ -129,7 +129,7 @@ const Breadcrumb = () => {
     crumbs = [
       {
         label: "Mete stagionali",
-        path: "/mete-stagionali",
+        path: "/#mete-stagionali", // 🔴 adesso porta alla sezione in home
         isLast: false,
       },
       {
@@ -172,7 +172,7 @@ const Breadcrumb = () => {
     ];
   }
 
-  // ✨ Caso speciale: METE CAPITALI
+  // ✨ Caso speciale: METE CAPITALI → Città europee
   if (currentPath.startsWith("/mete-capitali")) {
     crumbs = [
       {
@@ -181,7 +181,7 @@ const Breadcrumb = () => {
         isLast: false,
       },
       {
-        label: "Mete capitali",
+        label: "Città europee", // 🔴 testo aggiornato
         path: "/mete-capitali",
         isLast: true,
       },
