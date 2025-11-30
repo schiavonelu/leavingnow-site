@@ -106,7 +106,7 @@ const ContinentCard = ({
   return (
     <div className="group rounded-3xl overflow-hidden bg-white shadow-lg border border-slate-100 flex flex-col h-full">
       {/* IMG + BADGE */}
-      <div className="relative h-44 md:h-56 overflow-hidden bg-slate-200">
+      <div className="relative h-60 sm:h-64 md:h-56 overflow-hidden bg-slate-200">
         {hasImage ? (
           <img
             src={image}
@@ -156,6 +156,7 @@ const ContinentCard = ({
 };
 
 export default ContinentCard;
+
 
 
 

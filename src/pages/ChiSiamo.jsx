@@ -250,7 +250,7 @@ const ChiSiamo = () => {
                 ].join(" ")}
               >
                 {/* FOTO + BADGE */}
-                <div className="relative h-44 w-full overflow-hidden">
+                <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -260,7 +260,6 @@ const ChiSiamo = () => {
                     {member.role}
                   </span>
                 </div>
-
                 {/* TESTO */}
                 <div className="p-6 flex-1 flex flex-col text-center">
                   <h3 className="text-lg md:text-xl font-semibold text-[#132C50] mb-2">
