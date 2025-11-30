@@ -6,6 +6,7 @@ import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
 import SeaFiltersItaly from "../components/ui/SeaFiltersItaly.jsx";
+import Pagination from "../components/ui/Pagination.jsx";
 
 import heroImg from "../assets/destination/hero.webp";
 
@@ -294,48 +295,14 @@ const MeteMareItalia = () => {
                   </div>
                 )}
 
-                {/* PAGINAZIONE */}
+                {/* PAGINAZIONE con componente riusabile */}
                 {filteredTrips.length > 0 && totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-1.5 mt-6">
-                    {/* FRECCIA SINISTRA */}
-                    <button
-                      type="button"
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      className="w-8 h-8 flex items-center justify-center text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-                      aria-label="Pagina precedente"
-                    >
-                      <span aria-hidden="true">&lt;</span>
-                    </button>
-
-                    {/* NUMERI PAGINE */}
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                      (page) => (
-                        <button
-                          key={page}
-                          type="button"
-                          onClick={() => handlePageChange(page)}
-                          className={`min-w-[2rem] px-2.5 h-8 text-xs md:text-sm rounded-full border transition ${
-                            page === currentPage
-                              ? "bg-[#0863D6] border-[#0863D6] text-white"
-                              : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      )
-                    )}
-
-                    {/* FRECCIA DESTRA */}
-                    <button
-                      type="button"
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                      className="w-8 h-8 flex items-center justify-center text-xs md:text-sm rounded-full border border-slate-300 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#0863D6] hover:text-[#0863D6] transition"
-                      aria-label="Pagina successiva"
-                    >
-                      <span aria-hidden="true">&gt;</span>
-                    </button>
+                  <div className="mt-6 flex justify-center">
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={handlePageChange}
+                    />
                   </div>
                 )}
               </div>
@@ -422,6 +389,7 @@ const MeteMareItalia = () => {
 };
 
 export default MeteMareItalia;
+
 
 
 

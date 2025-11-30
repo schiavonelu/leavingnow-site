@@ -1,6 +1,7 @@
 // src/components/ui/SeaFiltersEstero.jsx
 import { useState } from "react";
 import { Filter, X, ChevronLeft, ChevronRight, Mail } from "lucide-react";
+import { FaUmbrellaBeach } from "react-icons/fa";
 
 const SeaFiltersEstero = ({
   title = "Mare estero",
@@ -103,11 +104,26 @@ const SeaFiltersEstero = ({
           Hai già un’idea del tipo di vacanza? Possiamo preparare un preventivo dedicato.
         </p>
         <a
-          href="/contatti"  // TODO: crea la pagina /preventivo
+          href="/contatti"  // puoi usare /preventivo quando la pagina sarà pronta
           className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-emerald-500 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-600 transition"
         >
           <Mail className="w-3 h-3" />
           <span>Contattaci</span>
+        </a>
+      </div>
+
+      {/* 🔹 Link di ritorno verso Mare Italia (versione espansa) */}
+      <div className="pt-3 mt-4 border-t border-slate-200">
+        <p className="text-[11px] text-slate-500 mb-2">
+          Se stai valutando anche il mare in Italia, puoi dare un&apos;occhiata
+          alle mete mare Italia.
+        </p>
+        <a
+          href="/mete-mare-italia"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-sky-500 text-sky-700 bg-sky-50 hover:bg-sky-100 hover:border-sky-600 transition"
+        >
+          <FaUmbrellaBeach className="text-sm" />
+          <span>Vai alle mete mare Italia</span>
         </a>
       </div>
     </div>
@@ -162,9 +178,18 @@ const SeaFiltersEstero = ({
         </button>
       )}
 
+      {/* 🔹 Short-cut verso Mare Italia anche in sidebar collassata */}
+      <a
+        href="/mete-mare-italia"
+        title="Vai alle mete mare Italia"
+        className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-600 text-white shadow-sm hover:bg-sky-700"
+      >
+        <FaUmbrellaBeach className="w-4 h-4" />
+      </a>
+
       {/* 🔹 Short-cut preventivo in versione collassata */}
       <a
-        href="/preventivo"  // TODO: crea la pagina /preventivo
+        href="/preventivo"  // o /contatti, come preferisci
         title="Richiedi un preventivo"
         className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm hover:bg-emerald-700"
       >
@@ -221,18 +246,18 @@ const SeaFiltersEstero = ({
 
       {/* Mobile: modal */}
       {showMobileFilters && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/60 px-4">
+        <div className="fixed inset-0 z-40 flex items-center justify.center bg-slate-900/60 px-4">
           <div className="w-full max-w-md rounded-2xl bg-white p-4 shadow-2xl">
-            <div className="mb-3 flex items-center justify-between">
+            <div className="mb-3 flex.items-center justify-between">
               <p className="text-sm font-semibold text-[#0F172A]">
                 Filtri mare estero
               </p>
-              <div className="flex items-center gap-2">
+              <div className="flex.items-center gap-2">
                 {hasActiveFilters && (
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="inline-flex items-center gap-1 rounded-full border border-[#CBD5E1] px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
+                    className="inline-flex.items-center gap-1 rounded-full border border-[#CBD5E1] px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
                   >
                     <X className="w-3 h-3" />
                     <span>Reset</span>
@@ -241,7 +266,7 @@ const SeaFiltersEstero = ({
                 <button
                   type="button"
                   onClick={() => setShowMobileFilters(false)}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  className="inline-flex.h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -267,5 +292,6 @@ const SeaFiltersEstero = ({
 };
 
 export default SeaFiltersEstero;
+
 
 

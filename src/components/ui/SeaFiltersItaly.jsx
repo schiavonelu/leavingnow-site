@@ -1,6 +1,7 @@
 // src/components/ui/SeaFiltersItaly.jsx
 import { useState } from "react";
 import { Filter, X, ChevronLeft, ChevronRight, Mail } from "lucide-react";
+import { FaGlobeEurope } from "react-icons/fa";
 
 const ITALY_FILTERS = [
   {
@@ -124,11 +125,26 @@ const SeaFiltersItaly = ({
           Se hai già un’idea di zona o periodo, possiamo preparare un preventivo personalizzato.
         </p>
         <a
-          href="/contatti"  // TODO: crea la pagina /preventivo
+          href="/contatti"  // quando avrai la pagina /preventivo puoi cambiare qui
           className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-emerald-500 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-600 transition"
         >
           <Mail className="w-3 h-3" />
           <span>Contattaci</span>
+        </a>
+      </div>
+
+      {/* 🔹 Link verso Mare Estero (versione espansa) */}
+      <div className="pt-3 mt-4 border-t border-slate-200">
+        <p className="text-[11px] text-slate-500 mb-2">
+          Se stai pensando anche al mare fuori dall&apos;Italia, puoi dare
+          un&apos;occhiata alle mete mare estero.
+        </p>
+        <a
+          href="/mete-mare-estero"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-sky-500 text-sky-700 bg-sky-50 hover:bg-sky-100 hover:border-sky-600 transition"
+        >
+          <FaGlobeEurope className="text-sm" />
+          <span>Vai alle mete mare estero</span>
         </a>
       </div>
     </div>
@@ -140,7 +156,7 @@ const SeaFiltersItaly = ({
       <button
         type="button"
         onClick={onToggleCollapsed}
-        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:text-slate-700 shadow-sm"
+        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg.white text-slate-500 hover:bg-slate-50 hover:text-slate-700 shadow-sm"
         title="Espandi filtri mare Italia"
       >
         <ChevronRight className="w-4 h-4" />
@@ -182,9 +198,18 @@ const SeaFiltersItaly = ({
         </button>
       )}
 
+      {/* 🔹 Short-cut verso Mare Estero anche in versione collassata */}
+      <a
+        href="/mete-mare-estero"
+        title="Vai alle mete mare estero"
+        className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-600 text-white shadow-sm hover:bg-sky-700"
+      >
+        <FaGlobeEurope className="w-4 h-4" />
+      </a>
+
       {/* 🔹 Short-cut preventivo anche in versione collassata */}
       <a
-        href="/preventivo"  // TODO: crea la pagina /preventivo
+        href="/preventivo"
         title="Richiedi un preventivo"
         className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm hover:bg-emerald-700"
       >
@@ -200,7 +225,7 @@ const SeaFiltersItaly = ({
         <button
           type="button"
           onClick={() => setShowMobileFilters(true)}
-          className="inline-flex items-center gap-2 rounded-full border border-[#CBD5E1] bg-white px-4 py-2 text-sm font-semibold text-[#0F172A] shadow-sm"
+          className="inline-flex items-center gap-2 rounded-full border border-[#CBD5E1] bg.white px-4 py-2 text-sm font-semibold text-[#0F172A] shadow-sm"
         >
           <Filter className="w-4 h-4 text-[#EB2480]" />
           <span>Filtra per zona</span>
@@ -218,7 +243,7 @@ const SeaFiltersItaly = ({
           isCollapsed ? "w-16" : "w-72"
         }`}
       >
-        <div className="lg:sticky lg:top-30 rounded-2xl border border-[#E2E8F0] bg-white p-2 shadow-sm">
+        <div className="lg:sticky lg:top-30 rounded-2xl border border-[#E2E8F0] bg.white p-2 shadow-sm">
           {isCollapsed ? (
             renderCollapsedSidebar()
           ) : (
@@ -227,7 +252,7 @@ const SeaFiltersItaly = ({
                 <button
                   type="button"
                   onClick={onToggleCollapsed}
-                  className="absolute -right-3 top-2 hidden lg:inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:text-slate-700 shadow-sm"
+                  className="absolute -right-3 top-2 hidden lg:inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg.white text-slate-500 hover:bg-slate-50 hover:text-slate-700 shadow-sm"
                   title="Riduci filtri"
                 >
                   <ChevronLeft className="w-3 h-3" />
@@ -242,17 +267,17 @@ const SeaFiltersItaly = ({
       {/* Mobile: modal */}
       {showMobileFilters && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/60 px-4">
-          <div className="w-full max-w-md rounded-2xl bg-white p-4 shadow-2xl">
-            <div className="mb-3 flex items-center justify-between">
+          <div className="w.full max-w-md rounded-2xl bg.white p-4 shadow-2xl">
+            <div className="mb-3 flex.items-center justify-between">
               <p className="text-sm font-semibold text-[#0F172A]">
                 Filtri mare Italia
               </p>
-              <div className="flex items-center gap-2">
+              <div className="flex.items-center gap-2">
                 {hasActiveFilters && (
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="inline-flex items-center gap-1 rounded-full border border-[#CBD5E1] px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
+                    className="inline-flex.items-center gap-1 rounded-full border border-[#CBD5E1] px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
                   >
                     <X className="w-3 h-3" />
                     <span>Reset</span>
@@ -261,7 +286,7 @@ const SeaFiltersItaly = ({
                 <button
                   type="button"
                   onClick={() => setShowMobileFilters(false)}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  className="inline-flex.h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -275,7 +300,7 @@ const SeaFiltersItaly = ({
             <button
               type="button"
               onClick={() => setShowMobileFilters(false)}
-              className="mt-3 w-full rounded-full bg-[#0863D6] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0658b8] transition"
+              className="mt-3 w.full rounded-full bg-[#0863D6] px-4 py-2.5 text-sm font-semibold text.white hover:bg-[#0658b8] transition"
             >
               Applica filtri
             </button>
@@ -287,5 +312,6 @@ const SeaFiltersItaly = ({
 };
 
 export default SeaFiltersItaly;
+
 
 

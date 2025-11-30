@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 import ContinentCard from "../components/ui/ContinentCard.jsx";
+import Pagination from "../components/ui/Pagination.jsx";
 import heroImg from "../assets/destination/hero.webp";
 
 import { SEASONS } from "../data/mete-stagionali";
@@ -276,10 +277,12 @@ const MeteStagionali = () => {
       if (!hasActive) return false;
     }
 
+    // stagione di focus sempre dentro
     if (card.seasonId === focusSeasonId) {
       return true;
     }
 
+    // Eventi speciali e benessere sempre mostrati se in campagna
     if (card.seasonId === "eventi-speciali" || card.seasonId === "benessere") {
       return true;
     }
@@ -322,6 +325,7 @@ const MeteStagionali = () => {
 
       <Breadcrumb />
 
+      {/* INTRO */}
       <section className="py-10 md:py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
@@ -339,237 +343,197 @@ const MeteStagionali = () => {
         </div>
       </section>
 
-      {focusSeason && (() => {
-        const season = focusSeason;
-        const baseCards = orderedSeasonalCards;
-        const maxExtra = Math.max(0, MAX_CARDS_PER_SEASON - baseCards.length);
-        const extraCities =
-          ["inverno", "primavera", "estate", "autunno"].includes(season.id)
-            ? getExtraCityCardsForSeason(season.id, maxExtra)
-            : [];
-        const allCards = [...baseCards, ...extraCities];
+      {focusSeason &&
+        (() => {
+          const season = focusSeason;
+          const baseCards = orderedSeasonalCards;
+          const maxExtra = Math.max(0, MAX_CARDS_PER_SEASON - baseCards.length);
+          const extraCities =
+            ["inverno", "primavera", "estate", "autunno"].includes(season.id)
+              ? getExtraCityCardsForSeason(season.id, maxExtra)
+              : [];
+          const allCards = [...baseCards, ...extraCities];
 
-        const totalPages = Math.max(1, Math.ceil(allCards.length / PAGE_SIZE));
-        const currentPage =
-          pageBySeason[season.id] && pageBySeason[season.id] <= totalPages
-            ? pageBySeason[season.id]
-            : 1;
+          const totalPages = Math.max(
+            1,
+            Math.ceil(allCards.length / PAGE_SIZE)
+          );
 
-        const startIndex = (currentPage - 1) * PAGE_SIZE;
-        const visibleCards = allCards.slice(
-          startIndex,
-          startIndex + PAGE_SIZE
-        );
+          const currentPage =
+            pageBySeason[season.id] && pageBySeason[season.id] <= totalPages
+              ? pageBySeason[season.id]
+              : 1;
 
-        const sectionBg =
-          season.id === "primavera" || season.id === "autunno"
-            ? "bg-[#F8FAFC]"
-            : "bg-white";
+          const startIndex = (currentPage - 1) * PAGE_SIZE;
+          const visibleCards = allCards.slice(
+            startIndex,
+            startIndex + PAGE_SIZE
+          );
 
-        const displayYear = getSeasonDisplayYear(season.id, today);
+          const sectionBg =
+            season.id === "primavera" || season.id === "autunno"
+              ? "bg-[#F8FAFC]"
+              : "bg-white";
 
-        return (
-          <section
-            key={season.id}
-            id={season.id}
-            className={`py-12 md:py-16 ${sectionBg}`}
-          >
-            <div className="max-w-6xl mx-auto px-4 space-y-8">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                  <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-1">
-                    {season.name}
-                  </p>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-2">
-                    {`Mete Stagionali - ${season.name} ${displayYear}`}
-                  </h2>
-                  <p className="text-xs md:text-sm font-medium text-slate-500 uppercase tracking-[0.16em]">
-                    {season.period}
+          const displayYear = getSeasonDisplayYear(season.id, today);
+
+          return (
+            <section
+              key={season.id}
+              id={season.id}
+              className={`py-12 md:py-16 ${sectionBg}`}
+            >
+              <div className="max-w-6xl mx-auto px-4 space-y-8">
+                {/* HEADER SEZIONE */}
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-1">
+                      {season.name}
+                    </p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#132C50] mb-2">
+                      {`Mete Stagionali - ${season.name} ${displayYear}`}
+                    </h2>
+                    <p className="text-xs md:text-sm font-medium text-slate-500 uppercase tracking-[0.16em]">
+                      {season.period}
+                    </p>
+                  </div>
+                  <p className="text-sm md:text-base text-slate-700 md:max-w-xl leading-relaxed text-justify">
+                    Una selezione di mete su cui ha senso muoversi adesso, in base
+                    alle date di vendita e al periodo dell&apos;anno.
                   </p>
                 </div>
-                <p className="text-sm md:text-base text-slate-700 md:max-w-xl leading-relaxed text-justify">
-                  Una selezione di mete su cui ha senso muoversi adesso, in base
-                  alle date di vendita e al periodo dell&apos;anno.
-                </p>
-              </div>
 
-              <div className="grid gap-8 md:grid-cols-3">
-                {visibleCards.map((card, idx) => (
-                  <ContinentCard
-                    key={`${season.id}-${card.title}-${idx}`}
-                    image={heroImg}
-                    title={card.title}
-                    badge={card.badge}
-                    period={card.period}
-                    description={card.description}
-                  />
-                ))}
-              </div>
-
-              {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 pt-2">
-                  <button
-                    type="button"
-                    disabled={currentPage === 1}
-                    onClick={() =>
-                      handleChangePage(season.id, currentPage - 1)
-                    }
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium border ${
-                      currentPage === 1
-                        ? "border-slate-300 text-slate-300 cursor-not-allowed"
-                        : "border-slate-400 text-slate-700 hover:bg-slate-100"
-                    }`}
-                  >
-                    Prec.
-                  </button>
-
-                  {Array.from({ length: totalPages }).map((_, i) => {
-                    const pageNum = i + 1;
-                    const isActive = pageNum === currentPage;
-                    return (
-                      <button
-                        key={`${season.id}-page-${pageNum}`}
-                        type="button"
-                        onClick={() =>
-                          handleChangePage(season.id, pageNum)
-                        }
-                        className={`h-7 w-7 rounded-full text-xs font-semibold flex items-center justify-center ${
-                          isActive
-                            ? "bg-[#0863D6] text-white"
-                            : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                        }`}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
-
-                  <button
-                    type="button"
-                    disabled={currentPage === totalPages}
-                    onClick={() =>
-                      handleChangePage(season.id, currentPage + 1)
-                    }
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium border ${
-                      currentPage === totalPages
-                        ? "border-slate-300 text-slate-300 cursor-not-allowed"
-                        : "border-slate-400 text-slate-700 hover:bg-slate-100"
-                    }`}
-                  >
-                    Succ.
-                  </button>
+                {/* GRID CARDS */}
+                <div className="grid gap-8 md:grid-cols-3">
+                  {visibleCards.map((card, idx) => (
+                    <ContinentCard
+                      key={`${season.id}-${card.title}-${idx}`}
+                      image={heroImg}
+                      title={card.title}
+                      badge={card.badge}
+                      period={card.period}
+                      description={card.description}
+                    />
+                  ))}
                 </div>
-              )}
+
+                {/* PAGINAZIONE con componente riusabile */}
+                {totalPages > 1 && (
+                  <div className="mt-6 flex justify-center">
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={(page) =>
+                        handleChangePage(season.id, page)
+                      }
+                    />
+                  </div>
+                )}
+              </div>
+            </section>
+          );
+        })()}
+
+      {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI (Stagionali) */}
+      <section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
+        <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
+          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
+            Ti ispiriamo, poi lo costruiamo insieme
+          </p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
+            Hai trovato qualche meta stagionale che ti ispira?
+          </h2>
+
+          <p className="text-sm md:text-base text-slate-200 leading-relaxed">
+            Possiamo partire da queste mete ordinate per stagione per creare il tuo viaggio ideale.
+            Puoi anche esplorare capitali o idee mare in Italia e all’estero.
+          </p>
+
+          <div className="mt-4 space-y-6">
+            {/* BLOCCO 1 – LASCIATI ISPIRARE */}
+            <div className="space-y-3">
+              <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
+                Lasciati ispirare ancora
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/mete-capitali"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+                    font-semibold border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6]
+                    hover:border-[#0863D6] transition"
+                >
+                  <FaCity className="text-lg" />
+                  <span>Capitali europee</span>
+                </a>
+
+                <a
+                  href="/mete-mare-italia"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+                    font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480]
+                    hover:text-[#EB2480] hover:bg-white/5 transition"
+                >
+                  <FaUmbrellaBeach className="text-lg" />
+                  <span>Mare Italia</span>
+                </a>
+
+                <a
+                  href="/mete-mare-estero"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+                    font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500
+                    hover:text-emerald-500 hover:bg-white/5 transition"
+                >
+                  <FaGlobeEurope className="text-lg" />
+                  <span>Mare estero</span>
+                </a>
+              </div>
             </div>
-          </section>
-        );
-      })()}
 
- {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI (Stagionali) */}
-<section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
-  <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
-    <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
-      Ti ispiriamo, poi lo costruiamo insieme
-    </p>
+            {/* DIVISORE */}
+            <p className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase text-slate-400">
+              oppure
+            </p>
 
-    <h2 className="text-2xl md:text-3xl font-bold text-white">
-      Hai trovato qualche meta stagionale che ti ispira?
-    </h2>
+            {/* BLOCCO 2 – CONTATTI */}
+            <div className="space-y-3">
+              <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
+                Hai già deciso la meta?
+              </p>
 
-    <p className="text-sm md:text-base text-slate-200 leading-relaxed">
-      Possiamo partire da queste mete ordinate per stagione per creare il tuo viaggio ideale.
-      Puoi anche esplorare capitali o idee mare in Italia e all’estero.
-    </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/contatti"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+                    font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white
+                    hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                >
+                  <FaRegCalendarAlt className="text-lg" />
+                  <span>Scrivici per parlarne</span>
+                </a>
 
-    <div className="mt-4 space-y-6">
-      {/* BLOCCO 1 – LASCIATI ISPIRARE */}
-      <div className="space-y-3">
-        <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
-          Lasciati ispirare ancora
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-
-          <a
-            href="/mete-capitali"
-            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6]
-              hover:border-[#0863D6] transition"
-          >
-            <FaCity className="text-lg" />
-            <span>Capitali europee</span>
-          </a>
-
-          <a
-            href="/mete-mare-italia"
-            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480]
-              hover:text-[#EB2480] hover:bg-white/5 transition"
-          >
-            <FaUmbrellaBeach className="text-lg" />
-            <span>Mare Italia</span>
-          </a>
-
-          <a
-            href="/mete-mare-estero"
-            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500
-              hover:text-emerald-500 hover:bg-white/5 transition"
-          >
-            <FaGlobeEurope className="text-lg" />
-            <span>Mare estero</span>
-          </a>
-
+                <a
+                  href={RESERVIO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
+                    font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480]
+                    hover:text-[#EB2480] transition"
+                >
+                  <FaRegCalendarAlt className="text-lg" />
+                  <span>Prenota una consulenza</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* DIVISORE */}
-      <p className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase text-slate-400">
-        oppure
-      </p>
-
-      {/* BLOCCO 2 – CONTATTI */}
-      <div className="space-y-3">
-        <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
-          Hai già deciso la meta?
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-
-          <a
-            href="/contatti"
-            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white
-              hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
-          >
-            <FaRegCalendarAlt className="text-lg" />
-            <span>Scrivici per parlarne</span>
-          </a>
-
-          <a
-            href={RESERVIO_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
-              font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480]
-              hover:text-[#EB2480] transition"
-          >
-            <FaRegCalendarAlt className="text-lg" />
-            <span>Prenota una consulenza</span>
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
     </>
   );
 };
 
 export default MeteStagionali;
+
 
 
 
