@@ -25,14 +25,14 @@ const tripTypes = [
   },
   {
     title: "Individuali & di gruppo",
-    subtitle: "Solo per te o condividere",
+    subtitle: "Solo per te o da condividere",
     image: gruppoImg,
     query: "gruppo",
     to: "/viaggi-individuali-gruppo",
   },
   {
     title: "Family",
-    subtitle: "Viaggi pensati per grandi e piccoli",
+    subtitle: "Viaggi per grandi e piccoli",
     image: familyImg,
     query: "family",
     to: "/viaggi-family",
