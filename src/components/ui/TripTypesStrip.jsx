@@ -24,8 +24,8 @@ const tripTypes = [
     to: "/crociere",
   },
   {
-    title: "Viaggi individuali & di gruppo",
-    subtitle: "Esperienze da soli o da condividere",
+    title: "Individuali & di gruppo",
+    subtitle: "Solo per te o condividere",
     image: gruppoImg,
     query: "gruppo",
     to: "/viaggi-individuali-gruppo",
@@ -35,7 +35,7 @@ const tripTypes = [
     subtitle: "Viaggi pensati per grandi e piccoli",
     image: familyImg,
     query: "family",
-    to: "/viaggi-family", 
+    to: "/viaggi-family",
   },
 ];
 
@@ -65,13 +65,24 @@ const Card = memo(function Card({ trip }) {
         "
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
 
       <div className="relative p-4 md:p-5 w-full">
-        <h3 className="text-white text-xl md:text-2xl font-bold leading-tight drop-shadow-sm">
+        <h3
+          className="
+    text-white font-bold leading-tight drop-shadow-sm
+    text-xl md:text-2xl
+    max-w-[80%]
+    md:max-w-none
+    wrap-break-word
+    text-balance
+  "
+          style={{
+            fontSize: trip.title.length > 22 ? "1.25rem" : "1.5rem", // riduce automaticamente
+          }}
+        >
           {trip.title}
         </h3>
-
         <p
           className="
             mt-1 text-sm md:text-base text-slate-100/90

@@ -1,4 +1,3 @@
-// src/sections/home/SeasonalHighlightSection.jsx
 import { Link } from "react-router-dom";
 import { Plane, Building2, Waves, Globe2 } from "lucide-react";
 import heroImg from "../../assets/destination/hero.webp";
@@ -6,7 +5,6 @@ import heroImg from "../../assets/destination/hero.webp";
 import { getActiveSeasonForNow } from "../../config/seasonalSalesConfig";
 import { SEASONAL_IMAGES, getRandomSeasonImageForSeason } from "../../data/mete-stagionali-images";
 
-// Eventuali campagne e testi rimangono invariati
 const getSeasonalCtaLabel = () => "Scopri le mete stagionali";
 
 const CAMPAIGN_HIGHLIGHTS = {
@@ -46,29 +44,36 @@ const buildTitleFromCampaigns = (campaigns) => {
   }
 
   const labels = campaigns.slice(0, 3).map((c) => c.label);
-  if (labels.length === 1) return `Prossime partenze: ${labels[0]}`;
+
+  if (labels.length === 1) return `${labels[0]}`;
   if (labels.length === 2)
-    return `Prossime partenze: ${labels[0]} e ${labels[1]}`;
-  return `Prossime partenze: ${labels[0]}, ${labels[1]} e ${labels[2]}`;
+    return `${labels[0]} e ${labels[1]}`;
+  return `${labels[0]}, ${labels[1]} e ${labels[2]}`;
 };
 
 const SeasonalHighlightSection = () => {
   const { seasonId, campaigns } = getActiveSeasonForNow();
 
-  // Immagine random tra le mete stagionali della stagione corrente,
-  // con fallback al vecchio heroImg
   const heroImage =
     getRandomSeasonImageForSeason(seasonId, heroImg) || heroImg;
 
   const today = new Date();
   const month = today.getMonth() + 1;
+
+  // Mare in vendita 7 gennaio – settembre, oppure estate piena
   const isMareSeason = month >= 3 && month <= 9;
 
+  // Estate piena → giugno, luglio, agosto
+  const isSummerSeason = month >= 6 && month <= 8;
+
+  // I bottoni mare compaiono quando ha senso commercialmente
   const hasMareCampaign = isMareSeason
     ? campaigns.some((c) =>
         ["mare-italia", "mare-europa-isole", "mare-inverno"].includes(c.id)
       )
     : false;
+
+  const showMareButtons = hasMareCampaign || isSummerSeason;
 
   const dynamicHighlights = campaigns
     .map((c) => CAMPAIGN_HIGHLIGHTS[c.id])
@@ -76,14 +81,15 @@ const SeasonalHighlightSection = () => {
     .slice(0, 3);
 
   const title = buildTitleFromCampaigns(campaigns);
-  const mainCtaLabel = getSeasonalCtaLabel();
 
   return (
     <section className="py-6 md:py-8 bg-[#0F172A]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="rounded-3xl border border-slate-700/70 bg-linear-to-br from-slate-900 via-slate-900/95 to-[#0F172A] overflow-hidden shadow-lg flex flex-col md:flex-row md:items-stretch">
+
           {/* Testo */}
           <div className="w-full md:w-3/5 p-5 md:p-6 flex flex-col gap-3 md:justify-center">
+
             <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#EB2480] text-center md:text-left">
               Prossime partenze da programmare
             </p>
@@ -102,7 +108,7 @@ const SeasonalHighlightSection = () => {
                 {campaigns.map((c) => (
                   <span
                     key={c.id}
-                    className="inline-flex items-center rounded-full bg-slate-800/70 border border-slate-600 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-100 text-justify"
+                    className="inline-flex items-center rounded-full bg-slate-800/70 border border-slate-600 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-100"
                   >
                     {c.label}
                   </span>
@@ -121,15 +127,21 @@ const SeasonalHighlightSection = () => {
               </ul>
             )}
 
+            {/* CTA ROW */}
             <div className="mt-3 flex flex-col sm:flex-row flex-wrap gap-3">
-              <Link
-                to={`/mete-stagionali#${seasonId}`}
-                className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
-              >
-                <Plane className="w-4 h-4 mr-2" />
-                {mainCtaLabel}
-              </Link>
 
+              {/* CTA mete stagionali — nascosta in estate */}
+              {!isSummerSeason && (
+                <Link
+                  to={`/mete-stagionali#${seasonId}`}
+                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                >
+                  <Plane className="w-4 h-4 mr-2" />
+                  {getSeasonalCtaLabel()}
+                </Link>
+              )}
+
+              {/* Capitali — visibile SEMPRE */}
               <Link
                 to="/mete-capitali"
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
@@ -138,7 +150,8 @@ const SeasonalHighlightSection = () => {
                 Capitali e città europee
               </Link>
 
-              {hasMareCampaign && (
+              {/* Bottoni mare */}
+              {showMareButtons && (
                 <>
                   <Link
                     to="/mete-mare-italia"
@@ -172,6 +185,7 @@ const SeasonalHighlightSection = () => {
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 via-slate-900/10 to-transparent md:bg-linear-to-l pointer-events-none" />
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -179,6 +193,7 @@ const SeasonalHighlightSection = () => {
 };
 
 export default SeasonalHighlightSection;
+
 
 
 

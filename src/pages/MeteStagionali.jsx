@@ -16,7 +16,6 @@ import {
 import {
   FaCity,
   FaUmbrellaBeach,
-  FaGlobeEurope,
   FaRegCalendarAlt,
 } from "react-icons/fa";
 
@@ -369,7 +368,7 @@ const MeteStagionali = () => {
                     hover:border-[#0863D6] transition"
                 >
                   <FaCity className="text-lg" />
-                  <span>Capitali europee</span>
+                  <span>Città europee</span>
                 </a>
 
                 <a
@@ -388,7 +387,7 @@ const MeteStagionali = () => {
                     font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500
                     hover:text-emerald-500 hover:bg-white/5 transition"
                 >
-                  <FaGlobeEurope className="text-lg" />
+                  <FaUmbrellaBeach className="text-lg" />
                   <span>Mare estero</span>
                 </a>
               </div>

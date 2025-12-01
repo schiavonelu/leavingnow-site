@@ -252,7 +252,7 @@ export const MARE_ESTERO_DESTINATIONS = [
     id: "mare-estero-hurghada",
     title: "Hurghada",
     region: "Egitto – Mar Rosso",
-    badge: "Mare cristallino tutto l’anno",
+    badge: "Mare cristallino",
     period: "Tutto l’anno",
     bestSeasons: ["inverno", "primavera"],
     description:

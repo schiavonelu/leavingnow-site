@@ -1,5 +1,3 @@
-// src/config/seasonalSalesConfig.js
-
 // Utility per confrontare solo mese/giorno in modo "commerciale"
 const makeDate = (month, day) => ({ month, day });
 
@@ -22,8 +20,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "mare-italia",
     label: "Mare Italia",
-    from: makeDate(1, 7),  // 7 gennaio
-    to: makeDate(8, 20),   // 20 agosto
+    from: makeDate(1, 7),   // 7 gennaio
+    to: makeDate(8, 20),    // 20 agosto
     primaryCta: {
       to: "/mete-mare-italia",
       label: "Scopri le coste e le isole italiane",
@@ -33,8 +31,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "crociere",
     label: "Crociere",
-    from: makeDate(9, 1),  // 1 settembre
-    to: makeDate(3, 30),   // 30 marzo (passa l’anno)
+    from: makeDate(9, 1),   // 1 settembre
+    to: makeDate(3, 30),    // 30 marzo (passa l’anno)
     primaryCta: {
       to: "/crociere",
       label: "Guarda le idee di crociera",
@@ -44,8 +42,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "viaggi-intercontinentali",
     label: "Viaggi intercontinentali",
-    from: makeDate(9, 1),  // 1 settembre
-    to: makeDate(3, 30),   // 30 marzo
+    from: makeDate(9, 1),   // 1 settembre
+    to: makeDate(3, 30),    // 30 marzo (passa l’anno)
     primaryCta: {
       to: "/mete-viaggi-di-nozze",
       label: "Idee per itinerari lontani e combinati",
@@ -55,8 +53,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "mare-europa-isole",
     label: "Mare Europa & isole",
-    from: makeDate(10, 1), // 1 ottobre
-    to: makeDate(7, 30),   // 30 luglio (passa l’anno)
+    from: makeDate(10, 1),  // 1 ottobre
+    to: makeDate(7, 30),    // 30 luglio (passa l’anno)
     primaryCta: {
       to: "/mete-mare-estero",
       label: "Mare estero tra isole e coste",
@@ -66,8 +64,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "mare-inverno",
     label: "Mare d’inverno",
-    from: makeDate(3, 1),  // 1 marzo
-    to: makeDate(9, 30),   // 30 settembre
+    from: makeDate(3, 1),   // 1 marzo
+    to: makeDate(9, 30),    // 30 settembre
     primaryCta: {
       to: "/mete-mare-estero#mare-inverno",
       label: "Idee di mare d’inverno",
@@ -77,8 +75,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "mercatini-natale",
     label: "Mercatini di Natale",
-    from: makeDate(6, 1),  // 1 giugno
-    to: makeDate(10, 30),  // 30 ottobre
+    from: makeDate(6, 1),   // 1 giugno
+    to: makeDate(10, 30),   // 30 ottobre
     primaryCta: {
       to: "/mete-stagionali#inverno",
       label: "Mercatini tra Trentino, Austria e Alsazia",
@@ -88,8 +86,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "capodanno",
     label: "Capodanno",
-    from: makeDate(6, 1),  // 1 giugno
-    to: makeDate(11, 15),  // 15 novembre
+    from: makeDate(6, 1),   // 1 giugno
+    to: makeDate(11, 15),   // 15 novembre
     primaryCta: {
       to: "/mete-stagionali#eventi-speciali",
       label: "Capitali ed eventi di Capodanno",
@@ -99,8 +97,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "carnevale",
     label: "Carnevale",
-    from: makeDate(9, 1),  // 1 settembre
-    to: makeDate(1, 31),   // 31 gennaio
+    from: makeDate(9, 1),   // 1 settembre
+    to: makeDate(1, 31),    // 31 gennaio (passa l’anno)
     primaryCta: {
       to: "/mete-stagionali#eventi-speciali",
       label: "Venezia, Nizza e altre idee di Carnevale",
@@ -110,8 +108,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "san-valentino",
     label: "San Valentino",
-    from: makeDate(9, 1),  // 1 settembre
-    to: makeDate(12, 31),  // 31 dicembre
+    from: makeDate(9, 1),   // 1 settembre
+    to: makeDate(12, 31),   // 31 dicembre
     primaryCta: {
       to: "/mete-stagionali#eventi-speciali",
       label: "Weekend romantici di San Valentino",
@@ -121,8 +119,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "tulipani-amsterdam",
     label: "Fioritura tulipani Amsterdam",
-    from: makeDate(9, 15), // 15 settembre
-    to: makeDate(1, 15),   // 15 gennaio
+    from: makeDate(9, 15),  // 15 settembre
+    to: makeDate(1, 15),    // 15 gennaio (passa l’anno)
     primaryCta: {
       to: "/mete-stagionali#primavera",
       label: "Amsterdam e Keukenhof in fiore",
@@ -132,8 +130,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "ciliegi-giappone",
     label: "Fioritura ciliegi in Giappone",
-    from: makeDate(9, 1),  // 1 settembre
-    to: makeDate(12, 31),  // 31 dicembre
+    from: makeDate(9, 1),   // 1 settembre
+    to: makeDate(12, 31),   // 31 dicembre
     primaryCta: {
       to: "/mete-viaggi-di-nozze#giappone",
       label: "Giappone tra hanami e tradizioni",
@@ -143,8 +141,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "pasqua",
     label: "Pasqua",
-    from: makeDate(9, 1),  // 1 settembre
-    to: makeDate(2, 20),   // 20 febbraio
+    from: makeDate(9, 1),   // 1 settembre
+    to: makeDate(2, 20),    // 20 febbraio (passa l’anno)
     primaryCta: {
       to: "/mete-stagionali#primavera",
       label: "City break e mare per Pasqua",
@@ -154,8 +152,8 @@ export const SALES_CAMPAIGNS = [
   {
     id: "oktoberfest",
     label: "Oktoberfest",
-    from: makeDate(4, 1),  // 1 aprile
-    to: makeDate(6, 30),   // 30 giugno
+    from: makeDate(4, 1),   // 1 aprile
+    to: makeDate(6, 30),    // 30 giugno
     primaryCta: {
       to: "/mete-stagionali#eventi-speciali",
       label: "Monaco e Baviera per l’Oktoberfest",

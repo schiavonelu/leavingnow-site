@@ -156,7 +156,7 @@ const CreditiImmagini = () => {
         Oceano Pacifico – ombra di albero di cocco sulla spiaggia.
         <br />
         <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
-        Scatto che richiamo l&apos;essenza delle spiagge del Pacifico, con
+        Scatto che richiama l&apos;essenza delle spiagge del Pacifico, con
         atmosfere tropicali e rilassanti.
         <br />
         <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
@@ -1162,6 +1162,620 @@ const CreditiImmagini = () => {
         </p>
       </div>
 
+      {/* =====================================================
+          NUOVA SEZIONE – METE MARE ESTERO
+      ====================================================== */}
+
+      <hr className="border-slate-200" />
+
+      <h2 className="text-base md:text-lg font-semibold text-[#132C50]">
+        Mete – Mare estero
+      </h2>
+
+      <div className="space-y-4">
+        {/* SEYCHELLES */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Seychelles – spiaggia vista dall’alto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista a volo d’uccello della spiaggia durante il giorno, usata per
+          rappresentare le Seychelles e i loro litorali bianchi.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-a-volo-d-uccello-della-spiaggia-durante-il-giorno-2956457/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista a volo d’uccello della spiaggia durante il giorno”
+          </a>
+          .
+        </p>
+
+        {/* MAURITIUS */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Mauritius – isola tropicale vista dall’alto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Foto aerea di un’isola circondata da acqua turchese, usata per
+          evocare Mauritius e le sue lagune.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/foto-aerea-dell-isola-3703465/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “foto aerea dell’isola”
+          </a>
+          .
+        </p>
+
+        {/* SHARM EL SHEIKH */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Sharm
+          El Sheikh – Mar Rosso.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Scorcio marino con barriera corallina, utilizzato per rappresentare
+          Sharm e il Mar Rosso.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/34939785/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – immagine ID 34939785
+          </a>
+          .
+        </p>
+
+        {/* HURGHADA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Hurgada – snorkelling nel Mar Rosso.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Pesci colorati nel mare cristallino, usata per raffigurare il mondo
+          sottomarino di Hurgada.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/mare-acqua-oceano-pesci-4809065/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “mare, acqua, oceano, pesci”
+          </a>
+          .
+        </p>
+
+        {/* SPLIT */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Split
+          – porto cittadino.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Porto costiero con imbarcazioni moderne ormeggiate, usato per
+          rappresentare Split in Croazia.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/porto-cittadino-costiero-con-moderne-imbarcazioni-ormeggiate-4353558/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “porto cittadino costiero con moderne imbarcazioni
+            ormeggiate”
+          </a>
+          .
+        </p>
+
+        {/* HVAR */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Hvar –
+          barche nel porto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Barche bianche sul corpo d’acqua, usata per raffigurare l’atmosfera
+          marinara di Hvar.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/barche-bianche-sul-corpo-d-acqua-2265876/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “barche bianche sul corpo d’acqua”
+          </a>
+          .
+        </p>
+
+        {/* DUBROVNIK */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Dubrovnik – città fortificata vista dall’alto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista aerea di una città e di un’isola, usata per rappresentare le
+          mura e il mare di Dubrovnik.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-aerea-di-una-citta-e-di-un-isola-3566139/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista aerea di una città e di un’isola”
+          </a>
+          .
+        </p>
+
+        {/* KEFALONIA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Cefalonia – spiaggia e mare turchese.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Paesaggio con sabbia, mare e nuvole, usato per evocare le baie di
+          Kefalonia.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/paesaggio-natura-sabbia-nuvole-6561006/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “paesaggio, natura, sabbia, nuvole”
+          </a>
+          .
+        </p>
+
+        {/* RODI */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Rodi –
+          città vista dall’alto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista aerea degli edifici della città vicino al mare, usata per
+          rappresentare Rodi.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-aerea-degli-edifici-della-citta-vicino-al-mare-3732499/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista aerea degli edifici della città vicino al mare”
+          </a>
+          .
+        </p>
+
+        {/* CRETA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Creta
+          – onde e scogliere.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Onde costiere e spiaggia rocciosa, usata per richiamare il litorale
+          di Creta.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/onde-costiere-e-paesaggio-di-spiaggia-rocciosa-34972079/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “onde costiere e paesaggio di spiaggia rocciosa”
+          </a>
+          .
+        </p>
+
+        {/* ALICANTE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Alicante – spiaggia urbana e monte Benacantil.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista panoramica della spiaggia e del promontorio, usata per
+          rappresentare Alicante.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-panoramica-della-spiaggia-di-alicante-e-del-monte-benacantil-34975817/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista panoramica della spiaggia di Alicante e del monte
+            Benacantil”
+          </a>
+          .
+        </p>
+
+        {/* BENIDORM */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Benidorm – skyline sul mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista sul mare dello skyline di Benidorm al tramonto, usata per le
+          coste della Costa Blanca.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-sul-mare-dello-skyline-di-benidorm-al-tramonto-34975837/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista sul mare dello skyline di Benidorm al tramonto”
+          </a>
+          .
+        </p>
+
+        {/* LLORET DE MAR */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Lloret de Mar – costa e pineta.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista aerea della spiaggia circondata da alberi, usata per evocare
+          la Costa Brava.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-aerea-della-spiaggia-circondata-da-alberi-114994/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista aerea della spiaggia circondata da alberi”
+          </a>
+          .
+        </p>
+
+        {/* SANTORINI */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Santorini – cupole bianche e mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Iconico scatto delle case bianche affacciate sul mare, usato per
+          rappresentare Santorini.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/foto-di-santorini-grecia-1010657/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “foto di Santorini, Grecia”
+          </a>
+          .
+        </p>
+
+        {/* MYKONOS */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Mykonos – mare blu sotto il cielo limpido.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Mare blu sotto il cielo blu, usata per richiamare le spiagge
+          cicladiche di Mykonos.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/mare-blu-sotto-il-cielo-blu-2783619/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “mare blu sotto il cielo blu”
+          </a>
+          .
+        </p>
+
+        {/* ZANTE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Zante
+          – mare turchese.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Mare blu sotto il cielo chiaro, usata per evocare le baie di
+          Zacinto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/mare-blu-sotto-il-cielo-blu-chiaro-50594/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “mare blu sotto il cielo blu chiaro”
+          </a>
+          .
+        </p>
+
+        {/* CORFU */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Corfù – acque azzurre dall’alto.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista aerea delle acque azzurre di Corfu, usata per rappresentare
+          l’isola ionica.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-aerea-delle-acque-azzurre-di-corfu-grecia-34923340/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista aerea delle acque azzurre di Corfu, Grecia”
+          </a>
+          .
+        </p>
+
+        {/* MALAGA / COSTA DEL SOL */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Malaga – Costa del Sol.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Lotto di baldacchini da spiaggia, usato per rappresentare le spiagge
+          della Costa del Sol.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/lotto-di-baldacchino-da-spiaggia-1884417/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “lotto di baldacchino da spiaggia”
+          </a>
+          .
+        </p>
+
+        {/* ALGARVE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Algarve – scogliere e archi naturali.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Scogliere e arco costiero, usata per rappresentare l’Algarve
+          portoghese.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/splendide-scogliere-e-arco-costieri-dell-algarve-34966833/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “splendide scogliere e arco costieri dell’Algarve”
+          </a>
+          .
+        </p>
+
+        {/* GRAN CANARIA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Gran
+          Canaria – onde oceaniche.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Fotografia di onde in mare aperto, usata per rappresentare Gran
+          Canaria e le Canarie.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/fotografia-di-sea-waves-1606624/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “fotografia di sea waves”
+          </a>
+          .
+        </p>
+
+        {/* TENERIFE / MARE ESTERO TENERIFE */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Tenerife – vista sull’oceano.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Vista sull’oceano con scogliera, usata per rappresentare Tenerife e
+          le sue coste.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/vista-sull-oceano-34943104/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “vista sull’oceano”
+          </a>
+          .
+        </p>
+
+        {/* IBIZA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span> Ibiza
+          – barche nell’oceano.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Barche sull’oceano al tramonto, usata per rappresentare Ibiza e il
+          suo mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/barche-nell-oceano-2191136/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “barche nell’oceano”
+          </a>
+          .
+        </p>
+
+        {/* MINORCA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Minorca – costa rocciosa e mare.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Rocce marroni e specchio d’acqua, usata per evocare le cale di
+          Minorca.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/brown-rock-e-specchio-d-acqua-2648989/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “brown rock e specchio d’acqua”
+          </a>
+          .
+        </p>
+
+        {/* MALLORCA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Mallorca – faro bianco.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Faro bianco affacciato sul mare, usato per rappresentare Mallorca e
+          i suoi promontori.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/faro-bianco-2353333/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “faro bianco”
+          </a>
+          .
+        </p>
+
+        {/* FORMENTERA */}
+        <p className="space-y-0.5">
+          <span className="font-semibold text-[#132C50]">Immagine:</span>{" "}
+          Formentera – spiaggia e mare caraibico.
+          <br />
+          <span className="font-semibold text-[#132C50]">Descrizione:</span>{" "}
+          Persone in spiaggia su mare cristallino, usata per rappresentare
+          l’isola di Formentera.
+          <br />
+          <span className="font-semibold text-[#132C50]">Fotografo:</span>{" "}
+          Immagine da Pexels (dati specifici non disponibili).
+          <br />
+          <span className="font-semibold text-[#132C50]">Fonte:</span>{" "}
+          <a
+            href="https://www.pexels.com/it-it/foto/mare-spiaggia-vacanza-persone-5096831/"
+            className="text-sky-600 underline underline-offset-2 hover:text-sky-800"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Pexels – “mare, spiaggia, vacanza, persone”
+          </a>
+          .
+        </p>
+      </div>
+
       <hr className="border-slate-200" />
 
       {/* NOTA FINALE */}
@@ -1176,6 +1790,7 @@ const CreditiImmagini = () => {
 };
 
 export default CreditiImmagini;
+
 
 
 

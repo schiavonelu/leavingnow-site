@@ -14,7 +14,6 @@ import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 import {
   FaUmbrellaBeach,
-  FaGlobeEurope,
   FaRegCalendarAlt,
 } from "react-icons/fa";
 
@@ -308,7 +307,7 @@ const MeteCapitali = () => {
                   href="/mete-mare-estero"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500 hover:text-emerald-500 hover:bg-white/5 transition"
                 >
-                  <FaGlobeEurope className="text-lg" />
+                  <FaUmbrellaBeach className="text-lg" />
                   <span>Mare estero</span>
                 </a>
               </div>

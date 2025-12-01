@@ -1,7 +1,7 @@
 // src/components/ui/SeaFiltersItaly.jsx
 import { useState } from "react";
 import { Filter, X, ChevronLeft, ChevronRight, Mail } from "lucide-react";
-import { FaGlobeEurope } from "react-icons/fa";
+import { FaUmbrellaBeach } from "react-icons/fa";
 
 const ITALY_FILTERS = [
   {
@@ -143,7 +143,7 @@ const SeaFiltersItaly = ({
           href="/mete-mare-estero"
           className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-sky-500 text-sky-700 bg-sky-50 hover:bg-sky-100 hover:border-sky-600 transition"
         >
-          <FaGlobeEurope className="text-sm" />
+          <FaUmbrellaBeach className="text-sm" />
           <span>Vai alle mete mare estero</span>
         </a>
       </div>

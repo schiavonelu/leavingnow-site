@@ -1,4 +1,5 @@
 // src/pages/MeteMareEstero.jsx
+
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search } from "lucide-react";
 
@@ -8,7 +9,7 @@ import ContinentCard from "../components/ui/ContinentCard.jsx";
 import SeaFiltersEstero from "../components/ui/SeaFiltersEstero.jsx";
 import Pagination from "../components/ui/Pagination.jsx";
 
-import heroImg from "../assets/destination/hero.webp";
+import heroImg from "../assets/mete-mare-estero/hero.webp";
 
 import { MARE_ESTERO_DESTINATIONS } from "../data/mare-estero.js";
 import { MARE_ESTERO_IMAGES } from "../data/mare-estero-images.js";
@@ -27,6 +28,16 @@ const getTripNation = (trip) => {
   return base.trim();
 };
 
+// 🔹 Genera uno slug coerente
+const toSlug = (str) =>
+  (str || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+
 const MeteMareEstero = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,7 +50,7 @@ const MeteMareEstero = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  // Opzioni per il filtro (nazioni uniche)
+  // Opzioni filtro (nazioni uniche)
   const nationOptions = useMemo(() => {
     const set = new Set();
     (MARE_ESTERO_DESTINATIONS || []).forEach((trip) => {
@@ -49,7 +60,7 @@ const MeteMareEstero = () => {
     return Array.from(set);
   }, []);
 
-  // Filtraggio per testo + nazione
+  // Filtraggio per ricerca + nazione
   const filteredTrips = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
 
@@ -78,6 +89,8 @@ const MeteMareEstero = () => {
     });
   }, [searchTerm, selectedNations]);
 
+
+  // PAGINAZIONE
   const totalPages = Math.ceil(filteredTrips.length / ITEMS_PER_PAGE) || 1;
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredTrips.slice(
@@ -108,6 +121,8 @@ const MeteMareEstero = () => {
 
   const hasResults = filteredTrips.length > 0;
 
+
+  // Badge riassuntivo
   const getNationSummary = () => {
     if (selectedNations.length === 0) return "tutte le nazioni";
     if (selectedNations.length === 1) return selectedNations[0];
@@ -122,6 +137,7 @@ const MeteMareEstero = () => {
   };
 
   const badgeColorClasses = getBadgeColorClasses();
+
 
   return (
     <>
@@ -145,7 +161,7 @@ const MeteMareEstero = () => {
           <p className="text-sm md:text-base text-slate-700 leading-relaxed">
             Dal mare d’inverno alle isole mediterranee estive, passando per
             oceano e grandi coste europee. Puoi cercare per zona o filtrare in
-            base alla nazione o macro-area (es. Grecia, Canarie, Mar Rosso).
+            base alla nazione o macro-area (Grecia, Canarie, Spagna, Mar Rosso…).
           </p>
         </div>
       </section>
@@ -154,7 +170,8 @@ const MeteMareEstero = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]" id="mare-inverno">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* Filtri per nazione */}
+            
+            {/* 🔹 Filtri mare estero */}
             <SeaFiltersEstero
               title="Mare estero"
               options={nationOptions}
@@ -170,16 +187,18 @@ const MeteMareEstero = () => {
               }
             />
 
-            {/* Risultati a destra */}
+            {/* 🔹 Risultati */}
             <div
               className={`flex-1 space-y-6 transition-[width] duration-300 ${
                 filtersCollapsed ? "lg:pl-2" : ""
               }`}
             >
-              {/* Barra di ricerca sticky */}
+
+              {/* Barra di ricerca */}
               <div className="lg:sticky lg:top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
+                    
                     <div className="flex-1">
                       <label
                         htmlFor="search-mare-estero"
@@ -192,7 +211,7 @@ const MeteMareEstero = () => {
                         <input
                           id="search-mare-estero"
                           type="text"
-                          placeholder="Cerca una meta ..."
+                          placeholder="Cerca una meta..."
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                           className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white placeholder:text-slate-400"
@@ -200,7 +219,7 @@ const MeteMareEstero = () => {
                       </div>
                     </div>
 
-                    {/* Badge mete + nazioni */}
+                    {/* Badge */}
                     <div className="flex items-center justify-between md:justify-end gap-2 text-xs md:text-sm text-slate-500">
                       <span
                         className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] md:text-xs font-semibold ${badgeColorClasses}`}
@@ -212,11 +231,12 @@ const MeteMareEstero = () => {
                         in {getNationSummary()}.
                       </span>
                     </div>
+
                   </div>
                 </div>
               </div>
 
-              {/* GRID + PAGINAZIONE */}
+              {/* GRID */}
               <div ref={cardsSectionRef}>
                 {filteredTrips.length === 0 ? (
                   <p className="text-sm md:text-base text-slate-600 text-center py-6">
@@ -226,9 +246,9 @@ const MeteMareEstero = () => {
                 ) : (
                   <div className="grid gap-8 md:grid-cols-3">
                     {currentItems.map((trip, idx) => {
+                      const imgKey = toSlug(trip.id || trip.title || "");
                       const cardImage =
-                        (trip.id && MARE_ESTERO_IMAGES?.[trip.id]) ||
-                        heroImg;
+                        MARE_ESTERO_IMAGES[imgKey] || heroImg;
 
                       return (
                         <ContinentCard
@@ -245,7 +265,7 @@ const MeteMareEstero = () => {
                   </div>
                 )}
 
-                {/* PAGINAZIONE CON COMPONENTE RIUSABILE */}
+                {/* PAGINAZIONE */}
                 {filteredTrips.length > 0 && (
                   <Pagination
                     currentPage={currentPage}
@@ -255,11 +275,12 @@ const MeteMareEstero = () => {
                 )}
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI */}
+      {/* FOOTER ISPIRAZIONE */}
       <section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
           <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
@@ -272,12 +293,12 @@ const MeteMareEstero = () => {
 
           <p className="text-sm md:text-base text-slate-200 leading-relaxed">
             Puoi continuare a prendere spunti tra mete stagionali e capitali
-            europee, oppure, se hai già individuato il tuo stile di vacanza,
-            possiamo parlarne direttamente e trasformarlo in un viaggio su misura.
+            europee, oppure parlarne direttamente con noi per costruire un
+            viaggio su misura.
           </p>
 
           <div className="mt-4 space-y-6">
-            {/* BLOCCO 1 – LASCIATI ISPIRARE */}
+
             <div className="space-y-3">
               <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
                 Lasciati ispirare ancora
@@ -291,25 +312,24 @@ const MeteMareEstero = () => {
                   <FaRegCalendarAlt className="text-lg" />
                   <span>Mete stagionali</span>
                 </a>
+
                 <a
                   href="/mete-capitali"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480] hover:text-[#EB2480] hover:bg-white/5 transition"
                 >
                   <FaCity className="text-lg" />
-                  <span>Mete capitali</span>
+                  <span>Città europee</span>
                 </a>
               </div>
             </div>
 
-            {/* DIVISORE TESTUALE */}
             <p className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase text-slate-400">
               oppure
             </p>
 
-            {/* BLOCCO 2 – HAI GIÀ DECISO? */}
             <div className="space-y-3">
               <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
-                Hai già deciso o vuoi un confronto diretto?
+                Hai già deciso?
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -319,6 +339,7 @@ const MeteMareEstero = () => {
                 >
                   Scrivici per parlarne
                 </a>
+
                 <a
                   href={RESERVIO_URL}
                   target="_blank"
@@ -329,14 +350,19 @@ const MeteMareEstero = () => {
                 </a>
               </div>
             </div>
+
           </div>
         </div>
       </section>
+
     </>
   );
 };
 
 export default MeteMareEstero;
+
+
+
 
 
 

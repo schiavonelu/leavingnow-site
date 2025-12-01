@@ -8,7 +8,7 @@ import ContinentCard from "../components/ui/ContinentCard.jsx";
 import SeaFiltersItaly from "../components/ui/SeaFiltersItaly.jsx";
 import Pagination from "../components/ui/Pagination.jsx";
 
-import heroImg from "../assets/destination/hero.webp";
+import heroImg from "../assets/mete-mare-italia/hero.webp";
 
 import { MARE_ITALIA_DESTINATIONS } from "../data/mare-italia.js";
 import { MARE_ITALIA_IMAGES } from "../data/mare-italia-images.js";
@@ -348,7 +348,7 @@ const MeteMareItalia = () => {
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480] hover:text-[#EB2480] hover:bg-white/5 transition"
                 >
                   <FaCity className="text-lg" />
-                  <span>Mete capitali</span>
+                  <span>Città europee</span>
                 </a>
               </div>
             </div>
