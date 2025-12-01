@@ -339,7 +339,7 @@ const MeteStagionali = () => {
         })()}
 
       {/* 🔹 BANNER UNICO: ISPIRAZIONE + ALTRE METE + CONTATTI (Stagionali) */}
-      <section className="py-10 md:py-14 bg-gradient-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
+      <section className="py-10 md:py-14 bg-linear-to-r from-[#0B1F3B] via-[#132C50] to-[#0B1F3B]">
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
           <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-sky-300">
             Ti ispiriamo, poi lo costruiamo insieme

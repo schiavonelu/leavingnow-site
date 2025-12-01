@@ -291,7 +291,7 @@ const MeteViaggiNozze = () => {
                           key={page}
                           type="button"
                           onClick={() => handlePageChange(page)}
-                          className={`min-w-[2rem] px-2.5 h-8 text-xs md:text-sm rounded-full border transition ${
+                          className={`min-w-8 px-2.5 h-8 text-xs md:text-sm rounded-full border transition ${
                             page === currentPage
                               ? "bg-[#0863D6] border-[#0863D6] text-white"
                               : "border-slate-300 text-slate-600 hover:border-[#0863D6] hover:text-[#0863D6]"
