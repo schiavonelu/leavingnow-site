@@ -10,8 +10,10 @@ import {
   ShieldCheck,
   Gift,
   Calendar,
+  HelpCircle,
+  ChevronDown,
 } from "lucide-react";
-import { Helmet } from "react-helmet-async"; // 🟣 SEO per singola pagina
+import { Helmet } from "react-helmet-async"; 
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
@@ -88,7 +90,7 @@ const ViaggiDiNozze = () => {
     }
   };
 
-  // 🔹 Dati strutturati FAQ (rich snippet)
+  // 🔹 Dati strutturati FAQ (rich snippet) – allineati alla sezione FAQ in pagina
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -98,34 +100,66 @@ const ViaggiDiNozze = () => {
         name: "Quanto tempo prima conviene organizzare il viaggio di nozze?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "In genere consigliamo di iniziare a progettare il viaggio di nozze tra gli 8 e i 12 mesi prima della data di partenza, soprattutto per destinazioni molto richieste, viaggi di nozze intercontinentali o periodi di alta stagione."
-        }
+          text: "Per un viaggio di nozze intercontinentale o in alta stagione consigliamo di iniziare a pianificare tra gli 8 e i 12 mesi prima della partenza. In questo modo è più facile trovare disponibilità su voli, strutture e servizi, mantenendo un buon rapporto qualità/prezzo.",
+        },
       },
       {
         "@type": "Question",
-        name: "Posso fare una lista nozze viaggio presso Leaving Now ad Aversa?",
+        name: "Qual è il budget medio per un viaggio di nozze?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sì, puoi attivare una lista viaggio di nozze con Leaving Now. I tuoi invitati potranno contribuire alla tua luna di miele e tu potrai tenere traccia delle quote raccolte con il supporto dell'agenzia viaggi di Aversa."
-        }
+          text: "Il budget di un viaggio di nozze varia molto in base alla durata, alla destinazione e alla tipologia di strutture scelte. In agenzia partiamo sempre dal vostro budget indicativo e costruiamo il progetto su misura, proponendo più soluzioni compatibili, dal mare tropicale ai tour intercontinentali.",
+        },
       },
       {
         "@type": "Question",
-        name: "Gestite anche biglietteria voli, treni e traghetti per il viaggio di nozze?",
+        name: "È possibile fare una lista viaggio di nozze presso Leaving Now ad Aversa?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Ci occupiamo di tutta la biglietteria necessaria al viaggio di nozze: voli nazionali e internazionali, eventuali treni ad alta velocità e tratte in nave o traghetto, coordinandoli con l'itinerario scelto."
-        }
+          text: "Sì, è possibile attivare una lista viaggio di nozze presso Leaving Now ad Aversa. I vostri invitati potranno contribuire alla luna di miele con versamenti dedicati, mentre voi potrete monitorare le quote raccolte grazie al supporto dell'agenzia viaggi.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Possiamo organizzare il viaggio di nozze anche solo online, senza venire in agenzia?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sì, potete organizzare l'intero viaggio di nozze anche da remoto. Possiamo sentirci via telefono, email o videochiamata, inviarvi preventivi dettagliati e finalizzare la pratica online, con la stessa cura di un appuntamento in agenzia ad Aversa.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Gestite anche biglietteria voli, treni e navi per il viaggio di nozze?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ci occupiamo di tutta la biglietteria collegata al viaggio di nozze: voli nazionali e internazionali, treni ad alta velocità e tratte in nave o traghetto, coordinandoli con le tappe dell'itinerario e con gli orari di arrivo e partenza.",
+        },
       },
       {
         "@type": "Question",
         name: "Organizzate viaggi di nozze su misura anche per chi parte da Napoli e Caserta?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sì, Leaving Now è un'agenzia viaggi ad Aversa che segue in particolare le coppie che partono dall'area nord di Napoli e Caserta, con consulenze su misura in sede o online."
-        }
-      }
-    ]
+          text: "Sì, Leaving Now è un'agenzia viaggi ad Aversa che segue in particolare le coppie che partono dall'area nord di Napoli e Caserta. Possiamo proporre soluzioni con partenze da Napoli, Roma e dagli altri principali aeroporti italiani.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "L'assicurazione viaggio è obbligatoria per la luna di miele?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "L'assicurazione viaggio non è sempre obbligatoria per legge, ma è fortemente consigliata per un viaggio di nozze, soprattutto se intercontinentale. Copre imprevisti come annullamento, problemi sanitari, smarrimento bagagli o ritardi importanti.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Quali documenti servono per un viaggio di nozze all'estero?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "I documenti dipendono dalla destinazione: in molti paesi extra UE è richiesto il passaporto con una validità residua di almeno 6 mesi, e in alcuni casi sono necessari visti o autorizzazioni elettroniche (come ESTA o eTA). In agenzia ti aiutiamo a verificare cosa serve in base alla meta scelta e alle tempistiche.",
+        },
+      },
+    ],
   };
 
   return (
@@ -141,7 +175,7 @@ const ViaggiDiNozze = () => {
         />
         <meta
           name="keywords"
-          content="viaggi di nozze Aversa, viaggio di nozze su misura Aversa, viaggio di nozze nord Napoli, viaggio di nozze personalizzato, luna di miele, lista nozze viaggio Aversa, lista viaggio di nozze, viaggi di nozze intercontinentali, viaggi di nozze mare tropicale, viaggi di nozze Stati Uniti, viaggi di nozze Giappone, agenzia viaggi Aversa viaggi di nozze"
+          content="viaggi di nozze Aversa, viaggio di nozze su misura Aversa, viaggio di nozze nord Napoli, viaggio di nozze personalizzato, luna di miele, lista viaggio di nozze Aversa, lista viaggio di nozze, viaggi di nozze intercontinentali, viaggi di nozze mare tropicale, viaggi di nozze Stati Uniti, viaggi di nozze Giappone, agenzia viaggi Aversa viaggi di nozze"
         />
         <link
           rel="canonical"
@@ -154,7 +188,7 @@ const ViaggiDiNozze = () => {
         />
         <meta
           property="og:description"
-          content="Progettiamo il vostro viaggio di nozze su misura: itinerari personalizzati, lista nozze viaggio, supporto per voli, treni e navi. Leaving Now, agenzia viaggi ad Aversa."
+          content="Progettiamo il vostro viaggio di nozze su misura: itinerari personalizzati, lista viaggio di nozze, supporto per voli, treni e navi. Leaving Now, agenzia viaggi ad Aversa."
         />
         <meta
           property="og:url"
@@ -171,7 +205,7 @@ const ViaggiDiNozze = () => {
         </script>
       </Helmet>
 
-      {/* ℹ️ InnerHero probabilmente ha già un H1, quindi qui uso H2 per non duplicare l’H1 */}
+      {/* ℹ️ InnerHero probabilmente ha già un H1, quindi qui uso H2 più in basso */}
       <InnerHero
         title="Viaggi di nozze"
         subtitle="Un viaggio unico, costruito su misura per la vostra storia."
@@ -181,7 +215,10 @@ const ViaggiDiNozze = () => {
       <Breadcrumb />
 
       {/* HONEYMOON + PERCHÉ SCEGLIERCI (UNICA SEZIONE) */}
-      <section className="py-12 md:py-16 bg-white" aria-labelledby="honeymoon-intro">
+      <section
+        className="py-12 md:py-16 bg-white"
+        aria-labelledby="honeymoon-intro"
+      >
         <div className="max-w-6xl mx-auto px-4 space-y-10">
           {/* Intro Honeymoon */}
           <div className="max-w-4xl mx-auto text-center">
@@ -194,36 +231,25 @@ const ViaggiDiNozze = () => {
               id="honeymoon-intro"
               className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-5"
             >
-              Viaggio di nozze su misura ad Aversa per la vostra prima grande avventura insieme
+              Viaggio di nozze su misura ad Aversa per la vostra prima grande
+              avventura insieme
             </h2>
 
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto leading-relaxed">
               Leaving Now è l&apos;agenzia viaggi di Aversa specializzata in{" "}
               <strong>viaggi di nozze su misura</strong> per chi parte
-              dall&apos;area nord di Napoli e Caserta. Dalla prima idea al
+              da Napoli o Roma. Dalla prima idea al
               rientro, vi accompagniamo in ogni fase: consulenza dedicata,
-              progettazione dell&apos;itinerario, <strong>biglietteria aerea, treni e navi</strong>,
-              strutture selezionate, assicurazioni e assistenza continua, per
-              trasformare la luna di miele in un ricordo che resta.
+              progettazione dell&apos;itinerario,{" "}
+              <strong>biglietteria aerea, treni e navi</strong>, strutture
+              selezionate, assicurazioni e assistenza continua, per trasformare
+              la luna di miele in un ricordo che resta.
             </p>
           </div>
 
           {/* Perché scegliere Leaving Now + card */}
           <div>
-            <header className="max-w-3xl mb-6 mx-auto text-center">
-              <h3 className="text-xl md:text-2xl font-semibold text-[#132C50] mb-3">
-                Perché affidare il vostro viaggio di nozze a Leaving Now
-              </h3>
-              <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                Non proponiamo un semplice pacchetto, ma un{" "}
-                <strong>progetto di viaggio di nozze personalizzato</strong>,
-                costruito sui vostri gusti, sul budget e sul periodo scelto.
-                Che sogniate mare tropicale, tour negli Stati Uniti,
-                Giappone o <em>crociera di nozze</em>, vi aiutiamo a selezionare
-                tappe, voli, trasferimenti e strutture più adatte alla vostra coppia.
-              </p>
-            </header>
-
+           
             <div className="grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
               <ValueCard
                 icon={<Heart />}
@@ -279,12 +305,10 @@ const ViaggiDiNozze = () => {
             Potete partire dalle nostre{" "}
             <strong>idee di mete per viaggi di nozze</strong> oppure raccontarci
             già il viaggio che immaginate. In entrambi i casi costruiremo un
-            itinerario su misura per voi, con partenza da Aversa, nord Napoli o
-            Caserta.
+            itinerario su misura per voi, con partenza da Napoli o Roma.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-            {/* 🔹 Ora porta alla pagina con le mete viaggi di nozze */}
             <Link
               to="/mete-viaggi-di-nozze"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-sm border border-[#0369A1] bg-[#0369A1] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
@@ -292,7 +316,6 @@ const ViaggiDiNozze = () => {
               Vuoi farti ispirare?
             </Link>
 
-            {/* 🔹 Questo resta ancorato al form nella stessa pagina */}
             <a
               href="#preventivo-nozze"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-400 text-slate-700 hover:border-[#EB2480] hover:text-[#EB2480] transition"
@@ -318,7 +341,7 @@ const ViaggiDiNozze = () => {
               <p className="text-sm text-slate-700 leading-relaxed mb-2">
                 Vuoi che il <strong>viaggio di nozze</strong> sia anche il
                 regalo dei tuoi invitati? Con la{" "}
-                <strong>lista nozze viaggio Leaving Now</strong> puoi permettere
+                <strong>lista viaggio di nozze Leaving Now</strong> puoi permettere
                 ad amici e parenti di contribuire alla vostra luna di miele, con
                 un sistema semplice e assistito in agenzia.
               </p>
@@ -809,7 +832,7 @@ const ViaggiDiNozze = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="inline-flex justify-center items-center rounded-full px-8 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg:white hover:text-[#0863D6] transition disabled:opacity-60"
+                    className="inline-flex justify-center items-center rounded-full px-8 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition disabled:opacity-60"
                   >
                     {loading
                       ? "Invio in corso..."
@@ -844,6 +867,7 @@ const ViaggiDiNozze = () => {
                 rel="noreferrer"
                 className="font-semibold text-[#0863D6] hover:text-[#0648a3] underline underline-offset-2"
               >
+
                 Prenotate una consulenza
               </a>
               .
@@ -852,58 +876,275 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
-      {/* 🔹 SEZIONE FAQ TESTUALE (aiuta l’utente + rinforza le keyword) */}
-      <section className="py-10 md:py-12 bg-white border-t border-[#E2E8F0]">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-4 text-center">
-            Domande frequenti sui viaggi di nozze Leaving Now
-          </h2>
-          <div className="space-y-4 text-sm md:text-base text-slate-700">
-            <details className="group border border-slate-200 rounded-2xl p-4">
-              <summary className="font-semibold cursor-pointer text-[#132C50]">
-                Quanto tempo prima è meglio organizzare il viaggio di nozze?
-              </summary>
-              <p className="mt-2">
-                Per un <strong>viaggio di nozze intercontinentale</strong> o per
-                periodi di alta stagione consigliamo di iniziare a pianificare
-                tra gli 8 e i 12 mesi prima. In questo modo si trovano più
-                soluzioni di <strong>voli</strong>, strutture e combinazioni
-                vantaggiose.
-              </p>
-            </details>
+{/* 🔹 SEZIONE FAQ – LOOK PREMIUM + CONTENUTI OTTIMIZZATI */}
+<section
+  id="faq-viaggi-di-nozze"
+  className="py-12 md:py-16 bg-linear-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
+>
+  <div className="max-w-5xl mx-auto px-4">
+    <div className="text-center mb-8 md:mb-10">
+      <p className="inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
+        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F1FD]">
+          <HelpCircle className="w-3.5 h-3.5 text-[#0863D6]" />
+        </span>
+        FAQ VIAGGI DI NOZZE
+      </p>
 
-            <details className="group border border-slate-200 rounded-2xl p-4">
-              <summary className="font-semibold cursor-pointer text-[#132C50]">
-                Possiamo fare tutto online o dobbiamo venire in agenzia ad Aversa?
-              </summary>
-              <p className="mt-2">
-                Potete organizzare il vostro{" "}
-                <strong>viaggio di nozze</strong> sia in agenzia, ad Aversa, sia
-                da remoto: possiamo sentirci via telefono, email o videochiamata
-                e inviarvi i preventivi in formato digitale.
-              </p>
-            </details>
+      <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-3">
+        Domande frequenti sui viaggi di nozze Leaving Now
+      </h2>
 
-            <details className="group border border-slate-200 rounded-2xl p-4">
-              <summary className="font-semibold cursor-pointer text-[#132C50]">
-                Vi occupate anche della biglietteria per voli, treni e navi?
-              </summary>
-              <p className="mt-2">
-                Sì, ci occupiamo di <strong>biglietteria aerea</strong> (voli
-                nazionali e internazionali) e, quando serve, anche di biglietti
-                per <strong>treni ad alta velocità</strong> e{" "}
-                <strong>navi/traghetti</strong> collegati al vostro itinerario
-                di viaggio di nozze.
-              </p>
-            </details>
+      <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
+        Una selezione delle domande che riceviamo più spesso su{" "}
+        <strong>viaggi di nozze, lista viaggio di nozze e assicurazioni</strong>.
+        Se non trovi la risposta che cerchi, puoi sempre contattarci
+        direttamente: saremo felici di aiutarti.
+      </p>
+    </div>
+
+    <div className="space-y-4 text-sm md:text-base text-slate-700">
+      {/* FAQ 1 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              Quanto tempo prima è consigliabile organizzare il viaggio di nozze?
+            </span>
           </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            Per un <strong>viaggio di nozze intercontinentale</strong> o per
+            periodi molto richiesti consigliamo di iniziare la progettazione{" "}
+            <strong>tra gli 8 e i 12 mesi prima</strong>. In questo modo è più
+            semplice trovare le migliori combinazioni di{" "}
+            <strong>voli, hotel ed esperienze</strong> e gestire eventuali
+            richieste particolari con più margine.
+          </p>
         </div>
-      </section>
+      </details>
+
+      {/* FAQ 2 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?
+            </span>
+          </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            L&apos;iter iniziale può essere gestito{" "}
+            <strong>comodamente da casa</strong>: ci raccontate le vostre idee,
+            ricevete i preventivi e valutiamo insieme le soluzioni{" "}
+            <strong>via telefono, email o videochiamata</strong>.{" "}
+          </p>
+          <p className="mt-2 leading-relaxed">
+            La fase di <strong>conferma e finalizzazione</strong> – quindi
+            contratti, documenti e scelta definitiva di assicurazioni e servizi
+            – viene però sempre completata{" "}
+            <strong>in agenzia, di persona</strong>, per garantirvi massima
+            chiarezza e sicurezza.
+          </p>
+        </div>
+      </details>
+
+      {/* FAQ 3 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              Da quali aeroporti organizzate principalmente le partenze?
+            </span>
+          </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            Per i viaggi di nozze internazionali coordiniamo soprattutto
+            partenze dagli aeroporti di{" "}
+            <strong>Napoli (Capodichino)</strong> e{" "}
+            <strong>Roma (Fiumicino)</strong>, che offrono le combinazioni più
+            comode e frequenti verso molte destinazioni di lungo raggio.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            Se necessario, valutiamo anche <strong>altri aeroporti</strong> e
+            collegamenti interni, in base alle vostre esigenze e al periodo di
+            viaggio.
+          </p>
+        </div>
+      </details>
+
+      {/* FAQ 4 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              Vi occupate anche della biglietteria per voli, treni e traghetti?
+            </span>
+          </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            Sì. Gestiamo direttamente la{" "}
+            <strong>biglietteria aerea</strong> (voli nazionali e
+            internazionali) e, quando serve, anche{" "}
+            <strong>treni ad alta velocità</strong> e{" "}
+            <strong>traghetti o collegamenti marittimi</strong> collegati
+            all&apos;itinerario.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            L&apos;obiettivo è offrirvi un{" "}
+            <strong>viaggio di nozze coordinato</strong>, senza dovervi
+            preoccupare di incastri, orari o cambi complessi da gestire in
+            autonomia.
+          </p>
+        </div>
+      </details>
+
+      {/* FAQ 5 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              L’assicurazione sanitaria e bagaglio è obbligatoria?
+            </span>
+          </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            L&apos;<strong>assicurazione sanitaria e bagaglio</strong> non è
+            obbligatoria, ma è{" "}
+            <strong>fortemente consigliata</strong>, soprattutto per le lune di
+            miele all&apos;estero e per le destinazioni extra UE.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            Copre spese mediche impreviste, smarrimento o danneggiamento del
+            bagaglio, ritardi, cancellazioni e altri imprevisti che possono
+            incidere sul vostro viaggio. In agenzia vi proponiamo{" "}
+            <strong>più soluzioni assicurative</strong>, così da scegliere la
+            copertura più adatta alle vostre esigenze.
+          </p>
+        </div>
+      </details>
+
+      {/* FAQ 6 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              Possiamo attivare una lista viaggio di nozze?
+            </span>
+          </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            Sì, potete attivare una{" "}
+            <strong>lista viaggio di nozze</strong> dedicata al vostro viaggio di
+            nozze. Gli invitati potranno contribuire con una quota libera e voi
+            potrete tenere sotto controllo le{" "}
+            <strong>partecipazioni raccolte</strong> con il supporto
+            dell&apos;agenzia.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            È una soluzione elegante e molto apprezzata, perché trasforma il
+            regalo in un&apos;esperienza da ricordare per sempre.
+          </p>
+        </div>
+      </details>
+
+      {/* FAQ 7 */}
+      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+        <summary
+          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+          style={{ listStyle: "none" }}
+        >
+          <div className="flex items-center gap-3 text-left">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+            </span>
+            <span className="font-semibold text-sm md:text-base text-[#132C50]">
+              Cosa succede se ci sono imprevisti prima o durante il viaggio?
+            </span>
+          </div>
+
+          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+
+        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+          <p className="mt-3 leading-relaxed">
+            Avrete sempre un <strong>referente in agenzia</strong> che vi segue
+            prima, durante e dopo la partenza. In caso di imprevisti (ritardi,
+            cancellazioni, cambi di programma) vi aiutiamo a trovare{" "}
+            <strong>soluzioni alternative</strong> e a gestire l&apos;aspetto
+            operativo, così da ridurre al minimo lo stress.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
     </>
   );
 };
 
 export default ViaggiDiNozze;
+
 
 
 

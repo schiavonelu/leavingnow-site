@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Mail, Phone, MapPin, Clock, Calendar } from "lucide-react";
+import { Helmet } from "react-helmet-async"; // 🟣 SEO pagina
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
@@ -96,31 +97,120 @@ const Contatti = () => {
     },
   ];
 
+  // 🔹 JSON-LD ContactPage collegato alla TravelAgency
+  const contactJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://leavingnow.it/contatti#contact",
+    name: "Contatti - Leaving Now Agenzia Viaggi Aversa",
+    url: "https://leavingnow.it/contatti",
+    description:
+      "Contatta Leaving Now, agenzia viaggi ad Aversa: telefono, email, indirizzo, mappa e orari di apertura per chi parte dall'area nord di Napoli e Caserta.",
+    mainEntityOfPage: {
+      "@type": "TravelAgency",
+      "@id": "https://leavingnow.it/#agency",
+    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+39 081 18754553",
+        email: "leavingnowviaggi@gmail.com",
+        contactType: "customer service",
+        areaServed: [
+          "Aversa",
+          "Lusciano",
+          "Trentola Ducenta",
+          "Cesa",
+          "Orta di Atella",
+          "Succivo",
+          "Sant'Arpino",
+          "Frattaminore",
+          "Frattamaggiore",
+          "Sant'Antimo",
+          "Mugnano di Napoli",
+          "Giugliano in Campania",
+          "Caserta",
+          "Napoli",
+        ],
+        availableLanguage: ["it"],
+      },
+    ],
+  };
+
   return (
     <>
+      {/* 🟣 SEO specifico per la pagina Contatti */}
+      <Helmet>
+        <title>
+          Contatti - Leaving Now Agenzia Viaggi Aversa | Telefono, email e mappa
+        </title>
+        <meta
+          name="description"
+          content="Contatta Leaving Now, agenzia viaggi ad Aversa: telefono, email, indirizzo, mappa e orari. Preventivi per viaggi di nozze, crociere, biglietteria voli, treni e navi per chi parte dall'area nord di Napoli e Caserta."
+        />
+        <meta
+          name="keywords"
+          content="contatti Leaving Now, contatti agenzia viaggi Aversa, telefono agenzia viaggi Aversa, email agenzia viaggi Aversa, orari agenzia viaggi Aversa, come arrivare Leaving Now, agenzia viaggi nord Napoli contatti, viaggi di nozze Aversa contatti, crociere Aversa contatti, biglietteria aerea Aversa contatti"
+        />
+        <link rel="canonical" href="https://leavingnow.it/contatti" />
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Contatti - Leaving Now Agenzia Viaggi Aversa"
+        />
+        <meta
+          property="og:description"
+          content="Tutti i contatti di Leaving Now: telefono, email, indirizzo, mappa e orari dell'agenzia viaggi ad Aversa, specializzata in viaggi su misura e viaggi di nozze."
+        />
+        <meta
+          property="og:url"
+          content="https://leavingnow.it/contatti"
+        />
+        <meta
+          property="og:image"
+          content="https://leavingnow.it/images/og-leaving-now.jpg"
+        />
+        <meta property="og:type" content="website" />
+        {/* JSON-LD ContactPage */}
+        <script type="application/ld+json">
+          {JSON.stringify(contactJsonLd)}
+        </script>
+      </Helmet>
+
       <InnerHero
         title="Contattaci"
         subtitle="Raccontaci il viaggio che hai in mente, al resto pensiamo noi."
-        image={heroImg} // <-- immagine locale
+        image={heroImg}
       />
 
       <Breadcrumb />
 
-      <section className="py-12 md:py-16 bg-[#E8F1FD]">
+      <section
+        className="py-12 md:py-16 bg-[#E8F1FD]"
+        aria-labelledby="contatti-intro-title"
+      >
         <div className="max-w-6xl mx-auto px-4">
           {/* INTRO */}
           <div className="text-center mb-10 md:mb-12">
             <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase text-[#0863D6] mb-2">
-              Tutti i nostri Contatti
+              Tutti i nostri contatti
             </p>
 
-            <h1 className="text-2xl md:text-3xl font-bold text-[#EB2480]">
+            {/* Inner heading come H2 (H1 già gestito da InnerHero) */}
+            <h2
+              id="contatti-intro-title"
+              className="text-2xl md:text-3xl font-bold text-[#EB2480]"
+            >
               Siamo qui per ascoltarti
-            </h1>
+            </h2>
 
             <p className="mt-3 text-sm md:text-base text-slate-700 max-w-xl mx-auto">
               Per preventivi, informazioni o richieste su misura puoi usare il
-              form oppure i nostri contatti diretti.
+              form oppure i nostri contatti diretti. Siamo un&apos;
+              <strong>agenzia viaggi ad Aversa</strong> che segue in particolare
+              chi parte da Napoli o Roma: viaggi di nozze,
+              crociere, vacanze mare, tour e biglietteria{" "}
+              <strong>voli, treni e navi</strong>.
             </p>
           </div>
 
@@ -129,13 +219,15 @@ const Contatti = () => {
             {/* CARD CONTATTI */}
             <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-6 md:p-7 flex flex-col justify-between">
               <div>
-                <h2 className="text-lg md:text-xl font-semibold text-[#132C50] mb-4">
+                <h3 className="text-lg md:text-xl font-semibold text-[#132C50] mb-4">
                   I nostri contatti
-                </h2>
+                </h3>
 
                 <p className="text-sm text-slate-700 text-justify mb-5">
-                  Puoi scriverci, chiamarci o venirci a trovare in agenzia.
-                  Scegli il canale che preferisci, al resto pensiamo noi.
+                  Puoi scriverci, chiamarci o venirci a trovare in agenzia. Siamo
+                  a <strong>Aversa</strong>, facilmente raggiungibili da nord
+                  Napoli e Caserta. Scegli il canale che preferisci, al resto
+                  pensiamo noi.
                 </p>
 
                 <div className="space-y-4 mb-6">
@@ -159,8 +251,10 @@ const Contatti = () => {
               </div>
 
               <p className="text-sm text-slate-700 text-justify mb-5">
-                Se preferisci, puoi anche richiedere una consulenza su
-                appuntamento per organizzare insieme i tuoi prossimi viaggi.
+                Se preferisci, puoi anche richiedere una{" "}
+                <strong>consulenza su appuntamento</strong> per organizzare
+                insieme i tuoi prossimi viaggi: viaggio di nozze, crociera,
+                week-end o vacanza estiva.
               </p>
 
               <div className="mb-2 flex justify-center">
@@ -179,13 +273,15 @@ const Contatti = () => {
 
             {/* FORM */}
             <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-lg p-6 md:p-8">
-              <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-4 text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-bold text-[#132C50] mb-4 text-center md:text-left">
                 Scrivici un messaggio
-              </h2>
+              </h3>
 
               <p className="text-sm text-slate-700 mb-6 text-center md:text-left">
                 Compila il form con qualche dettaglio sul viaggio che hai in
-                mente: ti risponderemo il prima possibile.
+                mente: ti risponderemo il prima possibile per proporti la{" "}
+                <strong>soluzione più adatta</strong>, in base a destinazione,
+                periodo e budget.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -293,7 +389,7 @@ const Contatti = () => {
                   <label className="text-sm font-medium text-[#132C50] mb-1 block">
                     Messaggio *
                   </label>
-                  <textarea
+                <textarea
                     name="messaggio"
                     rows="5"
                     required
@@ -364,9 +460,9 @@ const Contatti = () => {
             <div className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-6 md:p-7 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Clock className="w-6 h-6 text-[#0863D6]" />
-                <h2 className="text-lg md:text-xl font-semibold text-[#132C50]">
+                <h3 className="text-lg md:text-xl font-semibold text-[#132C50]">
                   Orari di apertura
-                </h2>
+                </h3>
               </div>
 
               <div className="space-y-2 text-sm text-[#132C50]">
@@ -405,6 +501,7 @@ const Contatti = () => {
 };
 
 export default Contatti;
+
 
 
 

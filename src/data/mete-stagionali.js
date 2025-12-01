@@ -522,7 +522,49 @@ export const SEASONS = [
       },
     ],
   },
+  {
+    id: "pellegrinaggi",
+    name: "Pellegrinaggi & santuari",
+    period: "Tutto l'anno (con date e ricorrenze specifiche)",
+    intro:
+      "Viaggi verso i grandi santuari mariani e luoghi di spiritualità in Italia ed Europa, spesso abbinabili a città d'arte e borghi caratteristici.",
+    cards: [
+      {
+        slug: "pellegrinaggi-lourdes-pirenei",
+        title: "Lourdes e Pirenei francesi",
+        badge: "Santuario mariano",
+        period: "Tutto l'anno (picco primavera – autunno)",
+        description:
+          "Il santuario di Lourdes con la grotta di Massabielle, le processioni mariane e la fiaccolata serale. Possibilità di abbinare qualche giorno nei Pirenei francesi, Pau o Tolosa, per unire momenti di raccoglimento a panorami di montagna.",
+      },
+      {
+        slug: "pellegrinaggi-medjugorje-bosnia-erzegovina",
+        title: "Medjugorje e Bosnia Erzegovina",
+        badge: "Luoghi di preghiera",
+        period: "Primavera – Autunno",
+        description:
+          "La Collina delle Apparizioni, il Monte Krizevac e il santuario di Medjugorje, con la possibilità di estendere il viaggio a Mostar, Sarajevo o alla costa croata (Split, Dubrovnik). Un pellegrinaggio che unisce spiritualità e scoperta dei Balcani.",
+      },
+      {
+        slug: "pellegrinaggi-fatima-lisbona",
+        title: "Fátima con Lisbona e dintorni",
+        badge: "Santuario mariano",
+        period: "Tutto l'anno",
+        description:
+          "Il santuario di Nossa Senhora de Fátima con basilica, cappella delle apparizioni e momenti di preghiera, abbinato a Lisbona, Nazaré, Óbidos e ai monasteri di Batalha e Alcobaça. Un viaggio che unisce fede, oceano e borghi portoghesi.",
+      },
+      {
+        slug: "pellegrinaggi-italia-assisi-loreto-san-giovanni",
+        title: "Santuari in Italia: Assisi, Loreto e San Giovanni Rotondo",
+        badge: "Italia spirituale",
+        period: "Tutto l'anno",
+        description:
+          "Un itinerario tra Assisi (San Francesco e Santa Chiara), Loreto con la Santa Casa e San Giovanni Rotondo, sulle orme di Padre Pio, con possibilità di estendere al Gargano e ai borghi dell'Umbria e delle Marche. Ideale per gruppi parrocchiali, associazioni e pellegrinaggi organizzati.",
+      },
+    ],
+  },
 ];
+
 
 
 
