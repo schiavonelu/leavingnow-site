@@ -1,6 +1,6 @@
 // src/pages/MeteMareItalia.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
-import { Search } from "lucide-react";
+import { Search, Mail } from "lucide-react";
 
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
@@ -13,7 +13,7 @@ import heroImg from "../assets/mete-mare-italia/hero.webp";
 import { MARE_ITALIA_DESTINATIONS } from "../data/mare-italia.js";
 import { MARE_ITALIA_IMAGES } from "../data/mare-italia-images.js";
 
-import { FaRegCalendarAlt, FaCity } from "react-icons/fa";
+import { FaRegCalendarAlt, FaCity , FaMapMarkedAlt } from "react-icons/fa";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -340,7 +340,7 @@ const MeteMareItalia = () => {
                   href="/mete-stagionali"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
-                  <FaRegCalendarAlt className="text-lg" />
+                  <FaMapMarkedAlt className="text-lg" />
                   <span>Mete stagionali</span>
                 </a>
                 <a
@@ -364,22 +364,25 @@ const MeteMareItalia = () => {
                 Hai già in mente la tua idea di mare Italia?
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a
-                  href="/contatti"
-                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
-                >
-                  Scrivici per parlarne
-                </a>
-                <a
-                  href={RESERVIO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
-                >
-                  Prenota una consulenza
-                </a>
-              </div>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                           <a
+                             href="/contatti"
+                             className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                           >
+                             <Mail className="text-lg" />
+                             <span>Scrivici per parlarne</span>
+                           </a>
+           
+                           <a
+                             href={RESERVIO_URL}
+                             target="_blank"
+                             rel="noreferrer"
+                             className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+                           >
+                             <FaRegCalendarAlt className="text-lg" />
+                             <span>Prenota una consulenza</span>
+                           </a>
+                         </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 // src/pages/MeteCapitali.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
-import { Search } from "lucide-react";
+import { Search, Mail } from "lucide-react";
 
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
@@ -9,13 +9,10 @@ import TravelFilters from "../components/ui/TravelFilters.jsx";
 import Pagination from "../components/ui/Pagination.jsx";
 
 import { CAPITAL_CITIES } from "../data/mete-capitali.js";
-import { CAPITAL_CITIES_IMAGES } from "../data/mete-capitali-images.js";
+import { CAPITALI_IMAGES } from "../data/mete-capitali-images.js";
 import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
-import {
-  FaUmbrellaBeach,
-  FaRegCalendarAlt,
-} from "react-icons/fa";
+import { FaUmbrellaBeach, FaRegCalendarAlt } from "react-icons/fa";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -24,7 +21,7 @@ const HERO_SLUG = "hero";
 
 const MeteCapitali = () => {
   // Hero opzionale: se metti src/assets/mete-capitali/hero.webp → slug "hero"
-  const heroImg = CAPITAL_CITIES_IMAGES[HERO_SLUG] ?? null;
+  const heroImg = CAPITALI_IMAGES[HERO_SLUG] ?? null;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -227,8 +224,8 @@ const MeteCapitali = () => {
                     {currentItems.map((city) => {
                       // Usa l'immagine solo se esiste quella specifica per lo slug
                       const poster =
-                        city.slug && CAPITAL_CITIES_IMAGES[city.slug]
-                          ? CAPITAL_CITIES_IMAGES[city.slug]
+                        city.slug && CAPITALI_IMAGES[city.slug]
+                          ? CAPITALI_IMAGES[city.slug]
                           : null;
 
                       // Fallback: nessuna immagine → placeholder del ContinentCard
@@ -321,7 +318,7 @@ const MeteCapitali = () => {
             {/* BLOCCO 2 – CONTATTI */}
             <div className="space-y-3">
               <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
-                Hai già in mente la tua capitale?
+                Hai già in mente la tua città europea?
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -329,7 +326,7 @@ const MeteCapitali = () => {
                   href="/contatti"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
-                  <FaRegCalendarAlt className="text-lg" />
+                  <Mail className="text-lg" />
                   <span>Scrivici per parlarne</span>
                 </a>
 
@@ -352,6 +349,7 @@ const MeteCapitali = () => {
 };
 
 export default MeteCapitali;
+
 
 
 

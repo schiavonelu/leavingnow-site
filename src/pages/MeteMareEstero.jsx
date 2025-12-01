@@ -1,7 +1,7 @@
 // src/pages/MeteMareEstero.jsx
 
 import { useEffect, useState, useMemo, useRef } from "react";
-import { Search } from "lucide-react";
+import { Search, Mail } from "lucide-react";
 
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
@@ -14,7 +14,7 @@ import heroImg from "../assets/mete-mare-estero/hero.webp";
 import { MARE_ESTERO_DESTINATIONS } from "../data/mare-estero.js";
 import { MARE_ESTERO_IMAGES } from "../data/mare-estero-images.js";
 
-import { FaRegCalendarAlt, FaCity } from "react-icons/fa";
+import { FaRegCalendarAlt, FaMapMarkedAlt , FaCity } from "react-icons/fa";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -170,7 +170,7 @@ const MeteMareEstero = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]" id="mare-inverno">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-            
+
             {/* 🔹 Filtri mare estero */}
             <SeaFiltersEstero
               title="Mare estero"
@@ -189,16 +189,15 @@ const MeteMareEstero = () => {
 
             {/* 🔹 Risultati */}
             <div
-              className={`flex-1 space-y-6 transition-[width] duration-300 ${
-                filtersCollapsed ? "lg:pl-2" : ""
-              }`}
+              className={`flex-1 space-y-6 transition-[width] duration-300 ${filtersCollapsed ? "lg:pl-2" : ""
+                }`}
             >
 
               {/* Barra di ricerca */}
               <div className="lg:sticky lg:top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
-                    
+
                     <div className="flex-1">
                       <label
                         htmlFor="search-mare-estero"
@@ -309,7 +308,7 @@ const MeteMareEstero = () => {
                   href="/mete-stagionali"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
-                  <FaRegCalendarAlt className="text-lg" />
+                  <FaMapMarkedAlt className="text-lg" />
                   <span>Mete stagionali</span>
                 </a>
 
@@ -335,18 +334,20 @@ const MeteMareEstero = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
                   href="/contatti"
-                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
-                  Scrivici per parlarne
+                  <Mail className="text-lg" />
+                  <span>Scrivici per parlarne</span>
                 </a>
 
                 <a
                   href={RESERVIO_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
                 >
-                  Prenota una consulenza
+                  <FaRegCalendarAlt className="text-lg" />
+                  <span>Prenota una consulenza</span>
                 </a>
               </div>
             </div>

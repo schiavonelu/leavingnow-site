@@ -15,6 +15,7 @@ import { HONEYMOON_IMAGES } from "../data/viaggi-nozze-images.js";
 import heroViaggiNozze from "../assets/mete-viaggi-nozze/hero.webp";
 
 import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -338,7 +339,8 @@ const MeteViaggiNozze = () => {
               to="/viaggi-di-nozze#preventivo-nozze"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
-              Vai al form viaggio di nozze
+              <FaRegCalendarAlt className="text-lg" />
+              <span>Vai al form viaggio di nozze</span>
             </Link>
             <a
               href={RESERVIO_URL}
@@ -346,7 +348,8 @@ const MeteViaggiNozze = () => {
               rel="noreferrer"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
-              Preferite una consulenza dedicata?
+              <FaRegCalendarAlt className="text-lg" />
+              <span>Preferite una consulenza dedicata?</span>
             </a>
           </div>
         </div>

@@ -16,8 +16,10 @@ import {
 import {
   FaCity,
   FaUmbrellaBeach,
-  FaRegCalendarAlt,
+  FaRegCalendarAlt
 } from "react-icons/fa";
+
+import { Mail } from "lucide-react"
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const PAGE_SIZE = 6;
@@ -411,7 +413,7 @@ const MeteStagionali = () => {
                     font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white
                     hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
                 >
-                  <FaRegCalendarAlt className="text-lg" />
+                  <Mail className="text-lg" />
                   <span>Scrivici per parlarne</span>
                 </a>
 
