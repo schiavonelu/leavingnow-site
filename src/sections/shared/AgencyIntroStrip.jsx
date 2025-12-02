@@ -18,19 +18,22 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
         ].join(" ")}
       >
-        {/* 🔹 Heading di sezione SEO-friendly (opzionale) */}
+        {/* Heading di sezione SEO-friendly (opzionale) */}
         {showHeading && (
           <div className="mb-8 text-center md:text-left">
             <h2
               id="agency-intro-heading"
               className="text-xl md:text-2xl font-bold text-slate-900"
             >
-              Agenzia viaggi ad Aversa per chi parte da nord Napoli e Caserta
+              Agenzia viaggi ad Aversa: Leaving Now
             </h2>
             <p className="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
-              Leaving Now è l’agenzia viaggi di riferimento ad Aversa per
-              <strong> viaggi su misura, viaggi di nozze, crociere</strong> e
-              <strong> biglietteria aerea, treni e navi</strong>.
+              Leaving Now è un&apos;agenzia viaggi ad Aversa specializzata in{" "}
+              <strong>viaggi su misura, viaggi di nozze e crociere</strong>, con
+              servizi di <strong>biglietteria aerea, treni e navi</strong>.
+              Un team di consulenti di viaggio che ti segue dalla scelta della
+              meta al rientro, con soluzioni pensate per coppie, famiglie,
+              gruppi e viaggi di lavoro.
             </p>
           </div>
         )}
@@ -56,22 +59,20 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
                     La nostra storia e il nostro metodo
                   </h3>
                   <p className="text-sm md:text-base text-slate-500">
-                    Chi c’è dietro Leaving Now, agenzia viaggi ad Aversa.
+                    Chi c’è dietro Leaving Now e come progettiamo i viaggi.
                   </p>
                 </div>
               </div>
 
-              {/* Testo completo anche su mobile */}
               <p className="text-sm md:text-base text-slate-700 leading-relaxed text-justify flex-1">
-                Leaving Now è un&apos;agenzia viaggi ad Aversa nata dall&apos;ascolto
-                delle persone: esigenze, tempi, budget e desideri. Progettiamo
-                <strong> viaggi su misura</strong>,{" "}
+                Leaving Now nasce dall&apos;ascolto delle persone: esigenze,
+                tempi, budget e desideri. Progettiamo{" "}
+                <strong>viaggi su misura</strong>,{" "}
                 <strong>viaggi di nozze personalizzati</strong>, crociere e
-                itinerari per chi parte dall&apos;area nord di Napoli e Caserta,
-                grazie a una rete di partner selezionati in Italia e nel mondo.
+                itinerari completi grazie a una rete di partner selezionati in
+                Italia e nel mondo.
               </p>
 
-              {/* LINK → ALLINEATO A DESTRA */}
               <div className="mt-4 md:mt-6 flex items-center justify-end gap-2">
                 <span className="text-sm md:text-sm font-semibold text-sky-600 flex items-center gap-1">
                   Scopri chi siamo
@@ -103,22 +104,19 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
                     Vuoi parlare con noi?
                   </h3>
                   <p className="text-sm md:text-base text-slate-300">
-                    Contatta la nostra agenzia viaggi ad Aversa.
+                    Contattaci per preventivi o informazioni.
                   </p>
                 </div>
               </div>
 
-              {/* Testo completo anche su mobile */}
               <p className="text-sm md:text-base text-slate-200 leading-relaxed text-justify flex-1">
                 Per preventivi, domande o idee di viaggio puoi contattarci
                 quando vuoi: ti risponderemo con{" "}
-                <strong>proposte chiare</strong> e la nostra assistenza prima,
-                durante e dopo la partenza. Siamo a disposizione per{" "}
-                <strong>viaggi di nozze</strong>, crociere, vacanze su misura e
-                per la <strong>biglietteria aerea, treni e navi</strong>.
+                <strong>proposte chiare</strong> e assistenza prima, durante e
+                dopo la partenza, per <strong>viaggi di nozze</strong>,
+                crociere e vacanze su misura.
               </p>
 
-              {/* LINK → ALLINEATO A DESTRA */}
               <div className="mt-4 md:mt-6 flex items-center justify-end gap-2">
                 <span className="text-sm md:text-sm font-semibold text-sky-400 flex items-center gap-1">
                   Vai alla pagina contatti
@@ -136,6 +134,8 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
 };
 
 export default AgencyIntroStrip;
+
+
 
 
 

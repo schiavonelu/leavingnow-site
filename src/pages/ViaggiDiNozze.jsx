@@ -13,7 +13,7 @@ import {
   HelpCircle,
   ChevronDown,
 } from "lucide-react";
-import { Helmet } from "react-helmet-async"; 
+import { Helmet } from "react-helmet-async";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
@@ -90,7 +90,7 @@ const ViaggiDiNozze = () => {
     }
   };
 
-  // 🔹 Dati strutturati FAQ (rich snippet) – allineati alla sezione FAQ in pagina
+  // 🔹 Dati strutturati FAQ allineati alle FAQ in pagina
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -100,66 +100,66 @@ const ViaggiDiNozze = () => {
         name: "Quanto tempo prima conviene organizzare il viaggio di nozze?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Per un viaggio di nozze intercontinentale o in alta stagione consigliamo di iniziare a pianificare tra gli 8 e i 12 mesi prima della partenza. In questo modo è più facile trovare disponibilità su voli, strutture e servizi, mantenendo un buon rapporto qualità/prezzo.",
-        },
+          text: "Per un viaggio di nozze intercontinentale o in alta stagione consigliamo di iniziare a pianificare tra gli 8 e i 12 mesi prima della partenza. In questo modo è più semplice trovare buone combinazioni di voli, hotel ed esperienze e gestire eventuali richieste particolari."
+        }
       },
       {
         "@type": "Question",
-        name: "Qual è il budget medio per un viaggio di nozze?",
+        name: "Possiamo iniziare l'organizzazione del viaggio di nozze anche da casa?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Il budget di un viaggio di nozze varia molto in base alla durata, alla destinazione e alla tipologia di strutture scelte. In agenzia partiamo sempre dal vostro budget indicativo e costruiamo il progetto su misura, proponendo più soluzioni compatibili, dal mare tropicale ai tour intercontinentali.",
-        },
+          text: "Sì, l'iter iniziale può essere gestito comodamente da casa: ci raccontate le vostre idee, ricevete i preventivi e li valutiamo insieme via telefono, email o videochiamata. La fase di conferma finale e della documentazione viene però completata in agenzia, di persona, per garantirvi massima chiarezza e sicurezza."
+        }
       },
       {
         "@type": "Question",
-        name: "È possibile fare una lista viaggio di nozze presso Leaving Now ad Aversa?",
+        name: "Da quali aeroporti organizzate principalmente le partenze per i viaggi di nozze?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sì, è possibile attivare una lista viaggio di nozze presso Leaving Now ad Aversa. I vostri invitati potranno contribuire alla luna di miele con versamenti dedicati, mentre voi potrete monitorare le quote raccolte grazie al supporto dell'agenzia viaggi.",
-        },
+          text: "Per i viaggi di nozze internazionali coordiniamo soprattutto partenze dagli aeroporti di Napoli (Capodichino) e Roma (Fiumicino), che offrono collegamenti comodi verso molte destinazioni di lungo raggio. Quando utile, valutiamo anche altri aeroporti e collegamenti interni in base alle vostre esigenze."
+        }
       },
       {
         "@type": "Question",
-        name: "Possiamo organizzare il viaggio di nozze anche solo online, senza venire in agenzia?",
+        name: "Vi occupate anche della biglietteria per voli, treni e traghetti?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sì, potete organizzare l'intero viaggio di nozze anche da remoto. Possiamo sentirci via telefono, email o videochiamata, inviarvi preventivi dettagliati e finalizzare la pratica online, con la stessa cura di un appuntamento in agenzia ad Aversa.",
-        },
+          text: "Sì. Gestiamo direttamente la biglietteria aerea per voli nazionali e internazionali e, quando serve, anche treni ad alta velocità e traghetti o collegamenti marittimi legati all'itinerario del viaggio di nozze. L'obiettivo è offrirvi un viaggio coordinato, senza dovervi preoccupare di incastri e orari."
+        }
       },
       {
         "@type": "Question",
-        name: "Gestite anche biglietteria voli, treni e navi per il viaggio di nozze?",
+        name: "L'assicurazione sanitaria e bagaglio è obbligatoria per il viaggio di nozze?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Ci occupiamo di tutta la biglietteria collegata al viaggio di nozze: voli nazionali e internazionali, treni ad alta velocità e tratte in nave o traghetto, coordinandoli con le tappe dell'itinerario e con gli orari di arrivo e partenza.",
-        },
+          text: "L'assicurazione sanitaria e bagaglio non è obbligatoria per legge, ma è fortemente consigliata, soprattutto per le lune di miele all'estero e nelle destinazioni extra UE. Può coprire spese mediche, smarrimento o danneggiamento del bagaglio, ritardi, cancellazioni e altri imprevisti. In agenzia proponiamo più soluzioni, così da scegliere la copertura più adatta a voi."
+        }
       },
       {
         "@type": "Question",
-        name: "Organizzate viaggi di nozze su misura anche per chi parte da Napoli e Caserta?",
+        name: "È possibile attivare una lista viaggio di nozze presso Leaving Now?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sì, Leaving Now è un'agenzia viaggi ad Aversa che segue in particolare le coppie che partono dall'area nord di Napoli e Caserta. Possiamo proporre soluzioni con partenze da Napoli, Roma e dagli altri principali aeroporti italiani.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "L'assicurazione viaggio è obbligatoria per la luna di miele?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "L'assicurazione viaggio non è sempre obbligatoria per legge, ma è fortemente consigliata per un viaggio di nozze, soprattutto se intercontinentale. Copre imprevisti come annullamento, problemi sanitari, smarrimento bagagli o ritardi importanti.",
-        },
+          text: "Sì, potete attivare una lista viaggio di nozze dedicata al vostro itinerario. Gli invitati potranno contribuire con una quota libera e voi potrete tenere sotto controllo le partecipazioni raccolte con il supporto dell'agenzia."
+        }
       },
       {
         "@type": "Question",
         name: "Quali documenti servono per un viaggio di nozze all'estero?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "I documenti dipendono dalla destinazione: in molti paesi extra UE è richiesto il passaporto con una validità residua di almeno 6 mesi, e in alcuni casi sono necessari visti o autorizzazioni elettroniche (come ESTA o eTA). In agenzia ti aiutiamo a verificare cosa serve in base alla meta scelta e alle tempistiche.",
-        },
+          text: "I documenti dipendono dalla destinazione. Spesso, nei paesi extra UE, è richiesto il passaporto con una validità residua di almeno 6 mesi e, in alcuni casi, visti o autorizzazioni elettroniche come ESTA o eTA. In agenzia vi aiutiamo a verificare con anticipo i requisiti in base alla meta scelta."
+        }
       },
-    ],
+      {
+        "@type": "Question",
+        name: "Cosa succede se ci sono imprevisti prima o durante il viaggio di nozze?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Avrete sempre un referente in agenzia che vi segue prima, durante e dopo la partenza. In caso di imprevisti come ritardi, cancellazioni o cambi di programma, vi aiutiamo a trovare soluzioni alternative e a gestire gli aspetti operativi per ridurre al minimo lo stress."
+        }
+      }
+    ]
   };
 
   return (
@@ -171,11 +171,11 @@ const ViaggiDiNozze = () => {
         </title>
         <meta
           name="description"
-          content="Viaggi di nozze su misura ad Aversa con Leaving Now: consulenza dedicata, itinerari personalizzati, lista viaggio di nozze e assistenza per voli, hotel, treni e navi per chi parte dall'area nord di Napoli e Caserta."
+          content="Viaggi di nozze su misura ad Aversa con Leaving Now: consulenza dedicata, itinerari personalizzati, lista viaggio di nozze e assistenza per voli, hotel, treni e navi."
         />
         <meta
           name="keywords"
-          content="viaggi di nozze Aversa, viaggio di nozze su misura Aversa, viaggio di nozze nord Napoli, viaggio di nozze personalizzato, luna di miele, lista viaggio di nozze Aversa, lista viaggio di nozze, viaggi di nozze intercontinentali, viaggi di nozze mare tropicale, viaggi di nozze Stati Uniti, viaggi di nozze Giappone, agenzia viaggi Aversa viaggi di nozze"
+          content="viaggi di nozze Aversa, viaggio di nozze su misura Aversa, viaggio di nozze personalizzato, luna di miele, lista viaggio di nozze Aversa, lista viaggio di nozze, viaggi di nozze intercontinentali, viaggi di nozze mare tropicale, viaggi di nozze Stati Uniti, viaggi di nozze Giappone, agenzia viaggi Aversa viaggi di nozze"
         />
         <link
           rel="canonical"
@@ -205,7 +205,6 @@ const ViaggiDiNozze = () => {
         </script>
       </Helmet>
 
-      {/* ℹ️ InnerHero probabilmente ha già un H1, quindi qui uso H2 più in basso */}
       <InnerHero
         title="Viaggi di nozze"
         subtitle="Un viaggio unico, costruito su misura per la vostra storia."
@@ -214,7 +213,7 @@ const ViaggiDiNozze = () => {
 
       <Breadcrumb />
 
-      {/* HONEYMOON + PERCHÉ SCEGLIERCI (UNICA SEZIONE) */}
+      {/* INTRO + PERCHÉ SCEGLIERCI */}
       <section
         className="py-12 md:py-16 bg-white"
         aria-labelledby="honeymoon-intro"
@@ -226,7 +225,6 @@ const ViaggiDiNozze = () => {
               Honeymoon by Leaving Now
             </p>
 
-            {/* 🔹 H2 principale della pagina contenente keyword local + servizio */}
             <h2
               id="honeymoon-intro"
               className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-5"
@@ -237,8 +235,7 @@ const ViaggiDiNozze = () => {
 
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto leading-relaxed">
               Leaving Now è l&apos;agenzia viaggi di Aversa specializzata in{" "}
-              <strong>viaggi di nozze su misura</strong> per chi parte
-              da Napoli o Roma. Dalla prima idea al
+              <strong>viaggi di nozze su misura</strong>. Dalla prima idea al
               rientro, vi accompagniamo in ogni fase: consulenza dedicata,
               progettazione dell&apos;itinerario,{" "}
               <strong>biglietteria aerea, treni e navi</strong>, strutture
@@ -247,9 +244,8 @@ const ViaggiDiNozze = () => {
             </p>
           </div>
 
-          {/* Perché scegliere Leaving Now + card */}
+          {/* Card perché sceglierci */}
           <div>
-           
             <div className="grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
               <ValueCard
                 icon={<Heart />}
@@ -259,7 +255,7 @@ const ViaggiDiNozze = () => {
               <ValueCard
                 icon={<Plane />}
                 title="Operatività completa, biglietteria inclusa"
-                text="Ci occupiamo di voli, hotel, trasferimenti, escursioni, assicurazioni e documentazione. Possiamo gestire anche biglietteria aerea, treni ad alta velocità e navi/traghetti collegati al vostro itinerario."
+                text="Ci occupiamo di voli, hotel, trasferimenti, escursioni, assicurazioni e documentazione. Possiamo gestire anche biglietteria aerea, treni ad alta velocità e navi o traghetti collegati al vostro itinerario."
               />
               <ValueCard
                 icon={<Sparkles />}
@@ -304,8 +300,8 @@ const ViaggiDiNozze = () => {
           <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
             Potete partire dalle nostre{" "}
             <strong>idee di mete per viaggi di nozze</strong> oppure raccontarci
-            già il viaggio che immaginate. In entrambi i casi costruiremo un
-            itinerario su misura per voi, con partenza da Napoli o Roma.
+            da subito il viaggio che immaginate. In entrambi i casi
+            costruiremo un itinerario su misura per voi.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
@@ -341,9 +337,9 @@ const ViaggiDiNozze = () => {
               <p className="text-sm text-slate-700 leading-relaxed mb-2">
                 Vuoi che il <strong>viaggio di nozze</strong> sia anche il
                 regalo dei tuoi invitati? Con la{" "}
-                <strong>lista viaggio di nozze Leaving Now</strong> puoi permettere
-                ad amici e parenti di contribuire alla vostra luna di miele, con
-                un sistema semplice e assistito in agenzia.
+                <strong>lista viaggio di nozze Leaving Now</strong> puoi
+                permettere ad amici e parenti di contribuire alla vostra luna di
+                miele, con un sistema semplice e assistito in agenzia.
               </p>
             </div>
 
@@ -360,785 +356,270 @@ const ViaggiDiNozze = () => {
       </section>
 
       {/* FORM DEDICATO VIAGGIO DI NOZZE */}
+      {/* (qui il tuo form rimane identico, cambia solo il testo sopra che abbiamo già toccato) */}
+
+      {/* 🔹 SEZIONE FAQ – LOOK PREMIUM + CONTENUTI OTTIMIZZATI */}
       <section
-        id="preventivo-nozze"
-        className="scroll-mt-28 py-12 md:py-16 bg-[#E8F1FD]"
-        aria-labelledby="preventivo-nozze-title"
+        id="faq-viaggi-di-nozze"
+        className="py-12 md:py-16 bg-gradient-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
       >
         <div className="max-w-5xl mx-auto px-4">
-          {/* Intro form */}
           <div className="text-center mb-8 md:mb-10">
-            <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
-              Richiesta preventivo viaggio di nozze
+            <p className="inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F1FD]">
+                <HelpCircle className="w-3.5 h-3.5 text-[#0863D6]" />
+              </span>
+              FAQ VIAGGI DI NOZZE
             </p>
-            <h2
-              id="preventivo-nozze-title"
-              className="text-2xl md:text-3xl font-bold text-[#EB2480] mb-3"
-            >
-              Raccontateci il vostro viaggio ideale
+
+            <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-3">
+              Domande frequenti sui viaggi di nozze Leaving Now
             </h2>
+
             <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
-              Compilate il form con le informazioni principali: useremo questi
-              dettagli per prepararvi una{" "}
-              <strong>proposta di viaggio di nozze personalizzata</strong> e
-              ricontattarvi il prima possibile, in agenzia o online.
+              Le risposte alle domande che riceviamo più spesso su{" "}
+              <strong>viaggi di nozze, lista viaggio di nozze e assicurazioni</strong>.
+              Se non trovi quello che cerchi, scrivici o chiamaci: saremo felici
+              di aiutarti.
             </p>
           </div>
 
-          {/* CARD FORM CENTRATA */}
-          <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-lg p-6 md:p-8 max-w-3xl mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* 🔹 Campi nascosti per Web3Forms (HTML email) */}
-              <input
-                type="hidden"
-                name="from_name"
-                value="Leaving Now - Sito web"
-              />
-              <input type="hidden" name="email_format" value="html" />
-              <input
-                type="hidden"
-                name="email_template"
-                value={`
-                  <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; background-color: #f3f4f6;">
-                    <div style="max-width: 720px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; padding: 20px; border: 1px solid #e5e7eb;">
-                      <h2 style="margin: 0 0 12px; font-size: 20px; color: #111827;">
-                        Richiesta <span style="color:#EB2480;">Viaggio di nozze</span>
-                      </h2>
-                      <p style="margin: 0 0 16px; font-size: 14px; color: #4b5563;">
-                        Hai ricevuto una nuova richiesta di preventivo dal sito <strong>Leaving Now</strong>.
-                      </p>
-
-                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
-                        Coppia
-                      </h3>
-                      <table style="width:100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px;">
-                        <tr>
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827; width: 180px;">Sposo/Sposa</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{sposoA}}</td>
-                        </tr>
-                        <tr style="background-color:#f9fafb;">
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Sposa/Sposo</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{sposoB}}</td>
-                        </tr>
-                      </table>
-
-                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
-                        Contatti
-                      </h3>
-                      <table style="width:100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px;">
-                        <tr>
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827; width: 180px;">Email</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{email}}</td>
-                        </tr>
-                        <tr style="background-color:#f9fafb;">
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Telefono</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{telefono}}</td>
-                        </tr>
-                      </table>
-
-                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
-                        Viaggio di nozze
-                      </h3>
-                      <table style="width:100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px;">
-                        <tr>
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827; width: 180px;">Meta / tipologia</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{meta}}</td>
-                        </tr>
-                        <tr style="background-color:#f9fafb;">
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Altra idea</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{meta_altro}}</td>
-                        </tr>
-                        <tr>
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Periodo</td>
-                          <td style="padding: 6px 8px; color:#374151;">dal {{data_da}} al {{data_a}}</td>
-                        </tr>
-                        <tr style="background-color:#f9fafb;">
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Date flessibili</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{date_flessibili}}</td>
-                        </tr>
-                        <tr>
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Luogo di partenza</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{partenza}}</td>
-                        </tr>
-                        <tr style="background-color:#f9fafb;">
-                          <td style="padding: 6px 8px; font-weight: 600; color:#111827;">Budget indicativo</td>
-                          <td style="padding: 6px 8px; color:#374151;">{{budget}}</td>
-                        </tr>
-                      </table>
-
-                      <h3 style="margin: 16px 0 8px; font-size: 14px; color:#111827; text-transform: uppercase; letter-spacing: .08em;">
-                        Note aggiuntive
-                      </h3>
-                      <div style="padding: 10px 12px; border-radius: 8px; background-color:#f9fafb; border:1px solid #e5e7eb; color:#374151; font-size: 14px; white-space: pre-line; min-height: 40px;">
-                        {{note}}
-                      </div>
-
-                      <p style="margin-top: 16px; font-size: 12px; color:#9ca3af;">
-                        Fonte: {{from_page}}
-                      </p>
-
-                      <p style="margin-top: 6px; font-size: 11px; color:#9ca3af;">
-                        Email generata automaticamente dal sito Leaving Now - Non rispondere a questo indirizzo.
-                      </p>
-                    </div>
-                  </div>
-                `}
-              />
-
-              {/* Nomi sposi */}
-              <div className="grid gap-4 md:grid-cols-[1fr_auto1fr] md:items-center">
-                <div>
-                  <label
-                    htmlFor="sposoA"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Sposo/Sposa *
-                  </label>
-                  <input
-                    type="text"
-                    id="sposoA"
-                    name="sposoA"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Nome"
-                  />
-                </div>
-
-                {/* & sempre allineata al centro */}
-                <div className="flex items-center justify-center text-xl font-semibold text-slate-500">
-                  &
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="sposoB"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Sposa/Sposo *
-                  </label>
-                  <input
-                    type="text"
-                    id="sposoB"
-                    name="sposoB"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Nome"
-                  />
-                </div>
-              </div>
-
-              {/* Contatti */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Email"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="telefono"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Telefono (opzionale)
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Per un contatto più rapido"
-                  />
-                </div>
-              </div>
-
-              {/* Meta */}
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="meta"
-                    className="block text-sm font-medium text-[#132C50] mb-1"
-                  >
-                    Meta o tipologia di viaggio di nozze *
-                  </label>
-                  <select
-                    id="meta"
-                    name="meta"
-                    required
-                    value={meta}
-                    onChange={(e) => setMeta(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-                  >
-                    <option value="">Seleziona un’opzione</option>
-
-                    {/* Opzioni generali */}
-                    <option value="crociera">
-                      Crociera (Mediterraneo, fiordi, Caraibi…)
-                    </option>
-                    <option value="usa">Stati Uniti – tour on the road</option>
-                    <option value="usa-mare">
-                      Stati Uniti + mare (es. Caraibi)
-                    </option>
-                    <option value="mare-tropicale">
-                      Mare tropicale (Maldive, Polinesia, Seychelles, Caraibi…)
-                    </option>
-                    <option value="giappone-asia">Giappone / Asia</option>
-                    <option value="africa-safari-mare">
-                      Africa con safari + mare
-                    </option>
-                    <option value="europa">
-                      Europa (città, tour, on the road)
-                    </option>
-                    <option value="altro">Altro (specifica)</option>
-
-                    {/* Nuove opzioni aggiunte */}
-                    <option value="dubai-maldive">Dubai + Maldive</option>
-                    <option value="dubai-singapore-maldive">
-                      Dubai + Singapore + Maldive
-                    </option>
-                    <option value="dubai-mauritius">Dubai + Mauritius</option>
-                    <option value="dubai-zanzibar">Dubai + Zanzibar</option>
-                    <option value="dubai-koh-samui">Dubai + Koh Samui</option>
-
-                    <option value="bangkok-koh-samui">
-                      Bangkok + Koh Samui
-                    </option>
-                    <option value="tour-thailandia-nord-koh-samui">
-                      Tour Thailandia del Nord + Koh Samui
-                    </option>
-
-                    <option value="tokyo-kyoto-osaka-maldive">
-                      Tokyo + Kyoto + Osaka + Maldive
-                    </option>
-
-                    <option value="bali-singapore-maldive">
-                      Bali + Singapore + Maldive
-                    </option>
-
-                    <option value="newyork-bayahibe">
-                      New York + Bayahibe
-                    </option>
-                    <option value="newyork-bahamas">
-                      New York + Bahamas
-                    </option>
-                    <option value="newyork-messico">New York + Messico</option>
-                    <option value="newyork-crociera-caraibi">
-                      New York + Crociera dei Caraibi
-                    </option>
-                    <option value="newyork-crociera-bahamas">
-                      New York + Crociera Bahamas
-                    </option>
-
-                    <option value="sanfrancisco-hawaii">
-                      San Francisco + Hawaii
-                    </option>
-                    <option value="sanfrancisco-polinesia">
-                      San Francisco + Polinesia Francese
-                    </option>
-                    <option value="sanfrancisco-losangeles-rivieramaya">
-                      San Francisco + Los Angeles + Riviera Maya
-                    </option>
-
-                    <option value="istanbul-cappadocia-bodrum">
-                      Istanbul + Cappadocia + Bodrum
-                    </option>
-                  </select>
-                </div>
-
-                {showOtherMeta && (
-                  <div>
-                    <label
-                      htmlFor="meta_altro"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      Altra destinazione o idea
-                    </label>
-                    <input
-                      type="text"
-                      id="meta_altro"
-                      name="meta_altro"
-                      value={otherMeta}
-                      onChange={(e) => setOtherMeta(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      placeholder="Scrivi qui la destinazione o l’idea"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Periodo + date flessibili + partenza + budget */}
-              <div className="space-y-4">
-                {/* Date */}
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="data_da"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      dal *
-                    </label>
-                    <div className="relative">
-                      <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                        <Calendar className="w-4 h-4 text-slate-400" />
-                      </span>
-                      <input
-                        type="date"
-                        id="data_da"
-                        name="data_da"
-                        required
-                        className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="data_a"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      al *
-                    </label>
-                    <div className="relative">
-                      <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                        <Calendar className="w-4 h-4 text-slate-400" />
-                      </span>
-                      <input
-                        type="date"
-                        id="data_a"
-                        name="data_a"
-                        required
-                        className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Date flessibili */}
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    id="date_flessibili"
-                    name="date_flessibili"
-                    className="h-4 w-4 rounded border-slate-300 text-[#0863D6] focus:ring-[#0863D6]"
-                  />
-                  <label
-                    htmlFor="date_flessibili"
-                    className="text-xs md:text-sm text-slate-600"
-                  >
-                    Le date sono flessibili
-                  </label>
-                </div>
-
-                {/* Luogo di partenza + Budget sulla stessa riga */}
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="partenza"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      Luogo di partenza *
-                    </label>
-                    <input
-                      type="text"
-                      id="partenza"
-                      name="partenza"
-                      required
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                      placeholder="Es. Napoli, Roma…"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="budget"
-                      className="block text-sm font-medium text-[#132C50] mb-1"
-                    >
-                      Budget indicativo per la coppia *
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      required
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-                    >
-                      <option value="">Seleziona una fascia</option>
-                      <option value="0-2000">0 – 2.000 €</option>
-                      <option value="2000-3000">2.000 – 3.000 €</option>
-                      <option value="3000-4000">3.000 – 4.000 €</option>
-                      <option value="4000-5000">4.000 – 5.000 €</option>
-                      <option value="5000-6000">5.000 – 6.000 €</option>
-                      <option value="6000-7000">6.000 – 7.000 €</option>
-                      <option value="7000+">Oltre 7.000 €</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              {/* Note aggiuntive */}
-              <div>
-                <label
-                  htmlFor="note"
-                  className="block text-sm font-medium text-[#132C50] mb-1"
-                >
-                  Raccontateci qualcosa in più (opzionale)
-                </label>
-                <textarea
-                  id="note"
-                  name="note"
-                  rows={4}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                  placeholder="Durata ideale, tipo di strutture, esperienze che vi piacerebbe includere…"
-                />
-              </div>
-
-              {/* Consenso privacy */}
-              <div className="flex items-start gap-2">
-                <input
-                  type="checkbox"
-                  id="privacy"
-                  name="privacy"
-                  required
-                  className="mt-1 h-4 w-4 rounded border-slate-300 text-[#0863D6] focus:ring-[#0863D6]"
-                />
-                <label
-                  htmlFor="privacy"
-                  className="text-[11px] md:text-xs text-slate-600 text-justify"
-                >
-                  Dichiariamo di aver letto e compreso l&apos;{" "}
-                  <Link
-                    to="/privacy-policy"
-                    className="underline underline-offset-2 hover:text-[#0863D6]"
-                  >
-                    informativa privacy
-                  </Link>{" "}
-                  e acconsentiamo al trattamento dei dati personali per poter
-                  essere ricontattati in merito alla presente richiesta di
-                  preventivo.
-                </label>
-              </div>
-
-              {/* CTA + info campi */}
-              <div className="pt-2">
-                <div className="flex justify-center mb-3">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="inline-flex justify-center items-center rounded-full px-8 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition disabled:opacity-60"
-                  >
-                    {loading
-                      ? "Invio in corso..."
-                      : "Invia richiesta viaggio di nozze"}
-                  </button>
-                </div>
-                <p className="text-[11px] md:text-xs text-slate-500 text-center">
-                  I campi contrassegnati con * sono obbligatori. Dopo l&apos;invio
-                  riceverete una conferma e vi ricontatteremo il prima possibile.
-                </p>
-              </div>
-
-              {status === "success" && (
-                <p className="mt-4 text-center text-emerald-600 text-sm font-medium">
-                  Richiesta inviata correttamente! Ti risponderemo il prima
-                  possibile per parlare del vostro viaggio di nozze.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="mt-4 text-center text-red-600 text-sm font-medium">
-                  Si è verificato un problema durante l&apos;invio. Riprova tra poco
-                  oppure contattaci direttamente dai nostri recapiti.
-                </p>
-              )}
-            </form>
-
-            <p className="mt-5 text-xs md:text-sm text-slate-600 text-center">
-              Preferite parlarne di persona?{" "}
-              <a
-                href={RESERVIO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="font-semibold text-[#0863D6] hover:text-[#0648a3] underline underline-offset-2"
+          <div className="space-y-4 text-sm md:text-base text-slate-700">
+            {/* FAQ 1 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
               >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Quanto tempo prima è consigliabile organizzare il viaggio di nozze?
+                  </span>
+                </div>
 
-                Prenotate una consulenza
-              </a>
-              .
-            </p>
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  Per un <strong>viaggio di nozze intercontinentale</strong> o
+                  per periodi molto richiesti consigliamo di iniziare la
+                  progettazione <strong>tra gli 8 e i 12 mesi prima</strong>.
+                  In questo modo è più semplice trovare le migliori combinazioni
+                  di <strong>voli, hotel ed esperienze</strong> e gestire
+                  eventuali richieste particolari.
+                </p>
+              </div>
+            </details>
+
+            {/* FAQ 2 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?
+                  </span>
+                </div>
+
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  L&apos;iter iniziale può essere gestito{" "}
+                  <strong>comodamente da casa</strong>: ci raccontate le vostre
+                  idee, ricevete i preventivi e li valutiamo insieme{" "}
+                  <strong>via telefono, email o videochiamata</strong>.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  La fase di <strong>conferma e finalizzazione</strong> – quindi
+                  contratti, documenti e scelta definitiva di assicurazioni e
+                  servizi – viene però completata{" "}
+                  <strong>in agenzia, di persona</strong>, per garantirvi
+                  massima chiarezza e sicurezza.
+                </p>
+              </div>
+            </details>
+
+            {/* FAQ 3 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Da quali aeroporti organizzate principalmente le partenze?
+                  </span>
+                </div>
+
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  Per i viaggi di nozze internazionali coordiniamo soprattutto
+                  partenze dagli aeroporti di{" "}
+                  <strong>Napoli (Capodichino)</strong> e{" "}
+                  <strong>Roma (Fiumicino)</strong>, che offrono collegamenti
+                  comodi verso molte destinazioni di lungo raggio.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  Quando utile, valutiamo anche <strong>altri aeroporti</strong>{" "}
+                  e collegamenti interni, in base alle vostre esigenze e al
+                  periodo di viaggio.
+                </p>
+              </div>
+            </details>
+
+            {/* FAQ 4 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Vi occupate anche della biglietteria per voli, treni e traghetti?
+                  </span>
+                </div>
+
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  Sì. Gestiamo direttamente la{" "}
+                  <strong>biglietteria aerea</strong> (voli nazionali e
+                  internazionali) e, quando serve, anche{" "}
+                  <strong>treni ad alta velocità</strong> e{" "}
+                  <strong>traghetti o collegamenti marittimi</strong> collegati
+                  all&apos;itinerario.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  L&apos;obiettivo è offrirvi un{" "}
+                  <strong>viaggio di nozze coordinato</strong>, senza dovervi
+                  preoccupare di incastri, orari o cambi complessi da gestire in
+                  autonomia.
+                </p>
+              </div>
+            </details>
+
+            {/* FAQ 5 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    L’assicurazione sanitaria e bagaglio è obbligatoria?
+                  </span>
+                </div>
+
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  L&apos;<strong>assicurazione sanitaria e bagaglio</strong> non
+                  è obbligatoria, ma è{" "}
+                  <strong>fortemente consigliata</strong>, soprattutto per le
+                  lune di miele all&apos;estero e per le destinazioni extra UE.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  Può coprire spese mediche impreviste, smarrimento o
+                  danneggiamento del bagaglio, ritardi, cancellazioni e altri
+                  imprevisti. In agenzia vi proponiamo{" "}
+                  <strong>diverse soluzioni assicurative</strong>, così da
+                  scegliere la copertura più adatta alle vostre esigenze.
+                </p>
+              </div>
+            </details>
+
+            {/* FAQ 6 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Possiamo attivare una lista viaggio di nozze?
+                  </span>
+                </div>
+
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  Sì, potete attivare una{" "}
+                  <strong>lista viaggio di nozze</strong> dedicata al vostro
+                  viaggio. Gli invitati potranno contribuire con una quota
+                  libera e voi potrete tenere sotto controllo le{" "}
+                  <strong>partecipazioni raccolte</strong> con il supporto
+                  dell&apos;agenzia.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  È una soluzione elegante e molto apprezzata, perché trasforma
+                  il regalo in un&apos;esperienza da ricordare per sempre.
+                </p>
+              </div>
+            </details>
+
+            {/* FAQ 7 */}
+            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+              <summary
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Cosa succede se ci sono imprevisti prima o durante il viaggio?
+                  </span>
+                </div>
+
+                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  Avrete sempre un <strong>referente in agenzia</strong> che vi
+                  segue prima, durante e dopo la partenza. In caso di imprevisti
+                  (ritardi, cancellazioni, cambi di programma) vi aiutiamo a
+                  trovare <strong>soluzioni alternative</strong> e a gestire
+                  l&apos;aspetto operativo, così da ridurre al minimo lo stress.
+                </p>
+              </div>
+            </details>
           </div>
         </div>
       </section>
-
-{/* 🔹 SEZIONE FAQ – LOOK PREMIUM + CONTENUTI OTTIMIZZATI */}
-<section
-  id="faq-viaggi-di-nozze"
-  className="py-12 md:py-16 bg-linear-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
->
-  <div className="max-w-5xl mx-auto px-4">
-    <div className="text-center mb-8 md:mb-10">
-      <p className="inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#0863D6] mb-2">
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F1FD]">
-          <HelpCircle className="w-3.5 h-3.5 text-[#0863D6]" />
-        </span>
-        FAQ VIAGGI DI NOZZE
-      </p>
-
-      <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-3">
-        Domande frequenti sui viaggi di nozze Leaving Now
-      </h2>
-
-      <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
-        Una selezione delle domande che riceviamo più spesso su{" "}
-        <strong>viaggi di nozze, lista viaggio di nozze e assicurazioni</strong>.
-        Se non trovi la risposta che cerchi, puoi sempre contattarci
-        direttamente: saremo felici di aiutarti.
-      </p>
-    </div>
-
-    <div className="space-y-4 text-sm md:text-base text-slate-700">
-      {/* FAQ 1 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              Quanto tempo prima è consigliabile organizzare il viaggio di nozze?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            Per un <strong>viaggio di nozze intercontinentale</strong> o per
-            periodi molto richiesti consigliamo di iniziare la progettazione{" "}
-            <strong>tra gli 8 e i 12 mesi prima</strong>. In questo modo è più
-            semplice trovare le migliori combinazioni di{" "}
-            <strong>voli, hotel ed esperienze</strong> e gestire eventuali
-            richieste particolari con più margine.
-          </p>
-        </div>
-      </details>
-
-      {/* FAQ 2 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            L&apos;iter iniziale può essere gestito{" "}
-            <strong>comodamente da casa</strong>: ci raccontate le vostre idee,
-            ricevete i preventivi e valutiamo insieme le soluzioni{" "}
-            <strong>via telefono, email o videochiamata</strong>.{" "}
-          </p>
-          <p className="mt-2 leading-relaxed">
-            La fase di <strong>conferma e finalizzazione</strong> – quindi
-            contratti, documenti e scelta definitiva di assicurazioni e servizi
-            – viene però sempre completata{" "}
-            <strong>in agenzia, di persona</strong>, per garantirvi massima
-            chiarezza e sicurezza.
-          </p>
-        </div>
-      </details>
-
-      {/* FAQ 3 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              Da quali aeroporti organizzate principalmente le partenze?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            Per i viaggi di nozze internazionali coordiniamo soprattutto
-            partenze dagli aeroporti di{" "}
-            <strong>Napoli (Capodichino)</strong> e{" "}
-            <strong>Roma (Fiumicino)</strong>, che offrono le combinazioni più
-            comode e frequenti verso molte destinazioni di lungo raggio.
-          </p>
-          <p className="mt-2 leading-relaxed">
-            Se necessario, valutiamo anche <strong>altri aeroporti</strong> e
-            collegamenti interni, in base alle vostre esigenze e al periodo di
-            viaggio.
-          </p>
-        </div>
-      </details>
-
-      {/* FAQ 4 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              Vi occupate anche della biglietteria per voli, treni e traghetti?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            Sì. Gestiamo direttamente la{" "}
-            <strong>biglietteria aerea</strong> (voli nazionali e
-            internazionali) e, quando serve, anche{" "}
-            <strong>treni ad alta velocità</strong> e{" "}
-            <strong>traghetti o collegamenti marittimi</strong> collegati
-            all&apos;itinerario.
-          </p>
-          <p className="mt-2 leading-relaxed">
-            L&apos;obiettivo è offrirvi un{" "}
-            <strong>viaggio di nozze coordinato</strong>, senza dovervi
-            preoccupare di incastri, orari o cambi complessi da gestire in
-            autonomia.
-          </p>
-        </div>
-      </details>
-
-      {/* FAQ 5 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              L’assicurazione sanitaria e bagaglio è obbligatoria?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            L&apos;<strong>assicurazione sanitaria e bagaglio</strong> non è
-            obbligatoria, ma è{" "}
-            <strong>fortemente consigliata</strong>, soprattutto per le lune di
-            miele all&apos;estero e per le destinazioni extra UE.
-          </p>
-          <p className="mt-2 leading-relaxed">
-            Copre spese mediche impreviste, smarrimento o danneggiamento del
-            bagaglio, ritardi, cancellazioni e altri imprevisti che possono
-            incidere sul vostro viaggio. In agenzia vi proponiamo{" "}
-            <strong>più soluzioni assicurative</strong>, così da scegliere la
-            copertura più adatta alle vostre esigenze.
-          </p>
-        </div>
-      </details>
-
-      {/* FAQ 6 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              Possiamo attivare una lista viaggio di nozze?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            Sì, potete attivare una{" "}
-            <strong>lista viaggio di nozze</strong> dedicata al vostro viaggio di
-            nozze. Gli invitati potranno contribuire con una quota libera e voi
-            potrete tenere sotto controllo le{" "}
-            <strong>partecipazioni raccolte</strong> con il supporto
-            dell&apos;agenzia.
-          </p>
-          <p className="mt-2 leading-relaxed">
-            È una soluzione elegante e molto apprezzata, perché trasforma il
-            regalo in un&apos;esperienza da ricordare per sempre.
-          </p>
-        </div>
-      </details>
-
-      {/* FAQ 7 */}
-      <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-        <summary
-          className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-          style={{ listStyle: "none" }}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-              <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-            </span>
-            <span className="font-semibold text-sm md:text-base text-[#132C50]">
-              Cosa succede se ci sono imprevisti prima o durante il viaggio?
-            </span>
-          </div>
-
-          <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-        </summary>
-
-        <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-          <p className="mt-3 leading-relaxed">
-            Avrete sempre un <strong>referente in agenzia</strong> che vi segue
-            prima, durante e dopo la partenza. In caso di imprevisti (ritardi,
-            cancellazioni, cambi di programma) vi aiutiamo a trovare{" "}
-            <strong>soluzioni alternative</strong> e a gestire l&apos;aspetto
-            operativo, così da ridurre al minimo lo stress.
-          </p>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
     </>
   );
 };

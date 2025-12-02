@@ -37,23 +37,18 @@ const Home = () => {
 
     if (hash) {
       const id = hash.replace("#", "");
-
-      // 1° tentativo subito dopo il render
       setTimeout(() => scrollWithOffset(id), 0);
-      // 2° tentativo dopo lazy / immagini
       setTimeout(() => scrollWithOffset(id), 300);
       return;
     }
 
-    // Nessun hash → normale scroll in alto
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [location]);
 
   return (
     <main>
       <h1 className="sr-only">
-        Leaving Now - Agenzia viaggi ad Aversa specializzata in pacchetti
-        vacanze, crociere e viaggi di nozze
+        Leaving Now – agenzia viaggi ad Aversa per viaggi su misura, crociere e viaggi di nozze
       </h1>
 
       {/* HERO */}
@@ -126,6 +121,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 

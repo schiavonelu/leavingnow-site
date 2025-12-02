@@ -105,7 +105,7 @@ const Contatti = () => {
     name: "Contatti - Leaving Now Agenzia Viaggi Aversa",
     url: "https://leavingnow.it/contatti",
     description:
-      "Contatta Leaving Now, agenzia viaggi ad Aversa: telefono, email, indirizzo, mappa e orari di apertura per chi parte dall'area nord di Napoli e Caserta.",
+      "Contatta Leaving Now, agenzia viaggi ad Aversa: telefono, email, indirizzo, mappa e orari di apertura per richiedere preventivi e informazioni su viaggi su misura, viaggi di nozze, crociere e biglietteria voli, treni e navi.",
     mainEntityOfPage: {
       "@type": "TravelAgency",
       "@id": "https://leavingnow.it/#agency",
@@ -116,22 +116,7 @@ const Contatti = () => {
         telephone: "+39 081 18754553",
         email: "leavingnowviaggi@gmail.com",
         contactType: "customer service",
-        areaServed: [
-          "Aversa",
-          "Lusciano",
-          "Trentola Ducenta",
-          "Cesa",
-          "Orta di Atella",
-          "Succivo",
-          "Sant'Arpino",
-          "Frattaminore",
-          "Frattamaggiore",
-          "Sant'Antimo",
-          "Mugnano di Napoli",
-          "Giugliano in Campania",
-          "Caserta",
-          "Napoli",
-        ],
+        areaServed: ["Aversa", "Campania", "Italia"],
         availableLanguage: ["it"],
       },
     ],
@@ -146,11 +131,11 @@ const Contatti = () => {
         </title>
         <meta
           name="description"
-          content="Contatta Leaving Now, agenzia viaggi ad Aversa: telefono, email, indirizzo, mappa e orari. Preventivi per viaggi di nozze, crociere, biglietteria voli, treni e navi per chi parte dall'area nord di Napoli e Caserta."
+          content="Contatta Leaving Now, agenzia viaggi ad Aversa: telefono, email, indirizzo, mappa e orari. Preventivi per viaggi su misura, viaggi di nozze, crociere e biglietteria voli, treni e navi."
         />
         <meta
           name="keywords"
-          content="contatti Leaving Now, contatti agenzia viaggi Aversa, telefono agenzia viaggi Aversa, email agenzia viaggi Aversa, orari agenzia viaggi Aversa, come arrivare Leaving Now, agenzia viaggi nord Napoli contatti, viaggi di nozze Aversa contatti, crociere Aversa contatti, biglietteria aerea Aversa contatti"
+          content="contatti Leaving Now, contatti agenzia viaggi Aversa, telefono agenzia viaggi Aversa, email agenzia viaggi Aversa, orari agenzia viaggi Aversa, come arrivare Leaving Now, viaggi di nozze Aversa contatti, crociere Aversa contatti, biglietteria aerea Aversa contatti, biglietteria treni Aversa contatti, biglietteria navi Aversa contatti"
         />
         <link rel="canonical" href="https://leavingnow.it/contatti" />
         {/* Open Graph */}
@@ -162,10 +147,7 @@ const Contatti = () => {
           property="og:description"
           content="Tutti i contatti di Leaving Now: telefono, email, indirizzo, mappa e orari dell'agenzia viaggi ad Aversa, specializzata in viaggi su misura e viaggi di nozze."
         />
-        <meta
-          property="og:url"
-          content="https://leavingnow.it/contatti"
-        />
+        <meta property="og:url" content="https://leavingnow.it/contatti" />
         <meta
           property="og:image"
           content="https://leavingnow.it/images/og-leaving-now.jpg"
@@ -196,7 +178,6 @@ const Contatti = () => {
               Tutti i nostri contatti
             </p>
 
-            {/* Inner heading come H2 (H1 già gestito da InnerHero) */}
             <h2
               id="contatti-intro-title"
               className="text-2xl md:text-3xl font-bold text-[#EB2480]"
@@ -206,11 +187,10 @@ const Contatti = () => {
 
             <p className="mt-3 text-sm md:text-base text-slate-700 max-w-xl mx-auto">
               Per preventivi, informazioni o richieste su misura puoi usare il
-              form oppure i nostri contatti diretti. Siamo un&apos;
-              <strong>agenzia viaggi ad Aversa</strong> che segue in particolare
-              chi parte da Napoli o Roma: viaggi di nozze,
-              crociere, vacanze mare, tour e biglietteria{" "}
-              <strong>voli, treni e navi</strong>.
+              form oppure i contatti diretti dell&apos;agenzia. Siamo un&apos;
+              <strong>agenzia viaggi ad Aversa</strong> specializzata in{" "}
+              <strong>viaggi su misura, viaggi di nozze, crociere</strong> e{" "}
+              <strong>biglietteria aerea, treni e navi</strong>.
             </p>
           </div>
 
@@ -225,9 +205,9 @@ const Contatti = () => {
 
                 <p className="text-sm text-slate-700 text-justify mb-5">
                   Puoi scriverci, chiamarci o venirci a trovare in agenzia. Siamo
-                  a <strong>Aversa</strong>, facilmente raggiungibili da nord
-                  Napoli e Caserta. Scegli il canale che preferisci, al resto
-                  pensiamo noi.
+                  ad <strong>Aversa</strong>, facilmente raggiungibili sia in auto
+                  che con i mezzi pubblici. Scegli il canale che preferisci, al
+                  resto pensiamo noi.
                 </p>
 
                 <div className="space-y-4 mb-6">
@@ -279,8 +259,8 @@ const Contatti = () => {
 
               <p className="text-sm text-slate-700 mb-6 text-center md:text-left">
                 Compila il form con qualche dettaglio sul viaggio che hai in
-                mente: ti risponderemo il prima possibile per proporti la{" "}
-                <strong>soluzione più adatta</strong>, in base a destinazione,
+                mente: ti risponderemo il prima possibile con una{" "}
+                <strong>proposta su misura</strong>, in base a destinazione,
                 periodo e budget.
               </p>
 
@@ -389,14 +369,14 @@ const Contatti = () => {
                   <label className="text-sm font-medium text-[#132C50] mb-1 block">
                     Messaggio *
                   </label>
-                <textarea
+                  <textarea
                     name="messaggio"
                     rows="5"
                     required
                     value={formData.messaggio}
                     onChange={handleChange}
                     className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
-                    placeholder="Raccontaci un po’ di più su date, persone, destinazione e budget indicativo."
+                    placeholder="Raccontaci qualcosa su date, persone, destinazione e budget indicativo."
                   ></textarea>
                 </div>
 
@@ -411,14 +391,12 @@ const Contatti = () => {
 
               {status === "success" && (
                 <p className="mt-4 text-center text-emerald-600 text-sm font-medium">
-                  Messaggio inviato correttamente! Ti risponderemo al più
-                  presto.
+                  Messaggio inviato correttamente! Ti risponderemo al più presto.
                 </p>
               )}
               {status === "error" && (
                 <p className="mt-4 text-center text-red-600 text-sm font-medium">
-                  Si è verificato un problema durante l’invio. Riprova tra
-                  poco.
+                  Si è verificato un problema durante l’invio. Riprova tra poco.
                 </p>
               )}
             </div>
@@ -501,6 +479,7 @@ const Contatti = () => {
 };
 
 export default Contatti;
+
 
 
 
