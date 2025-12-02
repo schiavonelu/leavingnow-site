@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getTimeDiffMs, ONE_HOUR_MS } from "../config/launchConfig";
 import ComingSoon from "./ComingSoon";
 import Maintenance from "./Maintenance";
+import WhatsAppWidget from "../components/ui/WhatsAppWidget";
 
 const LaunchGate = () => {
   const [diffMs, setDiffMs] = useState(getTimeDiffMs());
@@ -62,6 +63,7 @@ const LaunchGate = () => {
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >
+      <WhatsAppWidget/>
       <OverlayContent />
     </div>
   );
