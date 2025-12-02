@@ -836,7 +836,7 @@ const ViaggiDiNozze = () => {
       {/* 🔹 SEZIONE FAQ – LOOK PREMIUM + CONTENUTI OTTIMIZZATI */}
       <section
         id="faq-viaggi-di-nozze"
-        className="py-12 md:py-16 bg-gradient-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
+        className="py-12 md:py-16 bg-linear-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
       >
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-10">

@@ -6,18 +6,23 @@ import { useInView } from "../../hooks/useInView";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 
-const AgencyIntroStrip = () => {
+const AgencyIntroStrip = ({ showHeading = true }) => {
   const { ref, isVisible } = useInView({ threshold: 0.2 });
 
   return (
     <section
-      className="w-full py-12 md:py-16 bg-[#132C50]"
-      aria-labelledby="cta-contatti-title"
+      className="bg-slate-50 py-12 md:py-16"
+      aria-labelledby={showHeading ? "cta-contatti-title" : undefined}
       ref={ref}
     >
+      {/* BANNER FULL-BLEED A TUTTO SCHERMO */}
       <div
         className={[
-          "w-full px-4 md:px-8 text-center transition-all duration-700 ease-out",
+          // full bleed rispetto al viewport
+          "relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen",
+          // stile banner
+          "bg-[#132C50] py-10 md:py-14 px-4 md:px-8",
+          "text-center transition-all duration-700 ease-out",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
         ].join(" ")}
       >
@@ -35,8 +40,8 @@ const AgencyIntroStrip = () => {
         <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto mb-8">
           Raccontaci chi sei, con chi viaggi e che tipo di esperienza stai
           cercando. Possiamo sentirci in agenzia ad Aversa o da remoto e
-          costruire insieme il <strong>viaggio su misura</strong> più adatto a te:
-          vacanza mare, tour, crociera o viaggio di nozze.
+          costruire insieme il <strong>viaggio su misura</strong> più adatto a
+          te: vacanza mare, tour, crociera o viaggio di nozze.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -64,4 +69,6 @@ const AgencyIntroStrip = () => {
 };
 
 export default AgencyIntroStrip;
+
+
 
