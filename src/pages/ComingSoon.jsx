@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { FaSuitcaseRolling, FaPhone } from "react-icons/fa6";
 import logo from "../assets/logo/leavingnow-logo.webp";
-import { getTimeLeft } from "../config/launchConfig";
+import { getTimeLeft, ONE_DAY_MS } from "../config/launchConfig";
 
 const ComingSoon = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -12,9 +12,19 @@ const ComingSoon = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // ultimo minuto: solo secondi enormi al centro
+  // Ultimo minuto: solo secondi enormi al centro
   const lastMinute =
     timeLeft.total > 0 && timeLeft.total <= 60 * 1000;
+
+  // Progress bar sulle ultime 24 ore: 0 → 24h
+  // progress24 = 0 all'inizio delle 24h, 1 al momento del lancio
+  const progress24 = (() => {
+    if (timeLeft.total <= 0) return 1;
+    const ratio = 1 - timeLeft.total / ONE_DAY_MS;
+    const clamped = Math.min(1, Math.max(0, ratio));
+    // minimo visivo 5% per non far sparire la barra
+    return Math.max(clamped, 0.05);
+  })();
 
   const format = (n) => String(n).padStart(2, "0");
 
@@ -78,6 +88,7 @@ const ComingSoon = () => {
                         key={label}
                         className="flex flex-col items-center justify-center gap-1"
                       >
+                        {/* 🎨 COLORE DEI NUMERI NORMALE → CAMBIA QUESTA CLASSE */}
                         <span className="mb-1 text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums text-[#0863D6] leading-none">
                           {format(value)}
                         </span>
@@ -89,16 +100,20 @@ const ComingSoon = () => {
                   })}
                 </div>
 
-                {/* PROGRESS BAR */}
+                {/* PROGRESS BAR DINAMICA ULTIME 24H */}
                 <div className="mt-5 h-2 w-full max-w-3xl rounded-full bg-slate-200 overflow-hidden mx-auto">
-                  <div className="h-full w-3/4 bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
+                  <div
+                    className="h-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 transition-all duration-700 ease-out"
+                    style={{ width: `${progress24 * 100}%` }}
+                  />
                 </div>
               </>
             ) : (
               // ⏱️ Ultimo minuto: SOLO SECONDI centrali, enormi, con zoom/pulse
               <>
                 <div className="rounded-3xl bg-white/95 px-6 py-8 md:px-8 md:py-10 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.16)] flex flex-col items-center justify-center gap-4 animate-pulse">
-                  <span className="text-6xl sm:text-7xl md:text-8xl font-black tabular-nums text-[#EB2480] leading-none transform">
+                  {/* 🎨 COLORE DEI NUMERI NEGLI ULTIMI 60s → CAMBIA QUI */}
+                  <span className="text-6xl sm:text-7xl md:text-8xl font-black tabular-nums text-[#EB2480] leading-none">
                     {format(timeLeft.seconds)}
                   </span>
                   <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.3em] text-slate-500">
@@ -106,7 +121,7 @@ const ComingSoon = () => {
                   </span>
                 </div>
 
-                {/* Linea sottile giusto per dare ritmo visivo */}
+                {/* Linea decorativa */}
                 <div className="mt-4 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
               </>
             )}
@@ -147,5 +162,6 @@ const ComingSoon = () => {
 };
 
 export default ComingSoon;
+
 
 
