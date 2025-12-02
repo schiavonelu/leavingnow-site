@@ -13,6 +13,9 @@ const ComingSoon = () => {
   }, []);
 
   const isLaunched = timeLeft.total === 0;
+  const isFinalSeconds =
+    timeLeft.total > 0 && timeLeft.total <= 60 * 1000; // ultimi 60 secondi
+
   const format = (n) => String(n).padStart(2, "0");
 
   return (
@@ -60,7 +63,14 @@ const ComingSoon = () => {
           <div className="w-full max-w-3xl">
             {!isLaunched ? (
               <>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-3xl bg-white/95 px-4 py-5 md:px-6 md:py-7 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
+                <div
+                  className={[
+                    "grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-3xl bg-white/95 px-4 py-5 md:px-6 md:py-7 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.12)]",
+                    isFinalSeconds ? "animate-pulse" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
                   {["Giorni", "Ore", "Minuti", "Secondi"].map((label, i) => {
                     const value = [
                       timeLeft.days,
@@ -74,7 +84,16 @@ const ComingSoon = () => {
                         key={label}
                         className="flex flex-col items-center justify-center gap-1"
                       >
-                        <span className="mb-1 text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums text-[#0863D6] leading-none">
+                        <span
+                          className={[
+                            "mb-1 font-extrabold tabular-nums text-[#0863D6] leading-none",
+                            isFinalSeconds
+                              ? "text-5xl sm:text-6xl md:text-7xl"
+                              : "text-4xl sm:text-5xl md:text-6xl",
+                          ]
+                            .filter(Boolean)
+                            .join(" ")}
+                        >
                           {format(value)}
                         </span>
                         <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.26em] text-slate-500">

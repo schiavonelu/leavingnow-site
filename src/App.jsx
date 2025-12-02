@@ -34,33 +34,19 @@ import Asia from "./pages/Asia.jsx";
 import Oceania from "./pages/Oceania.jsx";
 
 // Pagine speciali
-import LaunchGate from "./pages/LaunchGate.jsx";
-import ComingSoon from "./pages/ComingSoon.jsx";
-import Maintenance from "./pages/Maintenance.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import LaunchGate from "./pages/LaunchGate.jsx";
 
 // UI Components
 import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
-// 🔁 Modalità lancio
-// Metti a true circa 36 ore prima del lancio
-const LAUNCH_MODE = true;
-
 function App() {
-  // 🌟 Modalità pre-lancio: mostra SOLO le pagine di lancio (maintenance / countdown)
-  if (LAUNCH_MODE) {
-    return (
-      <>
-        <WhatsAppWidget />
-        <LaunchGate />
-      </>
-    );
-  }
-
-  // 🌟 Modalità normale: mostra il sito completo
   return (
     <>
+      {/* Overlay di lancio (manutenzione / coming soon) basato SOLO sulla data */}
+      <LaunchGate />
+
       {/* Widget WhatsApp sempre visibile */}
       <WhatsAppWidget />
 
@@ -103,10 +89,6 @@ function App() {
             element={<CondizioniVendita />}
           />
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
-
-          {/* Route di test per le pagine speciali */}
-          <Route path="coming-soon" element={<ComingSoon />} />
-          <Route path="manutenzione" element={<Maintenance />} />
         </Route>
 
         {/* Pagina 404 */}
@@ -120,6 +102,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

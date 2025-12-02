@@ -10,33 +10,41 @@ const LaunchGate = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDiffMs(getTimeDiffMs());
-    }, 30000); // ogni 30 secondi
+    }, 30000); // aggiorna ogni 30 secondi
 
     return () => clearInterval(interval);
   }, []);
 
   const diffHours = diffMs / ONE_HOUR_MS;
 
-  // lancio passato → non mostra nulla (userai il sito normale)
-  if (diffMs <= 0) {
+  // LANCIO PASSATO o troppo distante: nessun overlay → sito normale
+  if (diffMs <= 0 || diffHours > 36) {
     return null;
   }
 
-  // Se mancano 24 ore o meno → pagina Coming Soon con countdown
-  if (diffHours <= 24) {
-    return <ComingSoon />;
+  // Da 36h a 24h → manutenzione
+  if (diffHours <= 36 && diffHours > 24) {
+    return (
+      <div className="fixed inset-0 z-50">
+        <Maintenance />
+      </div>
+    );
   }
 
-  // Se siamo tra 24 e 36 ore → pagina manutenzione
-  if (diffHours <= 36) {
-    return <Maintenance />;
+  // Da 24h a 0 → coming soon con countdown
+  if (diffHours <= 24 && diffHours > 0) {
+    return (
+      <div className="fixed inset-0 z-50">
+        <ComingSoon />
+      </div>
+    );
   }
 
-  // Oltre 36 ore: opzionalmente manutenzione generica
-  return <Maintenance />;
+  return null;
 };
 
 export default LaunchGate;
+
 
 
 
