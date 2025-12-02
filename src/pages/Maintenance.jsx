@@ -1,6 +1,6 @@
 // src/pages/Maintenance.jsx
 import { FaHammer, FaWrench, FaPhone } from "react-icons/fa6";
-import logo from "../assets/logo/leavingnow-logo.webp";
+import logo from "../assets/logo/leavingnow-logowhite.webp";
 
 const Maintenance = () => {
   return (
