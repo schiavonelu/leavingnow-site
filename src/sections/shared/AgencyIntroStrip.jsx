@@ -1,11 +1,6 @@
 // src/sections/shared/AgencyIntroStrip.jsx
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { FaPhoneAlt } from "react-icons/fa";
-=======
-import { FaCalendarCheck } from "react-icons/fa";
-import { Mail } from "lucide-react";
->>>>>>> 10d6796 (Dev)
 import { useInView } from "../../hooks/useInView";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
@@ -30,7 +25,6 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
         ].join(" ")}
       >
-<<<<<<< HEAD
 
         {/* UNA SOLA CARD: CONTATTI / PARLARE CON NOI */}
         <div className="max-w-xl mx-auto">
@@ -76,33 +70,6 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
                 </span>
               </div>
             </article>
-=======
-        <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-3 text-[#0863D6]">
-          Consulenza gratuita
-        </p>
-
-        <h2
-          id="cta-contatti-title"
-          className="text-2xl md:text-3xl font-bold text-white mb-3"
-        >
-          Vuoi parlare del tuo prossimo viaggio con noi?
-        </h2>
-
-        <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto mb-8">
-          Raccontaci chi sei, con chi viaggi e che tipo di esperienza stai
-          cercando. Possiamo sentirci in agenzia ad Aversa o da remoto e
-          costruire insieme il <strong>viaggio su misura</strong> più adatto a
-          te: vacanza mare, tour, crociera o viaggio di nozze.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            to="/contatti"
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-8 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
-          >
-            <Mail className="text-lg mr-2" />
-            Scrivici per informazioni
->>>>>>> 10d6796 (Dev)
           </Link>
 
           <a
@@ -120,20 +87,4 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
   );
 };
 
-<<<<<<< HEAD
 export default AgencyIntroStrip;
-=======
-export default AgencyIntroStrip;
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 10d6796 (Dev)
