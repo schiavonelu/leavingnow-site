@@ -1,28 +1,8 @@
+// src/pages/ComingSoon.jsx
 import { useEffect, useState } from "react";
 import { FaSuitcaseRolling, FaPhone } from "react-icons/fa6";
 import logo from "../assets/logo/leavingnow-logo.webp";
-
-/**
- * 🔁 DATA DI LANCIO (FITTIZIA PER ORA)
- */
-const LAUNCH_DATE = new Date("2025-12-31T10:00:00+01:00");
-
-const getTimeLeft = () => {
-  const now = new Date().getTime();
-  const diff = LAUNCH_DATE.getTime() - now;
-
-  if (diff <= 0) {
-    return { total: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
-
-  return {
-    total: diff,
-    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((diff / (1000 * 60)) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
-  };
-};
+import { getTimeLeft } from "../config/launchConfig";
 
 const ComingSoon = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -159,11 +139,3 @@ const ComingSoon = () => {
 };
 
 export default ComingSoon;
-
-
-
-
-
-
-
-

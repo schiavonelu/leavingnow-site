@@ -34,25 +34,26 @@ import Asia from "./pages/Asia.jsx";
 import Oceania from "./pages/Oceania.jsx";
 
 // Pagine speciali
+import LaunchGate from "./pages/LaunchGate.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
+import Maintenance from "./pages/Maintenance.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 // UI Components
 import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
-// 🔁 Modalità lancio (Coming Soon globale)
-// Imposta a true 24 ore prima della pubblicazione
-const LAUNCH_MODE = false;
+// 🔁 Modalità lancio
+// Metti a true circa 36 ore prima del lancio
+const LAUNCH_MODE = true;
 
 function App() {
-  // 🌟 Modalità pre-lancio: mostra SOLO la pagina Coming Soon
+  // 🌟 Modalità pre-lancio: mostra SOLO le pagine di lancio (maintenance / countdown)
   if (LAUNCH_MODE) {
     return (
       <>
         <WhatsAppWidget />
-        <ComingSoon />
-        <CookieConsent />
+        <LaunchGate />
       </>
     );
   }
@@ -80,18 +81,9 @@ function App() {
           <Route path="idee-regalo" element={<IdeeRegalo />} />
           <Route path="mete-stagionali" element={<MeteStagionali />} />
           <Route path="citta-europee" element={<MeteCapitali />} />
-          <Route
-            path="mete-viaggi-di-nozze"
-            element={<MeteViaggiNozze />}
-          />
-          <Route
-            path="mare-italia"
-            element={<MeteMareItalia />}
-          />
-          <Route
-            path="mare-estero"
-            element={<MeteMareEstero />}
-          />
+          <Route path="mete-viaggi-di-nozze" element={<MeteViaggiNozze />} />
+          <Route path="mare-italia" element={<MeteMareItalia />} />
+          <Route path="mare-estero" element={<MeteMareEstero />} />
 
           {/* Sotto-pagine destinazioni */}
           <Route path="destinazioni/europa" element={<Europa />} />
@@ -111,6 +103,10 @@ function App() {
             element={<CondizioniVendita />}
           />
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
+
+          {/* Route di test per le pagine speciali */}
+          <Route path="coming-soon" element={<ComingSoon />} />
+          <Route path="manutenzione" element={<Maintenance />} />
         </Route>
 
         {/* Pagina 404 */}
@@ -124,6 +120,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 
