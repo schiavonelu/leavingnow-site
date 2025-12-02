@@ -1,7 +1,7 @@
 // src/config/launchConfig.js
 
 // 🔁 DATA DI LANCIO - METTI QUI QUELLA REALE
-export const LAUNCH_DATE = new Date("2025-12-03T21:32:00+01:00");
+export const LAUNCH_DATE = new Date("2025-12-03T21:38:00+01:00");
 //            formato: new Date("YYYY-MM-DDTHH:MM:SS+01:00")
 
 // Millisecondi
