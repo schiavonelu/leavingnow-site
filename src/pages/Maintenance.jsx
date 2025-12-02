@@ -1,5 +1,5 @@
 // src/pages/Maintenance.jsx
-import { FaHammer, FaHardHat, FaWrench, FaPhone } from "react-icons/fa6";
+import { FaHammer, FaWrench, FaPhone } from "react-icons/fa6";
 import logo from "../assets/logo/leavingnow-logo.webp";
 
 const Maintenance = () => {
@@ -58,7 +58,7 @@ const Maintenance = () => {
               <div className="mb-4">
                 <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
                   <span className="inline-flex items-center gap-1">
-                    <FaHardHat className="text-xs text-amber-300" />
+                    <FaHammer className="text-xs text-amber-300" />
                     <span>Stato lavori</span>
                   </span>
                   <span className="font-semibold text-amber-200">QUASI PRONTO</span>
@@ -108,7 +108,7 @@ const Maintenance = () => {
                 <div className="rounded-2xl bg-slate-800/80 p-3 border border-slate-700/80">
                   <div className="mb-2 flex items-center gap-2">
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
-                      <FaHardHat className="text-xs text-amber-400 animate-bounce" />
+                      <FaHammer className="text-xs text-amber-400 animate-bounce" />
                     </span>
                     <p className="text-[11px] font-semibold text-slate-100">
                       Richieste preventivo
@@ -163,6 +163,7 @@ const Maintenance = () => {
 };
 
 export default Maintenance;
+
 
 
 
