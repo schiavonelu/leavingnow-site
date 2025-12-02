@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaUsers, FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 import { useInView } from "../../hooks/useInView";
 
 const AgencyIntroStrip = ({ showHeading = true }) => {
@@ -18,107 +18,66 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
         ].join(" ")}
       >
-        {/* Heading di sezione SEO-friendly (opzionale) */}
+        {/* HEADER TESTUALE – SOLO CHI SIAMO + DESCRIZIONE */}
         {showHeading && (
           <div className="mb-8 text-center md:text-left">
+            <p className="text-[11px] md:text-xs font-semibold tracking-[0.25em] uppercase text-slate-500 mb-2">
+              Chi siamo
+            </p>
             <h2
               id="agency-intro-heading"
               className="text-xl md:text-2xl font-bold text-slate-900"
             >
               Agenzia viaggi ad Aversa: Leaving Now
             </h2>
-            <p className="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
+            <p className="mt-3 text-sm md:text-base text-slate-600 max-w-2xl">
               Leaving Now è un&apos;agenzia viaggi ad Aversa specializzata in{" "}
               <strong>viaggi su misura, viaggi di nozze e crociere</strong>, con
-              servizi di <strong>biglietteria aerea, treni e navi</strong>.
-              Un team di consulenti di viaggio che ti segue dalla scelta della
-              meta al rientro, con soluzioni pensate per coppie, famiglie,
-              gruppi e viaggi di lavoro.
+              servizi di <strong>biglietteria aerea, treni e navi</strong>. Un
+              team di consulenti di viaggio che ti segue dalla scelta della meta
+              al rientro, con soluzioni pensate per coppie, famiglie, gruppi e
+              viaggi di lavoro.
             </p>
           </div>
         )}
 
-        <div className="grid gap-6 md:gap-6 md:grid-cols-2 text-center md:text-left">
-          {/* CARD CHI SIAMO */}
+        {/* UNA SOLA CARD: CONTATTI / PARLARE CON NOI */}
+        <div className="max-w-xl mx-auto">
           <Link
-            to="/chi-siamo"
-            className="group block mx-auto w-full max-w-md md:max-w-none focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded-3xl"
+            to="/contatti"
+            className="group block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded-3xl"
           >
             <article
-              className="rounded-3xl bg-white border border-slate-200 shadow-sm 
+              className="rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-sm 
               p-6 md:p-7 flex flex-col h-full 
               transition-all duration-200 group-hover:shadow-md group-hover:border-sky-400"
             >
-              <div className="flex items-center md:items-start justify-center md:justify-start gap-4 mb-4">
+              <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-600 text-white shadow-md transition-transform duration-200 group-hover:scale-105">
-                  <FaUsers className="text-2xl" />
+                  <FaPhoneAlt className="text-2xl" />
                 </div>
 
                 <div className="text-left">
                   <h3 className="text-lg md:text-xl font-semibold text-slate-900">
-                    La nostra storia e il nostro metodo
+                    Vuoi parlare con noi?
                   </h3>
                   <p className="text-sm md:text-base text-slate-500">
-                    Chi c’è dietro Leaving Now e come progettiamo i viaggi.
+                    Scrivici o chiamaci per un confronto sul tuo prossimo
+                    viaggio.
                   </p>
                 </div>
               </div>
 
               <p className="text-sm md:text-base text-slate-700 leading-relaxed text-justify flex-1">
-                Leaving Now nasce dall&apos;ascolto delle persone: esigenze,
-                tempi, budget e desideri. Progettiamo{" "}
-                <strong>viaggi su misura</strong>,{" "}
-                <strong>viaggi di nozze personalizzati</strong>, crociere e
-                itinerari completi grazie a una rete di partner selezionati in
-                Italia e nel mondo.
-              </p>
-
-              <div className="mt-4 md:mt-6 flex items-center justify-end gap-2">
-                <span className="text-sm md:text-sm font-semibold text-sky-600 flex items-center gap-1">
-                  Scopri chi siamo
-                  <span className="text-lg leading-none transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </span>
-              </div>
-            </article>
-          </Link>
-
-          {/* CARD CONTATTI */}
-          <Link
-            to="/contatti"
-            className="group block mx-auto w-full max-w-md md:max-w-none focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 rounded-3xl"
-          >
-            <article
-              className="rounded-3xl bg-slate-950 text-slate-50 border border-slate-800 shadow-md 
-              p-6 md:p-7 flex flex-col h-full 
-              transition-all duration-200 group-hover:shadow-lg group-hover:border-sky-500"
-            >
-              <div className="flex items-center md:items-start justify-center md:justify-start gap-4 mb-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500 text-white shadow-md transition-transform duration-200 group-hover:scale-105">
-                  <FaPhoneAlt className="text-2xl" />
-                </div>
-
-                <div className="text-left">
-                  <h3 className="text-lg md:text-xl font-semibold text-white">
-                    Vuoi parlare con noi?
-                  </h3>
-                  <p className="text-sm md:text-base text-slate-300">
-                    Contattaci per preventivi o informazioni.
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-sm md:text-base text-slate-200 leading-relaxed text-justify flex-1">
-                Per preventivi, domande o idee di viaggio puoi contattarci
-                quando vuoi: ti risponderemo con{" "}
+                Per preventivi, domande o idee di viaggio puoi contattarci in
+                qualsiasi momento: ti risponderemo con{" "}
                 <strong>proposte chiare</strong> e assistenza prima, durante e
                 dopo la partenza, per <strong>viaggi di nozze</strong>,
                 crociere e vacanze su misura.
               </p>
 
               <div className="mt-4 md:mt-6 flex items-center justify-end gap-2">
-                <span className="text-sm md:text-sm font-semibold text-sky-400 flex items-center gap-1">
+                <span className="text-sm md:text-sm font-semibold text-sky-600 flex items-center gap-1">
                   Vai alla pagina contatti
                   <span className="text-lg leading-none transition-transform duration-200 group-hover:translate-x-0.5">
                     →
@@ -134,12 +93,3 @@ const AgencyIntroStrip = ({ showHeading = true }) => {
 };
 
 export default AgencyIntroStrip;
-
-
-
-
-
-
-
-
-
