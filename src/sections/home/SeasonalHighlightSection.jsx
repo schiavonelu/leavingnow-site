@@ -215,7 +215,7 @@ const SeasonalHighlightSection = () => {
       buttons.push(
         <Link
           key="mare-italia"
-          to="/mete-mare-italia"
+          to="/mare-italia"
           className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
         >
           <Waves className="w-4 h-4 mr-2" />
@@ -225,7 +225,7 @@ const SeasonalHighlightSection = () => {
       buttons.push(
         <Link
           key="mare-estero"
-          to="/mete-mare-estero"
+          to="/mare-estero"
           className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-emerald-400 hover:text-emerald-300 transition"
         >
           <Globe2 className="w-4 h-4 mr-2" />
@@ -250,7 +250,7 @@ const SeasonalHighlightSection = () => {
         buttons.push(
           <Link
             key="capitali"
-            to="/mete-capitali"
+            to="/citta-europee"
             className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
           >
             <Building2 className="w-4 h-4 mr-2" />
@@ -278,7 +278,7 @@ const SeasonalHighlightSection = () => {
         buttons.push(
           <Link
             key="capitali"
-            to="/mete-capitali"
+            to="/citta-europee"
             className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
           >
             <Building2 className="w-4 h-4 mr-2" />
@@ -292,7 +292,7 @@ const SeasonalHighlightSection = () => {
         buttons.push(
           <Link
             key="mare-italia"
-            to="/mete-mare-italia"
+            to="/mare-italia"
             className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
           >
             <Waves className="w-4 h-4 mr-2" />
@@ -302,7 +302,7 @@ const SeasonalHighlightSection = () => {
         buttons.push(
           <Link
             key="mare-estero"
-            to="/mete-mare-estero"
+            to="/mare-estero"
             className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-emerald-400 hover:text-emerald-300 transition"
           >
             <Globe2 className="w-4 h-4 mr-2" />

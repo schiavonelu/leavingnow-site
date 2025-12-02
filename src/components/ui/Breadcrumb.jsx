@@ -39,10 +39,10 @@ const Breadcrumb = () => {
     oceania: "Oceania",
 
     "mete-stagionali": "Mete stagionali",
-    "mete-capitali": "Città europee", // 🔴 aggiornato
+    "citta-europee": "Città europee", // 🔴 aggiornato
     "mete-viaggi-di-nozze": "Mete viaggi di nozze",
-    "mete-mare-italia": "Mare Italia",
-    "mete-mare-estero": "Mare estero",
+    "mare-italia": "Mare Italia",
+    "mare-estero": "Mare estero",
 
     crociere: "Crociere",
     "viaggi-individuali-gruppo": "Viaggi individuali & di gruppo",
@@ -68,9 +68,9 @@ const Breadcrumb = () => {
   // Tutte le pagine "mete" collegate alla sezione mete stagionali in home
   else if (
     currentPath.startsWith("/mete-stagionali") ||
-    currentPath.startsWith("/mete-mare-italia") ||
-    currentPath.startsWith("/mete-mare-estero") ||
-    currentPath.startsWith("/mete-capitali")
+    currentPath.startsWith("/mare-italia") ||
+    currentPath.startsWith("/mare-estero") ||
+    currentPath.startsWith("/citta-europee")
   ) {
     homeTarget = "/#mete-stagionali";
   } else if (
@@ -141,7 +141,7 @@ const Breadcrumb = () => {
   }
 
   // ✨ Caso speciale: METE MARE ITALIA
-  if (currentPath.startsWith("/mete-mare-italia")) {
+  if (currentPath.startsWith("/mare-italia")) {
     crumbs = [
       {
         label: "Mete stagionali",
@@ -150,14 +150,14 @@ const Breadcrumb = () => {
       },
       {
         label: "Mare Italia",
-        path: "/mete-mare-italia",
+        path: "/mare-italia",
         isLast: true,
       },
     ];
   }
 
   // ✨ Caso speciale: METE MARE ESTERO
-  if (currentPath.startsWith("/mete-mare-estero")) {
+  if (currentPath.startsWith("/mare-estero")) {
     crumbs = [
       {
         label: "Mete stagionali",
@@ -166,14 +166,14 @@ const Breadcrumb = () => {
       },
       {
         label: "Mare estero",
-        path: "/mete-mare-estero",
+        path: "/mare-estero",
         isLast: true,
       },
     ];
   }
 
   // ✨ Caso speciale: METE CAPITALI → Città europee
-  if (currentPath.startsWith("/mete-capitali")) {
+  if (currentPath.startsWith("/citta-europee")) {
     crumbs = [
       {
         label: "Mete stagionali",
@@ -182,7 +182,7 @@ const Breadcrumb = () => {
       },
       {
         label: "Città europee", // 🔴 testo aggiornato
-        path: "/mete-capitali",
+        path: "/citta-europee",
         isLast: true,
       },
     ];

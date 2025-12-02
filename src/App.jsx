@@ -16,9 +16,9 @@ import ViaggiFamily from "./pages/ViaggiFamily.jsx";
 import IdeeRegalo from "./pages/IdeeRegalo.jsx";
 import MeteStagionali from "./pages/MeteStagionali.jsx";
 import MeteCapitali from "./pages/MeteCapitali.jsx";
-import MeteViaggiNozze from "./pages/MeteViaggiNozze.jsx";   
-import MeteMareItalia from "./pages/MeteMareItalia.jsx";  
-import MeteMareEstero from "./pages/MeteMareEstero.jsx";      
+import MeteViaggiNozze from "./pages/MeteViaggiNozze.jsx";
+import MeteMareItalia from "./pages/MeteMareItalia.jsx";
+import MeteMareEstero from "./pages/MeteMareEstero.jsx";
 
 // Pagine legali
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
@@ -79,18 +79,18 @@ function App() {
           <Route path="viaggi-family" element={<ViaggiFamily />} />
           <Route path="idee-regalo" element={<IdeeRegalo />} />
           <Route path="mete-stagionali" element={<MeteStagionali />} />
-          <Route path="mete-capitali" element={<MeteCapitali />} />
+          <Route path="citta-europee" element={<MeteCapitali />} />
           <Route
             path="mete-viaggi-di-nozze"
-            element={<MeteViaggiNozze />}   
+            element={<MeteViaggiNozze />}
           />
           <Route
-            path="mete-mare-italia"
-            element={<MeteMareItalia />}      
+            path="mare-italia"
+            element={<MeteMareItalia />}
           />
- <Route
-            path="mete-mare-estero"
-            element={<MeteMareEstero />}     
+          <Route
+            path="mare-estero"
+            element={<MeteMareEstero />}
           />
 
           {/* Sotto-pagine destinazioni */}

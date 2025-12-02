@@ -119,7 +119,7 @@ const SeaFiltersEstero = ({
           alle mete mare Italia.
         </p>
         <a
-          href="/mete-mare-italia"
+          href="/mare-italia"
           className="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs md:text-sm font-semibold border border-sky-500 text-sky-700 bg-sky-50 hover:bg-sky-100 hover:border-sky-600 transition"
         >
           <FaUmbrellaBeach className="text-sm" />
@@ -180,7 +180,7 @@ const SeaFiltersEstero = ({
 
       {/* 🔹 Short-cut verso Mare Italia anche in sidebar collassata */}
       <a
-        href="/mete-mare-italia"
+        href="/mare-italia"
         title="Vai alle mete mare Italia"
         className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-600 text-white shadow-sm hover:bg-sky-700"
       >

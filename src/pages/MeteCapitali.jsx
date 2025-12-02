@@ -307,7 +307,7 @@ const MeteCapitali = () => {
                 </a>
 
                 <a
-                  href="/mete-mare-italia"
+                  href="/mare-italia"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480] hover:text-[#EB2480] hover:bg-white/5 transition"
                 >
                   <FaUmbrellaBeach className="text-lg" />
@@ -315,7 +315,7 @@ const MeteCapitali = () => {
                 </a>
 
                 <a
-                  href="/mete-mare-estero"
+                  href="/mare-estero"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500 hover:text-emerald-500 hover:bg-white/5 transition"
                 >
                   <FaUmbrellaBeach className="text-lg" />

@@ -379,7 +379,7 @@ const MeteStagionali = () => {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
-                  href="/mete-capitali"
+                  href="/citta-europee"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
                     font-semibold border border-sky-400 bg-sky-500 text-white hover:bg-white hover:text-[#0863D6]
                     hover:border-[#0863D6] transition"
@@ -389,7 +389,7 @@ const MeteStagionali = () => {
                 </a>
 
                 <a
-                  href="/mete-mare-italia"
+                  href="/mare-italia"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
                     font-semibold border border-fuchsia-400 text-fuchsia-100 hover:border-[#EB2480]
                     hover:text-[#EB2480] hover:bg-white/5 transition"
@@ -399,7 +399,7 @@ const MeteStagionali = () => {
                 </a>
 
                 <a
-                  href="/mete-mare-estero"
+                  href="/mare-estero"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base
                     font-semibold border border-emerald-400 text-emerald-100 hover:border-emerald-500
                     hover:text-emerald-500 hover:bg-white/5 transition"

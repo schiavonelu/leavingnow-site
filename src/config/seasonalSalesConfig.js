@@ -23,7 +23,7 @@ export const SALES_CAMPAIGNS = [
     from: makeDate(1, 7),   // 7 gennaio
     to: makeDate(8, 20),    // 20 agosto
     primaryCta: {
-      to: "/mete-mare-italia",
+      to: "/mare-italia",
       label: "Scopri le coste e le isole italiane",
       type: "mare",
     },
@@ -56,7 +56,7 @@ export const SALES_CAMPAIGNS = [
     from: makeDate(10, 1),  // 1 ottobre
     to: makeDate(7, 30),    // 30 luglio (passa l’anno)
     primaryCta: {
-      to: "/mete-mare-estero",
+      to: "/mare-estero",
       label: "Mare estero tra isole e coste",
       type: "mare-estero",
     },
@@ -67,7 +67,7 @@ export const SALES_CAMPAIGNS = [
     from: makeDate(3, 1),   // 1 marzo
     to: makeDate(9, 30),    // 30 settembre
     primaryCta: {
-      to: "/mete-mare-estero#mare-inverno",
+      to: "/mare-estero#mare-inverno",
       label: "Idee di mare d’inverno",
       type: "mare-inverno",
     },
