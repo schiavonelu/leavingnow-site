@@ -1,6 +1,6 @@
 // src/pages/Maintenance.jsx
 import { FaHammer, FaWrench, FaPhone } from "react-icons/fa6";
-import logo from "../assets/logo/leavingnow-logowhite.webp";
+import logo from "../assets/logo/leavingnow-logo.webp";
 
 const Maintenance = () => {
   return (
@@ -36,96 +36,73 @@ const Maintenance = () => {
         {/* MAIN */}
         <main className="flex flex-1 flex-col items-center justify-center text-center">
           {/* Testo principale */}
-          <div className="mb-6 max-w-3xl">
+          <div className="mb-8 max-w-3xl">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-slate-50">
-              Stiamo finendo gli ultimi ritocchi ✨
+              Ultimi ritocchi prima del decollo ✨
             </h1>
             <p className="text-[11px] sm:text-xs md:text-sm text-slate-300">
-              Il nuovo sito è quasi pronto. In queste ore stiamo montando le ultime
-              sezioni, sistemando le card delle destinazioni e lucidando i dettagli
-              dei viaggi di nozze.
+              In queste ore stiamo rifinendo le sezioni, organizzando le destinazioni
+              e ottimizzando i percorsi per farti trovare un sito ancora più chiaro,
+              veloce e ispirante quando sarà online.
             </p>
           </div>
 
           {/* “CANTIERE” ANIMATO */}
           <div className="w-full max-w-3xl">
-            <div className="mb-3 text-[10px] md:text-xs uppercase tracking-[0.22em] text-slate-400">
-              Stiamo costruendo la tua prossima partenza
+            <div className="mb-4 text-[10px] md:text-xs uppercase tracking-[0.22em] text-slate-400">
+              Lavori in corso sul nuovo sito
             </div>
 
-            <div className="rounded-3xl border border-slate-700/70 bg-slate-900/70 p-4 shadow-[0_25px_70px_rgba(15,23,42,0.85)] backdrop-blur">
+            <div className="rounded-3xl border border-slate-700/70 bg-slate-900/70 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.85)] backdrop-blur">
               {/* Barra avanzamento “lavori in corso” */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
-                  <span className="inline-flex items-center gap-1">
-                    <FaHammer className="text-xs text-amber-300" />
-                    <span>Stato lavori</span>
+              <div className="mb-6">
+                <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2">
+                  <span className="inline-flex items-center gap-2">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-950">
+                      <FaHammer className="text-xs text-amber-300" />
+                    </span>
+                    <span>Avanzamento lavori</span>
                   </span>
-                  <span className="font-semibold text-amber-200">QUASI PRONTO</span>
+                  <span className="font-semibold text-amber-200">
+                    FASE FINALE
+                  </span>
                 </div>
-                <div className="h-1.5 w-full rounded-full bg-slate-700 overflow-hidden">
+                <div className="h-2 w-full rounded-full bg-slate-700 overflow-hidden">
                   <div className="h-full w-5/6 rounded-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
                 </div>
               </div>
 
               {/* Griglia “blocchi” del sito in costruzione */}
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-3">
                 {/* Blocco 1 */}
-                <div className="rounded-2xl bg-slate-800/80 p-3 border border-slate-700/80">
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
-                      <FaHammer className="text-xs text-amber-300 animate-bounce" />
-                    </span>
-                    <p className="text-[11px] font-semibold text-slate-100">
-                      Card destinazioni
-                    </p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="h-2.5 rounded-full bg-slate-700 animate-pulse" />
-                    <div className="h-2.5 rounded-full bg-slate-700/80 animate-pulse" />
-                    <div className="h-2.5 w-2/3 rounded-full bg-slate-700/60 animate-pulse" />
-                  </div>
+                <div className="rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center">
+                  <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950">
+                    <FaHammer className="text-lg text-amber-300 animate-bounce" />
+                  </span>
+                  <p className="text-[11px] md:text-sm font-semibold text-slate-100">
+                    Layout destinazioni
+                  </p>
                 </div>
 
                 {/* Blocco 2 */}
-                <div className="rounded-2xl bg-slate-800/80 p-3 border border-slate-700/80">
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
-                      <FaWrench className="text-xs text-sky-300 animate-spin" />
-                    </span>
-                    <p className="text-[11px] font-semibold text-slate-100">
-                      Viaggi di nozze
-                    </p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="h-2.5 rounded-full bg-slate-700 animate-pulse" />
-                    <div className="h-2.5 w-4/5 rounded-full bg-slate-700/80 animate-pulse" />
-                    <div className="h-2.5 w-3/5 rounded-full bg-slate-700/60 animate-pulse" />
-                  </div>
+                <div className="rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center">
+                  <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950">
+                    <FaWrench className="text-lg text-sky-300 animate-spin" />
+                  </span>
+                  <p className="text-[11px] md:text-sm font-semibold text-slate-100">
+                    Area viaggi di nozze
+                  </p>
                 </div>
 
                 {/* Blocco 3 */}
-                <div className="rounded-2xl bg-slate-800/80 p-3 border border-slate-700/80">
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
-                      <FaHammer className="text-xs text-amber-400 animate-bounce" />
-                    </span>
-                    <p className="text-[11px] font-semibold text-slate-100">
-                      Richieste preventivo
-                    </p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="h-2.5 rounded-full bg-slate-700 animate-pulse" />
-                    <div className="h-2.5 rounded-full bg-slate-700/80 animate-pulse" />
-                    <div className="h-2.5 w-1/2 rounded-full bg-slate-700/60 animate-pulse" />
-                  </div>
+                <div className="rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center">
+                  <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950">
+                    <FaHammer className="text-lg text-amber-300 animate-bounce" />
+                  </span>
+                  <p className="text-[11px] md:text-sm font-semibold text-slate-100">
+                    Form richieste & preventivi
+                  </p>
                 </div>
-              </div>
-
-              {/* Messaggio sotto i blocchi */}
-              <div className="mt-4 text-[11px] sm:text-xs text-slate-300">
-                Pochissimo e potrai esplorare tutte le sezioni: mete stagionali, viaggi
-                di nozze, crociere e idee su misura per partire quando vuoi.
               </div>
             </div>
           </div>
@@ -135,7 +112,8 @@ const Maintenance = () => {
         <footer className="flex flex-col items-center justify-end pb-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <p className="text-[11px] md:text-sm text-slate-300 max-w-md text-center sm:text-right sm:mr-2">
-              Anche durante i lavori sul sito, siamo operativi in agenzia.
+              Anche durante i lavori sul sito, puoi contattarci per organizzare il tuo
+              prossimo viaggio.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -163,6 +141,7 @@ const Maintenance = () => {
 };
 
 export default Maintenance;
+
 
 
 

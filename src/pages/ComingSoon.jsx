@@ -50,22 +50,17 @@ const ComingSoon = () => {
 
         {/* BLOCCO CENTRALE */}
         <main className="flex flex-1 flex-col items-center justify-center text-center">
-          {/* TITOLO */}
-          <div className="mb-4 max-w-3xl">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#132C50]">
-              Stiamo preparando un nuovo modo di farti viaggiare
-            </h1>
+          <div className="w-full max-w-3xl mb-6">
+            <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.26em] text-slate-500">
+              Lancio del nuovo sito tra
+            </p>
           </div>
 
-          {/* COUNTDOWN */}
-          <div className="w-full max-w-2xl">
+          {/* COUNTDOWN GRANDE */}
+          <div className="w-full max-w-3xl">
             {!isLaunched ? (
               <>
-                <p className="mb-3 text-[10px] md:text-xs uppercase tracking-[0.22em] text-slate-500">
-                  Lancio del nuovo sito tra
-                </p>
-
-                <div className="grid grid-cols-4 gap-2 rounded-3xl bg-white p-3 md:p-4 border border-slate-200 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-3xl bg-white/95 px-4 py-5 md:px-6 md:py-7 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
                   {["Giorni", "Ore", "Minuti", "Secondi"].map((label, i) => {
                     const value = [
                       timeLeft.days,
@@ -75,11 +70,14 @@ const ComingSoon = () => {
                     ][i];
 
                     return (
-                      <div key={label} className="flex flex-col items-center">
-                        <span className="mb-1 text-xl sm:text-2xl md:text-3xl font-semibold tabular-nums text-[#0863D6]">
+                      <div
+                        key={label}
+                        className="flex flex-col items-center justify-center gap-1"
+                      >
+                        <span className="mb-1 text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums text-[#0863D6] leading-none">
                           {format(value)}
                         </span>
-                        <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.22em] text-slate-500">
+                        <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.26em] text-slate-500">
                           {label}
                         </span>
                       </div>
@@ -88,8 +86,8 @@ const ComingSoon = () => {
                 </div>
 
                 {/* PROGRESS BAR */}
-                <div className="mt-3 h-1.5 w-full rounded-full bg-slate-200 overflow-hidden">
-                  <div className="h-full w-2/3 bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
+                <div className="mt-5 h-2 w-full max-w-3xl rounded-full bg-slate-200 overflow-hidden mx-auto">
+                  <div className="h-full w-3/4 bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
                 </div>
               </>
             ) : (
@@ -109,7 +107,7 @@ const ComingSoon = () => {
         <footer className="flex flex-col items-center justify-end pb-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <p className="text-[11px] md:text-sm text-slate-600 max-w-md text-center sm:text-right sm:mr-2">
-              Nel frattempo, siamo operativi in agenzia.
+              Fino al lancio, puoi comunque contattarci per organizzare il tuo viaggio.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
