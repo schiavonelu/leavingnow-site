@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { getTimeDiffMs, ONE_HOUR_MS } from "../config/launchConfig";
 import ComingSoon from "./ComingSoon";
 import Maintenance from "./Maintenance";
-import WhatsAppWidget from "../components/ui/WhatsAppWidget";
 
 const LaunchGate = () => {
   const [diffMs, setDiffMs] = useState(getTimeDiffMs());
@@ -13,30 +12,36 @@ const LaunchGate = () => {
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [mode, setMode] = useState(null); // "maintenance" | "comingSoon" | null
 
-  // Aggiorna la differenza di tempo ogni 30 secondi
+  // Aggiorna la differenza di tempo ogni 1 secondo
   useEffect(() => {
     const interval = setInterval(() => {
       setDiffMs(getTimeDiffMs());
-    }, 30000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Gestione logica overlay + fade-out finale
+  // Gestione overlay + fade-out finale
   useEffect(() => {
     const hours = diffMs / ONE_HOUR_MS;
-    const inWindow = diffMs > 0 && hours <= 36; // finestra attiva overlay (36h prima del lancio)
+    const inWindow = diffMs > 0 && hours <= 36; // finestra di 36h prima del lancio
 
     if (inWindow) {
-      // Siamo nella finestra di lancio → decido modalità
       const newMode = hours <= 24 ? "comingSoon" : "maintenance";
-      setMode(newMode);
-      setShowOverlay(true);
-      setIsFadingOut(false);
+
+      if (mode !== newMode) {
+        setMode(newMode);
+      }
+      if (!showOverlay) {
+        setShowOverlay(true);
+      }
+      if (isFadingOut) {
+        setIsFadingOut(false);
+      }
       return;
     }
 
-    // Fuori dalla finestra di lancio ma l'overlay è ancora visibile → avvia fade-out
+    // Fuori dalla finestra (lancio passato o troppo lontano) → se overlay visibile, fai dissolve e poi rimuovi
     if (showOverlay && !isFadingOut) {
       setIsFadingOut(true);
 
@@ -44,13 +49,13 @@ const LaunchGate = () => {
         setShowOverlay(false);
         setIsFadingOut(false);
         setMode(null);
-      }, 500); // durata dissolve in ms (0,5s)
+      }, 500); // 0,5s di dissolve
 
       return () => clearTimeout(timeout);
     }
-  }, [diffMs, showOverlay, isFadingOut]);
+  }, [diffMs, showOverlay, isFadingOut, mode]);
 
-  // Se non dobbiamo mostrare l'overlay → nulla
+  // Se non dobbiamo mostrare nulla
   if (!showOverlay || !mode) {
     return null;
   }
@@ -63,7 +68,6 @@ const LaunchGate = () => {
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <WhatsAppWidget/>
       <OverlayContent />
     </div>
   );

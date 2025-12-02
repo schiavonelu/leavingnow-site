@@ -12,9 +12,9 @@ const ComingSoon = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const isLaunched = timeLeft.total === 0;
-  const isFinalSeconds =
-    timeLeft.total > 0 && timeLeft.total <= 60 * 1000; // ultimi 60 secondi
+  // ultimo minuto: solo secondi enormi al centro
+  const lastMinute =
+    timeLeft.total > 0 && timeLeft.total <= 60 * 1000;
 
   const format = (n) => String(n).padStart(2, "0");
 
@@ -59,18 +59,12 @@ const ComingSoon = () => {
             </p>
           </div>
 
-          {/* COUNTDOWN GRANDE */}
+          {/* COUNTDOWN */}
           <div className="w-full max-w-3xl">
-            {!isLaunched ? (
+            {!lastMinute ? (
+              // 🕒 Fase normale: giorni / ore / minuti / secondi
               <>
-                <div
-                  className={[
-                    "grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-3xl bg-white/95 px-4 py-5 md:px-6 md:py-7 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.12)]",
-                    isFinalSeconds ? "animate-pulse" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                >
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-3xl bg-white/95 px-4 py-5 md:px-6 md:py-7 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
                   {["Giorni", "Ore", "Minuti", "Secondi"].map((label, i) => {
                     const value = [
                       timeLeft.days,
@@ -84,16 +78,7 @@ const ComingSoon = () => {
                         key={label}
                         className="flex flex-col items-center justify-center gap-1"
                       >
-                        <span
-                          className={[
-                            "mb-1 font-extrabold tabular-nums text-[#0863D6] leading-none",
-                            isFinalSeconds
-                              ? "text-5xl sm:text-6xl md:text-7xl"
-                              : "text-4xl sm:text-5xl md:text-6xl",
-                          ]
-                            .filter(Boolean)
-                            .join(" ")}
-                        >
+                        <span className="mb-1 text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums text-[#0863D6] leading-none">
                           {format(value)}
                         </span>
                         <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.26em] text-slate-500">
@@ -110,14 +95,20 @@ const ComingSoon = () => {
                 </div>
               </>
             ) : (
-              <div className="rounded-3xl bg-emerald-50 border border-emerald-200 px-6 py-4 inline-flex items-center gap-3 shadow-sm">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-white">
-                  <FaSuitcaseRolling className="text-lg" />
-                </span>
-                <p className="text-sm md:text-base text-emerald-800">
-                  Il nuovo sito è pronto! Aggiorna il browser.
-                </p>
-              </div>
+              // ⏱️ Ultimo minuto: SOLO SECONDI centrali, enormi, con zoom/pulse
+              <>
+                <div className="rounded-3xl bg-white/95 px-6 py-8 md:px-8 md:py-10 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.16)] flex flex-col items-center justify-center gap-4 animate-pulse">
+                  <span className="text-6xl sm:text-7xl md:text-8xl font-black tabular-nums text-[#EB2480] leading-none transform">
+                    {format(timeLeft.seconds)}
+                  </span>
+                  <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.3em] text-slate-500">
+                    SECONDI AL LANCIO
+                  </span>
+                </div>
+
+                {/* Linea sottile giusto per dare ritmo visivo */}
+                <div className="mt-4 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
+              </>
             )}
           </div>
         </main>
@@ -156,4 +147,5 @@ const ComingSoon = () => {
 };
 
 export default ComingSoon;
+
 
