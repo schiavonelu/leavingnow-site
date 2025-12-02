@@ -105,13 +105,13 @@ const LaunchGate = () => {
     };
   }, [showOverlay]);
 
-  // Gestione fasi: maintenance → comingSoon → launching → dissolve → sito
+  // Gestione fasi: maintenance → comingSoon → launching
   useEffect(() => {
     const hours = diffMs / ONE_HOUR_MS;
 
-    // Lancio non ancora arrivato
+    // Se il lancio è nel futuro
     if (diffMs > 0) {
-      let newPhase: "maintenance" | "comingSoon" | null = null;
+      let newPhase = null;
 
       if (hours <= 36 && hours > 24) {
         newPhase = "maintenance";
@@ -130,42 +130,51 @@ const LaunchGate = () => {
           setIsFadingOut(false);
         }
       } else {
-        // Fuori dalla finestra delle 36 ore
+        // Fuori finestra 36h: se overlay visibile e non stiamo già lanciando → dissolvenza e chiudi
         if (showOverlay && !isFadingOut && phase !== "launching") {
           setIsFadingOut(true);
-          const timeout = setTimeout(() => {
+          const timeoutId = setTimeout(() => {
             setShowOverlay(false);
             setIsFadingOut(false);
             setPhase(null);
           }, 500);
-          return () => clearTimeout(timeout);
+          return () => clearTimeout(timeoutId);
         }
       }
 
       return;
     }
 
-    // diffMs <= 0 → il lancio è arrivato, passiamo alla fase "launching"
+    // diffMs <= 0 → il lancio è arrivato, passa alla fase "launching" (se non già in quella fase)
     if (diffMs <= 0 && phase !== "launching") {
       setPhase("launching");
       setShowOverlay(true);
       setIsFadingOut(false);
-
-      // 5s di barra, poi dissolve e rimozione overlay
-      const launchTimeout = setTimeout(() => {
-        setIsFadingOut(true);
-        const removeTimeout = setTimeout(() => {
-          setShowOverlay(false);
-          setIsFadingOut(false);
-          setPhase(null);
-        }, 500); // tempo del fade-out
-
-        return () => clearTimeout(removeTimeout);
-      }, 5000); // durata barra
-
-      return () => clearTimeout(launchTimeout);
     }
   }, [diffMs, showOverlay, isFadingOut, phase]);
+
+  // Gestione temporizzata della fase "launching": 5s barra + dissolve
+  useEffect(() => {
+    if (phase !== "launching") return;
+
+    let launchTimeoutId = null;
+    let removeTimeoutId = null;
+
+    // Dopo 5 secondi di barra → dissolve e poi rimuovi overlay
+    launchTimeoutId = setTimeout(() => {
+      setIsFadingOut(true);
+      removeTimeoutId = setTimeout(() => {
+        setShowOverlay(false);
+        setIsFadingOut(false);
+        setPhase(null);
+      }, 500); // durata dissolve
+    }, 5000); // durata barra
+
+    return () => {
+      if (launchTimeoutId) clearTimeout(launchTimeoutId);
+      if (removeTimeoutId) clearTimeout(removeTimeoutId);
+    };
+  }, [phase]);
 
   // Se non dobbiamo mostrare nulla
   if (!showOverlay || !phase) {
@@ -175,7 +184,7 @@ const LaunchGate = () => {
   let OverlayContent;
   if (phase === "maintenance") OverlayContent = Maintenance;
   else if (phase === "comingSoon") OverlayContent = ComingSoon;
-  else OverlayContent = LaunchBarScreen; // phase === "launching"
+  else OverlayContent = LaunchBarScreen; // "launching"
 
   return (
     <div
