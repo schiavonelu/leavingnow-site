@@ -144,7 +144,7 @@ const ViaggiDiNozze = () => {
         name: "Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "L’iter iniziale può essere gestito comodamente da casa: ci raccontate le vostre idee, ricevete i preventivi e valutiamo insieme le soluzioni via telefono, email o videochiamata. La conferma finale con documenti e contratti viene però completata in agenzia, per avere tutto chiaro e condiviso di persona.",
+          text: "L’intero percorso può essere gestito completamente da remoto: potete raccontarci le vostre idee, ricevere preventivi e valutare le proposte tramite telefono, email o videochiamate dedicate. L’incontro in agenzia non è obbligatorio, ma è sempre possibile se preferite definire alcuni dettagli di persona.",
         },
       },
       {
@@ -190,6 +190,11 @@ const ViaggiDiNozze = () => {
     ],
   };
 
+  // handler per FAQ accordion
+  const toggleFaq = (id) => {
+    setOpenFaqId((prev) => (prev === id ? null : id));
+  };
+
   return (
     <>
       {/* 🟣 SEO PAGE LEVEL */}
@@ -215,7 +220,10 @@ const ViaggiDiNozze = () => {
           property="og:description"
           content="Progettiamo il vostro viaggio di nozze su misura: itinerari personalizzati, lista viaggio di nozze, supporto per voli, treni e navi. Leaving Now, agenzia viaggi ad Aversa."
         />
-        <meta property="og:url" content="https://leavingnow.it/viaggi-di-nozze" />
+        <meta
+          property="og:url"
+          content="https://leavingnow.it/viaggi-di-nozze"
+        />
         <meta
           property="og:image"
           content="https://leavingnow.it/images/og-leaving-now.jpg"
@@ -377,7 +385,7 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
-      {/* FORM DEDICATO VIAGGIO DI NOZZE – NON MODIFICATO NELLA LOGICA */}
+      {/* FORM DEDICATO VIAGGIO DI NOZZE */}
       <section
         id="preventivo-nozze"
         className="scroll-mt-28 py-12 md:py-16 bg-[#E8F1FD]"
@@ -503,8 +511,8 @@ const ViaggiDiNozze = () => {
                 `}
               />
 
-              {/* Nomi sposi */}
-              <div className="grid gap-4 md:grid-cols-[1fr_auto1fr] md:items-center">
+              {/* Nomi sposi – sempre sulla stessa riga */}
+              <div className="grid gap-4 grid-cols-[1fr_auto1fr] items-center">
                 <div>
                   <label
                     htmlFor="sposoA"
@@ -517,12 +525,12 @@ const ViaggiDiNozze = () => {
                     id="sposoA"
                     name="sposoA"
                     required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                     placeholder="Nome"
                   />
                 </div>
 
-                <div className="flex items-center justify-center text-xl font-semibold text-slate-500">
+                <div className="flex items-center justify-center text-lg md:text-xl font-semibold text-slate-500">
                   &
                 </div>
 
@@ -538,7 +546,7 @@ const ViaggiDiNozze = () => {
                     id="sposoB"
                     name="sposoB"
                     required
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                     placeholder="Nome"
                   />
                 </div>
@@ -579,7 +587,7 @@ const ViaggiDiNozze = () => {
                 </div>
               </div>
 
-              {/* Meta */}
+              {/* Meta con datalist (ricerca mentre digiti) */}
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label
@@ -588,88 +596,21 @@ const ViaggiDiNozze = () => {
                   >
                     Meta o tipologia di viaggio di nozze *
                   </label>
-                  <select
+                  <input
                     id="meta"
                     name="meta"
+                    list="meta-options"
                     required
                     value={meta}
                     onChange={(e) => setMeta(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm bg-white"
-                  >
-                    <option value="">Seleziona un’opzione</option>
-
-                    {/* Opzioni generali */}
-                    <option value="crociera">
-                      Crociera (Mediterraneo, fiordi, Caraibi…)
-                    </option>
-                    <option value="usa">Stati Uniti – tour on the road</option>
-                    <option value="usa-mare">
-                      Stati Uniti + mare (es. Caraibi)
-                    </option>
-                    <option value="mare-tropicale">
-                      Mare tropicale (Maldive, Polinesia, Seychelles, Caraibi…)
-                    </option>
-                    <option value="giappone-asia">Giappone / Asia</option>
-                    <option value="africa-safari-mare">
-                      Africa con safari + mare
-                    </option>
-                    <option value="europa">
-                      Europa (città, tour, on the road)
-                    </option>
-                    <option value="altro">Altro (specifica)</option>
-
-                    {/* Nuove opzioni aggiunte */}
-                    <option value="dubai-maldive">Dubai + Maldive</option>
-                    <option value="dubai-singapore-maldive">
-                      Dubai + Singapore + Maldive
-                    </option>
-                    <option value="dubai-mauritius">Dubai + Mauritius</option>
-                    <option value="dubai-zanzibar">Dubai + Zanzibar</option>
-                    <option value="dubai-koh-samui">Dubai + Koh Samui</option>
-
-                    <option value="bangkok-koh-samui">
-                      Bangkok + Koh Samui
-                    </option>
-                    <option value="tour-thailandia-nord-koh-samui">
-                      Tour Thailandia del Nord + Koh Samui
-                    </option>
-
-                    <option value="tokyo-kyoto-osaka-maldive">
-                      Tokyo + Kyoto + Osaka + Maldive
-                    </option>
-
-                    <option value="bali-singapore-maldive">
-                      Bali + Singapore + Maldive
-                    </option>
-
-                    <option value="newyork-bayahibe">
-                      New York + Bayahibe
-                    </option>
-                    <option value="newyork-bahamas">
-                      New York + Bahamas
-                    </option>
-                    <option value="newyork-messico">New York + Messico</option>
-                    <option value="newyork-crociera-caraibi">
-                      New York + Crociera dei Caraibi
-                    </option>
-                    <option value="newyork-crociera-bahamas">
-                      New York + Crociera Bahamas
-                    </option>
-
-                    <option value="sanfrancisco-hawaii">
-                      San Francisco + Hawaii
-                    </option>
-                    <option value="sanfrancisco-polinesia">
-                      San Francisco + Polinesia Francese
-                    </option>
-                    <option value="sanfrancisco-losangeles-rivieramaya">
-                      San Francisco + Los Angeles + Riviera Maya
-                    </option>
-
-                    <option value="istanbul-cappadocia-bodrum">
-                      Istanbul + Cappadocia + Bodrum
-                    </option>
-                  </select>
+                    className="w-full px-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                    placeholder="Inizia a digitare (es. New York, Maldive...)"
+                  />
+                  <datalist id="meta-options">
+                    {META_OPTIONS.map((label) => (
+                      <option key={label} value={label} />
+                    ))}
+                  </datalist>
                 </div>
 
                 {showOtherMeta && (
@@ -686,7 +627,7 @@ const ViaggiDiNozze = () => {
                       name="meta_altro"
                       value={otherMeta}
                       onChange={(e) => setOtherMeta(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                      className="w-full px-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                       placeholder="Scrivi qui la destinazione o l’idea"
                     />
                   </div>
@@ -713,7 +654,7 @@ const ViaggiDiNozze = () => {
                         id="data_da"
                         name="data_da"
                         required
-                        className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                        className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                       />
                     </div>
                   </div>
@@ -733,7 +674,7 @@ const ViaggiDiNozze = () => {
                         id="data_a"
                         name="data_a"
                         required
-                        className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                        className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
                       />
                     </div>
                   </div>
@@ -755,7 +696,7 @@ const ViaggiDiNozze = () => {
                   </label>
                 </div>
 
-                {/* Luogo di partenza + Budget sulla stessa riga */}
+                {/* Luogo di partenza + Budget */}
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label
@@ -886,7 +827,7 @@ const ViaggiDiNozze = () => {
               >
                 Prenotate una consulenza
               </a>
-             
+              .
             </p>
           </div>
         </div>
@@ -895,7 +836,7 @@ const ViaggiDiNozze = () => {
       {/* 🔹 SEZIONE FAQ – LOOK PREMIUM + CONTENUTI OTTIMIZZATI */}
       <section
         id="faq-viaggi-di-nozze"
-        className="py-12 md:py-16 bg-linear-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
+        className="py-12 md:py-16 bg-gradient-to-b from-[#F8FAFC] via-white to-[#F1F5F9] border-t border-[#E2E8F0]"
       >
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-10">
@@ -906,7 +847,7 @@ const ViaggiDiNozze = () => {
               FAQ VIAGGI DI NOZZE
             </p>
 
-            <h2 className="text-xl md:text-2xl font-bold text-[#EB2480] mb-3">
+            <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-3">
               Domande frequenti sui viaggi di nozze Leaving Now
             </h2>
           </div>
@@ -955,38 +896,50 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 2 */}
-<details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-  <summary
-    className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-    style={{ listStyle: "none" }}
-  >
-    <div className="flex items-center gap-3 text-left">
-      <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-        <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-      </span>
-      <span className="font-semibold text-sm md:text-base text-[#132C50]">
-        Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?
-      </span>
-    </div>
+            <details
+              open={openFaqId === "faq2"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
+              <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq2");
+                }}
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Possiamo iniziare tutto online o dobbiamo venire subito in
+                    agenzia?
+                  </span>
+                </div>
 
-    <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-  </summary>
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq2" ? "rotate-180" : ""
+                  }`}
+                />
+              </summary>
 
-  <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-    <p className="mt-3 leading-relaxed">
-      L’intero percorso può essere gestito anche{" "}
-      <strong>completamente da remoto</strong>: potete raccontarci le vostre
-      idee, ricevere preventivi e valutare ogni proposta tramite{" "}
-      <strong>telefono, email o videochiamate dedicate</strong>.
-    </p>
-    <p className="mt-2 leading-relaxed">
-      Se lo preferite, possiamo vederci anche in agenzia, ma{" "}
-      <strong>non è obbligatorio</strong>: la conferma e 
-      la finalizzazione del viaggio possono essere svolte{" "}
-      <strong>online in totale sicurezza</strong>.
-    </p>
-  </div>
-</details>
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  L’intero percorso può essere gestito anche{" "}
+                  <strong>completamente da remoto</strong>: potete raccontarci
+                  le vostre idee, ricevere preventivi e valutare ogni proposta
+                  tramite <strong>telefono, email o videochiamate dedicate</strong>.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  Se lo preferite, possiamo vederci anche in agenzia, ma{" "}
+                  <strong>non è obbligatorio</strong>: la conferma e la
+                  finalizzazione del viaggio possono essere svolte{" "}
+                  <strong>online in totale sicurezza</strong>.
+                </p>
+              </div>
+            </details>
 
             {/* FAQ 3 */}
             <details
@@ -1222,3 +1175,4 @@ const ViaggiDiNozze = () => {
 };
 
 export default ViaggiDiNozze;
+
