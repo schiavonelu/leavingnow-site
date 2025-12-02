@@ -1,21 +1,21 @@
 // src/config/launchConfig.js
 
-// 🔁 DATA DI LANCIO (cambiala solo qui)
-export const LAUNCH_DATE = new Date("2025-12-03T21:00:00+01:00");
+// 🔁 DATA DI LANCIO
+export const LAUNCH_DATE = new Date("2025-12-03T21:05:00+01:00");
 
 // Millisecondi
 export const ONE_HOUR_MS = 1000 * 60 * 60;
 export const ONE_DAY_MS = ONE_HOUR_MS * 24;
 
 /**
- * Ritorna la differenza in ms tra ora e data di lancio
+ * Differenza in millisecondi tra ora e lancio
  */
 export const getTimeDiffMs = () => {
   return LAUNCH_DATE.getTime() - Date.now();
 };
 
 /**
- * Calcola il tempo rimanente al lancio
+ * Tempo rimanente dettagliato
  */
 export const getTimeLeft = () => {
   const diff = getTimeDiffMs();
