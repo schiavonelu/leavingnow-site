@@ -908,40 +908,38 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 2 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
-              <summary
-                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
-                style={{ listStyle: "none" }}
-              >
-                <div className="flex items-center gap-3 text-left">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
-                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
-                  </span>
-                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
-                    Possiamo iniziare tutto online o dobbiamo venire subito in
-                    agenzia?
-                  </span>
-                </div>
+<details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+  <summary
+    className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+    style={{ listStyle: "none" }}
+  >
+    <div className="flex items-center gap-3 text-left">
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+        <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+      </span>
+      <span className="font-semibold text-sm md:text-base text-[#132C50]">
+        Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?
+      </span>
+    </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
-              </summary>
+    <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+  </summary>
 
-              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
-                <p className="mt-3 leading-relaxed">
-                  L&apos;iter iniziale può essere gestito{" "}
-                  <strong>comodamente da casa</strong>: ci raccontate le vostre
-                  idee, ricevete i preventivi e valutiamo insieme le soluzioni{" "}
-                  <strong>via telefono, email o videochiamata</strong>.
-                </p>
-                <p className="mt-2 leading-relaxed">
-                  La fase di <strong>conferma e finalizzazione</strong> – quindi
-                  contratti, documenti e scelta definitiva di assicurazioni e
-                  servizi – viene però sempre completata{" "}
-                  <strong>in agenzia, di persona</strong>, per garantirvi
-                  massima chiarezza e sicurezza.
-                </p>
-              </div>
-            </details>
+  <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+    <p className="mt-3 leading-relaxed">
+      L’intero percorso può essere gestito anche{" "}
+      <strong>completamente da remoto</strong>: potete raccontarci le vostre
+      idee, ricevere preventivi e valutare ogni proposta tramite{" "}
+      <strong>telefono, email o videochiamate dedicate</strong>.
+    </p>
+    <p className="mt-2 leading-relaxed">
+      Se lo preferite, possiamo vederci anche in agenzia, ma{" "}
+      <strong>non è obbligatorio</strong>: la conferma e 
+      la finalizzazione del viaggio possono essere svolte{" "}
+      <strong>online in totale sicurezza</strong>.
+    </p>
+  </div>
+</details>
 
             {/* FAQ 3 */}
             <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
