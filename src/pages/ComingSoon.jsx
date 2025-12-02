@@ -145,42 +145,7 @@ const ComingSoon = () => {
           </div>
         </main>
 
-        {/* FOOTER */}
-        <footer className="flex flex-col items-center justify-end pb-4">
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-
-            <p className="text-[11px] md:text-sm text-slate-600 max-w-md text-center sm:text-right sm:mr-2">
-              Fino al lancio, puoi comunque contattarci per organizzare il tuo viaggio.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3">
-              {/* SCRIVICI */}
-              <a
-                href="mailto:leavingnowviaggi@gmail.com"
-                className="inline-flex w-full sm:w-auto justify-center 
-                items-center rounded-full px-6 py-2.5 text-sm md:text-base 
-                font-semibold shadow-md border border-[#0369A1] bg-[#0369A1] text-white 
-                hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
-              >
-                <FaSuitcaseRolling className="mr-2" />
-                Scrivici per un preventivo
-              </a>
-
-              {/* CHIAMACI */}
-              <a
-                href="tel:08118754553"
-                className="inline-flex w-full sm:w-auto justify-center 
-                items-center rounded-full px-6 py-2.5 text-sm md:text-base 
-                font-semibold border border-slate-500 text-slate-700 
-                hover:border-[#EB2480] hover:text-[#EB2480] transition"
-              >
-                <FaPhone className="mr-2" />
-                Chiamaci in agenzia
-              </a>
-            </div>
-          </div>
-        </footer>
       </div>
 
       {/* Effetto zoom ultimi 10 secondi */}
