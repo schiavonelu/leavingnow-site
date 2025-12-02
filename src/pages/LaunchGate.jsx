@@ -15,9 +15,9 @@ const LaunchBarScreen = () => {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 left-1/2 h-72 w-72 
         -translate-x-1/2 rounded-full bg-[#0863D6]/15 blur-3xl" />
-        <div className="absolute bottom-[-4rem] left-[-3rem]
+        <div className="absolute -bottom-16 -left-12
         h-64 w-64 rounded-full bg-[#EB2480]/12 blur-3xl" />
-        <div className="absolute bottom-[-5rem] right-[-3rem]
+        <div className="absolute -bottom-20 -right-12
         h-72 w-72 rounded-full bg-[#1F3759]/12 blur-3xl" />
       </div>
 
@@ -47,7 +47,7 @@ const LaunchBarScreen = () => {
         {/* BARRA */}
         <main className="flex flex-1 flex-col items-center justify-center text-center">
           <div className="h-2 w-full max-w-md rounded-full bg-slate-200 overflow-hidden">
-            <div className="h-full w-full origin-left bg-gradient-to-r 
+            <div className="h-full w-full origin-left bg-linear-to-r 
             from-[#0863D6] via-[#EB2480] to-amber-300 launch-bar-fill" />
           </div>
         </main>
@@ -176,7 +176,7 @@ const LaunchGate = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] bg-white transition-opacity duration-500 ${
+      className={`fixed inset-0 z-9999 bg-white transition-opacity duration-500 ${
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >

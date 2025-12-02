@@ -1,14 +1,77 @@
 // src/pages/Maintenance.jsx
-import { FaHammer, FaWrench, FaPhone } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import {
+  FaHammer,
+  FaWrench,
+  FaPhone,
+  FaMapLocationDot,
+  FaGears,
+  FaPlaneDeparture,
+  FaMessage,
+} from "react-icons/fa6";
 import logo from "../assets/logo/leavingnow-logowhite.webp";
+import { getTimeDiffMs, ONE_HOUR_MS } from "../config/launchConfig";
+
+// Calcola l'avanzamento lavori: 36h → 0%, 24h → 100%
+const getMaintenanceProgress = () => {
+  const diff = getTimeDiffMs();
+  const hours = diff / ONE_HOUR_MS;
+
+  const START_HOURS = 36;
+  const END_HOURS = 24;
+
+  if (hours > START_HOURS) return 0; // molto prima → 0%
+  if (hours <= END_HOURS) return 100; // entro le 24h → 100%
+
+  const ratio = (START_HOURS - hours) / (START_HOURS - END_HOURS); // 36→0, 24→1
+  const clamped = Math.max(0, Math.min(1, ratio));
+
+  return Math.round(clamped * 100);
+};
 
 const Maintenance = () => {
+  const [progress, setProgress] = useState(getMaintenanceProgress());
+  const [visibleSteps, setVisibleSteps] = useState(0); // quante card sono "accese"
+
+  // Aggiorna la barra ogni 60 secondi
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress(getMaintenanceProgress());
+    }, 60_000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animazione progressiva delle 3 card
+  useEffect(() => {
+    setVisibleSteps(0);
+    let step = 0;
+
+    const interval = setInterval(() => {
+      step += 1;
+      setVisibleSteps(step);
+      if (step >= 3) {
+        clearInterval(interval);
+      }
+    }, 900); // ogni 600ms si accende una card
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Etichetta della fase
+  let phaseLabel = "FASE INIZIALE";
+  if (progress >= 70) {
+    phaseLabel = "FASE FINALE";
+  } else if (progress >= 30) {
+    phaseLabel = "IN CORSO";
+  }
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#0F172A] text-slate-100">
       {/* SFONDI / GLOW */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/4 h-80 w-80 rounded-full bg-[#0863D6]/25 blur-3xl" />
-        <div className="absolute bottom-[-4rem] right-[-3rem] h-80 w-80 rounded-full bg-[#EB2480]/25 blur-3xl" />
+        <div className="absolute -bottom-16 -right-12 h-80 w-80 rounded-full bg-[#EB2480]/25 blur-3xl" />
       </div>
 
       {/* CONTENUTO */}
@@ -27,7 +90,7 @@ const Maintenance = () => {
             <div className="bg-[#EB2480] px-4 py-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
               STIAMO LAVORANDO
             </div>
-            <div className="bg-[#020617]/80 px-4 py-2 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-[0.16em] text-white rounded-b-md whitespace-nowrap">
+            <div className="bg-[#0863D6]/80 px-4 py-2 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-[0.16em] text-white rounded-b-md whitespace-nowrap">
               AL NUOVO SITO LEAVING NOW
             </div>
           </div>
@@ -40,17 +103,12 @@ const Maintenance = () => {
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-slate-50">
               Ultimi ritocchi prima del decollo ✨
             </h1>
-            <p className="text-[11px] sm:text-xs md:text-sm text-slate-300">
-              In queste ore stiamo rifinendo le sezioni, organizzando le destinazioni
-              e ottimizzando i percorsi per farti trovare un sito ancora più chiaro,
-              veloce e ispirante quando sarà online.
-            </p>
           </div>
 
           {/* “CANTIERE” ANIMATO */}
           <div className="w-full max-w-3xl">
             <div className="mb-4 text-[10px] md:text-xs uppercase tracking-[0.22em] text-slate-400">
-              Lavori in corso sul nuovo sito
+              Stiamo costruendo la tua prossima partenza
             </div>
 
             <div className="rounded-3xl border border-slate-700/70 bg-slate-900/70 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.85)] backdrop-blur">
@@ -64,43 +122,64 @@ const Maintenance = () => {
                     <span>Avanzamento lavori</span>
                   </span>
                   <span className="font-semibold text-amber-200">
-                    FASE FINALE
+                    {phaseLabel} • {progress}%
                   </span>
                 </div>
                 <div className="h-2 w-full rounded-full bg-slate-700 overflow-hidden">
-                  <div className="h-full w-5/6 rounded-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 transition-all duration-700 ease-out"
+                    style={{ width: `${progress}%` }}
+                  />
                 </div>
               </div>
 
-              {/* Griglia “blocchi” del sito in costruzione */}
+              {/* Griglia step: cerca → costruisci → parti */}
               <div className="grid gap-4 sm:grid-cols-3">
-                {/* Blocco 1 */}
-                <div className="rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center">
+                {/* Step 1: Cerca la meta */}
+                <div
+                  className={`rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center transition-all duration-700 ease-out ${
+                    visibleSteps >= 1
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
+                  }`}
+                >
                   <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950">
-                    <FaHammer className="text-lg text-amber-300 animate-bounce" />
+                    <FaMapLocationDot className="text-lg text-sky-300 animate-pulse" />
                   </span>
                   <p className="text-[11px] md:text-sm font-semibold text-slate-100">
-                    Layout destinazioni
+                    Cerca la tua prossima meta
                   </p>
                 </div>
 
-                {/* Blocco 2 */}
-                <div className="rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center">
+                {/* Step 2: Costruiamo il viaggio */}
+                <div
+                  className={`rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center transition-all duration-700 ease-out ${
+                    visibleSteps >= 2
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
+                  }`}
+                >
                   <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950">
-                    <FaWrench className="text-lg text-sky-300 animate-spin" />
+                    <FaGears className="text-lg text-amber-200 animate-bounce" />
                   </span>
                   <p className="text-[11px] md:text-sm font-semibold text-slate-100">
-                    Area viaggi di nozze
+                    Costruiamo il viaggio su misura
                   </p>
                 </div>
 
-                {/* Blocco 3 */}
-                <div className="rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center">
+                {/* Step 3: Pronti a partire */}
+                <div
+                  className={`rounded-2xl bg-slate-800/90 p-4 border border-slate-700/90 min-h-[130px] flex flex-col items-center justify-center transition-all duration-700 ease-out ${
+                    visibleSteps >= 3
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
+                  }`}
+                >
                   <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950">
-                    <FaHammer className="text-lg text-amber-300 animate-bounce" />
+                    <FaPlaneDeparture className="text-lg text-emerald-300 animate-bounce" />
                   </span>
                   <p className="text-[11px] md:text-sm font-semibold text-slate-100">
-                    Form richieste & preventivi
+                    Pronti a partire
                   </p>
                 </div>
               </div>
@@ -121,7 +200,7 @@ const Maintenance = () => {
                 href="mailto:leavingnowviaggi@gmail.com"
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-2.5 text-sm md:text-base font-semibold shadow-md border border-sky-500 bg-sky-500 text-white hover:bg-transparent hover:text-sky-300 hover:border-sky-300 transition"
               >
-                <FaHammer className="mr-2" />
+                <FaMessage className="mr-2" />
                 Scrivici per un preventivo
               </a>
 
@@ -141,6 +220,8 @@ const Maintenance = () => {
 };
 
 export default Maintenance;
+
+
 
 
 

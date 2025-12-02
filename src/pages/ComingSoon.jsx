@@ -12,9 +12,13 @@ const ComingSoon = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Ultimo minuto → solo secondi enormi senza testo
+  // Ultimo minuto → solo secondi enormi
   const lastMinute =
     timeLeft.total > 0 && timeLeft.total <= 60 * 1000;
+
+  // Ultimi 10 secondi → effetto zoom
+  const lastTenSeconds =
+    timeLeft.total > 0 && timeLeft.total <= 10 * 1000;
 
   // Barra dinamica sulle ultime 24 ore
   const progress24 = (() => {
@@ -85,8 +89,12 @@ const ComingSoon = () => {
                 md:px-8 md:py-10 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.16)]
                 flex flex-col items-center justify-center gap-4 animate-pulse">
 
-                  <span className="text-6xl sm:text-7xl md:text-8xl 
-                  font-black tabular-nums text-[#EB2480] leading-none">
+                  <span
+                    className={
+                      "text-6xl sm:text-7xl md:text-8xl font-black tabular-nums text-[#EB2480] leading-none " +
+                      (lastTenSeconds ? "countdown-zoom" : "")
+                    }
+                  >
                     {format(timeLeft.seconds)}
                   </span>
                 </div>
@@ -95,15 +103,14 @@ const ComingSoon = () => {
                 bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 animate-pulse" />
               </>
             ) : (
-              /* 🕒 FASE NORMALE */
+              /* 🕒 FASE NORMALE → SOLO ORE / MINUTI / SECONDI */
               <>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 
+                <div className="grid grid-cols-3 gap-3 
                 rounded-3xl bg-white/95 px-4 py-5 md:px-6 md:py-7 
                 border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
 
-                  {["Giorni", "Ore", "Minuti", "Secondi"].map((label, i) => {
+                  {["Ore", "Minuti", "Secondi"].map((label, i) => {
                     const value = [
-                      timeLeft.days,
                       timeLeft.hours,
                       timeLeft.minutes,
                       timeLeft.seconds,
@@ -138,12 +145,63 @@ const ComingSoon = () => {
           </div>
         </main>
 
+        {/* FOOTER */}
+        <footer className="flex flex-col items-center justify-end pb-4">
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+
+            <p className="text-[11px] md:text-sm text-slate-600 max-w-md text-center sm:text-right sm:mr-2">
+              Fino al lancio, puoi comunque contattarci per organizzare il tuo viaggio.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              {/* SCRIVICI */}
+              <a
+                href="mailto:leavingnowviaggi@gmail.com"
+                className="inline-flex w-full sm:w-auto justify-center 
+                items-center rounded-full px-6 py-2.5 text-sm md:text-base 
+                font-semibold shadow-md border border-[#0369A1] bg-[#0369A1] text-white 
+                hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+              >
+                <FaSuitcaseRolling className="mr-2" />
+                Scrivici per un preventivo
+              </a>
+
+              {/* CHIAMACI */}
+              <a
+                href="tel:08118754553"
+                className="inline-flex w-full sm:w-auto justify-center 
+                items-center rounded-full px-6 py-2.5 text-sm md:text-base 
+                font-semibold border border-slate-500 text-slate-700 
+                hover:border-[#EB2480] hover:text-[#EB2480] transition"
+              >
+                <FaPhone className="mr-2" />
+                Chiamaci in agenzia
+              </a>
+            </div>
+          </div>
+        </footer>
       </div>
+
+      {/* Effetto zoom ultimi 10 secondi */}
+      <style>
+        {`
+          @keyframes countdownZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.18); }
+            100% { transform: scale(1); }
+          }
+          .countdown-zoom {
+            animation: countdownZoom 0.6s ease-in-out infinite;
+          }
+        `}
+      </style>
     </section>
   );
 };
 
 export default ComingSoon;
+
 
 
 
