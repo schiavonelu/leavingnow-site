@@ -5,56 +5,55 @@ import ComingSoon from "./ComingSoon";
 import Maintenance from "./Maintenance";
 import logo from "../assets/logo/leavingnow-logo.webp";
 
-// Schermata finale con solo barra di caricamento prima di aprire il sito
+/* -------------------------------
+   Schermata finale: barra 7s
+-------------------------------- */
 const LaunchBarScreen = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#F8FAFC] text-[#132C50]">
-      {/* SFONDI COLORATI */}
+      {/* SFONDI */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#0863D6]/15 blur-3xl" />
-        <div className="absolute bottom-[-4rem] left-[-3rem] h-64 w-64 rounded-full bg-[#EB2480]/12 blur-3xl" />
-        <div className="absolute bottom-[-5rem] right-[-3rem] h-72 w-72 rounded-full bg-[#1F3759]/12 blur-3xl" />
+        <div className="absolute -top-24 left-1/2 h-72 w-72 
+        -translate-x-1/2 rounded-full bg-[#0863D6]/15 blur-3xl" />
+        <div className="absolute bottom-[-4rem] left-[-3rem]
+        h-64 w-64 rounded-full bg-[#EB2480]/12 blur-3xl" />
+        <div className="absolute bottom-[-5rem] right-[-3rem]
+        h-72 w-72 rounded-full bg-[#1F3759]/12 blur-3xl" />
       </div>
 
       <div className="relative mx-auto flex h-full max-w-5xl flex-col px-4 py-4">
-        {/* HEADER */}
+        {/* LOGO + TITOLO */}
         <header className="flex flex-col items-center justify-start pt-2">
-          <div className="mb-3">
-            <img
-              src={logo}
-              alt="Leaving Now logo"
-              className="h-16 w-auto md:h-20 drop-shadow-md"
-            />
-          </div>
+          <img
+            src={logo}
+            alt="Leaving Now logo"
+            className="h-16 w-auto md:h-20 drop-shadow-md mb-3"
+          />
 
           <div className="flex flex-col items-end text-right drop-shadow">
-            <div className="bg-[#EB2480] px-4 py-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.18em] text-white rounded-t-md">
+            <div className="bg-[#EB2480] px-4 py-1.5 
+            text-[10px] sm:text-xs md:text-sm font-extrabold uppercase 
+            tracking-[0.18em] text-white rounded-t-md">
               LANCIO IN CORSO
             </div>
-            <div className="bg-[#1F3759] px-4 py-2 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-[0.16em] text-white rounded-b-md whitespace-nowrap">
-              STIAMO APRENDO IL NUOVO SITO
+            <div className="bg-[#1F3759] px-4 py-2 
+            text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold 
+            uppercase tracking-[0.16em] text-white rounded-b-md whitespace-nowrap">
+              APERTURA DEL SITO
             </div>
           </div>
         </header>
 
-        {/* MAIN */}
+        {/* BARRA */}
         <main className="flex flex-1 flex-col items-center justify-center text-center">
-          <div className="max-w-xl">
-            <p className="mb-4 text-[11px] sm:text-xs md:text-sm text-slate-600">
-              Un attimo di pazienza: stiamo caricando la nuova esperienza Leaving Now.
-            </p>
-
-            {/* Barra di caricamento */}
-            <div className="mt-4 w-full">
-              <div className="h-2 w-full rounded-full bg-slate-200 overflow-hidden">
-                <div className="h-full w-full origin-left bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 launch-bar-fill" />
-              </div>
-            </div>
+          <div className="h-2 w-full max-w-md rounded-full bg-slate-200 overflow-hidden">
+            <div className="h-full w-full origin-left bg-gradient-to-r 
+            from-[#0863D6] via-[#EB2480] to-amber-300 launch-bar-fill" />
           </div>
         </main>
       </div>
 
-      {/* Keyframes per la barra (5 secondi) */}
+      {/* Animazione barra (7s) */}
       <style>
         {`
           @keyframes launchBar {
@@ -63,7 +62,7 @@ const LaunchBarScreen = () => {
           }
           .launch-bar-fill {
             transform-origin: left;
-            animation: launchBar 5s ease-in-out forwards;
+            animation: launchBar 7s ease-in-out forwards;
           }
         `}
       </style>
@@ -71,120 +70,109 @@ const LaunchBarScreen = () => {
   );
 };
 
+/* -------------------------------
+   LaunchGate
+-------------------------------- */
 const LaunchGate = () => {
   const [diffMs, setDiffMs] = useState(getTimeDiffMs());
-
-  // Stato dell'overlay
+  const [phase, setPhase] = useState("idle"); 
+  // "idle" | "maintenance" | "comingSoon" | "launching" | "done"
   const [showOverlay, setShowOverlay] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [phase, setPhase] = useState(null); // "maintenance" | "comingSoon" | "launching" | null
 
-  // Aggiorna la differenza di tempo ogni 1 secondo
+  // ⏱ Aggiorna il tempo ogni secondo (finché non siamo in "done")
   useEffect(() => {
+    if (phase === "done") return;
+
     const interval = setInterval(() => {
       setDiffMs(getTimeDiffMs());
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [phase]);
 
-  // Blocca lo scroll quando l'overlay è visibile
+  // 🚫 Blocca lo scroll quando overlay attivo
   useEffect(() => {
-    if (typeof document === "undefined") return;
-
     const prevOverflow = document.body.style.overflow;
-
     if (showOverlay) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = prevOverflow || "";
     }
-
     return () => {
       document.body.style.overflow = prevOverflow || "";
     };
   }, [showOverlay]);
 
-  // Gestione fasi: maintenance → comingSoon → launching
+  // 🔁 Determina la fase in base al tempo (solo se non siamo in launching/done)
   useEffect(() => {
-    const hours = diffMs / ONE_HOUR_MS;
-
-    // Se il lancio è nel futuro
-    if (diffMs > 0) {
-      let newPhase = null;
-
-      if (hours <= 36 && hours > 24) {
-        newPhase = "maintenance";
-      } else if (hours <= 24) {
-        newPhase = "comingSoon";
-      }
-
-      if (newPhase) {
-        if (phase !== newPhase) {
-          setPhase(newPhase);
-        }
-        if (!showOverlay) {
-          setShowOverlay(true);
-        }
-        if (isFadingOut) {
-          setIsFadingOut(false);
-        }
-      } else {
-        // Fuori finestra 36h: se overlay visibile e non stiamo già lanciando → dissolvenza e chiudi
-        if (showOverlay && !isFadingOut && phase !== "launching") {
-          setIsFadingOut(true);
-          const timeoutId = setTimeout(() => {
-            setShowOverlay(false);
-            setIsFadingOut(false);
-            setPhase(null);
-          }, 500);
-          return () => clearTimeout(timeoutId);
-        }
-      }
-
+    if (phase === "launching" || phase === "done") {
       return;
     }
 
-    // diffMs <= 0 → il lancio è arrivato, passa alla fase "launching" (se non già in quella fase)
-    if (diffMs <= 0 && phase !== "launching") {
+    const hours = diffMs / ONE_HOUR_MS;
+
+    if (diffMs > 0) {
+      let nextPhase = "idle";
+
+      if (hours <= 36 && hours > 24) {
+        nextPhase = "maintenance";
+      } else if (hours <= 24) {
+        nextPhase = "comingSoon";
+      }
+
+      setPhase(nextPhase);
+
+      if (nextPhase === "idle") {
+        setShowOverlay(false);
+      } else {
+        setShowOverlay(true);
+        setIsFadingOut(false);
+      }
+    } else {
+      // ⏰ diffMs <= 0 → innesca fase di lancio
       setPhase("launching");
       setShowOverlay(true);
       setIsFadingOut(false);
     }
-  }, [diffMs, showOverlay, isFadingOut, phase]);
+  }, [diffMs, phase]);
 
-  // Gestione temporizzata della fase "launching": 5s barra + dissolve
+  // 🚀 Gestione della fase di lancio: barra 7s + dissolve + fine
   useEffect(() => {
     if (phase !== "launching") return;
 
-    let launchTimeoutId = null;
-    let removeTimeoutId = null;
-
-    // Dopo 5 secondi di barra → dissolve e poi rimuovi overlay
-    launchTimeoutId = setTimeout(() => {
+    const barTimer = setTimeout(() => {
       setIsFadingOut(true);
-      removeTimeoutId = setTimeout(() => {
+
+      const fadeTimer = setTimeout(() => {
         setShowOverlay(false);
         setIsFadingOut(false);
-        setPhase(null);
-      }, 500); // durata dissolve
-    }, 5000); // durata barra
+        setPhase("done"); // fase finale: il gate non appare mai più
+      }, 700); // durata dissolve
 
-    return () => {
-      if (launchTimeoutId) clearTimeout(launchTimeoutId);
-      if (removeTimeoutId) clearTimeout(removeTimeoutId);
-    };
+      return () => clearTimeout(fadeTimer);
+    }, 7000); // durata barra
+
+    return () => clearTimeout(barTimer);
   }, [phase]);
 
-  // Se non dobbiamo mostrare nulla
-  if (!showOverlay || !phase) {
+  // 🌙 Fase finale: nessun overlay
+  if (phase === "done" || !showOverlay) {
     return null;
   }
 
-  let OverlayContent;
-  if (phase === "maintenance") OverlayContent = Maintenance;
-  else if (phase === "comingSoon") OverlayContent = ComingSoon;
-  else OverlayContent = LaunchBarScreen; // "launching"
+  // Scegli la schermata
+  let Screen = null;
+  if (phase === "maintenance") {
+    Screen = Maintenance;
+  } else if (phase === "comingSoon") {
+    Screen = ComingSoon;
+  } else if (phase === "launching") {
+    Screen = LaunchBarScreen;
+  } else {
+    // "idle" → non mostrare nulla
+    return null;
+  }
 
   return (
     <div
@@ -192,12 +180,15 @@ const LaunchGate = () => {
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <OverlayContent />
+      <Screen />
     </div>
   );
 };
 
 export default LaunchGate;
+
+
+
 
 
 
