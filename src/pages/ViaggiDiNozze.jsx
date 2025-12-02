@@ -873,13 +873,6 @@ const ViaggiDiNozze = () => {
             <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-3">
               Domande frequenti sui viaggi di nozze Leaving Now
             </h2>
-
-            <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
-              Una selezione delle domande che riceviamo più spesso su{" "}
-              <strong>viaggi di nozze, lista viaggio di nozze</strong> e{" "}
-              <strong>assicurazioni</strong>. Se non trovi la risposta che
-              cerchi, puoi sempre contattarci: saremo felici di aiutarti.
-            </p>
           </div>
 
           <div className="space-y-4 text-sm md:text-base text-slate-700">
