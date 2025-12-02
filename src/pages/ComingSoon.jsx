@@ -1,7 +1,7 @@
 // src/pages/ComingSoon.jsx
 import { useEffect, useState } from "react";
 import { FaSuitcaseRolling, FaPhone } from "react-icons/fa6";
-import logo from "../assets/logo/leavingnow-logo.webp";
+import logo from "../assets/logo/leavingnow-logowhite.webp";
 import { getTimeLeft } from "../config/launchConfig";
 
 const ComingSoon = () => {
