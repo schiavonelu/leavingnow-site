@@ -1,7 +1,7 @@
 // src/pages/MeteViaggiNozze.jsx
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Search } from "lucide-react";
+import { ClipboardList, Search } from "lucide-react";
 
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
@@ -339,7 +339,7 @@ const MeteViaggiNozze = () => {
               to="/viaggi-di-nozze#preventivo-nozze"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0EA5E9] bg-[#0EA5E9] text-white hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
             >
-              <FaRegCalendarAlt className="text-lg" />
+              <ClipboardList className="w-4 h-4 mr-2 text-lg" />
               <span>Vai al form viaggio di nozze</span>
             </Link>
             <a
@@ -348,7 +348,7 @@ const MeteViaggiNozze = () => {
               rel="noreferrer"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
             >
-              <FaRegCalendarAlt className="text-lg" />
+              <FaRegCalendarAlt className="w-4 h-4 mr-2 text-lg" />
               <span>Preferite una consulenza dedicata?</span>
             </a>
           </div>

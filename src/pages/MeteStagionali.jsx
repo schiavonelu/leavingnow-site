@@ -13,13 +13,11 @@ import {
   getRandomSeasonImageForSeason,
 } from "../data/mete-stagionali-images";
 
-import {
-  FaCity,
-  FaUmbrellaBeach,
-  FaRegCalendarAlt
-} from "react-icons/fa";
+import { FaCity, FaUmbrellaBeach, FaRegCalendarAlt } from "react-icons/fa";
+import { Mail } from "lucide-react";
 
-import { Mail } from "lucide-react"
+// 🔹 Hook SEO
+import { usePageSeo } from "../hooks/usePageSeo";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const PAGE_SIZE = 6;
@@ -43,7 +41,13 @@ const getCommercialSeasonId = (date) => {
   const month = date.getMonth() + 1;
 
   // Ott–Feb = inverno commerciale per mercatini/Capodanno/crociere
-  if (month === 10 || month === 11 || month === 12 || month === 1 || month === 2) {
+  if (
+    month === 10 ||
+    month === 11 ||
+    month === 12 ||
+    month === 1 ||
+    month === 2
+  ) {
     return "inverno";
   }
   if (month >= 3 && month <= 5) {
@@ -154,6 +158,17 @@ const CARD_CAMPAIGN_MAP = {
 };
 
 const MeteStagionali = () => {
+  // ✅ SEO dinamica pagina + stagionale
+  usePageSeo({
+    baseTitle:
+      "Mete stagionali e prossime partenze da Aversa | Leaving Now Agenzia Viaggi",
+    baseDescription:
+      "Leaving Now è l’agenzia viaggi ad Aversa per chi parte dall’area nord di Napoli e Caserta. In questa pagina trovi le mete stagionali su cui ha senso muoversi adesso, in base al calendario di vendita: mercatini di Natale, Capodanno, Carnevale, mare, viaggi di nozze, weekend benessere e viaggi intercontinentali.",
+    baseKeywords:
+      "mete stagionali, viaggi stagionali Aversa, mercatini di Natale da Napoli, capodanno in Europa, mare d’inverno, viaggi di nozze Aversa, weekend benessere, viaggi intercontinentali nord Napoli",
+    useSeasonal: true,
+  });
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -438,6 +453,7 @@ const MeteStagionali = () => {
 };
 
 export default MeteStagionali;
+
 
 
 

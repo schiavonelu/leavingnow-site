@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaWhatsapp, FaTimes } from "react-icons/fa";
 
-const WHATSAPP_NUMBER = "393401234567"; // <-- SOLO NUMERI, SENZA +
+const WHATSAPP_NUMBER = "393317216534"; // <-- SOLO NUMERI, SENZA +
 const OPERATOR_NAME = "Assia";
 const OPERATOR_ROLE = "Supporto Clienti";
 const OPERATOR_IMAGE = "/assiawhatsapp.webp";

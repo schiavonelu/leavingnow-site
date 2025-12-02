@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Gift, HeartHandshake, Users, Plane } from "lucide-react";
+import { Gift, HeartHandshake, Users, Plane, Mail } from "lucide-react";
 import InnerHero from "../sections/shared/InnerHero.jsx";
 import Breadcrumb from "../components/ui/Breadcrumb.jsx";
 
@@ -240,6 +240,7 @@ const IdeeRegalo = () => {
               to="/contatti"
               className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
             >
+              <Mail className="w-4 h-4 mr-2"/>
               Scrivici per un’idea regalo
             </Link>
 

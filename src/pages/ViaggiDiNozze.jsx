@@ -24,6 +24,34 @@ const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 const WEB3FORMS_KEY = "59cd3a4d-3c21-4152-8f8d-95c3c2590684";
 
+// Opzioni meta viaggio di nozze (solo etichette, ordine alfabetico, Altro alla fine)
+const META_OPTIONS = [
+  "Africa con safari + mare",
+  "Bali + Singapore + Maldive",
+  "Bangkok + Koh Samui",
+  "Crociera (Mediterraneo, fiordi, Caraibi…)",
+  "Dubai + Koh Samui",
+  "Dubai + Maldive",
+  "Dubai + Mauritius",
+  "Dubai + Singapore + Maldive",
+  "Europa (città, tour, on the road)",
+  "Giappone / Asia",
+  "Istanbul + Cappadocia + Bodrum",
+  "Mare tropicale (Maldive, Polinesia, Seychelles, Caraibi…)",
+  "New York + Bahamas",
+  "New York + Bayahibe",
+  "New York + Crociera Bahamas",
+  "New York + Crociera dei Caraibi",
+  "New York + Messico",
+  "San Francisco + Hawaii",
+  "San Francisco + Los Angeles + Riviera Maya",
+  "San Francisco + Polinesia Francese",
+  "Tokyo + Kyoto + Osaka + Maldive",
+  "Tour Thailandia del Nord + Koh Samui",
+  "Stati Uniti – tour on the road",
+  "Altro (specifica)",
+];
+
 // Card “perché sceglierci”
 const ValueCard = ({ icon, title, text }) => (
   <article className="rounded-3xl bg-white border border-[#E2E8F0] shadow-sm p-5 md:p-6 flex gap-3 md:gap-4 items-start">
@@ -46,8 +74,9 @@ const ViaggiDiNozze = () => {
   const [otherMeta, setOtherMeta] = useState("");
   const [status, setStatus] = useState(null); // success | error | null
   const [loading, setLoading] = useState(false);
+  const [openFaqId, setOpenFaqId] = useState(null);
 
-  const showOtherMeta = meta === "altro";
+  const showOtherMeta = meta === "Altro (specifica)";
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -57,6 +86,13 @@ const ViaggiDiNozze = () => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
+
+    // blocco invio se meta è vuoto (caso limite se l’utente cancella tutto)
+    if (!meta) {
+      setStatus("error");
+      setLoading(false);
+      return;
+    }
 
     const form = e.target;
     const data = new FormData(form);
@@ -108,7 +144,11 @@ const ViaggiDiNozze = () => {
         name: "Possiamo iniziare tutto online o dobbiamo venire subito in agenzia?",
         acceptedAnswer: {
           "@type": "Answer",
+<<<<<<< HEAD
           text: "L’iter iniziale può essere gestito comodamente da casa: ci raccontate le vostre idee, ricevete i preventivi e valutiamo insieme le soluzioni via telefono, email o videochiamata. La conferma finale con documenti e contratti viene però completata in agenzia, per avere tutto chiaro e condiviso di persona.",
+=======
+          text: "L’intero percorso può essere gestito completamente da remoto: potete raccontarci le vostre idee, ricevere preventivi e valutare le proposte tramite telefono, email o videochiamate dedicate. L’incontro in agenzia non è obbligatorio, ma è sempre possibile se preferite definire alcuni dettagli di persona.",
+>>>>>>> 10d6796 (Dev)
         },
       },
       {
@@ -152,6 +192,14 @@ const ViaggiDiNozze = () => {
         },
       },
     ],
+<<<<<<< HEAD
+=======
+  };
+
+  // handler per FAQ accordion
+  const toggleFaq = (id) => {
+    setOpenFaqId((prev) => (prev === id ? null : id));
+>>>>>>> 10d6796 (Dev)
   };
 
   return (
@@ -320,7 +368,7 @@ const ViaggiDiNozze = () => {
               <h2 className="text-base md:text-lg font-semibold text-[#132C50] mb-1">
                 Lista viaggio di nozze presso l’agenzia viaggi di Aversa
               </h2>
-              <p className="text-sm text-slate-700 leading-relaxed mb-2">
+              <p className="text-sm text-slate-700 leading-relaxed mb-2 text-justify">
                 Vuoi che il <strong>viaggio di nozze</strong> sia anche il
                 regalo dei tuoi invitati? Con la{" "}
                 <strong>lista viaggio di nozze Leaving Now</strong> puoi
@@ -341,7 +389,11 @@ const ViaggiDiNozze = () => {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* FORM DEDICATO VIAGGIO DI NOZZE – NON MODIFICATO NELLA LOGICA */}
+=======
+      {/* FORM DEDICATO VIAGGIO DI NOZZE */}
+>>>>>>> 10d6796 (Dev)
       <section
         id="preventivo-nozze"
         className="scroll-mt-28 py-12 md:py-16 bg-[#E8F1FD]"
@@ -467,8 +519,13 @@ const ViaggiDiNozze = () => {
                 `}
               />
 
+<<<<<<< HEAD
               {/* Nomi sposi */}
               <div className="grid gap-4 md:grid-cols-[1fr_auto1fr] md:items-center">
+=======
+              {/* Nomi sposi – sempre sulla stessa riga */}
+              <div className="grid gap-4 grid-cols-[1fr_auto1fr] items-center">
+>>>>>>> 10d6796 (Dev)
                 <div>
                   <label
                     htmlFor="sposoA"
@@ -481,12 +538,20 @@ const ViaggiDiNozze = () => {
                     id="sposoA"
                     name="sposoA"
                     required
+<<<<<<< HEAD
                     className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+=======
+                    className="w-full px-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+>>>>>>> 10d6796 (Dev)
                     placeholder="Nome"
                   />
                 </div>
 
+<<<<<<< HEAD
                 <div className="flex items-center justify-center text-xl font-semibold text-slate-500">
+=======
+                <div className="flex items-center justify-center text-lg md:text-xl font-semibold text-slate-500">
+>>>>>>> 10d6796 (Dev)
                   &
                 </div>
 
@@ -502,7 +567,11 @@ const ViaggiDiNozze = () => {
                     id="sposoB"
                     name="sposoB"
                     required
+<<<<<<< HEAD
                     className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+=======
+                    className="w-full px-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+>>>>>>> 10d6796 (Dev)
                     placeholder="Nome"
                   />
                 </div>
@@ -543,7 +612,11 @@ const ViaggiDiNozze = () => {
                 </div>
               </div>
 
+<<<<<<< HEAD
               {/* Meta */}
+=======
+              {/* Meta con datalist (ricerca mentre digiti) */}
+>>>>>>> 10d6796 (Dev)
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label
@@ -552,6 +625,7 @@ const ViaggiDiNozze = () => {
                   >
                     Meta o tipologia di viaggio di nozze *
                   </label>
+<<<<<<< HEAD
                   <select
                     id="meta"
                     name="meta"
@@ -634,6 +708,23 @@ const ViaggiDiNozze = () => {
                       Istanbul + Cappadocia + Bodrum
                     </option>
                   </select>
+=======
+                  <input
+                    id="meta"
+                    name="meta"
+                    list="meta-options"
+                    required
+                    value={meta}
+                    onChange={(e) => setMeta(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+                    placeholder="Inizia a digitare (es. New York, Maldive...)"
+                  />
+                  <datalist id="meta-options">
+                    {META_OPTIONS.map((label) => (
+                      <option key={label} value={label} />
+                    ))}
+                  </datalist>
+>>>>>>> 10d6796 (Dev)
                 </div>
 
                 {showOtherMeta && (
@@ -650,7 +741,11 @@ const ViaggiDiNozze = () => {
                       name="meta_altro"
                       value={otherMeta}
                       onChange={(e) => setOtherMeta(e.target.value)}
+<<<<<<< HEAD
                       className="w-full px-4 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+=======
+                      className="w-full px-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+>>>>>>> 10d6796 (Dev)
                       placeholder="Scrivi qui la destinazione o l’idea"
                     />
                   </div>
@@ -677,7 +772,11 @@ const ViaggiDiNozze = () => {
                         id="data_da"
                         name="data_da"
                         required
+<<<<<<< HEAD
                         className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+=======
+                        className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+>>>>>>> 10d6796 (Dev)
                       />
                     </div>
                   </div>
@@ -697,7 +796,11 @@ const ViaggiDiNozze = () => {
                         id="data_a"
                         name="data_a"
                         required
+<<<<<<< HEAD
                         className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+=======
+                        className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#CBD5E1] focus:ring-2 focus:ring-[#0863D6] focus:outline-none text-sm"
+>>>>>>> 10d6796 (Dev)
                       />
                     </div>
                   </div>
@@ -719,7 +822,11 @@ const ViaggiDiNozze = () => {
                   </label>
                 </div>
 
+<<<<<<< HEAD
                 {/* Luogo di partenza + Budget sulla stessa riga */}
+=======
+                {/* Luogo di partenza + Budget */}
+>>>>>>> 10d6796 (Dev)
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label
@@ -870,15 +977,22 @@ const ViaggiDiNozze = () => {
               FAQ VIAGGI DI NOZZE
             </p>
 
-            <h2 className="text-xl md:text-2xl font-bold text-[#132C50] mb-3">
+            <h2 className="text-xl md:text-2xl font-bold text-[#EB2480] mb-3">
               Domande frequenti sui viaggi di nozze Leaving Now
             </h2>
           </div>
 
-          <div className="space-y-4 text-sm md:text-base text-slate-700">
+          <div className="space-y-4 text-sm md:text-base text-slate-700 text-justify">
             {/* FAQ 1 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+            <details
+              open={openFaqId === "faq1"}
+              className="rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq1");
+                }}
                 className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
                 style={{ listStyle: "none" }}
               >
@@ -892,7 +1006,11 @@ const ViaggiDiNozze = () => {
                   </span>
                 </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq1" ? "rotate-180" : ""
+                  }`}
+                />
               </summary>
 
               <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
@@ -908,6 +1026,7 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 2 */}
+<<<<<<< HEAD
 <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
   <summary
     className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
@@ -940,10 +1059,63 @@ const ViaggiDiNozze = () => {
     </p>
   </div>
 </details>
+=======
+            <details
+              open={openFaqId === "faq2"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
+              <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq2");
+                }}
+                className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
+                style={{ listStyle: "none" }}
+              >
+                <div className="flex items-center gap-3 text-left">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-[#E8F1FD]">
+                    <HelpCircle className="w-4 h-4 text-[#0863D6]" />
+                  </span>
+                  <span className="font-semibold text-sm md:text-base text-[#132C50]">
+                    Possiamo iniziare tutto online o dobbiamo venire subito in
+                    agenzia?
+                  </span>
+                </div>
+
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq2" ? "rotate-180" : ""
+                  }`}
+                />
+              </summary>
+
+              <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
+                <p className="mt-3 leading-relaxed">
+                  L’intero percorso può essere gestito anche{" "}
+                  <strong>completamente da remoto</strong>: potete raccontarci
+                  le vostre idee, ricevere preventivi e valutare ogni proposta
+                  tramite <strong>telefono, email o videochiamate dedicate</strong>.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  Se lo preferite, possiamo vederci anche in agenzia, ma{" "}
+                  <strong>non è obbligatorio</strong>: la conferma e la
+                  finalizzazione del viaggio possono essere svolte{" "}
+                  <strong>online in totale sicurezza</strong>.
+                </p>
+              </div>
+            </details>
+>>>>>>> 10d6796 (Dev)
 
             {/* FAQ 3 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+            <details
+              open={openFaqId === "faq3"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq3");
+                }}
                 className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
                 style={{ listStyle: "none" }}
               >
@@ -956,7 +1128,11 @@ const ViaggiDiNozze = () => {
                   </span>
                 </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq3" ? "rotate-180" : ""
+                  }`}
+                />
               </summary>
 
               <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
@@ -977,8 +1153,15 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 4 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+            <details
+              open={openFaqId === "faq4"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq4");
+                }}
                 className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
                 style={{ listStyle: "none" }}
               >
@@ -992,7 +1175,11 @@ const ViaggiDiNozze = () => {
                   </span>
                 </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq4" ? "rotate-180" : ""
+                  }`}
+                />
               </summary>
 
               <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
@@ -1014,8 +1201,15 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 5 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+            <details
+              open={openFaqId === "faq5"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq5");
+                }}
                 className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
                 style={{ listStyle: "none" }}
               >
@@ -1028,7 +1222,11 @@ const ViaggiDiNozze = () => {
                   </span>
                 </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq5" ? "rotate-180" : ""
+                  }`}
+                />
               </summary>
 
               <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
@@ -1049,8 +1247,15 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 6 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+            <details
+              open={openFaqId === "faq6"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq6");
+                }}
                 className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
                 style={{ listStyle: "none" }}
               >
@@ -1063,7 +1268,11 @@ const ViaggiDiNozze = () => {
                   </span>
                 </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq6" ? "rotate-180" : ""
+                  }`}
+                />
               </summary>
 
               <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
@@ -1083,8 +1292,15 @@ const ViaggiDiNozze = () => {
             </details>
 
             {/* FAQ 7 */}
-            <details className="group rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200">
+            <details
+              open={openFaqId === "faq7"}
+              className="rounded-3xl border border-slate-200 bg:white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200"
+            >
               <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFaq("faq7");
+                }}
                 className="flex items-center justify-between gap-4 cursor-pointer px-4 md:px-5 py-4 md:py-5 list-none"
                 style={{ listStyle: "none" }}
               >
@@ -1098,7 +1314,11 @@ const ViaggiDiNozze = () => {
                   </span>
                 </div>
 
-                <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                    openFaqId === "faq7" ? "rotate-180" : ""
+                  }`}
+                />
               </summary>
 
               <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-slate-100">
@@ -1119,4 +1339,23 @@ const ViaggiDiNozze = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ViaggiDiNozze;
+=======
+export default ViaggiDiNozze;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 10d6796 (Dev)

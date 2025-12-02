@@ -14,6 +14,9 @@ import { getSeasonBucketLabel } from "../utils/seasonBuckets.js";
 
 import { FaUmbrellaBeach, FaRegCalendarAlt } from "react-icons/fa";
 
+// 🔹 Hook SEO
+import { usePageSeo } from "../hooks/usePageSeo";
+
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
 const OFFSET_TOP = 270;
@@ -22,6 +25,17 @@ const HERO_SLUG = "hero";
 const MeteCapitali = () => {
   // Hero opzionale: se metti src/assets/mete-capitali/hero.webp → slug "hero"
   const heroImg = CAPITALI_IMAGES[HERO_SLUG] ?? null;
+
+  // ✅ SEO dinamica per Capitali
+  usePageSeo({
+    baseTitle:
+      "Capitali e città europee da Aversa – Weekend, ponti e combinati | Leaving Now Agenzia Viaggi",
+    baseDescription:
+      "Leaving Now è l’agenzia viaggi ad Aversa per chi parte dall’area nord di Napoli e Caserta. In questa pagina trovi una selezione di capitali e grandi città europee – Parigi, Londra, Madrid, Lisbona, Vienna, Praga, Budapest e molte altre – da vivere in weekend, ponti o viaggi combinati, sempre senza pacchetti standard.",
+    baseKeywords:
+      "capitali europee Aversa, weekend Parigi da Napoli, viaggi Londra da Napoli, city break Europa, offerte capitali europee nord Napoli, viaggi Lisbona, weekend Vienna, viaggi Praga, city break da Napoli",
+    useSeasonal: true,
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");

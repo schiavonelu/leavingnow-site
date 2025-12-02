@@ -1,5 +1,4 @@
 // src/pages/MeteMareEstero.jsx
-
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Search, Mail } from "lucide-react";
 
@@ -14,7 +13,10 @@ import heroImg from "../assets/mete-mare-estero/hero.webp";
 import { MARE_ESTERO_DESTINATIONS } from "../data/mare-estero.js";
 import { MARE_ESTERO_IMAGES } from "../data/mare-estero-images.js";
 
-import { FaRegCalendarAlt, FaMapMarkedAlt , FaCity } from "react-icons/fa";
+import { FaRegCalendarAlt, FaMapMarkedAlt, FaCity } from "react-icons/fa";
+
+// 🔹 Hook SEO
+import { usePageSeo } from "../hooks/usePageSeo";
 
 const RESERVIO_URL = "https://leaving-now-viaggi.reservio.com/";
 const ITEMS_PER_PAGE = 9;
@@ -37,8 +39,18 @@ const toSlug = (str) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-
 const MeteMareEstero = () => {
+  // ✅ SEO dinamica per Mare Estero
+  usePageSeo({
+    baseTitle:
+      "Mare estero da Aversa – Grecia, Spagna, Canarie, Mar Rosso e oceano | Leaving Now Agenzia Viaggi",
+    baseDescription:
+      "Leaving Now è l’agenzia viaggi ad Aversa per chi parte dall’area nord di Napoli e Caserta. Scopri le migliori mete di mare estero tra Grecia, Spagna, Canarie, Algarve, Croazia, Mar Rosso, Oceano Indiano e altre coste, sempre con consulenza personalizzata e attenzione alla stagionalità.",
+    baseKeywords:
+      "mare estero Aversa, mare Grecia da Napoli, mare Spagna da Napoli, viaggi Canarie, mare Croazia, vacanze Mar Rosso, viaggi Oceano Indiano, agenzia viaggi mare estero nord Napoli, mare d’inverno",
+    useSeasonal: true,
+  });
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNations, setSelectedNations] = useState([]);
@@ -89,7 +101,6 @@ const MeteMareEstero = () => {
     });
   }, [searchTerm, selectedNations]);
 
-
   // PAGINAZIONE
   const totalPages = Math.ceil(filteredTrips.length / ITEMS_PER_PAGE) || 1;
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -121,7 +132,6 @@ const MeteMareEstero = () => {
 
   const hasResults = filteredTrips.length > 0;
 
-
   // Badge riassuntivo
   const getNationSummary = () => {
     if (selectedNations.length === 0) return "tutte le nazioni";
@@ -137,7 +147,6 @@ const MeteMareEstero = () => {
   };
 
   const badgeColorClasses = getBadgeColorClasses();
-
 
   return (
     <>
@@ -170,7 +179,6 @@ const MeteMareEstero = () => {
       <section className="py-8 md:py-10 bg-[#F8FAFC]" id="mare-inverno">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6">
-
             {/* 🔹 Filtri mare estero */}
             <SeaFiltersEstero
               title="Mare estero"
@@ -189,15 +197,14 @@ const MeteMareEstero = () => {
 
             {/* 🔹 Risultati */}
             <div
-              className={`flex-1 space-y-6 transition-[width] duration-300 ${filtersCollapsed ? "lg:pl-2" : ""
-                }`}
+              className={`flex-1 space-y-6 transition-[width] duration-300 ${
+                filtersCollapsed ? "lg:pl-2" : ""
+              }`}
             >
-
               {/* Barra di ricerca */}
               <div className="lg:sticky lg:top-30 z-10">
                 <div className="rounded-2xl bg-white border border-[#E2E8F0] shadow-sm p-4 md:p-5">
                   <div className="flex flex-col md:flex-row md:items-end gap-4">
-
                     <div className="flex-1">
                       <label
                         htmlFor="search-mare-estero"
@@ -230,7 +237,6 @@ const MeteMareEstero = () => {
                         in {getNationSummary()}.
                       </span>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -274,7 +280,6 @@ const MeteMareEstero = () => {
                 )}
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -297,7 +302,6 @@ const MeteMareEstero = () => {
           </p>
 
           <div className="mt-4 space-y-6">
-
             <div className="space-y-3">
               <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-slate-300">
                 Lasciati ispirare ancora
@@ -351,16 +355,15 @@ const MeteMareEstero = () => {
                 </a>
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
     </>
   );
 };
 
 export default MeteMareEstero;
+
 
 
 

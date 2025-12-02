@@ -1,3 +1,4 @@
+// src/pages/ChiSiamo.jsx
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -98,6 +99,7 @@ const PercheAffidarti = () => (
         </p>
       </div>
 
+      {/* 2 card per riga su desktop, 1 su mobile */}
       <div className="grid gap-4 md:gap-6 md:grid-cols-2">
         <ValueCard
           icon={<FaUsers />}
@@ -235,8 +237,8 @@ const ChiSiamo = () => {
 
           <div className="space-y-4 text-sm md:text-base text-slate-700 leading-relaxed text-justify">
             <p>
-              Leaving Now nasce come <strong>agenzia viaggi ad Aversa</strong> da
-              una profonda passione per i viaggi, cresciuta nel tempo fino a
+              Leaving Now nasce come <strong>agenzia viaggi ad Aversa</strong>{" "}
+              da una profonda passione per i viaggi, cresciuta nel tempo fino a
               trasformarsi in una vera professione. Oggi accompagniamo chi parte
               dalla Campania e dal resto d&apos;Italia verso mete vicine e
               lontane, con soluzioni pensate su misura.
@@ -287,19 +289,125 @@ const ChiSiamo = () => {
         </div>
       </section>
 
-      {/* SEZIONE VALORI */}
+      {/* SEZIONE VALORI / PUNTI DI FORZA */}
       <PercheAffidarti />
 
       {/* TEAM */}
-      {/* … qui puoi lasciare il resto del file come lo avevi già, non serve toccarlo … */}
+      <section
+        className="py-12 md:py-16 bg-white"
+        aria-labelledby="team-title"
+      >
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10 md:mb-12">
+            <p className="text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-2 text-[#0863D6]">
+              Il nostro team
+            </p>
 
-      {/* CTA finale identica a prima */}
-      {/* ... */}
+            <h2
+              id="team-title"
+              className="text-2xl md:text-3xl font-bold text-[#EB2480]"
+            >
+              Le persone dietro ogni viaggio
+            </h2>
+
+            <p className="mt-3 text-sm md:text-base text-slate-700 max-w-2xl mx-auto">
+              Professionisti con esperienza, passione e cura del dettaglio:
+              non solo consulenti di viaggio, ma veri{" "}
+              <strong>compagni di viaggio</strong>, pronti a seguirti prima,
+              durante e dopo la partenza, sia in agenzia che da remoto.
+            </p>
+          </div>
+
+          <div ref={teamRef} className="grid gap-6 md:grid-cols-3">
+            {team.map((member, index) => (
+              <article
+                key={member.name}
+                style={{ transitionDelay: `${index * 120}ms` }}
+                className={[
+                  "rounded-3xl bg-white border border-[#E2E8F0] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all durataion-700 overflow-hidden flex flex-col",
+                  teamVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6",
+                ].join(" ")}
+              >
+                {/* FOTO + BADGE */}
+                <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <span className="absolute left-3 top-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm bg-[#0863D6]/80">
+                    {member.role}
+                  </span>
+                </div>
+                {/* TESTO */}
+                <div className="p-6 flex-1 flex flex-col text-center">
+                  <h3 className="text-lg md:text-xl font-semibold text-[#132C50] mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm text-slate-700 leading-relaxed text-justify">
+                    {member.bio}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA FINALE */}
+      <section
+        className="py-10 md:py-14 bg-[#132C50]"
+        aria-labelledby="cta-contatti-title"
+      >
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-3 text-[#0863D6]">
+            Consulenza gratuita
+          </p>
+
+          <h2
+            id="cta-contatti-title"
+            className="text-2xl md:text-3xl font-bold text-white mb-3"
+          >
+            Vuoi parlare del tuo prossimo viaggio con noi?
+          </h2>
+
+          <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto mb-6">
+            Raccontaci chi sei, con chi viaggi e che tipo di esperienza stai
+            cercando. Possiamo sentirci in agenzia ad Aversa o da remoto e
+            costruire insieme il <strong>viaggio su misura</strong> più adatto a
+            te: vacanza mare, tour, crociera o viaggio di nozze.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              to="/contatti"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold shadow-md border border-[#0863D6] bg-[#0863D6] text-white hover:bg-white hover:text-[#0863D6] transition"
+            >
+              <Mail className="text-lg mr-2" />
+              Scrivici per informazioni
+            </Link>
+
+            <a
+              href={RESERVIO_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+            >
+              <FaCalendarCheck className="mr-2" />
+              Prenota una consulenza
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
 
 export default ChiSiamo;
+
 
 
 
