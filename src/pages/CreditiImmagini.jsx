@@ -199,13 +199,13 @@ const CreditiImmagini = () => {
       </p>
 
       {/* =====================================================
-          SEZIONE METE – CAPITALI EUROPEE
+          SEZIONE METE – CITTA EUROPEE
       ====================================================== */}
 
       <hr className="border-slate-200" />
 
       <h2 className="text-base md:text-lg font-semibold text-[#132C50]">
-        Mete – Capitali europee
+        Mete – Città europee
       </h2>
 
       <div className="space-y-4">

@@ -10,20 +10,23 @@ import {
   FaMessage,
 } from "react-icons/fa6";
 import logo from "../assets/logo/leavingnow-logowhite.webp";
-import { getTimeDiffMs, ONE_HOUR_MS } from "../config/launchConfig";
+import {
+  LAUNCH_DATE,
+  MAINTENANCE_START_DATE,
+  ONE_DAY_MS,
+} from "../config/launchConfig";
 
-// Calcola l'avanzamento lavori: 36h → 0%, 24h → 100%
+// Calcola l'avanzamento lavori: dal 6/12 → 0% al (lancio - 24h) → 100%
 const getMaintenanceProgress = () => {
-  const diff = getTimeDiffMs();
-  const hours = diff / ONE_HOUR_MS;
+  const now = Date.now();
+  const start = MAINTENANCE_START_DATE.getTime();
+  const launch = LAUNCH_DATE.getTime();
+  const end = launch - ONE_DAY_MS; // 24h prima del lancio
 
-  const START_HOURS = 36;
-  const END_HOURS = 24;
+  if (now <= start) return 0;
+  if (now >= end) return 100;
 
-  if (hours > START_HOURS) return 0; // molto prima → 0%
-  if (hours <= END_HOURS) return 100; // entro le 24h → 100%
-
-  const ratio = (START_HOURS - hours) / (START_HOURS - END_HOURS); // 36→0, 24→1
+  const ratio = (now - start) / (end - start);
   const clamped = Math.max(0, Math.min(1, ratio));
 
   return Math.round(clamped * 100);
@@ -53,7 +56,7 @@ const Maintenance = () => {
       if (step >= 3) {
         clearInterval(interval);
       }
-    }, 900); // ogni 600ms si accende una card
+    }, 900); // ogni 900ms si accende una card
 
     return () => clearInterval(interval);
   }, []);
@@ -127,7 +130,7 @@ const Maintenance = () => {
                 </div>
                 <div className="h-2 w-full rounded-full bg-slate-700 overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#0863D6] via-[#EB2480] to-amber-300 transition-all duration-700 ease-out"
+                    className="h-full rounded-full bg-linear-to-r from-[#0863D6] via-[#EB2480] to-amber-300 transition-all duration-700 ease-out"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -220,6 +223,9 @@ const Maintenance = () => {
 };
 
 export default Maintenance;
+
+
+
 
 
 
