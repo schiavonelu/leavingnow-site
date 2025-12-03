@@ -62,7 +62,7 @@ const LaunchBarScreen = () => {
         <main className="flex flex-1 flex-col items-center justify-center text-center">
           <div className="h-2 w-full max-w-md rounded-full bg-slate-200 overflow-hidden">
             <div
-              className="h-full w-full origin-left bg-linear-to-r 
+              className="h-full w-full origin-left bg-gradient-to-r 
             from-[#0863D6] via-[#EB2480] to-amber-300 launch-bar-fill"
             />
           </div>
@@ -111,8 +111,23 @@ const LaunchGate = () => {
     const maintenanceStart = MAINTENANCE_START_DATE.getTime();
     const comingSoonStart = launchTime - ONE_DAY_MS;
 
+    // Finestra di grazia per la barra di lancio (es. 15 secondi)
+    const LAUNCH_GRACE_MS = 15_000;
+
     const updatePhase = () => {
       const now = Date.now();
+
+      // Se siamo molto oltre il lancio → considera già completato, niente barra
+      if (now >= launchTime + LAUNCH_GRACE_MS) {
+        setPhase("done");
+        setShowOverlay(false);
+        setIsFadingOut(false);
+        setHasLaunched(true);
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem("launchCompleted", "true");
+        }
+        return;
+      }
 
       let nextPhase = "idle";
       let overlay = false;
@@ -128,8 +143,8 @@ const LaunchGate = () => {
         // ⏳ Coming soon ultime 24h
         nextPhase = "comingSoon";
         overlay = true;
-      } else if (now >= launchTime) {
-        // 🚀 Fase di lancio
+      } else if (now >= launchTime && now < launchTime + LAUNCH_GRACE_MS) {
+        // 🚀 Fase di lancio → solo nella finestra di 15s dopo l'ora esatta
         nextPhase = "launching";
         overlay = true;
       }
@@ -190,7 +205,7 @@ const LaunchGate = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-9999 bg-white transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[9999] bg-white transition-opacity duration-500 ${
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >
@@ -200,6 +215,7 @@ const LaunchGate = () => {
 };
 
 export default LaunchGate;
+
 
 
 
