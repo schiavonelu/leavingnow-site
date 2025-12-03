@@ -1,29 +1,122 @@
+########################################
+# 1) REWRITE: HTTPS, dominio, redirect, SPA
+########################################
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Forza HTTPS su leavingnow.it
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://leavingnow.it/$1 [L,R=301]
+
+  # Forza dominio senza www
+  RewriteCond %{HTTP_HOST} ^www\.leavingnow\.it$ [NC]
+  RewriteRule ^(.*)$ https://leavingnow.it/$1 [L,R=301]
+
+  # REDIRECT 301: vecchia pagina viaggio-di-nozze -> nuova viaggi-di-nozze
+  RewriteRule ^viaggio-di-nozze/?$ https://leavingnow.it/viaggi-di-nozze [L,R=301]
+
+  # SUPPORTO REACT SPA:
+  # tutte le richieste che non sono file o cartelle fisiche vanno a index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+
+########################################
+# 2) COMPRESSIONE GZIP (mod_deflate)
+########################################
+<IfModule mod_deflate.c>
+  # Testi e markup
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+
+  # Escludi vecchi browser (opzionale)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+
+########################################
+# 3) CACHE BROWSER (mod_expires + Cache-Control)
+########################################
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML: poco cache (così aggiorni il sito senza problemi)
+  ExpiresByType text/html "access plus 5 minutes"
+
+  # CSS / JS: mediamente lunghi (Vite mette hash nei file, quindi ok anche 1 mese)
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # JSON (es. eventuali config/API statiche)
+  ExpiresByType application/json "access plus 1 day"
+
+  # Immagini
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Font
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Cache-Control più precisi
+<IfModule mod_headers.c>
+  # Asset statici: tienili in cache a lungo
+  <FilesMatch "\.(css|js|mjs|png|jpe?g|gif|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML: niente cache aggressiva (così il sito si aggiorna subito)
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+
+########################################
+# 4) SECURITY HEADERS (TUO BLOCCO + FIX CSP)
+########################################
 <IfModule mod_headers.c>
 
-  # 1) HSTS – forza HTTPS (ATTENZIONE: solo se il sito è già sempre su HTTPS!)
+  # HSTS – forza HTTPS (solo se il sito è SEMPRE su HTTPS)
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-  # 2) Content Security Policy (SEMPLIFICATA, ADATTATA AL TUO CASO)
+  # Content Security Policy - aggiornata per GA + Web3Forms
   Header always set Content-Security-Policy "\
 default-src 'self'; \
 img-src 'self' data:; \
-script-src 'self'; \
+script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; \
 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
 font-src 'self' https://fonts.gstatic.com; \
-connect-src 'self'; \
+connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com; \
+form-action 'self' https://api.web3forms.com; \
 frame-ancestors 'self'; \
 "
 
-  # 3) COOP – isolamento tab
+  # COOP – isolamento tab
   Header always set Cross-Origin-Opener-Policy "same-origin"
 
-  # 4) X-Frame-Options – contro clickjacking
+  # X-Frame-Options – contro clickjacking
   Header always set X-Frame-Options "SAMEORIGIN"
 
-  # 5) Altri header utili
+  # Altri header utili
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-XSS-Protection "0"
 
+  # (OPZIONALE) Permissions-Policy per disattivare cose che non usi
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=()"
+
 </IfModule>
+
+
 

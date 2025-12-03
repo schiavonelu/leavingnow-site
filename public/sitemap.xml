@@ -1,59 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-  <url>
-    <loc>https://leavingnow.it/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://leavingnow.it/destinazioni</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- HOME -->
+  <url><loc>https://leavingnow.it/</loc></url>
 
-  <url>
-    <loc>https://leavingnow.it/destinazioni/americhe-e-caraibi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- PAGINE PRINCIPALI -->
+  <url><loc>https://leavingnow.it/chi-siamo</loc></url>
+  <url><loc>https://leavingnow.it/destinazioni</loc></url>
+  <url><loc>https://leavingnow.it/contatti</loc></url>
+  <url><loc>https://leavingnow.it/viaggi-di-nozze</loc></url>
+  <url><loc>https://leavingnow.it/crociere</loc></url>
+  <url><loc>https://leavingnow.it/viaggi-individuali-gruppo</loc></url>
+  <url><loc>https://leavingnow.it/viaggi-family</loc></url>
+  <url><loc>https://leavingnow.it/idee-regalo</loc></url>
+  <url><loc>https://leavingnow.it/mete-stagionali</loc></url>
+  <url><loc>https://leavingnow.it/citta-europee</loc></url>
+  <url><loc>https://leavingnow.it/mete-viaggi-di-nozze</loc></url>
+  <url><loc>https://leavingnow.it/mare-italia</loc></url>
+  <url><loc>https://leavingnow.it/mare-estero</loc></url>
 
-  <url>
-    <loc>https://leavingnow.it/destinazioni/europa</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- SOTTO-PAGINE DESTINAZIONI -->
+  <url><loc>https://leavingnow.it/destinazioni/europa</loc></url>
+  <url><loc>https://leavingnow.it/destinazioni/americhe-caraibi</loc></url>
+  <url><loc>https://leavingnow.it/destinazioni/africa</loc></url>
+  <url><loc>https://leavingnow.it/destinazioni/asia</loc></url>
+  <url><loc>https://leavingnow.it/destinazioni/oceania</loc></url>
 
-  <url>
-    <loc>https://leavingnow.it/destinazioni/africa</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- PAGINE LEGALI -->
+  <url><loc>https://leavingnow.it/privacy-policy</loc></url>
+  <url><loc>https://leavingnow.it/termini-e-condizioni</loc></url>
+  <url><loc>https://leavingnow.it/condizioni-di-vendita</loc></url>
+  <url><loc>https://leavingnow.it/crediti-immagini</loc></url>
 
-  <url>
-    <loc>https://leavingnow.it/destinazioni/asia</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://leavingnow.it/destinazioni/oceania</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://leavingnow.it/chi-siamo</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://leavingnow.it/contatti</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>
+
+
