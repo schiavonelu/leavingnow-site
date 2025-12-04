@@ -1,15 +1,8 @@
 // src/App.jsx
-import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Layout principale
 import MainLayout from "./layout/MainLayout.jsx";
-
-// Config lancio / manutenzione
-import { LAUNCH_DATE, MAINTENANCE_START_DATE } from "./config/launchConfig.js";
-
-// Overlay di lancio (barra 7 secondi)
-import LaunchGate from "./pages/LaunchGate.jsx";
 
 // Pagine principali
 import Home from "./pages/Home.jsx";
@@ -42,63 +35,24 @@ import Oceania from "./pages/Oceania.jsx";
 
 // Pagine speciali
 import NotFound from "./pages/NotFound.jsx";
-
-// Pagine di lancio
-import ComingSoon from "./pages/ComingSoon.jsx";
-import Maintenance from "./pages/Maintenance.jsx";
+import LaunchGate from "./pages/LaunchGate.jsx";
 
 // UI Components
 import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
 function App() {
-  // ⏱ Orario reattivo ogni 5 secondi
-  const [now, setNow] = useState(Date.now());
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 5000);
-    return () => clearInterval(id);
-  }, []);
-
-  const launch = LAUNCH_DATE.getTime();
-  const maintenanceStart = MAINTENANCE_START_DATE.getTime();
-
-  const beforeLaunch = now < launch;
-  const beforeMaintenance = now < maintenanceStart;
-  const inMaintenance = now >= maintenanceStart && now < launch;
-
-  // 🔵 FASE 1 → Prima della manutenzione (Coming Soon)
-  if (beforeLaunch && beforeMaintenance) {
-    return (
-      <>
-        <ComingSoon />
-        <CookieConsent />
-      </>
-    );
-  }
-
-  // 🟠 FASE 2 → Tra manutenzione e lancio
-  if (inMaintenance) {
-    return (
-      <>
-        <Maintenance />
-        <CookieConsent />
-      </>
-    );
-  }
-
-  // ✅ FASE 3 → Dopo il lancio → sito normale
   return (
     <>
-      {/* Overlay di lancio (barra 7s) solo alla PRIMA visita dopo il go-live */}
+      {/* Overlay di lancio (manutenzione / coming soon) basato SOLO sulla data */}
       <LaunchGate />
 
       {/* Widget WhatsApp sempre visibile */}
       <WhatsAppWidget />
 
-      {/* Rotte del sito */}
       <Routes>
         <Route path="/" element={<MainLayout />}>
+          {/* Pagine principali */}
           <Route index element={<Home />} />
           <Route path="chi-siamo" element={<ChiSiamo />} />
           <Route path="destinazioni" element={<Destinazioni />} />
@@ -127,24 +81,27 @@ function App() {
           <Route path="destinazioni/asia" element={<Asia />} />
           <Route path="destinazioni/oceania" element={<Oceania />} />
 
-          {/* Legali */}
+          {/* Pagine legali */}
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="termini-e-condizioni" element={<TerminiCondizioni />} />
-          <Route path="condizioni-di-vendita" element={<CondizioniVendita />} />
+          <Route
+            path="condizioni-di-vendita"
+            element={<CondizioniVendita />}
+          />
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
         </Route>
 
-        {/* 404 */}
+        {/* Pagina 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 
+      {/* Banner Cookie */}
       <CookieConsent />
     </>
   );
 }
 
 export default App;
-
 
 
 
