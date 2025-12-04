@@ -62,7 +62,7 @@ const LaunchBarScreen = () => {
         <main className="flex flex-1 flex-col items-center justify-center text-center">
           <div className="h-2 w-full max-w-md rounded-full bg-slate-200 overflow-hidden">
             <div
-              className="h-full w-full origin-left bg-gradient-to-r 
+              className="h-full w-full origin-left bg-linear-to-r 
             from-[#0863D6] via-[#EB2480] to-amber-300 launch-bar-fill"
             />
           </div>
@@ -205,7 +205,7 @@ const LaunchGate = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] bg-white transition-opacity duration-500 ${
+      className={`fixed inset-0 z-9999 bg-white transition-opacity duration-500 ${
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >
