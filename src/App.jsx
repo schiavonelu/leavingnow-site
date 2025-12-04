@@ -1,4 +1,5 @@
 // src/App.jsx
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Layout principale
@@ -48,7 +49,17 @@ import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
 function App() {
-  const now = Date.now();
+  // ⏱ ora “reattiva” che si aggiorna ogni 5 secondi
+  const [now, setNow] = useState(Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setNow(Date.now());
+    }, 5000); // 5 secondi, puoi abbassare a 1000 se vuoi più preciso
+
+    return () => clearInterval(id);
+  }, []);
+
   const launch = LAUNCH_DATE.getTime();
   const maintenanceStart = MAINTENANCE_START_DATE.getTime();
 
@@ -79,7 +90,7 @@ function App() {
   // ✅ FASE 3 – dopo il lancio → sito normale
   return (
     <>
-      {/* Widget WhatsApp sempre visibile */}
+      {/* Widget WhatsApp sempre visibile nel sito live */}
       <WhatsAppWidget />
 
       <Routes>
@@ -127,7 +138,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* Banner Cookie */}
+      {/* Banner Cookie sempre attivo */}
       <CookieConsent />
     </>
   );
