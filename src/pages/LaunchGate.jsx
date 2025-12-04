@@ -89,10 +89,37 @@ const LaunchBarScreen = () => {
 /* -------------------------------
    LaunchGate
 -------------------------------- */
+
+// 🔑 Chiave versionata in base alla data di lancio
+const LAUNCH_STORAGE_KEY = `launchCompleted_${LAUNCH_DATE.toISOString()}`;
+
 const LaunchGate = () => {
   const [hasLaunched, setHasLaunched] = useState(() => {
     if (typeof window === "undefined") return false;
-    return window.localStorage.getItem("launchCompleted") === "true";
+
+    const now = Date.now();
+
+    // Opzione di reset per i TEST: ?resetLaunch=1
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("resetLaunch") === "1") {
+        window.localStorage.removeItem(LAUNCH_STORAGE_KEY);
+        return false;
+      }
+    } catch (e) {
+      // in caso di problemi con URLSearchParams ignoriamo
+    }
+
+    const stored = window.localStorage.getItem(LAUNCH_STORAGE_KEY) === "true";
+
+    // Se il flag dice "già lanciato" ma ORA è prima della data di lancio,
+    // probabilmente hai cambiato LAUNCH_DATE → reset automatico.
+    if (stored && now < LAUNCH_DATE.getTime()) {
+      window.localStorage.removeItem(LAUNCH_STORAGE_KEY);
+      return false;
+    }
+
+    return stored;
   });
 
   const [phase, setPhase] = useState("idle"); // "idle" | "maintenance" | "comingSoon" | "launching" | "done"
@@ -124,7 +151,7 @@ const LaunchGate = () => {
         setIsFadingOut(false);
         setHasLaunched(true);
         if (typeof window !== "undefined") {
-          window.localStorage.setItem("launchCompleted", "true");
+          window.localStorage.setItem(LAUNCH_STORAGE_KEY, "true");
         }
         return;
       }
@@ -175,7 +202,7 @@ const LaunchGate = () => {
         setHasLaunched(true);
 
         if (typeof window !== "undefined") {
-          window.localStorage.setItem("launchCompleted", "true");
+          window.localStorage.setItem(LAUNCH_STORAGE_KEY, "true");
         }
       }, 700); // durata dissolve
 
@@ -205,7 +232,7 @@ const LaunchGate = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-9999 bg-white transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[9999] bg-white transition-opacity duration-500 ${
         isFadingOut ? "opacity-0" : "opacity-100"
       }`}
     >
@@ -215,6 +242,7 @@ const LaunchGate = () => {
 };
 
 export default LaunchGate;
+
 
 
 
