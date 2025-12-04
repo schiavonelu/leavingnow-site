@@ -83,11 +83,11 @@ const Maintenance = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Carousel MOBILE: cambio card ogni 5 secondi
+  // Carousel MOBILE: cambio card ogni 7 secondi
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStepIndex((prev) => (prev + 1) % STEPS.length);
-    }, 5000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, []);
@@ -226,16 +226,15 @@ const Maintenance = () => {
           </div>
         </main>
 
-        {/* FOOTER */}
-        <footer className="flex flex-col items-center justify-end pb-4">
+        {/* FOOTER SOLO DESKTOP/TABLET */}
+        <footer className="hidden sm:flex flex-col items-center justify-end pb-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <p className="text-[11px] md:text-sm text-slate-300 max-w-md text-center sm:text-right sm:mr-2">
               Anche durante i lavori sul sito, puoi contattarci per organizzare il tuo
               prossimo viaggio.
             </p>
 
-            {/* Bottoni footer SOLO DESKTOP/TABLET */}
-            <div className="hidden sm:flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="mailto:leavingnowviaggi@gmail.com"
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-2.5 text-sm md:text-base font-semibold shadow-md border border-sky-500 bg-sky-500 text-white hover:bg-transparent hover:text-sky-300 hover:border-sky-300 transition"

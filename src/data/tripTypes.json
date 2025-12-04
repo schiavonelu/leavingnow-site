@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Viaggi di nozze",
+    "subtitle": "Momenti per sempre",
+    "imageKey": "nozze",
+    "query": "nozze",
+    "to": "/viaggi-di-nozze"
+  },
+  {
+    "title": "Crociere",
+    "subtitle": "Grandi navi, grandi emozioni",
+    "imageKey": "crociere",
+    "query": "crociere",
+    "to": "/crociere"
+  },
+  {
+    "title": "Individuali & di gruppo",
+    "subtitle": "Solo per te o da condividere",
+    "imageKey": "gruppo",
+    "query": "gruppo",
+    "to": "/viaggi-individuali-gruppo"
+  },
+  {
+    "title": "Family",
+    "subtitle": "Viaggi per grandi e piccoli",
+    "imageKey": "family",
+    "query": "family",
+    "to": "/viaggi-family"
+  }
+]

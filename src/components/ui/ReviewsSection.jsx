@@ -1,119 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaStar, FaQuoteLeft, FaCheckCircle } from "react-icons/fa";
 import { useInView } from "../../hooks/useInView";
-
-const reviews = [
-  {
-    name: "Margherita Imperatore",
-    tripType: "Viaggio di Nozze · Giappone e Maldive",
-    text: "Assia ci ha seguiti passo dopo passo con una professionalità incredibile. Sempre disponibile, gentile e preparata. Il nostro viaggio è stato perfetto e senza alcun intoppo. Un sogno realizzato! Grazie di cuore da Marghe e Fabri ♥️",
-    rating: 5,
-  },
-  {
-    name: "Lucio D'Isanto",
-    tripType: "Crociera · Natale",
-    text: "Organizzazione impeccabile: cabina perfetta, tavolo singolo con vista, pacchetto bevande consigliato da Assia super conveniente. Ciliegina sulla torta: escursione regalata a Valencia. Agenzia seria e precisa.",
-    rating: 5,
-  },
-  {
-    name: "Fabrizio Cristaldi",
-    tripType: "Viaggio Individuale · Parigi",
-    text: "Viaggio meraviglioso consigliato da Assia in ogni minimo dettaglio. Hotel in posizione strategica e suggerimenti utilissimi su cosa vedere. Già prenotato il prossimo viaggio con loro, perché sono il top!",
-    rating: 5,
-  },
-  {
-    name: "Matteo Massaro",
-    tripType: "Viaggio di Nozze · Cile e Aruba",
-    text: "Agenzia di fiducia da anni. L’ultimo viaggio in Cile e Aruba è stato straordinario: Atacama, Patagonia, Caraibi… tutto perfetto e organizzato nei minimi dettagli. Servizio eccezionale ovunque siamo stati.",
-    rating: 5,
-  },
-  {
-    name: "Anna Di Grazia",
-    tripType: "Viaggio di Gruppo · Amsterdam",
-    text: "Meta stupenda resa ancora migliore dalla loro assistenza! Ogni viaggio con loro è studiato alla perfezione, sanno sempre consigliare dove alloggiare in base alle esigenze. Professionalità e preparazione al top.",
-    rating: 5,
-  },
-  {
-    name: "Rosita Mendicino",
-    tripType: "Mare Italia",
-    text: "Assia è stata impeccabile: professionale, disponibile e attenta ad ogni dettaglio. Ha capito subito le mie esigenze e costruito un viaggio perfetto. Servizio accurato, gentilezza e massima attenzione al cliente.",
-    rating: 5,
-  },
-  {
-    name: "Michela Cannavale",
-    tripType: "Viaggio di Nozze · New York & Santo Domingo",
-    text: "Assia ha curato tutto nei dettagli: hotel perfetto a Manhattan, villaggio stupendo a Bayahibe, consigli utilissimi su trasporti e attrazioni. Ci ha assistiti anche durante un imprevisto. Ha realizzato un sogno!",
-    rating: 5,
-  },
-
-  // NUOVE RECENSIONI
-  {
-    name: "Serena Odierna",
-    tripType: "Viaggio di Gruppo · Amsterdam",
-    text: "Ho prenotato da loro per il mio viaggio ad Amsterdam, tutto perfetto, dall’hotel ai posti che hanno saputo consigliarmi, e soprattutto mi hanno consigliato il periodo più giusto per avere belle giornate. Persone di cuore e sempre disponibili, attenti alle mie esigenze e super preparati.",
-    rating: 5,
-  },
-  {
-    name: "Teresa La Fata",
-    tripType: "Viaggio in Europa · Grecia",
-    text: "Quest'anno per la prima volta mi sono rivolta a questa agenzia per organizzare un viaggio per le mie vacanze estive e mai scelta è stata più azzeccata. Sono stata seguita con attenzione e gentilezza ed il viaggio è stato perfetto.",
-    rating: 5,
-  },
-  {
-    name: "Marika Campanile",
-    tripType: "Viaggio in Europa · Parigi",
-    text: "Un grazie di cuore va ad Assia per aver reso il mio viaggio a Parigi semplicemente PERFETTO! Organizzazione impeccabile e massima disponibilità. Consigliatissima!",
-    rating: 5,
-  },
-  {
-    name: "Romolo",
-    tripType: "Viaggio Individuale · Europa",
-    text: "Mi sono trovato benissimo! Avete preparato il mio viaggio ad Amsterdam nei minimi dettagli in base alle mie esigenze.",
-    rating: 5,
-  },
-  {
-    name: "Raffaella Ferone",
-    tripType: "Crociera · Caraibi",
-    text: "Non potevamo scegliere di meglio per la nostra luna di miele. Ogni dettaglio curato con precisione. Non vediamo l'ora di organizzare il prossimo viaggio con voi.",
-    rating: 5,
-  },
-  {
-    name: "Emia Ughetto",
-    tripType: "Crociera di Famiglia · Mediterraneo",
-    text: "Prima crociera organizzata nei minimi dettagli, perfetta per i nostri 3 figli. Assia è gentilissima e super disponibile. Ci affideremo ancora a loro!",
-    rating: 5,
-  },
-  {
-    name: "Emanuela Sommella",
-    tripType: "Viaggio di Coppia · Santo Domingo",
-    text: "Una meravigliosa vacanza organizzata da Leaving Now. Ogni anno riconfermo la fiducia in Assia e nel suo team. Professionalità e attenzione.",
-    rating: 5,
-  },
-  {
-    name: "Vincenza Marlisa De Lucia",
-    tripType: "Viaggio di Nozze · Tour Thailandia + Maldive",
-    text: "Hanno organizzato il nostro viaggio di nozze perfetto: tour della Thailandia + Maldive. Assia attentissima e super disponibile. Consigliatissima!",
-    rating: 5,
-  },
-  {
-    name: "Giuseppe Sangiovanni",
-    tripType: "Viaggio di Nozze · Fly & Drive USA",
-    text: "Pacchetto creato ad hoc, organizzazione impeccabile, prezzi competitivi. Non vediamo l’ora di ripartire con loro!",
-    rating: 5,
-  },
-  {
-    name: "Felisia Conte",
-    tripType: "Viaggio di Nozze · Tour USA + Crociera Caraibi",
-    text: "Assia è eccezionale, cura i viaggi come se fossero suoi. Sempre presente anche durante il viaggio. Una garanzia.",
-    rating: 5,
-  },
-  {
-    name: "Nicola Ossuto",
-    tripType: "Viaggi di Coppia · USA + Bahamas",
-    text: "Viaggio dei sogni. Hanno curato tutto nei dettagli e mi hanno seguito in ogni momento, perfetti per chi è ansioso come me!",
-    rating: 5,
-  },
-];
+import reviewsData from "../../data/reviews.json";
 
 const AUTO_SLIDE_MS_MOBILE = 15000;
 const AUTO_SLIDE_MS_DESKTOP = 25000;
@@ -125,8 +13,9 @@ const ReviewsSection = () => {
   const [perPage, setPerPage] = useState(1);
   const [carouselReviews, setCarouselReviews] = useState([]);
 
+  // Shuffle iniziale delle recensioni prese dal JSON
   useEffect(() => {
-    const shuffled = [...reviews].sort(() => Math.random() - 0.5);
+    const shuffled = [...reviewsData].sort(() => Math.random() - 0.5);
     setCarouselReviews(shuffled);
   }, []);
 
@@ -165,6 +54,7 @@ const ReviewsSection = () => {
   const intervalMs =
     perPage === 1 ? AUTO_SLIDE_MS_MOBILE : AUTO_SLIDE_MS_DESKTOP;
 
+  // Auto-slide solo quando la sezione è visibile e ci sono più pagine
   useEffect(() => {
     if (pageCount <= 1 || !isVisible) return;
 
@@ -258,7 +148,7 @@ const ReviewsSection = () => {
             ))}
           </div>
 
-          {/* PAGINATION DOTS */}
+          {/* PAGINATION DOTS stile Maintenance (pillole) ma con i TUOI colori */}
           <div className="flex flex-col items-center gap-1.5 mt-6">
             <div className="flex justify-center items-center gap-2">
               {Array.from({ length: pageCount }).map((_, index) => {
@@ -268,14 +158,15 @@ const ReviewsSection = () => {
                     key={index}
                     type="button"
                     onClick={() => setCurrentPage(index)}
-                    className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center group"
+                    className="inline-flex h-4 items-center justify-center"
+                    aria-label={`Vai alla pagina ${index + 1}`}
                   >
                     <span
                       className={[
-                        "h-2.5 w-2.5 rounded-full border transition-all duration-200",
+                        "h-2.5 rounded-full transition-all duration-200",
                         isActive
-                          ? "bg-sky-500 border-sky-500"
-                          : "border-slate-400 bg-transparent group-hover:border-sky-400 group-hover:bg-sky-100",
+                          ? "w-6 bg-sky-500"
+                          : "w-2 bg-slate-400",
                       ].join(" ")}
                     />
                   </button>

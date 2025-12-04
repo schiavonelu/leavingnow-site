@@ -2,42 +2,9 @@
 import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 
-// IMMAGINI LOCALI OTTIMIZZATE WEBP
-import nozzeImg from "../../assets/triptypes/viaggiodinozze.webp";
-import crociereImg from "../../assets/triptypes/crociere.webp";
-import gruppoImg from "../../assets/triptypes/viaggiodigruppo.webp";
-import familyImg from "../../assets/triptypes/family.webp";
-
-const tripTypes = [
-  {
-    title: "Viaggi di nozze",
-    subtitle: "Momenti per sempre",
-    image: nozzeImg,
-    query: "nozze",
-    to: "/viaggi-di-nozze",
-  },
-  {
-    title: "Crociere",
-    subtitle: "Grandi navi, grandi emozioni",
-    image: crociereImg,
-    query: "crociere",
-    to: "/crociere",
-  },
-  {
-    title: "Individuali & di gruppo",
-    subtitle: "Solo per te o da condividere",
-    image: gruppoImg,
-    query: "gruppo",
-    to: "/viaggi-individuali-gruppo",
-  },
-  {
-    title: "Family",
-    subtitle: "Viaggi per grandi e piccoli",
-    image: familyImg,
-    query: "family",
-    to: "/viaggi-family",
-  },
-];
+// Dati + immagini
+import tripTypesData from "../../data/tripTypes.json";
+import { TRIP_TYPE_IMAGES } from "../../data/tripTypesImages";
 
 const AUTO_SLIDE_MS_MOBILE = 8000;
 
@@ -70,15 +37,15 @@ const Card = memo(function Card({ trip }) {
       <div className="relative p-4 md:p-5 w-full">
         <h3
           className="
-    text-white font-bold leading-tight drop-shadow-sm
-    text-xl md:text-2xl
-    max-w-[80%]
-    md:max-w-none
-    wrap-break-word
-    text-balance
-  "
+            text-white font-bold leading-tight drop-shadow-sm
+            text-xl md:text-2xl
+            max-w-[80%]
+            md:max-w-none
+            wrap-break-word
+            text-balance
+          "
           style={{
-            fontSize: trip.title.length > 22 ? "1.25rem" : "1.5rem", // riduce automaticamente
+            fontSize: trip.title.length > 22 ? "1.25rem" : "1.5rem",
           }}
         >
           {trip.title}
@@ -100,6 +67,13 @@ const Card = memo(function Card({ trip }) {
 const TripTypesStrip = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Prepara l'array tripTypes unendo JSON + immagini
+  const tripTypes = tripTypesData.map((item) => ({
+    ...item,
+    image: TRIP_TYPE_IMAGES[item.imageKey],
+  }));
+
   const total = tripTypes.length;
 
   useEffect(() => {
@@ -137,6 +111,7 @@ const TripTypesStrip = () => {
               </div>
             </div>
 
+            {/* DOTS stile Maintenance (pillole) con i colori originali */}
             <div className="flex justify-center gap-2 mt-4">
               {tripTypes.map((_, index) => {
                 const isActive = index === currentIndex;
@@ -146,14 +121,14 @@ const TripTypesStrip = () => {
                     type="button"
                     onClick={() => setCurrentIndex(index)}
                     aria-label={`Vai al tipo di viaggio ${index + 1}`}
-                    className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center"
+                    className="inline-flex h-4 items-center justify-center"
                   >
                     <span
                       className={[
-                        "h-3 w-3 rounded-full border transition-colors duration-150",
+                        "h-2.5 rounded-full transition-all duration-200",
                         isActive
-                          ? "bg-sky-500 border-sky-500"
-                          : "border-slate-400 bg-transparent hover:border-sky-400 hover:bg-sky-100",
+                          ? "w-6 bg-sky-500"
+                          : "w-2 bg-slate-400",
                       ].join(" ")}
                     />
                   </button>
@@ -177,6 +152,7 @@ const TripTypesStrip = () => {
 };
 
 export default TripTypesStrip;
+
 
 
 

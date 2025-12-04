@@ -1,0 +1,26 @@
+{
+  "Mercatini di Natale tra Trentino e Austria": ["mercatini-natale"],
+  "Mercatini romantici in Alsazia e Germania": ["mercatini-natale"],
+  "Canarie e mare d'inverno": ["mare-inverno"],
+
+  "Amsterdam e fioritura dei tulipani": ["tulipani-amsterdam"],
+  "Giappone durante l'hanami": ["ciliegi-giappone"],
+  "Pasqua tra capitali e Mediterraneo": ["pasqua"],
+  "Barcellona tra Ramblas e mare": ["mare-europa-isole"],
+  "Siviglia e la primavera andalusa": ["pasqua"],
+  "Valencia tra Città delle Arti e mare": ["mare-europa-isole"],
+  "Malta tra storia e prime giornate di mare": ["mare-europa-isole"],
+  "Nizza e Costa Azzurra di primavera": ["mare-europa-isole", "carnevale"],
+
+  "Mare Italia tra Sardegna, Sicilia e Salento": ["mare-italia"],
+  "Mare estero tra Grecia e Spagna": ["mare-europa-isole"],
+  "Viaggi di nozze estivi": ["viaggi-intercontinentali"],
+
+  "Trentino Alto Adige tra terme e montagne": ["benessere-spa"],
+  "Slovenia e Ungheria termale": ["benessere-spa"],
+  "Italia tra laghi e borghi": ["benessere-spa"],
+
+  "Carnevale tra Venezia e Nizza": ["carnevale"],
+  "Oktoberfest a Monaco": ["oktoberfest"],
+  "Capodanno in capitale europea": ["capodanno"]
+}

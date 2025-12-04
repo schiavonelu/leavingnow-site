@@ -1,3 +1,4 @@
+// src/components/.../SeasonalHighlightSection.jsx
 import { Link } from "react-router-dom";
 import { Plane, Building2, Waves, Globe2 } from "lucide-react";
 import heroImg from "../../assets/destination/hero.webp";
@@ -6,71 +7,12 @@ import { getActiveSeasonForNow } from "../../config/seasonalSalesConfig";
 import { SEASONS } from "../../data/mete-stagionali";
 import { getSeasonImageBySlug } from "../../data/mete-stagionali-images";
 
-// 🔹 stessa mappa card → campagne che usi nelle mete stagionali
-const CARD_CAMPAIGN_MAP = {
-  // INVERNO
-  "Mercatini di Natale tra Trentino e Austria": ["mercatini-natale"],
-  "Mercatini romantici in Alsazia e Germania": ["mercatini-natale"],
-  "Canarie e mare d'inverno": ["mare-inverno"],
+// 🔹 dati estratti in JSON
+import CARD_CAMPAIGN_MAP from "../../data/seasonalCardCampaignMap.json";
+import CAMPAIGN_HIGHLIGHTS from "../../data/campaignHighlights.json";
 
-  // PRIMAVERA
-  "Amsterdam e fioritura dei tulipani": ["tulipani-amsterdam"],
-  "Giappone durante l'hanami": ["ciliegi-giappone"],
-  "Pasqua tra capitali e Mediterraneo": ["pasqua"],
-  "Barcellona tra Ramblas e mare": ["mare-europa-isole"],
-  "Siviglia e la primavera andalusa": ["pasqua"],
-  "Valencia tra Città delle Arti e mare": ["mare-europa-isole"],
-  "Malta tra storia e prime giornate di mare": ["mare-europa-isole"],
-  "Nizza e Costa Azzurra di primavera": ["mare-europa-isole", "carnevale"],
-
-  // ESTATE / MARE
-  "Mare Italia tra Sardegna, Sicilia e Salento": ["mare-italia"],
-  "Mare estero tra Grecia e Spagna": ["mare-europa-isole"],
-  "Viaggi di nozze estivi": ["viaggi-intercontinentali"],
-
-  // BENESSERE
-  "Trentino Alto Adige tra terme e montagne": ["benessere-spa"],
-  "Slovenia e Ungheria termale": ["benessere-spa"],
-  "Italia tra laghi e borghi": ["benessere-spa"],
-
-  // EVENTI SPECIALI
-  "Carnevale tra Venezia e Nizza": ["carnevale"],
-  "Oktoberfest a Monaco": ["oktoberfest"],
-  "Capodanno in capitale europea": ["capodanno"],
-};
-
+// etichetta CTA stagionali (tenuta come funzione se vuoi personalizzarla in futuro)
 const getSeasonalCtaLabel = () => "Scopri le mete stagionali";
-
-const CAMPAIGN_HIGHLIGHTS = {
-  "mare-italia":
-    "Mare Italia: Sardegna, Sicilia, Puglia, Calabria e grandi classici estivi.",
-  "mare-europa-isole":
-    "Mare Europa e isole: Grecia, Spagna, Canarie, Baleari, Croazia e altri mari vicini.",
-  "mare-inverno":
-    "Mare d’inverno: Canarie, Egitto, Dubai e altre mete al caldo.",
-  crociere:
-    "Crociere nel Mediterraneo, Nord Europa o Caraibi con itinerari su misura.",
-  "viaggi-intercontinentali":
-    "Viaggi intercontinentali e combinati città+mare, anche per viaggi di nozze.",
-  "mercatini-natale":
-    "Mercatini di Natale tra Trentino, Austria, Germania e Alsazia.",
-  capodanno:
-    "Capodanno in città europee o al caldo, tra piazze illuminate e feste.",
-  carnevale:
-    "Carnevale tra Venezia, Nizza, Costa Azzurra e altre città in festa.",
-  "san-valentino":
-    "Weekend romantici per San Valentino, tra capitali europee e hotel di charme.",
-  "tulipani-amsterdam":
-    "Fioritura dei tulipani: Amsterdam, Keukenhof e dintorni.",
-  "ciliegi-giappone":
-    "Fioritura dei ciliegi in Giappone (hanami) con itinerari su misura.",
-  pasqua:
-    "City break e mare per Pasqua e i ponti di primavera, in Italia ed Europa.",
-  oktoberfest:
-    "Oktoberfest a Monaco e in Baviera, abbinabile a castelli e città vicine.",
-  "benessere-spa":
-    "Weekend benessere & spa in Italia ed Europa, tutto l’anno.",
-};
 
 const buildTitleFromCampaigns = (campaigns) => {
   if (!campaigns || campaigns.length === 0) {
@@ -180,7 +122,7 @@ const SeasonalHighlightSection = () => {
     return day > d;
   };
 
-  // 🔹 FASI RICHIESTE:
+  // 🔹 FASI:
   // A) prima del 7 gennaio → stagionali + capitali
   const phaseA_before7Jan = isBefore(1, 7);
 
@@ -216,7 +158,7 @@ const SeasonalHighlightSection = () => {
         <Link
           key="mare-italia"
           to="/mare-italia"
-          className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
+          className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
         >
           <Waves className="w-4 h-4 mr-2" />
           Mare Italia: isole & coste
@@ -226,7 +168,7 @@ const SeasonalHighlightSection = () => {
         <Link
           key="mare-estero"
           to="/mare-estero"
-          className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-emerald-400 hover:text-emerald-300 transition"
+          className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-emerald-400 hover:text-emerald-300 transition"
         >
           <Globe2 className="w-4 h-4 mr-2" />
           Mare estero tra isole & oceano
@@ -238,7 +180,7 @@ const SeasonalHighlightSection = () => {
           <Link
             key="mete-stagionali"
             to={`/mete-stagionali#${seasonId}`}
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
           >
             <Plane className="w-4 h-4 mr-2" />
             {getSeasonalCtaLabel()}
@@ -251,7 +193,7 @@ const SeasonalHighlightSection = () => {
           <Link
             key="capitali"
             to="/citta-europee"
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
           >
             <Building2 className="w-4 h-4 mr-2" />
             Capitali e città europee
@@ -266,7 +208,7 @@ const SeasonalHighlightSection = () => {
           <Link
             key="mete-stagionali"
             to={`/mete-stagionali#${seasonId}`}
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
+            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold bg-[#0369A1] text-white border border-[#0369A1] hover:bg-white hover:text-[#0863D6] hover:border-[#0863D6] transition"
           >
             <Plane className="w-4 h-4 mr-2" />
             {getSeasonalCtaLabel()}
@@ -279,7 +221,7 @@ const SeasonalHighlightSection = () => {
           <Link
             key="capitali"
             to="/citta-europee"
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
+            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#EB2480] hover:text-[#EB2480] transition"
           >
             <Building2 className="w-4 h-4 mr-2" />
             Capitali e città europee
@@ -293,7 +235,7 @@ const SeasonalHighlightSection = () => {
           <Link
             key="mare-italia"
             to="/mare-italia"
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
+            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition"
           >
             <Waves className="w-4 h-4 mr-2" />
             Mare Italia: isole & coste
@@ -303,7 +245,7 @@ const SeasonalHighlightSection = () => {
           <Link
             key="mare-estero"
             to="/mare-estero"
-            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold border border-slate-500 text-slate-100 hover:border-emerald-400 hover:text-emerald-300 transition"
+            className="inline-flex w-full sm:w-auto justify-center items-center rounded-full px-6 py-3 text-sm md:text-base font-semibold border border-slate-500 text-slate-100 hover:border-emerald-400 hover:text-emerald-300 transition"
           >
             <Globe2 className="w-4 h-4 mr-2" />
             Mare estero tra isole & oceano
@@ -387,6 +329,7 @@ const SeasonalHighlightSection = () => {
 };
 
 export default SeasonalHighlightSection;
+
 
 
 
