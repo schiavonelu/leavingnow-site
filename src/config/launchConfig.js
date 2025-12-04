@@ -1,7 +1,7 @@
 // src/config/launchConfig.js
 
 // 🔁 DATA DI LANCIO REALE
-export const LAUNCH_DATE = new Date("2025-12-04T23:28:00+01:00");
+export const LAUNCH_DATE = new Date("2025-12-04T23:31:00+01:00");
 // formato: new Date("YYYY-MM-DDTHH:MM:SS+01:00")
 
 // 🛠 INIZIO MODALITÀ MANUTENZIONE (quando metti online su Ionos)
