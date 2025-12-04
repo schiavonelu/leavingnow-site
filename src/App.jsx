@@ -1,5 +1,5 @@
 // src/App.jsx
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Layout principale
@@ -7,6 +7,9 @@ import MainLayout from "./layout/MainLayout.jsx";
 
 // Config lancio / manutenzione
 import { LAUNCH_DATE, MAINTENANCE_START_DATE } from "./config/launchConfig.js";
+
+// Overlay di lancio (barra 7 secondi)
+import LaunchGate from "./pages/LaunchGate.jsx";
 
 // Pagine principali
 import Home from "./pages/Home.jsx";
@@ -40,7 +43,7 @@ import Oceania from "./pages/Oceania.jsx";
 // Pagine speciali
 import NotFound from "./pages/NotFound.jsx";
 
-// Pagine “speciali” di lancio
+// Pagine di lancio
 import ComingSoon from "./pages/ComingSoon.jsx";
 import Maintenance from "./pages/Maintenance.jsx";
 
@@ -49,14 +52,11 @@ import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
 function App() {
-  // ⏱ ora “reattiva” che si aggiorna ogni 5 secondi
+  // ⏱ Orario reattivo ogni 5 secondi
   const [now, setNow] = useState(Date.now());
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setNow(Date.now());
-    }, 5000); // 5 secondi, puoi abbassare a 1000 se vuoi più preciso
-
+    const id = setInterval(() => setNow(Date.now()), 5000);
     return () => clearInterval(id);
   }, []);
 
@@ -67,7 +67,7 @@ function App() {
   const beforeMaintenance = now < maintenanceStart;
   const inMaintenance = now >= maintenanceStart && now < launch;
 
-  // 🔵 FASE 1 – prima della manutenzione → COMING SOON
+  // 🔵 FASE 1 → Prima della manutenzione (Coming Soon)
   if (beforeLaunch && beforeMaintenance) {
     return (
       <>
@@ -77,7 +77,7 @@ function App() {
     );
   }
 
-  // 🟠 FASE 2 – tra manutenzione e lancio → MAINTENANCE
+  // 🟠 FASE 2 → Tra manutenzione e lancio
   if (inMaintenance) {
     return (
       <>
@@ -87,15 +87,18 @@ function App() {
     );
   }
 
-  // ✅ FASE 3 – dopo il lancio → sito normale
+  // ✅ FASE 3 → Dopo il lancio → sito normale
   return (
     <>
-      {/* Widget WhatsApp sempre visibile nel sito live */}
+      {/* Overlay di lancio (barra 7s) solo alla PRIMA visita dopo il go-live */}
+      <LaunchGate />
+
+      {/* Widget WhatsApp sempre visibile */}
       <WhatsAppWidget />
 
+      {/* Rotte del sito */}
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          {/* Pagine principali */}
           <Route index element={<Home />} />
           <Route path="chi-siamo" element={<ChiSiamo />} />
           <Route path="destinazioni" element={<Destinazioni />} />
@@ -124,27 +127,24 @@ function App() {
           <Route path="destinazioni/asia" element={<Asia />} />
           <Route path="destinazioni/oceania" element={<Oceania />} />
 
-          {/* Pagine legali */}
+          {/* Legali */}
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="termini-e-condizioni" element={<TerminiCondizioni />} />
-          <Route
-            path="condizioni-di-vendita"
-            element={<CondizioniVendita />}
-          />
+          <Route path="condizioni-di-vendita" element={<CondizioniVendita />} />
           <Route path="crediti-immagini" element={<CreditiImmagini />} />
         </Route>
 
-        {/* Pagina 404 */}
+        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* Banner Cookie sempre attivo */}
       <CookieConsent />
     </>
   );
 }
 
 export default App;
+
 
 
 
