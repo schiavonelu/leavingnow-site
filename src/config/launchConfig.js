@@ -5,7 +5,7 @@ export const LAUNCH_DATE = new Date("2025-12-05T20:00:00+01:00");
 // formato: new Date("YYYY-MM-DDTHH:MM:SS+01:00")
 
 // 🛠 INIZIO MODALITÀ MANUTENZIONE (quando metti online su Ionos)
-export const MAINTENANCE_START_DATE = new Date("2025-12-02T01:00:00+01:00");
+export const MAINTENANCE_START_DATE = new Date("2025-12-04T01:00:00+01:00");
 
 // Millisecondi
 export const ONE_HOUR_MS = 1000 * 60 * 60;
