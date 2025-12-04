@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout.jsx";
 
 // Config lancio / manutenzione
-import { isMaintenanceMode } from "./config/launchConfig.js";
+import { LAUNCH_DATE, MAINTENANCE_START_DATE } from "./config/launchConfig.js";
 
 // Pagine principali
 import Home from "./pages/Home.jsx";
@@ -38,24 +38,45 @@ import Oceania from "./pages/Oceania.jsx";
 
 // Pagine speciali
 import NotFound from "./pages/NotFound.jsx";
-import LaunchGate from "./pages/LaunchGate.jsx";
+
+// Pagine “speciali” di lancio
+import ComingSoon from "./pages/ComingSoon.jsx";
+import Maintenance from "./pages/Maintenance.jsx";
 
 // UI Components
 import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
 function App() {
-  // ✅ 1. Se siamo in manutenzione, mostra SOLO la pagina di manutenzione
-  if (isMaintenanceMode()) {
+  const now = Date.now();
+  const launch = LAUNCH_DATE.getTime();
+  const maintenanceStart = MAINTENANCE_START_DATE.getTime();
+
+  const beforeLaunch = now < launch;
+  const beforeMaintenance = now < maintenanceStart;
+  const inMaintenance = now >= maintenanceStart && now < launch;
+
+  // 🔵 FASE 1 – prima della manutenzione → COMING SOON
+  if (beforeLaunch && beforeMaintenance) {
     return (
       <>
-        <LaunchGate />
+        <ComingSoon />
         <CookieConsent />
       </>
     );
   }
 
-  // ✅ 2. Se NON siamo in manutenzione, mostra il sito normale
+  // 🟠 FASE 2 – tra manutenzione e lancio → MAINTENANCE
+  if (inMaintenance) {
+    return (
+      <>
+        <Maintenance />
+        <CookieConsent />
+      </>
+    );
+  }
+
+  // ✅ FASE 3 – dopo il lancio → sito normale
   return (
     <>
       {/* Widget WhatsApp sempre visibile */}
