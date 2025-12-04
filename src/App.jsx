@@ -4,6 +4,9 @@ import { Routes, Route } from "react-router-dom";
 // Layout principale
 import MainLayout from "./layout/MainLayout.jsx";
 
+// Config lancio / manutenzione
+import { isMaintenanceMode } from "./config/launchConfig.js";
+
 // Pagine principali
 import Home from "./pages/Home.jsx";
 import ChiSiamo from "./pages/ChiSiamo.jsx";
@@ -42,11 +45,19 @@ import WhatsAppWidget from "./components/ui/WhatsAppWidget.jsx";
 import CookieConsent from "./components/ui/CookieConsent.jsx";
 
 function App() {
+  // ✅ 1. Se siamo in manutenzione, mostra SOLO la pagina di manutenzione
+  if (isMaintenanceMode()) {
+    return (
+      <>
+        <LaunchGate />
+        <CookieConsent />
+      </>
+    );
+  }
+
+  // ✅ 2. Se NON siamo in manutenzione, mostra il sito normale
   return (
     <>
-      {/* Overlay di lancio (manutenzione / coming soon) basato SOLO sulla data */}
-      <LaunchGate />
-
       {/* Widget WhatsApp sempre visibile */}
       <WhatsAppWidget />
 

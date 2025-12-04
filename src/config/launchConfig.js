@@ -1,10 +1,10 @@
 // src/config/launchConfig.js
 
 // 🔁 DATA DI LANCIO REALE
-export const LAUNCH_DATE = new Date("2025-12-04T19:10:00+01:00");
+export const LAUNCH_DATE = new Date("2025-12-05T20:00:00+01:00");
 // formato: new Date("YYYY-MM-DDTHH:MM:SS+01:00")
 
-// 🛠 INIZIO MODALITÀ MANUTENZIONE (quando metti online su Ionos)
+// 🛠 INIZIO MODALITÀ MANUTENZIONE
 export const MAINTENANCE_START_DATE = new Date("2025-12-04T01:00:00+01:00");
 
 // Millisecondi
@@ -41,6 +41,23 @@ export const getTimeLeft = () => {
     seconds,
   };
 };
+
+// ✅ TRUE se siamo tra inizio manutenzione e lancio
+export const isMaintenanceMode = () => {
+  const now = Date.now();
+  const start = MAINTENANCE_START_DATE.getTime();
+  const launch = LAUNCH_DATE.getTime();
+
+  console.log("DEBUG MAINT:", {
+    now,
+    start,
+    launch,
+    result: now >= start && now < launch,
+  });
+
+  return now >= start && now < launch;
+};
+
 
 
 
