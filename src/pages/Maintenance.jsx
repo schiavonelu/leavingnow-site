@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import {
   FaHammer,
- 
   FaPhone,
   FaMapLocationDot,
   FaGears,
